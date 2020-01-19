@@ -1,0 +1,258 @@
+
+
+\chapter{Absorption}
+
+\vspace*{-12mm}
+Markus Lippitz \newline \today
+\vspace*{12mm}
+
+\section{Experiment}
+
+The data sets contain absorption spectra as measured with a commercial UV/VIS spectrometer. Determine the absorption cross section of each species and compare to its geometrical size. Determine also the oscillator strength, the transition dipole moment, and the transition matrix element.
+
+
+\subsection{Experimental technique}
+
+An UV/VIS spectrometer measures the  power $P$ transmitted through a cuvette of optical path length $L$ and compares it to the power $P_0$ in a reference path. In most cases, also here, the reference path hold a cuvette containing  the plain solvent. The transmission $T = P / P_0$ is converted into the absorbance $A = - \log_{10} T = - \log_{10} ( P / P_0)$. The data set gives absorbance as function of wavelength.
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir/uvvis.png}
+\caption{Sketch of a UV/VIS spectrometer}
+\end{marginfigure}
+
+
+
+Grating spectrometers use an entrance slit to define the spectral resolution $d \lambda$, which is independent of the actual wavelength $\lambda$, as can be seen when inspecting the   angular dispersion relation of a grating. Due to the reciprocal relation between wavelength and frequency or energy, the spectral resolution in units of energy $d \nu$ is not constant anymore.
+
+
+\subsection{Experimental details}
+
+The molar concentration of the sample has to be known, for example from the weight of the dissolved dye. 
+
+\begin{table}
+ \begin{tabular}{ll}
+  \toprule
+   material & concentration \\
+   \midrule
+   Rhodamin 6G &  12 nM \\
+   CdSe noncrystals & 23 nM \\
+   Au nanospheres & 22 nM \\
+   \bottomrule
+\end{tabular}   
+  \caption{Molar concentrations}
+\end{table}
+
+
+\section{Lambert-Beer law and the absorption coefficient}
+
+The transmitted power drops exponentially with  concentration $C$ and  path length $L$
+\[
+ P = P_0 \, 10^{- \epsilon\, C \, L}
+\]
+where $\epsilon$ is the (decadic) molar absorption\sidenote{The difference between abortion and extinction will be discussed elsewhere.} coefficient. We stick here to a base of $10$, 
+so that the absorbance or optical density equals 
+\[
+ A = \epsilon\, C \, L \quad.
+\]
+However, similar definitions with a base of $e$ are used sometimes. Our choice leads to the appearance of factors of $\ln(10)$ every now and then. The concentration is typically given as molarity (1 M = 1 mol/l), and lengths for practical reasons in centimeter
+so that the molar absorption coefficient has the unit 1/(M  cm). As we are concerned with spectroscopy the molar absorption coefficient $\epsilon$ depends of course on the wavelength or frequency of light.
+
+\section{Absorption cross section}
+
+
+The interaction cross section $\sigma$ of a process is an imagined area around the particle, which, when hit by a photon, triggers the considered process. When a photon hits on the absorption cross section $\sigma_{\text{abs}}$ of a molecule it will be absorbed. If if does not hit it will pass unperturbed. All details of the physics is summarized in the area, which makes it easy to relate the absorption cross section with the absorbance. 
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir/crosssections.png}
+\caption{Sketch  disks hit by rays}
+\end{marginfigure}
+
+
+We consider randomly arranged molecules of molar concentration $C$ in a thin slab of thickness $dx$. The probability that a photon is absorbed in this slab is
+\[
+ 1 - T =1 -  10^{- \epsilon\, C \, dx} \approx \ln (10) \; \epsilon\, C \, dx \quad .
+\]
+In comparison, when each molecule has an absorption cross section $\sigma_{\text{abs}}$, we get an absorption probability 
+\[
+ 1 - T = \sigma_{\text{abs}} \, C \, N_A \, dx
+\]
+where $N_A = 6.022 \cdot 10^{23}$~{1/mol} is the Avogadro number.  We also made the Born approximation, i.e., that multiple interactions can be neglected, or the absorption cross sections do not overlap, which is equivalent to the approximation made above to remove the exponential function.  We thus find
+\[
+ \sigma_{\text{abs}}(\omega) =  \frac{\ln(10)}{ N_A } \, \epsilon(\omega)
+\]
+which has the unit of an area. As the  molar absorption coefficient $\epsilon$  also the absorption cross section $\sigma_{\text{abs}}$ depends on the wavelength of light. If no wavelength is given, the value at the peak of the spectrum meant.
+
+
+\section{Lorentz oscillator and oscillator strength}
+
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir/lorentz.png}
+\caption{A Lorentz oscillator}
+\end{marginfigure}
+
+
+The Lorentz oscillator is a simple classical model to describe the interaction of light and matter. A mass $m$ of charge $+e$ is connected to a spring. The oscillator has an angular eigen-frequency $\omega_0$ and a damping $\gamma$. It is driven by an external electrical field $E(t) = E_0 \exp(i \omega t)$. The differential equation for the position $x$ reads
+\[
+  \ddot{x} + 2  \gamma  \dot{x} + \omega_0^2 x =  \frac{e}{m} E_0 e^{i \omega t}
+\]
+This results in a steady-state solution of 
+\[
+  x(t) = \frac{e}{m}  \frac{1}{\omega_0^2 - \omega^2 +2  i \gamma \omega } \, E_0 e^{i \omega t} 
+\]
+In the case of small damping ($\gamma \ll \omega_0$) this simplifies near the resonance ($\omega \approx \omega_0$) to
+\[
+  x(t) \approx \frac{e}{2 m \omega_0}  \frac{1}{\omega_0 - \omega + i \gamma } \, E_0 e^{i \omega t} 
+\]
+The time-averaged power  that the damped oscillator takes out of the driving force $F(t) = e E(t)$ can be calculated in this approximation as
+%
+\begin{eqnarray*}
+ P_{\text{abs}} &= &  - \frac{1}{T} \int_0^T F \, \frac{ds}{dt} \, dt =  
+  - \frac{1}{T}  \int_0^T Re \left\{  e E(t) \right\}  \, Re \left\{ \dot{x}(t) \right\} \, dt \\
+  & = & - Re \left\{i \omega  \frac{e^2  E_0^2 }{2 m \omega_0}  \frac{1}{\omega_0 - \omega +  i \gamma } \right\}  \,   \frac{1}{T}  \int_0^T \left( \cos \omega t \right)^2 dt \\
+ % 
+%
+% P_{\text{abs}} &= & \left< Re \left\{ e E(t) \, \dot{x}(t) \right\} \right> = 
+ %
+ % & = & Re \left\{ \frac{i \omega}{2} \frac{e^2  E_0^2 }{2 m \omega_0}  \frac{1}{\omega_0 - \omega +  i \gamma } \right\}  \\
+%& \approx & Im \left( \frac{e^2  E_0^2 }{4 m }  \frac{1}{\omega_0 - \omega + i \gamma }  \right)
+& = & \frac{e^2 E_0^2  }{4 m }  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2}  \\
+&  = &  \frac{e^2  }{2 \epsilon_0 \, m \,c }  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2}  \, |S|  \quad .\\
+\end{eqnarray*}
+%
+The time average has produced a factor of $1/2$ and in the last step we have used the definition of the amplitude of the Poynting vector $|S| = \frac{1}{2} \epsilon_0 c |E_0|^2$. 
+We thus find an absorption cross section $\sigma_{\text{abs,Lorenz}}$ of the classical Lorentz oscillator
+\[
+ \sigma_{\text{abs, Lorentz}}(\omega) = \frac{ P_{\text{abs}} }{|S| } = \frac{e^2  }{2 \epsilon_0 \,  m \, c}  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2} 
+\]
+
+While many optical transition show a Lorentzian line shape as predicted by the Lorentz oscillator, the peak height of the absorption line deviates. This deviation is cast into an oscillator strength $f$ so that 
+\[
+ \sigma_{\text{abs}}(\omega) =   \frac{e^2  }{2 \epsilon_0 \,  m \, c}  \frac{\gamma  }{(\omega_0 - \omega)^2 +  \gamma ^2}  \, f
+\]
+
+For single electron transitions starting from the same quantum mechanical level, the Thomas–Reiche–Kuhn sum rule states that the sum over all oscillator strength $f$ equals to one. for this reasone one can interpreted the oscillator strength  $f$  to some extend  as the number of electrons involved in  the transition, but one has to be careful, as pointed out by Z. Hens \footcite{Hens:2008kr}.
+
+\section{Einstein coefficients}
+
+The Einstein coefficients for emission $A_{21}$, absorption $B_{12}$ and stimulated emission $B_{21}$ relate the populations $N_1$ and $N_2$ of a lower and upper state to the spectral energy density $u(\omega)$ of the optical field (units of energy per volume and angular frequency intervall). In steady state we get
+\[
+ \frac{d N_1}{dt} =  A_{21} N_2 \, - \, B_{12} \, N_1 \, u(\omega) \, + \, B_{21}\, N_2 \,u(\omega)  = 0 \quad .
+\]
+At the same time, the ratio of the populations is given by Boltzmann's law as
+\[
+ \frac{N_2}{N_1} = \frac{g_2}{g_1} \, \exp \left( - \frac{\hbar \omega}{kT} \right)
+\]
+where the $g_i$ are the degeneracy of the respective state. The spectral energy density is given by the back-body spectrum, as we are in thermal equilibrium
+\[
+ u(\omega) = \frac{\hbar \, \omega^3}{\pi^2 c^3} \, \frac{1}{\exp \left( \hbar \omega / kT \right) - 1} \quad .
+\]
+Altogether this leads to 
+\begin{eqnarray*}
+ g_1 \, B_{12} &=& g_2 \, B_{21} \\
+ A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21} 
+\end{eqnarray*}
+Different prefactors can be found in literature for these equations, depending on the exact definition of $u$.
+ \footcite{Hilborn:2002wj} 
+ As each absorption event takes out the energy $\hbar \omega$ and the energy density $u(\omega)$ moves with the velocity of light $c$, we get for the absorption cross section
+\[
+ \sigma = \frac{\hbar \omega \, B_{12} \, u(\omega)  }{c \, u(\omega) }  =
+   \frac{\hbar \omega  }{c  }    \, B_{12}
+\]
+assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Note that this absorption cross section $\sigma$ is not a function of angular frequency $\omega$ anymore, but an spectral integrated cross section assuming a black body spectrum.\sidenote{really ???}
+
+
+
+\section{Transition dipole moment}
+
+\begin{marginfigure}
+\includegraphics[width=0.7\textwidth]{\currfiledir/tls.png}
+\caption{A light beam induces a transition from $\ket{i}$ to the  $\ket{f}$.}
+\end{marginfigure}
+
+Fermi's Golden Rule gives the transition rate from the initial state $\ket{i}$ to the final state $\ket{f}$ caused by the time-dependent perturbation $H'$ to the stationary Hamilton operator $H_0$ as
+\[
+ \Gamma_{i \rightarrow f} = \frac{2 \pi}{\hbar} \, \left| \bra{f} H' \ket{i} \right|^2 \, \rho(E) \quad ,
+\]
+where  $\rho(E) = d n / d E = \rho(\omega) / \hbar$ is the density of final states. The idea is that the initial state  $\ket{i}$ is well known, but the outcome of the interaction $\ket{f}$ might have free parameters, for example the direction of the emitted electron or the mode of the absorbed photon. The density of states   $\rho(E)$ thus can describe either electronic or photonic states, or both.
+
+
+
+
+In general, the interaction of a charged particle with an electromagnetic vector potential $\mathbf{A}$ is described by the perturbation
+\[
+ H' = - \frac{i \hbar e}{m} \, \mathbf{A \cdot \nabla}  \quad .
+\]
+As the spatial extend of our wavefunctions is small compared to the wavelength of light, we employ the dipole approximation and assume $\exp( i \mathbf{k \cdot r}) \approx 1$ in the plane-wave description of the vector potential. In this way, the  perturbation operator $H'$ simplifies to\sidenote{see \textcite{bransden_joachain} for details}
+\[
+ H' =  e \, \mathbf{E} (t)  \mathbf{\cdot \, r} =  e \,E_0 \,  \mathbf{\hat{x} \cdot \, r} \, \cos(\omega t) \quad ,
+\]
+where $\mathbf{\hat{x}} $ is a unit vector defining the polarization direction of the light field. We simplify further by using the rotating-wave approximation and keeping only co-rotating parts\sidenote{More on this in the chapter on Rabi oscillations and the Bloch sphere.} 
+\[
+ \cos(\omega t)
+ = \frac{1}{2} \left( e^{i \omega t}+  e^{-i \omega t} \right)
+ \approx  \frac{1}{2}  e^{i \omega t} 
+\]
+so that 
+\[
+H' =  \frac{ e \,E_0}{2}  \,  \mathbf{\hat{x} \cdot \, r} \,  e^{i \omega t}  \quad .
+\]
+%
+ We introduce the transition dipole matrix element $\mu_{if}$ as
+\[
+\mathbf{\mu}_{if} = -e \, \bra{f}    \mathbf{r} \ket{i}  \quad .
+\]
+It has the units of an electric dipole moment, i.e., charge times distance, and is the central element of an optical transition in quantum mechanics. For practical reasons, one uses the unit of 1 Debye = 1 electron displaced by 0.208 \AA.
+With this the matrix element  becomes
+\[
+\left| \bra{f} H' \ket{i} \right|^2 =  \frac{1}{4} E_0^2  \, |\mathbf{\hat{x}} \cdot \mathbf{\mu}_{if} |^2 \quad .
+\]
+Plugging everything into Fermi's Golden Rule, we get
+\[
+ \Gamma_{i \rightarrow f} = \frac{\pi}{2 \hbar^2} \,  E_0^2  \, |\mathbf{\hat{x}} \cdot \mathbf{\mu}_{if} |^2 \, \rho(\omega) \quad .
+\]
+Now we have to take into account that we use a incoherent multimode light source.\sidenote{The effect of a coherent single mode source will be investigated in the context of Rabi oscillations.} The electric field $E$ is here an incoherent superposition of  modes with the  spectral energy density $u(\omega)$.\sidenote{see \textcite{CT} and \textcite{Fox}   for details}
+The total power is thus
+\[
+ \frac{1}{2} \epsilon_0  \, E_0^2  = \int  u(\omega)  \, d\omega \quad .
+\]
+The spectral integrated transition rate is thus 
+\[
+ \bar{\Gamma}_{i \rightarrow f} =   \frac{\pi  }{\hbar^2 \epsilon_0}  \, |\mathbf{\hat{x}} \cdot \mathbf{\mu}_{if} |^2 \,
+\int u(\omega)  
+  \rho(\omega)  d \omega \quad .
+\]
+As the atomic transition is narrow compared with the light spectrum, the density of states $\rho(\omega)$ selects the transition frequency $\omega_{if}$ 
+\[
+ \bar{\Gamma}_{i \rightarrow f} =   \frac{\pi  }{\hbar^2 \epsilon_0}  \, |\mathbf{\hat{x}} \cdot \mathbf{\mu}_{if} |^2 \,
+ u(\omega_{if})   \quad .
+\]
+As each absorption event takes out a photon of energy $\hbar \omega_{if}$, and the energy density moves with the speed of light $c$ we get an integarted absorption cross section $\sigma_{\parallel} $\sidenote{Wrong units ! m2/s !}
+\[
+ \sigma_{\parallel} = \frac{ \hbar \omega_{if} \, \bar{\Gamma}_{i \rightarrow f} }{c \, u(\omega)}  = 
+  \frac{\pi \omega_{if}}{ \hbar c \, \epsilon_0} \,
+ |\mathbf{\mu}_{if} |^2  \quad .
+\]
+The index ${\parallel} $ is necessary, as we dropped the dot product between the direction of the transition dipole moment $\mathbf{\mu}_{if}$ and the polarization direction $\mathbf{\hat{x}}$, assuming optimal parallel orientation. In case of random orientation, i.e., averaging over all possible orientation directions, one finds  a reduction by one third
+\[
+ \sigma = \frac{1}{3} \sigma_{\parallel} = 
+  \frac{\pi \omega_{if}}{ 3 \, \hbar c \, \epsilon_0} \,
+ |\mathbf{\mu}_{if} |^2  \quad .
+\]
+We also can relate the transition dipole moment $\mathbf{\mu}_{if} $ to the Einstein coefficient
+\[
+B_{12} = \frac{\pi}{3 \, \hbar^2 \, \epsilon_0} \,  |\mathbf{\mu}_{if} |^2  \quad ,
+\]
+which takes already the rotational averaging into account.
+
+
+When relating to the  (decadic) molar absorption coefficient $\epsilon(\omega)$ we have to realize that in the more 'atomic' contexts of transition dipole moments and Einstein coefficients, we integrated over the spectral width of the absorption line. We  assumed that the incoming light beam is spectrally much broader than the optical transition. This is not the case for molecular spectra at room temperature. We thus have to integrate also the absorption spectrum over $\omega$ and take into account that $\omega_{if}$ varies, so that
+\[
+ \int_{\text{transition}} \frac{\epsilon(\omega)}{\omega} \, d \omega \, = \, 
+  \frac{\pi \, N_A}{ 3 \, \ln(10) \, \hbar c \, \epsilon_0} \,
+ |\mathbf{\mu}_{if} |^2
+ \, = \, 
+  \frac{\hbar\, N_A}{ \ln(10) \, c } \,
+B_{12}  \quad .
+\]
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
