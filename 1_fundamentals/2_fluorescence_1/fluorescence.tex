@@ -1,0 +1,154 @@
+
+
+\chapter{Fluorescence}
+
+
+
+\section{Experiment}
+
+The first data set contains absorption spectra as measured with a commercial UV/VIS spectrometer. 
+\textit{Determine the Einstein A coefficient. Determine also the fluorescence emission rate and compare it to the rate obtained from time-correlated single photon counting.}
+
+
+\subsection{Measuring the spectrum of light}
+
+resultion constant in wl or energy
+
+convert from WL to energy and back
+
+what does this mean for absorpion expeirments
+
+
+\section{Einstein coefficients}
+
+The Einstein coefficients for emission $A_{21}$, absorption $B_{12}$ and stimulated emission $B_{21}$ relate the populations $N_1$ and $N_2$ of a lower and upper state to the spectral energy density $u(\omega)$ of the optical field (units of energy per volume and angular frequency intervall). They define transition rates in units of Hz
+\begin{eqnarray*}
+ k_{\text{spontaneous emission}} &=& A_{21} \\
+  k_{\text{absorption}}  & = & B_{12} \,   u(\omega) \\
+  k_{\text{stimulated emission }} & =&  B_{21} \,  u(\omega)  \quad .
+\end{eqnarray*}
+%
+In steady state we get
+\[
+ \frac{d N_1}{dt} =  A_{21} N_2 \, - \, B_{12} \, N_1 \, u(\omega) \, + \, B_{21}\, N_2 \,u(\omega)  = 0 \quad .
+\]
+At the same time, the ratio of the populations is given by Boltzmann's law as
+\[
+ \frac{N_2}{N_1} = \frac{g_2}{g_1} \, \exp \left( - \frac{\hbar \omega}{kT} \right)
+\]
+where the $g_i$ are the degeneracy of the respective state. The spectral energy density is given by the back-body spectrum, as we are in thermal equilibrium
+\[
+ u(\omega) = \frac{\omega^2}{\pi^2 c^3} \, \hbar \omega \, \frac{1}{\exp \left( \hbar \omega / kT \right) - 1} \quad .
+\]
+Altogether this leads to 
+\begin{eqnarray*}
+ g_1 \, B_{12} &=& g_2 \, B_{21} \\
+ A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21} 
+\end{eqnarray*}
+Different prefactors can be found in literature for these equations, depending on the exact definition of $u$.
+ \footcite{Hilborn:2002wj} 
+ As each absorption event takes out the energy $\hbar \omega$ and the energy density $u(\omega)$ moves with the velocity of light $c$, we get for the absorption cross section
+\[
+ \sigma = \frac{\hbar \omega \, B_{12} \, u(\omega)  }{c \, u(\omega) }  =
+   \frac{\hbar \omega  }{c  }    \, B_{12}
+\]
+assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Note that this absorption cross section $\sigma$ is not a function of angular frequency $\omega$. We started by assuming atomic states with well defined, i.e. delta-shaped transition energies.
+
+
+
+\section{Strickler-Berg-Equation} 
+
+
+In condensed matter at room temperature, optical transitions are spectrally broad and not at all delta-like. One still finds a relation similar to the relation between the Einstein $A$ and $B$ coefficient between absorption and emission, when integrating over the spectral width. This relation is the  Strickler-Berg equation.\footcite[chapter 5.3][]{Strickler_Berg, Parson}  
+
+
+A molecule has the electronic ground state $g$ and the first excited state $e$, and each electronic state has a progression of vibrational states $m$ and $n$. We first look at the spontaneous emission rate  $k_{\text{sp}} =  A_{21}$
+from the state $be,n$ into any vibrational state of $g$, 
+%
+\[
+k_{e,n \rightarrow g}  = \sum_m  k_{b,n \rightarrow a,m}  = \frac{\hbar}{\pi^2 c^3} \sum_m  \omega_{b,n \rightarrow a,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 \, B_{ge} 
+\]
+where we have used the relation between the Einstein $A$ and $B$ coefficients and taken into account the Frank-Condon factors $ | \braket {\chi_m | \chi_n} |^2 $ for the overlapp of the vibrational wave functions $\chi$ of the nuclei.
+%
+The EInstein coefficient for absorption $B_{ge} $ is related to the molar extinction coefficient $\epsilon(\omega)$, as we have seem in the chapter on absorption
+\[
+ k_{e,n \rightarrow g}  = \frac{\ln(10)}{\pi^2 c^2 N_A} \sum_m  \omega_{b,n \rightarrow a,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2
+ \int \frac{\epsilon(\omega)}{\omega} \, d \omega
+\]
+%
+As the  $\chi_m$ form a full basis set $\sum_m  | \braket {\chi_m | \chi_n} |^2 = 1$, so that we can write
+\[
+ k_{e,n \rightarrow g}  = \frac{\ln(10)}{\pi^2 c^2 N_A} 
+%
+\frac{ 
+ \sum_m  \omega_{b,n \rightarrow a,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 }
+ { \sum_m  | \braket {\chi_m | \chi_n} |^2 }
+ %
+ \int \frac{\epsilon(\omega)}{\omega} \, d \omega
+\]
+The fluorescence emission spectrum $F(\omega)$ is determined up to spectrally constant factors by the $\omega^3$ term and the Franck-Condon factors, i.e.
+\[
+ F(\omega =  \omega_{b,n \rightarrow a,m} )  \propto  \omega_{b,n \rightarrow a,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 
+\]
+so that we can write by replacing the sums over $m$ by  spectral integrals
+\[
+ k_{e,n \rightarrow g}  =  \frac{\ln(10)}{\pi^2 c^2 N_A} \frac{\int F(\omega) \, d \omega}{\int \omega^{-3} F(\omega) \, d \omega }
+ \int \frac{\epsilon(\omega)}{\omega} \, d \omega   \quad. 
+\]
+This is the Strickler-Berg equation. Conveniently, all prefactors connected to $F(\omega)$ drop out, especially also experimentally difficult to access absolute emission intensities. This allows to use an rather easy to measure  calibrated absorption spectrum and and amplitude-uncalibrated emission spectrum to calculate the rate of spontaneous fluorescence emission. For molecules in a solvent, one should take into account that the refractive index $n$ of the solvent enters via $c = c_0 / n$. 
+
+In the literature, different prefactors can be found, related to integrals over frequency $\nu$ or wave numbers $\bar{\nu}$. Sometimes also an additional factor of 1000 appears, stemming from assumptions on the units of the molar extinction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Fluorescence quantum yield and fluorescence lifetime} 
+
+
+
+In contrast to an atom in vacuum, a molecule in condensed matter has other options beyond light emission to lower its total energy. These non-radiative processes include vibrational relaxation, inter-system crossing, internal conversion and other energy transfer mechanism. The total rate $k_{tot}$ by which the population of an excited state changes is thus the sum of several rates, a radiative  (as given by the Strickler-Berg equation) and several non-radiative rates 
+\[
+ k_{tot} = k_{rad} + k_{non rad} 
+\]
+%
+The population of an excited state is thus, neglecting other processes that  potentially re-excite this state,
+\[
+ N(t) = N(0) \, \exp \left( - k_{tot}  \,t \right)
+\]
+The fluorescnece intenstiy $F(t)$ is given by the pupoulation and the radiative rate
+\[
+ F(t) = k_{rad} \, N(t) = k_{rad} \,  N(0) \, \exp \left( - k_{tot} \, t \right)
+\]
+After switching off the excitation laser, the fluorescence intensity drops thus exponentially with the total rate, not the radiative rate. When measuring the arrival time of a fluorescence photon after impulsive laser excitation, one can find this exponential decay in the arrival time histogram. This technique is called time-correlated single-photon counting (TCSPC). The total rate is thus much easier to measure than the radiative rate. 
+
+The fluorescence lifetime is the reciprocal of the total decay rate $k_{tot}$ and determines the TCSPC trace. The reciprocal of the radiative rate is sometimes called radiative lifetime.
+
+The fluorescence quantum yield $\eta$ gives the probability that a decay out of the excited state results in a photon, i.e.
+\[
+ \eta   = \frac{k_{rad}}{k_{tot}} = \frac{k_{rad}}{k_{rad} + k_{non rad}}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]

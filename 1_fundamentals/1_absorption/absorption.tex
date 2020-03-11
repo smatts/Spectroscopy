@@ -2,13 +2,18 @@
 
 \chapter{Absorption}
 
-\vspace*{-12mm}
-Markus Lippitz \newline \today
+\vspace*{-12mm}{
+\setlength{\parindent}{0pt}
+Markus Lippitz \newline \today}
 \vspace*{12mm}
+
+
+
+
 
 \section{Experiment}
 
-The data sets contain absorption spectra as measured with a commercial UV/VIS spectrometer. Determine the absorption cross section of each species and compare to its geometrical size. Determine also the oscillator strength, the transition dipole moment, and the transition matrix element.
+\textit{Determine the absorption cross section of each species and compare to its geometrical size. Determine also the oscillator strength, the transition dipole moment, and the transition matrix element.}
 
 
 \subsection{Experimental technique}
@@ -132,33 +137,6 @@ While many optical transition show a Lorentzian line shape as predicted by the L
 
 For single electron transitions starting from the same quantum mechanical level, the Thomas–Reiche–Kuhn sum rule states that the sum over all oscillator strength $f$ equals to one. for this reasone one can interpreted the oscillator strength  $f$  to some extend  as the number of electrons involved in  the transition, but one has to be careful, as pointed out by Z. Hens \footcite{Hens:2008kr}.
 
-\section{Einstein coefficients}
-
-The Einstein coefficients for emission $A_{21}$, absorption $B_{12}$ and stimulated emission $B_{21}$ relate the populations $N_1$ and $N_2$ of a lower and upper state to the spectral energy density $u(\omega)$ of the optical field (units of energy per volume and angular frequency intervall). In steady state we get
-\[
- \frac{d N_1}{dt} =  A_{21} N_2 \, - \, B_{12} \, N_1 \, u(\omega) \, + \, B_{21}\, N_2 \,u(\omega)  = 0 \quad .
-\]
-At the same time, the ratio of the populations is given by Boltzmann's law as
-\[
- \frac{N_2}{N_1} = \frac{g_2}{g_1} \, \exp \left( - \frac{\hbar \omega}{kT} \right)
-\]
-where the $g_i$ are the degeneracy of the respective state. The spectral energy density is given by the back-body spectrum, as we are in thermal equilibrium
-\[
- u(\omega) = \frac{\hbar \, \omega^3}{\pi^2 c^3} \, \frac{1}{\exp \left( \hbar \omega / kT \right) - 1} \quad .
-\]
-Altogether this leads to 
-\begin{eqnarray*}
- g_1 \, B_{12} &=& g_2 \, B_{21} \\
- A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21} 
-\end{eqnarray*}
-Different prefactors can be found in literature for these equations, depending on the exact definition of $u$.
- \footcite{Hilborn:2002wj} 
- As each absorption event takes out the energy $\hbar \omega$ and the energy density $u(\omega)$ moves with the velocity of light $c$, we get for the absorption cross section
-\[
- \sigma = \frac{\hbar \omega \, B_{12} \, u(\omega)  }{c \, u(\omega) }  =
-   \frac{\hbar \omega  }{c  }    \, B_{12}
-\]
-assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Note that this absorption cross section $\sigma$ is not a function of angular frequency $\omega$ anymore, but an spectral integrated cross section assuming a black body spectrum.\sidenote{really ???}
 
 
 
