@@ -1,8 +1,11 @@
+
 \documentclass[notoc,nofonts,a4paper,oneside,nobib]{tufte-book}
 %\documentclass[nofonts,a4paper,twoside]{book}
 
-\usepackage{currfile}
+\usepackage{currfile,hyperxmp}
 
+\usepackage{filemod}
+   
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
@@ -36,7 +39,6 @@
 \usepackage{units}
 
 \usepackage{chemformula}
-%\usepackage{fancyhdr}
 
 \usepackage{braket}
 \setcounter{secnumdepth}{0}
@@ -50,20 +52,7 @@
 %\usepackage{color}
 %\usepackage{fancyvrb}
 
-% ********************************************************************
-% Colors from cvlassix theis 
-% ********************************************************************
 
-%\usepackage{xcolor}  % already loaded above
-\PassOptionsToPackage{dvipsnames}{xcolor}
-\definecolor{CTsemi}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
-\definecolor{CTcitation}{rgb}{0,0.5,0} % WebGreen
-\definecolor{CTurl}{named}{Maroon} % Maroon
-\definecolor{CTtitle}{named}{Maroon} % Maroon {cmyk}{0, 0.87, 0.68, 0.32}
-\definecolor{CTlink}{named}{RoyalBlue} % RoyalBlue {cmyk}{1, 0.50, 0, 0}
-\definecolor{halfgray}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
-\definecolor{webgreen}{rgb}{0,0.5,0}
-\definecolor{webbrown}{rgb}{0.6,0,0}
 
 % longtable
 \usepackage{longtable,booktabs}
@@ -73,7 +62,6 @@
 % morefloats
 \usepackage{morefloats}
 
-%\include{tint_handout_header}
 
 \input{tint_book_header}
 
@@ -91,75 +79,57 @@
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{mystyle}}{}{}
 
 
-% ********************************************************************
-% Fine-tune hyperreferences from classic thesis
-% ********************************************************************
-\hypersetup{%
-  %draft, % hyperref's draft mode, for printing see below
-  colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
-  % uncomment the following line if you want to have black links (e.g., for printing)
-  %colorlinks=false, linktocpage=false, pdfstartpage=3, pdfstartview=FitV, pdfborder={0 0 0},%
-  breaklinks=true, pageanchor=true,%
-  pdfpagemode=UseNone, %
-  % pdfpagemode=UseOutlines,%
-  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
-  urlcolor=CTurl, linkcolor=CTlink, citecolor=CTcitation, %pagecolor=RoyalBlue,%
-  %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
- % pdftitle={\myTitle},%
-%  pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
-%  pdfsubject={},%
-%  pdfkeywords={},%
-%  pdfcreator={pdfLaTeX},%
-%  pdfproducer={LaTeX with hyperref and classicthesis}%
+
+\hypersetup{
+ linktocpage,
+  colorlinks,
+  citecolor=Maroon,
+  filecolor=Maroon,
+  linkcolor=RoyalBlue,
+  urlcolor=RoyalBlue
 }
 
+\newcommand{\addtochapter}{%
+\vspace*{-12mm}{
+\setlength{\parindent}{0pt}
+Markus Lippitz \newline \Filemodtoday{\currfilepath}
+}
+\vspace*{12mm}
+}
+
+\makeatletter
+\let\stdchapter\chapter
+\renewcommand*\chapter{%
+  \@ifstar{\starchapter}{\@dblarg\nostarchapter}}
+\newcommand*\starchapter[1]{\stdchapter*{#1}}
+\def\nostarchapter[#1]#2{\stdchapter[{#1}]{#2} \addtochapter}
+\makeatother
 
 
 \begin{document}
-% title / author / date
-
-%\pagestyle{mystyle}
 
 
-
-\title{Spectroscopy}
+\title{Lecture Notes on Spectroscopy}
 
 \author{Markus Lippitz}
 \date{\today}
 
 
-
 \maketitle
 
-%\newpage
-% \ \
-%
-%\thispagestyle{mystyle}
-%
-%\newpage
+
 
 \tableofcontents
 
 \part{Fundamentals}
 
 \include{1_fundamentals/1_absorption/absorption}
-
 \include{1_fundamentals/2_fluorescence_1/fluorescence}
-
-\include{1_fundamentals/3_dispersion/dispersion}
-
-
+%\include{1_fundamentals/3_dispersion/dispersion}
 \include{1_fundamentals/4_vibrations/vibrations}
-
 \include{1_fundamentals/5_mie/mie}
-
 \include{1_fundamentals/6_raman/raman}
-
 \include{1_fundamentals/7_aggregates/molecular_aggregates}
-
-\include{1_fundamentals/8_fret/fret}
-
 
 %-------
 
@@ -167,16 +137,11 @@
 \part{Single Molecule Spectroscopy}
 
 \include{2_single_molecule/1_fcs/fcs}
-
 \include{2_single_molecule/2_rotational_diffusion/rot_diffusion}
-
 \include{2_single_molecule/3_k_space/k_space}
-
 \include{2_single_molecule/4_blinking/blinking}
-
 \include{2_single_molecule/5_antibunching/antibunching}
-
-
+\include{1_fundamentals/8_fret/fret}
 
 %-------
 
@@ -184,7 +149,6 @@
 \part{Two Level Systems}
 
 \include{3_quantum/overview_TLS}
-
 
 %-------
 
@@ -203,7 +167,7 @@
 
 %-------
 
-\nocite{*}
+%\nocite{*}
 
 \printbibliography
 
