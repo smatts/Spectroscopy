@@ -14,8 +14,118 @@
 \section{Rayleigh scattering of small spheres}
 
 
-In this chapter, we change our point of view a little bit. We consider small, mostly spherical, incusings of material with one dielectric function in an enviroenmnet with another dielectric function. At the end, we will make the connection to molecules and nanocrystals, but for the moment we stay with classical electrodynanics.
+In this chapter, we change our point of view a little bit. We consider small, mostly spherical, inclusion of material with one dielectric function in an environment with another dielectric function. At the end, we will make the connection to molecules and nanocrystals, but for the moment we stay with classical electrodynanics.
 
+
+A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\sidenote{Jackson,  Nolting Bd. 2 Aufg. 2.4.2, BH chap 5.2}
+The sphere responds to the light field with a polarization of
+\[
+ \mathbf{p}(t) = \epsilon_0 \,  \epsilon_{out} \, \alpha \, \mathbf{E}(t)
+\]
+with the polarisability
+\[
+ \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}
+\]
+We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$, which requires one dielectric function to be negative, as it is the case in metals. Small metal particles show thus exceptional strong interaction with light in a certain spectral range.
+
+As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polarization $p$ oscillates and radiates a secondary, scattered electromagnetic field 
+\[
+  \mathbf{E}_S = \frac{ e^{i \, k  r} }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{1}{r^3}\left\{
+      (k r )^2 \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} +
+      \left( 1 -  i k r \right)
+        \left( 3\hat{\mathbf{r}} \left[\hat{\mathbf{r}} \cdot \mathbf{p}\right] - \mathbf{p} \right)
+    \right\}
+\]
+where $k = 2 \pi / \lambda$ is the length of the wave vector in the medium. In the optical far-field, i.e. for $r \gg \lambda$ or $k \, r \gg 1$ this simplifies to 
+\[
+  \mathbf{E}_S = \frac{e^{ikr}}{4\pi\epsilon_0 \epsilon_{out} } 
+      \frac{( k \, r)^2}{ r^3} \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} 
+\]
+The total, space-integrated and time-averaged power of this scattered wave is\sidenote{Nolting 4.5.2}
+\[
+P_{scat} =\frac{c  }{12 \pi  \, \epsilon_0 \, \epsilon_{out} } \, k^4 \, |p|^2 =
+\frac{c \, \epsilon_0 \epsilon_{out} }{12 \pi  } \, k^4 \, |\alpha|^2 \, |E_0|^2
+\]
+The power density of the incoming plane wave is given by the absolute value of the Poynting vector to \sidenote{Nolting 4.3.8}
+\[
+ |S| = \frac{1}{2} \, c \, \epsilon_0 \, \epsilon_{out} \, |E_0|^2
+\]
+and we thus can define a scattering cross section
+\[
+\sigma_{scat} = \frac{P_{scat}}{|S|} = \frac{k^4}{6 \pi }  \, |\alpha|^2 
+\]
+We find the $\omega^4$ frequency dependence typical for Rayleigh scattering.
+
+
+
+\section{Optical Theorem and Extinction Cross Section}
+
+The scatted wave is not only responsible for light propagation in direction different from the incoming beam, but also for a reduction of the transmitted beam. Both effects are two sides of the same coin. This relation runs under the name of Optical Theorem\sidenote{Jackson}\footcite{Newton:1976cz}.
+
+Far away from the scattering object, the scattered wave will be spherical, only the amplitude $f$ could depend on scattering direction $\theta$. Taking the incoming and the scatted wave together, and restricting us to a scalar discussion, we get\footcite{Newton:1976cz}
+\[
+ E_{tot} =  e^{i k z} + \frac{e^{i k r}}{r} \, f(\theta)
+\]
+In almost forward direction ($\theta \ll 1$) we get
+\[
+r = \sqrt{x^2 + y^2 + z^2} \approx z + \frac{x^2 + y^2}{2z }
+\]
+The intensity is thus
+\[
+ I = |E_{tot}|^2 \approx \left|e^{i k z} + e^{i k z} \frac{e^{i k (x^2 + y^2)/2z }}{z} \, f(\theta) \right| ^2 = \left|1 + \frac{1}{z} \, f(\theta) e^{i k (x^2 + y^2)/2z } \right| ^2
+\]
+where we once even took $r \approx z$. When dropping terms quadratic in the scattering amplitude $f$ and assuming $f(\theta) \approx f(0)$ we get
+\[
+ I = |E_{tot}|^2 \approx 1 +   \frac{1}{2 z} \, \Re  \left( f(0) e^{i k (x^2 + y^2)/2z } \right)
+\]
+We now integrate\footcite{Newton:1976cz} over a screem that is so large that the argument of the exponentioal function oscillates rapidly ($k R^2 / z \gg 2 \pi$), but that is still conecntrated along the forward direction ($R/z \ll 1$):
+\[
+ I = |E_{tot}|^2 \approx A  - \frac{4 \pi }{k} \Im ( f(0) )
+\]
+where $A$ is the size of the screen. The second term is the extinction cross section
+\[
+ \sigma_{ext} = \frac{4 \pi }{k} \Im ( f(0) )
+\]
+We can express the extinction cross section $\sigma_{ext}$ with the polarizability $\alpha$ of an object small compared to the wavelength, i.e., with a dipolar scattering pattern, by using
+\[
+ f(0) = \frac{k^2}{4 \pi} \, \alpha
+\]
+we get the extinction coefficient
+\[
+ \sigma_{ext} = k \, \Im ( \alpha )
+\]
+The extinction coefficient measures the missing power on a detector in 'straight through' direction. The scattering coefficient measures power in an side-ways direction. The difference between both is absorption, i.e., power that remains in the particle and is converted into heat, or similar. All together we have
+\begin{eqnarray}
+ \sigma_{ext} &= &  k \, \Im ( \alpha ) \\
+ \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha|^2 \\
+ \sigma_{abs}  &=&  \sigma_{ext} - \sigma_{scat}
+\end{eqnarray}
+where $k$ is always the wave vector in the medium and $\alpha$ is defined as above\sidenote{In some sources, $\alpha$ includes already an $\epsilon_{out}$, which changes the definition of the cross sections!}
+
+\section{Mie Scattering}
+
+Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution fro the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in an homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite{BH}
+
+For the cross sections one gets
+\begin{eqnarray*}
+\sigma_{scat} & = \frac{2 \pi }{k^2} \sum\limits_{n=1}^{\infty} (2 n+1) \, \left( |a_n|^2 + |b_n|^2 \right) \\
+\sigma_{ext} & = \frac{2 \pi }{k^2} \sum\limits_{n=1}^{\infty} ( 2n+1)\, \Re \left( a_n + b_n \right) 
+\end{eqnarray*}
+%
+with the coefficients
+%
+\begin{eqnarray*}
+ a_n &= & \frac{m S_n (m x) S_n' (x) - S_n (x) S_n' (m x)}
+ {m S_n (m x) C_n' (x) -  C_n (x) S_n' (m x)}  \\
+ %
+ b_n &=  &\frac{S_n (m x) S_n' (x) - m S_n (x) S_n' (mx)}
+  {S_n (mx) C_n' (x) - m C_n (x) S_n' (m x)} 
+\end{eqnarray*}
+where $x =k a $ is the dimensionless size of the sphere with radius $a$ and $m = n_{particle} / n_{medium}$ is the relative refractive index. The prime indicates a differentiation with respect to the argument. The $S_n$ and $C_n$ are Ricatti-Bessel functions, which can be expressed in terms of spherical Bessel functions:
+\begin{eqnarray*}
+S_n ( \rho) & = \rho \, j_n (\rho) \\
+C_n (\rho)  &= \rho \, h_n^{(1)} (\rho) 
+\end{eqnarray*}
 
 
 
