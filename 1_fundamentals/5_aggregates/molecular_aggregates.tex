@@ -1,15 +1,60 @@
 
 
-\chapter{Molecular Aggregates}
+\chapter{Molecular Aggregates --- Coupled Two-Level Systems}
 
-\section{Experiment}
 
-\textit{spektral, fl. Lifetime, ensemble, TDBC ?
-}
 
-\textit{Bestimmen sie die Konzentration, ab der sich Aggregate bilden. Über wieviel Chromophore ist der Zustand delokalisiert?}
+\section{Tasks}
+
+\begin{itemize}
+\item The data contains spectra and TCSPC traces of the molecule TDBC in solution at different concentrations. Determine the number of chromophores that contribute to the delocalized state,
+\end{itemize}
+
 
 %\section{Experiment}
+
+
+
+
+\section{Coupled Pendulum}
+
+A mathematical pendulum of point mass $m$ and rod length $L$ is governed by the differential equation of its angular displacement $\phi$
+\[
+ \ddot{\phi} + \frac{g}{L} \, \phi = 0 \quad \text{with} \quad \omega^2 = \frac{g}{l}
+\]
+where $g$ is the acceleration due to gravity and $\omega$ its angular eigen-frequency. When two of such pendula are coupled by a spring between the two masses, we get a coupled system of differential equations
+\begin{eqnarray*}
+ \ddot{\phi_1} + \frac{g}{L_1} \, \phi_1  + \frac{k}{m_1} \, \left( \phi_1  - \phi_2 \right)  & = &  0  \\
+ \ddot{\phi_2} + \frac{g}{L_2} \, \phi_2  - \frac{k}{m_2} \, \left( \phi_1  - \phi_2 \right)  & = &  0  
+\end{eqnarray*}
+with the spring constant $k$.  For the moment, we assume that the pendula are identical, i.e., $L = L_1 = L_2$ and $m = m_1 =m_2$. The eigen-frequencies are then
+\[
+ \omega_{+}^2 = \frac{g}{L} \quad \text{and} \quad 
+  \omega_{-}^2 = \frac{g}{L}  + 2 \frac{k}{m}
+\]
+where in the mode with frequency $\omega_{+}$ both masses move to the same direction, in the $\omega_{-}$ in opposite directions. Only in the latter case the coupling spring comes into play.
+
+To investigate the general case, we assume harmonic oscillations, i.e. $\phi(t) = \phi_0 \, \exp (i \omega t)$ and write the differential equation as matrix
+\[ \boldsymbol{M \, \phi}	 = 
+\begin{pmatrix}
+  \frac{g}{L_1} +  \frac{k}{m_1}&  - \frac{k}{m_1}\\
+ - \frac{k}{m_2} &  \frac{g}{L_2} +  \frac{k}{m_2}
+\end{pmatrix}  \boldsymbol{\phi}	= \omega^2   \, \boldsymbol{\phi}
+\]
+We thus search eigen-values and eigen-vectors of  $\boldsymbol{M}$. Assuming individual lengths, but identical masses, we get
+\[
+ \omega_{\pm}^2 = \left( \frac{\omega_1^2 + \omega_2^2}{2}  + \frac{k}{m} \right)
+  \pm \sqrt{  \left( \frac{\omega_1^2 - \omega_2^2}{2}   \right)^2 + \left(  \frac{k}{m} \right)^2 }
+\]
+For identical lengths, i.e., identical eigen-frequencies $\omega_1 = \omega_2$, this recovers the results from above.
+
+
+%\section{Coupled Classical Oscillators}
+%
+%A mass $m$ is connected via a spring (constant $k$) to a wall and oscillates with the amplitude $x$ around its equilibrium position, governed by the differential equation
+%\[
+%\ddot{x} + \frac{k}{m}  \,x = 0 \quad \text{with} \quad \omega^2 = \frac{k}{m}
+%\]
 
 \section{Quantenmechanik gekoppelter Systeme\protect\footnote{Parson, Kap. 7.1 und 8.1, Stephan Wiesneth}} 
 
