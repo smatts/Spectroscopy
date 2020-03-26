@@ -22,15 +22,15 @@ tufte line/.style={
  %   yticklabel=\pgfmathprintnumber{\tick}
   }
   }
-  
+  Parabel
   
 \begin{tikzpicture}
     \begin{axis}[no markers,  tufte line, xlabel={wavelength (nm)},
     xmin = 500,
     xmax = 800,
     ]
-    \addplot table [col sep=comma, x=Wavelength, y=Excitation] {\currfiledir  BODIPY_650_665.csv};
-    \addplot table [col sep=comma, x=Wavelength, y=Emission] {\currfiledir  BODIPY_650_665.csv};	
+    \addplot table [col sep=comma, x=Wavelength, y=Excitation] {\currfiledir  data/BODIPY_650_665.csv};
+    \addplot table [col sep=comma, x=Wavelength, y=Emission] {\currfiledir  data/BODIPY_650_665.csv};	
     \end{axis}
 \end{tikzpicture}
 

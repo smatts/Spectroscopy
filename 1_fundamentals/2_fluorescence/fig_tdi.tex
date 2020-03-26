@@ -27,8 +27,8 @@ tufte line/.style={
 \begin{tikzpicture}
     \begin{axis}[no markers,  tufte line, xlabel={wavelength (nm)},
     ]
-    \addplot table [x index=0, y index=1] {\currfiledir tdi_abs_em.dat};
-    \addplot table [x index=0, y index=2] {\currfiledir tdi_abs_em.dat};
+    \addplot table [x index=0, y index=1] {\currfiledir handout/tdi_abs_em.dat};
+    \addplot table [x index=0, y index=2] {\currfiledir handout/tdi_abs_em.dat};
 	
     \end{axis}
 \end{tikzpicture}

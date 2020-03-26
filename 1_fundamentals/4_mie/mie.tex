@@ -9,11 +9,10 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Determine the size of the particles from their extinction spectrum. Are they spherical ?
+\item Determine the size of the particles from their extinction spectrum. Are they spherical ? On the server you find an Matlab / Octave implementation of the Mie $a_n$ and $b_n$ coefficients. The dielectric functions can be found at \href{https://refractiveindex.info/}{refractiveindex.info}.
 
-\item Assign transitions to the peaks in the spectrum
+\item Assign transitions to the peaks in the spectrum. 
 
-\item Sketch the field amplitude close to and far from the particle at these resonances, either by hand based on analytic solutions or numerically.
 
 \end{itemize}
 
@@ -130,23 +129,27 @@ so that we get
 \]
 
 If both $\sigma_{abs}$ and $\sigma_{ext}$  would equal $ k \, \Im ( \alpha )$, then now power would be left for scattering. But we calculated a non-zero scattering cross section. 
-This puzzle is solved by taking radiation reaction into account, as discussed in chapter 8.4.2 of \cite{Novotny-Hecht2012}. Starting from a quasi-static polarizability $\alpha$ was a too much of a simplification to calculate propagating and oscillating fields  for the optical theorem. An effective  polarizability $\alpha_{eff}$ can be constructed \sidenote{Our definition of $\alpha$ does not include an $\epsilon_0$ as in exercise 8.5 in \cite{Novotny-Hecht2012}}
+This puzzle is solved by taking radiation reaction into account, as discussed in chapter 8.4.2 of \cite{Novotny-Hecht2012}. Starting from a quasi-static polarizability $\alpha$ was a too much of a simplification to calculate propagating and oscillating fields  for the optical theorem. An effective  polarizability $\alpha_{\text{eff}}$ can be constructed \sidenote{Our definition of $\alpha$ does not include an $\epsilon_0$ as in exercise 8.5 in \cite{Novotny-Hecht2012}}
 \[
- \alpha_{eff} = \frac{\alpha}{1 - \frac{i k^3 }{6 \pi} \alpha}
+ \alpha_{\text{eff}} = \frac{\alpha}{1 - \frac{i k^3 }{6 \pi} \alpha}
+ \approx \alpha  - \frac{i k^3 }{6 \pi} \alpha^2
 \]
-and then 
-\[
- \sigma_{ext} = k \, \Im ( \alpha_{eff} )
-\]
+and then we get
+\begin{eqnarray*}
+ \sigma_{ext} &= & k \, \Im ( \alpha_{\text{eff}}  ) \approx 
+ k \, \Im ( \alpha  )  + \frac{k^4}{6 \pi} \left( \Im (\alpha)^2 - \Re (\alpha)^2 \right) \\
+  \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha_{\text{eff}} |^2  \approx  \frac{k^4}{6 \pi }  \, |\alpha |^2 \\
+   \sigma_{abs} &=&  \sigma_{ext} - \sigma_{scat} \approx  k \, \Im ( \alpha  ) 
+\end{eqnarray*}
 
 
-All together we have
-\begin{eqnarray}
- \sigma_{ext} &= &  k \, \Im ( \alpha ) \\
- \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha|^2 \\
- \sigma_{abs}  &=&  \sigma_{ext} - \sigma_{scat}
-\end{eqnarray}
-where $k$ is always the wave vector in the medium and $\alpha$ is defined as above\sidenote{In some sources, $\alpha$ includes already an $\epsilon_{out}$, which changes the definition of the cross sections!}
+%All together we have
+%\begin{eqnarray}
+% \sigma_{ext} &= &  k \, \Im ( \alpha ) \\
+% \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha|^2 \\
+% \sigma_{abs}  &=&  \sigma_{ext} - \sigma_{scat}
+%\end{eqnarray}
+%where $k$ is always the wave vector in the medium and $\alpha$ is defined as above\sidenote{In some sources, $\alpha$ includes already an $\epsilon_{out}$, which changes the definition of the cross sections!}
 
 \section{Mie Scattering}
 
@@ -192,5 +195,13 @@ When we restrict us to third order in $x$, we recover the Rayleigh limit
 \sigma_{ext} & = \frac{2 \pi }{k^2} \, 3 \, \Re \left( a_1 \right) 
 = k \, \Im \left( 4 \pi a^3 \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}  \right)
 \end{eqnarray*}
+
+
+\section{More questions}
+
+\begin{itemize}
+\item Sketch the field amplitude close to and far from the particle at these resonances, either by hand based on analytic solutions or numerically.
+\end{itemize}
+
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]

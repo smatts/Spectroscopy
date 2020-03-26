@@ -1,6 +1,7 @@
 close all 
 clear all
 
+%------------------------
 %ensemble absorption and emission in PMMA film
 load('TDI_absem.mat');
 
@@ -11,15 +12,41 @@ abs_ip(isnan(abs_ip)) = 0;
 em_ip(isnan(em_ip)) = 0;
 em_ip = em_ip ./ max(em_ip);
 
+abs_ip = abs_ip ./ 10;  % fake absolute value of absorption spectrum
 
-% plot(wl, abs_ip)
-% hold on
-% plot(wl, em_ip)
-% hold off
+plot(wl, abs_ip)
+hold on
+plot(wl, em_ip)
+hold off
 
-%data = [wl; abs_ip; em_ip]';
-%save('tdi_abs_em.dat','data','-ascii')
+data = [wl; abs_ip; em_ip]';
+save('tdi_abs_em.dat','data','-ascii')
 
+
+%---------------------------
+% TCSPC
+
+load('TDI_TCSPC.mat')
+ids = find((time_tcspc > -5) & (time_tcspc < 35));
+
+time_tcspc = time_tcspc(ids);
+emission_tcspc = movmean(emission_tcspc(ids),4).*4;
+ids = (1:4:length(time_tcspc));
+
+time_tcspc = time_tcspc(ids);
+emission_tcspc = emission_tcspc(ids);
+
+
+semilogy(time_tcspc,emission_tcspc)
+
+data = [time_tcspc; emission_tcspc']';
+save('tdi_tcspc.dat','data','-ascii')
+
+%xlim([-10,30])
+
+if (1 == 0)
+
+figure
 
 energy = ( 1240 / wl(end): 0.001: 1240 / wl(1));
 
@@ -72,20 +99,4 @@ k = log(10) ./ ( pi.^2 .* c.^2 .* NA) .* (int_f ./ int_f_3w) .* int_eps;
 
 1 ./ k .* 1e9
 
-% 
-% hold on
-% plot(1240 ./ lambda_emission, emission,'Color',[1 0 0]);
-% plot(1240 ./ lambda_absorption, absorption,'Color',[0 0 1]);
-%axis([500 850 0 1.1]);
-%ylabel('absorption & emission');
-%xlabel('\lambda / nm');
-%box on
-
-
-% figure
-% plot(time_tcspc,emission_tcspc,'Color',[1 0 0]);
-% axis([-1 10 0 300]);
-% ylabel('counts / bin');
-% xlabel('time / ns');
-% box on
-% pbaspect([2 1 1]);
+end
