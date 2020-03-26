@@ -4,12 +4,26 @@
 
 
 
-\section{Experiment}
+\section{Tasks}
 
-\textit{Convince yourself that the mirror-law holds.
-}
-\textit{Calculate the Huang Rhys factor
-}
+\begin{itemize}
+\item Get  the raw data of the absorption and emission spectra of the dye BODIPY 650/665 from \href{https://www.thermofisher.com/de/de/home/life-science/cell-analysis/labeling-chemistry/fluorescence-spectraviewer.html?SID=srch-svtool&UID=10001moh}{thermofischer.com}.
+ Convince yourself that the mirror-law holds.
+
+
+
+
+\item Make an as accurate as possible sketch of the potentials of ground and excited state of BODIPY 650/665, assuming that only one vibrational mode contributes.
+
+\end{itemize}
+
+
+\begin{marginfigure}
+   \includestandalone[width=\textwidth]{\currfiledir fig_bodipy}
+  \caption{Absorption and emission spectrum of  the BODIPY dye.}
+\end{marginfigure}
+
+
 
 
 
@@ -21,6 +35,14 @@ A molecule with an electronic ground state $g$ and electronic excited state $e$ 
   U_e(r) &=&  U_g(r) + E_{eg} - A \, r = E_{eg}  - A \, r + \frac{1}{2} \, m \, \omega^2 \, r^2 
  \end{eqnarray*}
 where $E_{eg}$ is the electronic contribution to the energy difference. We assumed that both potentials have the same shape, i.e., the same vibrational frequency. The term $A \, r$ couples the electronic state and the nuclear oscillator. It shifts the excited state potential along the $r$ coordinate. While the ground state potential has its minimum at $r=0$, the minimum for the excited state is at
+%
+%
+\begin{marginfigure}
+   \includestandalone{\currfiledir fig_parabula}
+\caption{The coupling term $-A r$ in the potential of the excited state $e$ shifts the minimum of the parabola to larger values of $r$ and lower values of the potential. }
+\end{marginfigure}
+%
+%
 \[
  A = m \, \omega^2 \,  r	 \quad \text{i.e.} \quad r = \frac{A}{m \omega^2}
 \]
@@ -39,6 +61,11 @@ The eigenfunctions $\chi_n$ of the nuclear vibrations are Hermite polynomials. T
  | \braket{ \chi_0 | \chi_m } | ^2  =  | \braket{ \chi_m | \chi_0 } | ^2 = \frac{S^m \exp(-S)}{m!}
 \]
 which is a Poisson distribution of mean value $S$.  The strongest transition is thus the transition into $m \approx S$, which for large coupling between electronic and nuclear system, i.e. large $S$, will deviate from the 0--0 transition.
+
+\begin{figure}
+   \includestandalone[width=10cm]{\currfiledir fig_poisson}
+  \caption{Poisson distributions}
+\end{figure}
 
 The Debye-Waller factor $D$ gives the ratio of the coherently scattered wave to all scattering processes. For molecules, this corresponds to the amplitude of the 0--0 line to the integral over the whole band. As the sum over all Franck-Condon factors to the same final state is one, we get
 \[

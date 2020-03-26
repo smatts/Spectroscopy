@@ -3,23 +3,59 @@
 \chapter{Fluorescence}
 
 
+\section{Tasks}
 
-\section{Experiment}
+\begin{itemize}
+\item On the server, you find experimental data of the TDI dye. Compare the fluorescence emission rate obtained from the emission spectrum with the fluorescence lifetime from time-correlated single photon counting. Discuss differences.
 
-The first data set contains absorption spectra as measured with a commercial UV/VIS spectrometer. 
-\textit{Determine the Einstein A coefficient. Determine also the fluorescence emission rate and compare it to the rate obtained from time-correlated single photon counting.}
+\item Find absolute values for other transition rates in atoms, molecules and solid state and compare to fluorescence rates.
+
+\end{itemize}
+
+\begin{marginfigure}
+   \includestandalone[width=\textwidth]{\currfiledir fig_tdi}
+  \caption{Absorption and emission spectrum of a dye molecule (TDI).}
+\end{marginfigure}
+
+
+
+\section{Experimental techniques}
+
 
 
 \subsection{Measuring the spectrum of light}
 
-resultion constant in wl or energy
+It is helpful to consider how the spectrum of light is really measured. A light beam is dispersed, typically on a grating. As function of the dispersion angle one measures light intensity by converting photons into electrons, either in a CCD camera or a photodiode. The signal amplitude is thus proportional to the  photon rate, not the power, or the energy per photon.
 
-convert from WL to energy and back
+The resolution of a grating spectrometer is determined by the width of the CCD pixels, the size of the diode or of the entrance slit, by the size of a monochromatic focus, or a combination of all. But in all cases, it is constant over the spectrum when measured in wavelength. The natural unit of a grating spectrometer is wavelength, not frequency. The reciprocal relation between wavelength and frequency leads to 
+\[
+ \Delta \nu = \nu_2 - \nu_2 = \frac{c}{\lambda_2} - \frac{c}{\lambda_1}  = c \frac{\lambda_1 - \lambda_2}{\lambda_1 \lambda_2} \approx \frac{c}{\lambda^2} \, \Delta \lambda
+\]
+In the frequency domain, the spectral resolution is thus not constant, but proportional to $\nu^2$. As consequence, converting a data set from wavelength domain to frequency domain does not only entail converting the $x$-values, but also the $y$-values. The integral or total number of photons has to stay the same.
+\[
+ \left( \lambda \, ; \, F(\lambda) \right) \, \rightarrow  \left( \nu = \frac{c}{ \lambda} \, ; \,  F(\nu) = \frac{\lambda^2}{ c } \, F(\lambda) \right) 
+\]
+This problem only occurs for spectra of light. Absorption spectra are the ratio of two spectra of light, of the signal and reference beam. In this case, the prefactors cancel out and only the $x$-values need to be converted. The spectrally integrated absorption does not have any meaning, in contrast to the spectrally integrated photon flux.
 
-what does this mean for absorpion expeirments
 
+
+\subsection{Time correlated single photon counting}
+
+techniqze and figure
+
+\begin{marginfigure}
+   \includegraphics[width=\textwidth]{\currfiledir tcspc.png}
+  \caption{Sketch of a TCSPC setup}
+\end{marginfigure}
 
 \section{Einstein coefficients}
+
+\begin{marginfigure}
+   \includegraphics[width=\textwidth]{\currfiledir einstein.png}
+
+  \caption{Einstein coefficients}
+\end{marginfigure}
+
 
 The Einstein coefficients for emission $A_{21}$, absorption $B_{12}$ and stimulated emission $B_{21}$ relate the populations $N_1$ and $N_2$ of a lower and upper state to the spectral energy density $u(\omega)$ of the optical field (units of energy per volume and angular frequency intervall). They define transition rates in units of Hz
 \begin{eqnarray*}
@@ -115,6 +151,11 @@ In the literature, different prefactors can be found, related to integrals over 
 \section{Fluorescence quantum yield and fluorescence lifetime} 
 
 
+\begin{marginfigure}
+
+  \caption{Rates}
+\end{marginfigure}
+
 
 In contrast to an atom in vacuum, a molecule in condensed matter has other options beyond light emission to lower its total energy. These non-radiative processes include vibrational relaxation, inter-system crossing, internal conversion and other energy transfer mechanism. The total rate $k_{tot}$ by which the population of an excited state changes is thus the sum of several rates, a radiative  (as given by the Strickler-Berg equation) and several non-radiative rates 
 \[
@@ -130,6 +171,13 @@ The fluorescnece intenstiy $F(t)$ is given by the pupoulation and the radiative 
  F(t) = k_{rad} \, N(t) = k_{rad} \,  N(0) \, \exp \left( - k_{tot} \, t \right)
 \]
 After switching off the excitation laser, the fluorescence intensity drops thus exponentially with the total rate, not the radiative rate. When measuring the arrival time of a fluorescence photon after impulsive laser excitation, one can find this exponential decay in the arrival time histogram. This technique is called time-correlated single-photon counting (TCSPC). The total rate is thus much easier to measure than the radiative rate. 
+
+
+\begin{marginfigure}
+   \includegraphics[width=\textwidth]{\currfiledir rates.png}
+  \caption{A fluorescence decay trace gives the total rate.}
+\end{marginfigure}
+
 
 The fluorescence lifetime is the reciprocal of the total decay rate $k_{tot}$ and determines the TCSPC trace. The reciprocal of the radiative rate is sometimes called radiative lifetime.
 
