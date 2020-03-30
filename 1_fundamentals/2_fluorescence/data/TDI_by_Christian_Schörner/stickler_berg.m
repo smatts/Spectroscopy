@@ -12,6 +12,8 @@ abs_ip(isnan(abs_ip)) = 0;
 em_ip(isnan(em_ip)) = 0;
 em_ip = em_ip ./ max(em_ip);
 
+%molar extinction coefficient also increases from 60 000 M^-1 cm^-1 (PDI) to 93 000 M^-1 cm^-1 (TDI).
+
 abs_ip = abs_ip ./ 10;  % fake absolute value of absorption spectrum
 
 plot(wl, abs_ip)
