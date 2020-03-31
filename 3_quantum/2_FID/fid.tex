@@ -3,16 +3,39 @@
 \chapter{(Perturbed) Free Induction Decay}
 
 
-\textit{Simulated CW / CD papers}
+
+\section{Tasks}
+
+\begin{itemize}
+\item Simulated CW / CD papers
+\end{itemize}
 
 
 
 
 \section{Experiment}
 
-The data sets contain absorption spectra as measured with a commercial UV/VIS spectrometer. Determine the absorption cross section of each species and compare to its geometrical size. Determine also the oscillator strength, the transition dipole moment, and the transition matrix element.
+some text
 
-assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Note that this absorption cross section $\sigma$ is not a function of angular frequency $\omega$ anymore, but an spectral integrated cross section assuming a black body spectrum.\sidenote{really ???}
+\section{Coherence as a Source of Radiation}
+
+
+Let us look at methods to measure elements of the density matrix $\rho$. We can measure populations, i.e., diagonal elements of $\rho$ by fluorescence emission or electron tunneling. If an atom, molecule, quantum dot is in the excited state, it can emit a fluorescence photon and revert to the ground state. All coherence is lost in this process, neither the fluorescence photon nor the ground state carry any phase relation to the excited state. The excite state is also destroyed, as afterwards the system is in the ground state. But we can observe the fluorescence photon and from the fluorescence rate we can determine how many systems of an ensemble or how often a single system is (better: was) in the excited state. We thus measure population of the emitting state. In the same way, we can use electrons tunneling out of the excited state, for example in a diode structure which also supplies  a new electron to the ground state. Also this tunneling signal is incoherent.
+
+We can also measure coherences, i.e., off-diagonal elements in the density matrix $\rho$, as these coherences are the source of radiation. To see this, we need to connect the microscopic description by the density matrix to the macroscopic world of Maxwell's equations. This is what the expectation value does. The macroscopic polarization $P$ is the expectation value of the polarization operator $\hat{\mu}$
+\[
+ P = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10} + \mu_{10} \rho_{01} = 2   \mu_{01} \Re (\rho_{01})
+\]
+where the polarization operator has only off-diagonal entries in the matrix representation which we assumed to be real. This polarization is a source term in the wave equation
+\[
+ \nabla^2 \boldsymbol{E} - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \boldsymbol{E} 
+ =  
+\frac{1}{c^2\, \epsilon_0} \frac{\partial^2}{\partial t^2} \boldsymbol{P}  
+\]
+The resulting field is\footcite[eq. 4.4]{Hamm-dummies}\footcite[eq. 3.9.16 !! update nomenclature !!]{Rand2016}
+\[
+  E_{out} \propto -i \, P \propto - \mu_{01} \, \Im ( \rho_{01} )
+\]
 
 
 

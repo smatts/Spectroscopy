@@ -7,22 +7,24 @@
 \section{Tasks}
 
 \begin{itemize}
-\item  Integrate von Neumann eq. / simulations
+\item  Visualize the  path of the Bloch vector and its components when a laser pulse shines on a two-level system. Use a numerical method to integrate the differential equation. Investigate both resonant and non-resonant cases.
 \end{itemize}
 
 
 
 \section{Experiment}
 
-some text
+Many experimental realizations show Rabi oscillations. We will discuss them in term of a two-level system interacting with an optical field, for example an atom in vacuum or a molecule or quantum dot in solid state at low temperature. But the same description holds also for many other systems. In fact, a two-level system is equivalent to a spin $1/2$ system, as an electron spin or nuclear spin. The same concepts are thus applied in electron spin resonance or nuclear magnetic resonance experiments (ESR and NMR).
 
+We shine a laser beam on an atom, molecule, quantum dot. The laser frequency is close the the optical transition. We measure the populations of the excited state by, e.g. fluorescence emission or tunneling of the electron out of this state. We switch on the laser for a given time duration $t$ and measure the signal amplitude as function of $t$. This a little bit indirect experiment is necessary, as $t$ is in many cases short to the emission or tunneling rate. Only in theory we can measure the population of the state while it is evolving. We find periodic oscillations of the signal amplitude, the Rabi oscillations.\sidenote{needs papers!}
 
 \section{Density Matrix}
 
 
-We start by introducing the density matrix.\footnote{Rand,  Kap. 3.6 \newline Parson, Kap. 10.2 \newline Hamm 2005, Kap. 1} It is a tool in quantum mechanics to describe not only purely coherent states, but also statistical mixtures, as we will see below. The density matrix is a bit at the edge of the classical canon of quantum mechanics lectures.
+We start by introducing the density matrix.\footcite{Rand2016,Parson,Hamm-dummies}
+It is a tool in quantum mechanics to describe not only purely coherent states, but also statistical mixtures, as we will see below. The density matrix is a bit at the edge of the classical canon of quantum mechanics lectures.
 
-When we write our wave function $\ket{\psi}$ in  a basis $\ket{n}$ as
+When  writing our wave function $\ket{\psi}$ in  a basis $\ket{n}$ as
 \[
  \ket{\psi} = \sum_n c_n \, \ket{n}
 \]
@@ -36,7 +38,7 @@ and the matrix elements of $\boldsymbol{\rho}$ are $\rho_{m,n} =  c_n c_m^\star$
 \]
 where the trace sums over the diagonal elements
 \[
- Tr (U ) = \sum_n U_{n,n} .
+ Tr (U ) = \sum_n U_{n,n}  \quad .
 \]
 The trace of the density matrix is one for normalized states 
 \[
@@ -52,14 +54,14 @@ In this example, the density matrix reads
  1 & 1 \\ 1 & 1 \\
  \end{pmatrix}
 \]
-and its trace is one. But the density matrix also allows to describe new things, beyond pure states, namely statistical mixtures of states. We can describe an ensemble of two-level systems, of which half the ensemble is in state $\ket{1}$, the other half in state $\ket{1}$. This can \emph{not} be written as 
+and its trace is one. But the density matrix also allows to describe new things, beyond pure states, namely statistical mixtures of states. We can describe an ensemble of two-level systems, of which half the ensemble is in state $\ket{1}$, the other half in state $\ket{2}$. This can \emph{not} be written as 
 $\ket{1} + \ket{2} $, but a density matrix description is possible as
 \[
  \rho = \frac{1}{2} \begin{pmatrix}
  1 & 0 \\ 0 & 1 \\
  \end{pmatrix} \quad .
 \]
-The diagonal elements of the density matrix describe the populations of the states, i.e. $|c_n|^2$. The off-diagonal elements describe coherence between states. In a statistical mixture there is no coherence between the states, as one sub-ensemble is in one state, another in another state. 
+The diagonal elements of the density matrix describe the populations of the states, i.e. $|c_n|^2$. The off-diagonal elements describe coherence between states. In a statistical mixture there is no coherence between the states, as one sub-ensemble is in one state, another in another state, and they don't know anything of each other.
 
 We can distinguish between pure and mixed states by looking at the trace of the squared density matrix
 \begin{eqnarray*}
@@ -67,7 +69,7 @@ We can distinguish between pure and mixed states by looking at the trace of the 
  				& < & 1 \quad \text{mixed state} \\
 \end{eqnarray*}
 
-Mixed states can be  used not onyl to describe an ensemble of systems in different states, but also to describe a single system that at different times is in different states. Even if we can do an experiment on  a single quantum system, we have to repeat it very often to reduce noise by averaging. But the experiment does not always run along the same path: either a photon is absorbed or not, but it will most likely not always we absorbed. The time-average of such an experiment will thus need  an statistical mixture for its description.
+Mixed states can be  used not only to describe an ensemble of systems in different states, but also to describe a single system that at different times is in different states. Even if we can do an experiment on  a single quantum system, we have to repeat it very often to reduce noise by averaging. But the experiment does not always run along the same path: either a photon is absorbed or not, but it will most likely not \emph{always}  we absorbed. The time-average of such an experiment will thus need  an statistical mixture for its description.
 
 \section{Liouville--von Neumann equation}
 
@@ -89,7 +91,7 @@ we get the Liouville--von Neumann equation
  \left[ \hat{H} , \rho \right]  \quad .
 \]
 
-As an example, let us look at a two-level system with the eigen-energies $E_1= 0$ and $E_2 = \hbar \omega_0$. The Hamilton operator is thus
+As an example, let us look at a two-level system with the eigen-energies $E_0= 0$ and $E_1 = \hbar \omega_0$. The Hamilton operator is thus
 \[
  \hat{H } = \begin{pmatrix}
   0 & 0 \\ 0 & \hbar \omega_0 \\
@@ -99,17 +101,17 @@ The commutator becomes
 \[
  \left[ \hat{H}, \rho \right] = 
  \begin{pmatrix}
- 0 & - \hbar \omega_0 \, \rho_{1,2} \\   \hbar \omega_0 \, \rho_{2,1} & 0 \\
+ 0 & - \hbar \omega_0 \, \rho_{01} \\   \hbar \omega_0 \, \rho_{10} & 0 \\
  \end{pmatrix}
 \]
 The  diagonal elements of the density matrix $\rho$, i.e., the populations, remain thus constant in time, as expected for this Hamiltonian. The off-diagonal elements, the coherences acquire a phase-factor proportional to the energy difference, i.e.
 \[
- \rho_{1,2}(t) =  \rho_{1,2}(0) \, \exp \left(i \, \omega_0 \, t \right) 
+ \rho_{01}(t) =  \rho_{01}(0) \, \exp \left(i \, \omega_0 \, t \right) 
 \]
 
 \section{Optical Bloch Equations}
 
-Now we switch on light and add an interaction Hamiltonian $\hat{H}_I = -\boldsymbol{\mu} \, \boldsymbol{E}$ of dipole operator $\boldsymbol{\mu} $ and optical field   $\boldsymbol{E}$. In total, the Hamilton operator reads\footnote{Rand, Kap. 3.8}
+Now we switch on light and add an interaction Hamiltonian $\hat{H}_I = -\boldsymbol{\mu} \, \boldsymbol{E}$ of dipole operator $\boldsymbol{\mu} $ and optical field   $\boldsymbol{E}$. In total, the Hamilton operator reads\footcite[chap. 3.8]{Rand2016}
 \[
  \hat{H } = \begin{pmatrix}
   0 & - {\boldsymbol{\mu}} \, \boldsymbol{E} \\ - {\boldsymbol{\mu}}^\star \, \boldsymbol{E}^\star & \hbar \omega_0 \\
@@ -125,7 +127,7 @@ The differential equations for the density matrix become the Bloch equations
 %
 \dot{\rho}_{10} &=& - \frac{i}{\hbar}  \left( + \rho_{10} \hbar \omega_0 + (\rho_{11} - \rho_{00})  \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
 \end{eqnarray*}
-We can simplify things by skipping some algebraic transformations and introducing the Bloch vector $\boldsymbol{a}$ with
+We can simplify things by skipping some algebraic transformations and introducing the Bloch\sidenote{The physics of two-level systems is always the same. This formalism also applies to spin-1/2 systems like electron spins or nuclear spins in ESR and NMR experiments.} vector $\boldsymbol{a}$ with
 \[
 \boldsymbol{a} = 
 \begin{pmatrix}
@@ -151,7 +153,7 @@ With this we can write the system of differential equation as
   \omega_0
  \end{pmatrix}
 \]
-The time evolution of the density matrix, of the Bloch vector, can be described by the action of a torque vector $\boldsymbol{M}$ on the Bloch vector. Without optical field, the Bloch vector rotates around its $w$ axis, as seen in the phase oscillation of the coherences in the last chapter. With optical field, also the populations changes, and things become complicated.
+The time evolution of the Bloch vector, and by this of the density matrix, can be described by the action of a torque vector $\boldsymbol{M}$. Without optical field, the Bloch vector rotates around its $w$ axis, as seen in the phase oscillation of the coherences in the last chapter. With optical field, also the populations changes, and things become complicated.
 
 To simplify things, we assume that our optical field is a single mode with a slowly varying amplitude only, i.e.
 \[
@@ -163,7 +165,7 @@ The time-dependence of $E(t)$ should be slow compared to $\omega_L t$. This is t
  \quad \text{with} \quad 
  \boldsymbol{M}'  = 
  \begin{pmatrix}
-2 \boldsymbol{\mu}  \boldsymbol{x}   |E(t)| / \hbar \\
+2 \mu    |E(t)| / \hbar \\
 0 \\
 \omega_0 - \omega_L
  \end{pmatrix} = 
@@ -173,58 +175,55 @@ The time-dependence of $E(t)$ should be slow compared to $\omega_L t$. This is t
 \omega_0 - \omega_L
  \end{pmatrix}
 \]
-with the (angular) Rabi frequency $\hbar \Omega = 2 \boldsymbol{\mu}  \boldsymbol{x}   |E(t)| $.
+with the (angular) Rabi frequency $\hbar \Omega = 2 \mu    |E(t)| $ and $\mu = \boldsymbol{\mu \, x}$ the project of the transition dipole moment on the polarization direction of the light field. In the following, we stay in the rotating frame and leave out the prime symbols.
 
 
+\section{Rabi Oscillations}
+
+Let us discuss the time evolution of the Bloch vector in the rotating frame. Applying only a torque $\boldsymbol{M}$, the length of the Bloch vector does not change. It moves along the surface of a sphere, the Bloch sphere. The sphere has a diameter of one when the density matrix describes a normalized pure state. For mixed states, the Bloch vector is shorter. Below we will see how dephasing and relaxation processes reduce the length of the Bloch vector.
 
 
+A two-level system in the ground state is on the north pole of the sphere. The state $\ket{0} + \ket{1}$ is on the equator, pointing along the $u$ axis. All points except the poles contain a coherence between the two levels.
 
 
-\section{9.1. Rabi-Oszillationen\protect\footnote{Rand, Kap. 4.1, Simon Biberger}\hfill ***} 
-
-\textit{Das Zwei-Niveau-System oszilliert entweder als Funktion der
-Zeit oder der 'pulse area' zwischen Grund- und angeregtem
-Zustand.}\\
-Betrachtet man ein Atom, das plötzlich Licht ausgesetzt ist, welches resonant mit einem Übergang aus dem Grundzustand ist. So kann es zu einem kohärenten transienten Phänomen kommen, der Nutation. Die Nutation beschreibt den Aufbau einer Polarisation, welche durch die Anwesenheit eines optischen Feldes verursacht wird.\\
-Da die Rabi-Oszillationen in Bezug auf Populationszerfälle schnelle Prozesse sind, vereinfachen sich die Bloch-Gleichungen zu:
-\begin{align}
-    \dot{R_1} =& -\Delta R_2  \notag \\
-    \dot{R_2} =& \Delta R_1 + \Omega R_3 \label{Rabi}\\
-    \dot{R_3} =& - \Omega R_2 \notag
- \end{align}
-Diese Gleichungen lassen sich bei Mitnahme eines möglichen Doppler-Shifts ($v_z$) und mit einer Anfangsverteilung der Population $R_3$(0) lösen.
-\begin{align}
-    R_1(t) =& \frac{\Omega \Delta}{\Omega_R^2}R_3(0)\cdot cos(\Omega_Rt-1) \notag \\
-    R_2(t) =& \frac{\Omega}{\Omega_R}R_3(0)\cdot sin(\Omega_Rt) \label{Rabi2}\\
-    R_3(t) =& R_3(0)\cdot \left[1+\frac{\Omega^2}{\Omega_R^2}\cdot 
-    cos(\Omega_Rt-1)\right] \notag
-\end{align}
-Dabei ist $\Omega_R^2$ = $\Delta^2 + \Omega^2$, $\Delta = \omega_0-\omega-kv_z$ und $\Omega = \mu_{21}E_{12}/\hbar$.\\
-Der Betrag des Bloch-Vektors bleibt über die betrachtete Zeit konstant. Er präzediert um den Vektor $\bar{\beta}$ mit der Frequenz $\Omega_R$.
-Für den Resonanzfall $\Delta = 0$ kommt es zum Rabi-flopping. Dabei springt  $\bar{\beta} = \Omega \hat{e}_1$ auf $\bar{\beta} = -\Omega \hat{e}_1$. Das Atom oszilliert also zwischen dem angeregten und Grundzustand unter dem Einfluss eines treibenden Feldes.\\
-Die Rabi-Oszillationen können über zwei Methoden gemessen werden. Entweder betrachtet man die Zeitentwicklung der Fluoreszenz bei einem festen treibenden Feld oder die Transmissionsänderung während der Variation der treibenden Feldes.
-\begin{figure} [h]
-    \centering
-    \includegraphics[width = 0.7 \textwidth]{\currfiledir/Rabi1.JPG}
-    \caption{Rabi-Oszillationen in (a) transienter Fluoreszenz und (b) differentielle Transmissionsmessung.}
-    \label{fig:Rabi}
+\begin{figure}
+\caption{Some Bloch vectors and their positions on the Bloch sphere.}
 \end{figure}
 
 
-\section{RESTE}
+The torque $\boldsymbol{M}$ rotates the Bloch vector around  $\boldsymbol{M}$ with a angular frequency  $|\boldsymbol{M}|$. A resonant laser field, i.e., $\omega_L = \omega_0$ rotates the Bloch vector around the $u$ axis. When this field acts continuously, the Bloch vector moves from the north pole via the equator to the south pole and back to the north pole and so on. The population of the states changes periodically from zero to one:
+\[
+ \rho_{00} = \cos ( \Omega \, t)^2 \quad .
+\]
+These are the Rabi oscillations. When the laser is not fully resonant, the Bloch vector rotates around an axis in the $u$-$w$ plane. Starting from the ground state at the north pole, it thus does not reach the south pole any more. The population of the excited state will  not reach one.
 
-Um den Hermiteschen Charakter des Hamilton-Operators zu erhalten, muss beim Beachten von Zerfallstermen die Bewegungsgleichung folgendermaßen modifiziert werden.
-\begin{align}
-    i\hbar \dot{\hat{\rho}} =& [\hat{H},\hat{\rho}] + Relaxationsterme \notag\\
+\begin{figure} 
+    \centering
+    \includegraphics[width = 0.7 \textwidth]{\currfiledir/Rabi1.JPG}
+    \caption{Rabi oscillations in (a) transient fluorescence and (b) differential transmission.}
+    \label{fig:Rabi}
+\end{figure}
+
+We can observe these oscillations by any method that can determine the population of the excited state, for example fluorescence emission, electron emission or (transient) absorption.
+
+
+** Introduce pulse area
+
+
+\section{Damping and dephasing}
+
+
+\begin{align*}
+    i\hbar \dot{\hat{\rho}} =& [\hat{H},\hat{\rho}] + \text{relaxation}
+     \notag\\
     =& [\hat{H},\hat{\rho}] \pm i\hbar\Lambda \pm i\hbar\gamma \hat{\rho} - i\hbar \Gamma \hat{\rho}
-\end{align}
+\end{align*}
 
 
-Der erste Term berücksichtigt die Abnahme durch inkohärentes Pumpen, der zweite die strahlende und nicht-strahlende Populations-Relaxation. Der letzte beachtet das dephasing. 
+The first term takes into account the decrease due to incoherent pumping, the second the radiative and non-radiative population relaxation. The last one considers dephasing. 
 
 
-Polarization und abgestrahlte Felder\protect\footnote{Rand, Kap. 3.9}
-Wie kommt es, dass man am Ende etwas detektieren kann? 
+
 
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
