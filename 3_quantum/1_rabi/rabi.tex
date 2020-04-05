@@ -119,13 +119,13 @@ Now we switch on light and add an interaction Hamiltonian $\hat{H}_I = -\boldsym
 \]
 The differential equations for the density matrix become the Bloch equations
 \begin{eqnarray*}
-\dot{\rho}_{00} &=&  - \frac{i}{\hbar} \left( \rho_{10} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star - \rho_{01} \boldsymbol{\mu} \, \boldsymbol{E} \right) \\
+\dot{\rho}_{00} &=&  - \frac{i}{\hbar} \left( \rho_{01} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star - \rho_{10} \boldsymbol{\mu} \, \boldsymbol{E} \right) \\
 %
-\dot{\rho}_{11} &=&  - \frac{i}{\hbar} \left( \rho_{01} \boldsymbol{\mu} \, \boldsymbol{E} - \rho_{10} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
+\dot{\rho}_{11} &=&  - \frac{i}{\hbar} \left( \rho_{10} \boldsymbol{\mu} \, \boldsymbol{E} - \rho_{01} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
 %
-\dot{\rho}_{10} &=& - \frac{i}{\hbar}  \left( - \rho_{10} \hbar \omega_0 + (\rho_{00} - \rho_{11})  \boldsymbol{\mu} \, \boldsymbol{E}\right) \\
+\dot{\rho}_{01} &=& - \frac{i}{\hbar}  \left( - \rho_{01} \hbar \omega_0 + (\rho_{00} - \rho_{11})  \boldsymbol{\mu} \, \boldsymbol{E}\right) \\
 %
-\dot{\rho}_{01} &=& - \frac{i}{\hbar}  \left( + \rho_{01} \hbar \omega_0 + (\rho_{11} - \rho_{00})  \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
+\dot{\rho}_{10} &=& - \frac{i}{\hbar}  \left( + \rho_{10} \hbar \omega_0 + (\rho_{11} - \rho_{00})  \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
 %
 \end{eqnarray*}
 We can simplify things by skipping some algebraic transformations and introducing the Bloch\sidenote{The physics of two-level systems is always the same. This formalism also applies to spin-1/2 systems like electron spins or nuclear spins in ESR and NMR experiments.} vector $\boldsymbol{S}$ with
@@ -136,11 +136,11 @@ u \\ v \\ w \\
 \end{pmatrix}
 = 
 \begin{pmatrix}
-\rho_{10} + \rho_{01} \\ i (\rho_{10} - \rho_{01}) \\ \rho_{00} - \rho_{11} \\
+\rho_{01} + \rho_{10} \\ i (\rho_{01} - \rho_{10}) \\ \rho_{00} - \rho_{11} \\
 \end{pmatrix}
 = 
 \begin{pmatrix}
-2 \Re (\rho_{10})  \\ \ 2 \Im (\rho_{10}) \\ \rho_{00} - \rho_{11} \\
+2 \Re (\rho_{01})  \\ \ 2 \Im (\rho_{01}) \\ \rho_{00} - \rho_{11} \\
 \end{pmatrix}
 \]
 With this we can write the system of differential equation as 
@@ -149,8 +149,8 @@ With this we can write the system of differential equation as
  \quad \text{with} \quad 
  \boldsymbol{M}  = 
  \begin{pmatrix}
- \frac{2}{\hbar} \, \Re ( \boldsymbol{\mu} \, \boldsymbol{E} ) \\
-  \frac{2}{\hbar} \, \Im ( \boldsymbol{\mu} \, \boldsymbol{E} ) \\
+ -\frac{2}{\hbar} \, \Re ( \boldsymbol{\mu} \, \boldsymbol{E} ) \\
+ - \frac{2}{\hbar} \, \Im ( \boldsymbol{\mu} \, \boldsymbol{E} ) \\
   \omega_0
  \end{pmatrix}
 \]
@@ -162,7 +162,8 @@ To simplify things, we assume that our optical field is a single mode with a slo
 \]
 The time-dependence of $E(t)$ should be slow compared to $\omega_L$. This is the slowly-varying amplitude approximation (SVEA). We do the same with the off-diagonal elements of the density matrix
 \[
- \rho_{01}' = \rho_{01} \, e^{-i \omega_L t} 
+ \rho_{01}' = \rho_{01} \, e^{-i \omega_L t}  \quad \text{and} \quad
+ \rho_{10}' = \rho_{10} \, e^{+i \omega_L t} = \rho_{01}'^\star
 \]
 We thus factor out a phase oscillation with the laser frequency and keep only the slowly-varying rest.\sidenote{The diagonal elements do not phase-rotate and remain unchanged.} Inspecting the differential equations for the density matrix, this leads together with our definition of $\boldsymbol{E}$ to the following modifications
 \[
@@ -176,12 +177,12 @@ rotating frame. Our new coordinate system rotates around the $w$ axis with the a
  \quad \text{with} \quad 
  \boldsymbol{M}'  = 
  \begin{pmatrix}
-2 \mu    E_0(t) / \hbar \\
+-2 \mu    E_0(t) / \hbar \\
 0 \\
 \omega_0 - \omega_L
  \end{pmatrix} = 
   \begin{pmatrix}
-\Omega \\
+- \Omega \\
 0 \\
 \omega_0 - \omega_L
  \end{pmatrix}
