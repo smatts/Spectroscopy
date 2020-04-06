@@ -171,13 +171,13 @@ We thus factor out a phase oscillation with the laser frequency and keep only th
  \boldsymbol{\mu} \, \boldsymbol{E}  \rightarrow \mu \, E_0  \, ( 1+ e^{i 2\omega_L t} ) \approx \mu \, E_0 
 \]
 As we assumed the elements of $\rho'$ to vary slowly, we neglect the term $\exp(i 2 \omega_L t)$, as it will average out.  This is the rotating wave approximation (RWA). Effectively, we are going into a 
-rotating frame. Our new coordinate system rotates around the $w$ axis with the angular frequency of the laser $\omega_L$. The optical frequency of the transition $\omega_0$ is close to this laser frequency. We neglect terms of $\omega_0 + \omega_L$ and only keep terms of  $\omega_0 - \omega_L$. In total we get
+rotating frame. Our new coordinate system rotates around the $w$ axis with the angular frequency of the laser $\omega_L$. The optical frequency of the transition $\omega_0$ is close to this laser frequency. We neglect terms of $\omega_0 + \omega_L$ and only keep terms of  $\omega_0 - \omega_L$. In total we get\sidenote{someone should check this!}
 \[
  \dot{\boldsymbol{a}'} = \boldsymbol{M}'   \times \boldsymbol{a}' 
  \quad \text{with} \quad 
  \boldsymbol{M}'  = 
  \begin{pmatrix}
--2 \mu    E_0(t) / \hbar \\
+- \mu    E_0(t) / \hbar \\
 0 \\
 \omega_0 - \omega_L
  \end{pmatrix} = 
@@ -187,7 +187,7 @@ rotating frame. Our new coordinate system rotates around the $w$ axis with the a
 \omega_0 - \omega_L
  \end{pmatrix}
 \]
-with the (angular) Rabi frequency $\hbar \Omega = 2 \mu    E_0(t) $ and $\mu = \boldsymbol{\mu \, x}$ the projection of the transition dipole moment on the polarization direction of the light field. In the following, we stay in the rotating frame and leave out the prime symbols.
+with the (angular) Rabi frequency\sidenote{Some definitions include a factor of 2 here.} $\hbar \Omega = \mu    E_0(t) $ and $\mu = \boldsymbol{\mu \, x}$ the projection of the transition dipole moment on the polarization direction of the light field. In the following, we stay in the rotating frame and leave out the prime symbols.
 
 
 \section{Rabi Oscillations}
@@ -198,9 +198,11 @@ Let us discuss the time evolution of the Bloch vector in the rotating frame. App
 A two-level system in the ground state is on the north pole of the sphere. The state $\ket{0} + \ket{1}$ is on the equator, pointing along the $u$ axis. All points except the poles contain a coherence between the two levels.
 
 
-\begin{figure}
+\begin{marginfigure}
+\centering
+\includegraphics[width=\textwidth]{\currfiledir rabi1.png}
 \caption{Some Bloch vectors and their positions on the Bloch sphere.}
-\end{figure}
+\end{marginfigure}
 
 
 The torque $\boldsymbol{M}$ rotates the Bloch vector around  $\boldsymbol{M}$ with a angular frequency  $|\boldsymbol{M}|$. A resonant laser field, i.e., $\omega_L = \omega_0$ rotates the Bloch vector around the $u$ axis. When this field acts continuously, the Bloch vector moves from the north pole via the equator to the south pole and back to the north pole and so on. The population of the states changes periodically from zero to one:
@@ -220,12 +222,12 @@ When the laser is not fully resonant, the Bloch vector rotates around an axis in
  \Omega_\text{eff} = \sqrt{\Omega^2 + (\omega_0 - \omega_L)^2 }
 \]
 
-\begin{figure} 
+\begin{marginfigure} 
     \centering
-    \includegraphics[width = 0.7 \textwidth]{\currfiledir/Rabi1.JPG}
-    \caption{Rabi oscillations in (a) transient fluorescence and (b) differential transmission.}
+    \includegraphics[width = \textwidth]{\currfiledir rabi2.png}
+    \caption{Rabi oscillations}
     \label{fig:Rabi}
-\end{figure}
+\end{marginfigure}
 
 We can observe these oscillations by any method that can determine the population of the excited state, for example fluorescence emission, electron emission or (transient) absorption.
 

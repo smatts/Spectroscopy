@@ -7,11 +7,14 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Simulated CW / CD papers
+\item Reproduce Fig. 4b of \cite{Wolpert:2012hs} to model the data in Fig. 4a. The sample produces an additional phase shift of XXX between signal field $E_S$ and reference field $E_0$.
 \end{itemize}
 
-
-
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{\currfiledir fig4ab.png}
+\caption{Perturbed free induction decay (at negative delay $\tau$) of a single GaAs quantum dot measured by pump-probe spectroscopy \citep{Wolpert:2012hs}.}
+\end{figure}
 
 \section{Experiment}
 
@@ -24,9 +27,9 @@ Let us look at methods to measure elements of the density matrix $\rho$. We can 
 
 We can also measure coherences, i.e., off-diagonal elements in the density matrix $\rho$, as these coherences are the source of radiation. To see this, we need to connect the microscopic description by the density matrix to the macroscopic world of Maxwell's equations, resulting in the Maxwell-Bloch equations \footcite[chapter 8.3]{MilonniEberly1988} \footcite[chapter 3.9]{Rand2016}\footcite{Meschede-OLL}. This is what the expectation value does. The  polarization $p$ of a single two-level system at position $z$ in the pumping laser beam is given by the expectation value of the polarization operator $\hat{\mu}$
 \[
- p(t,z) = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10} + c.c. =   \mu_{01}  \rho_{10}' \, e^{-i (\omega_L t - k z)}  + c.c.
+ p(t,z) = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10}'  \, e^{-i (\omega_L t - k z)}  
 \]
-where the polarization operator has only off-diagonal entries in the matrix representation. The prime signals once more the density matrix in the rotating frame. The macroscopic polarisation $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
+where the polarization operator has only off-diagonal entries in the matrix representation.\sidenote{Only the real part has physical significance.} The prime signals once more the density matrix in the rotating frame. The macroscopic polarisation $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
 \[
   \frac{\partial^2}{\partial z^2} \boldsymbol{E}_S  - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \boldsymbol{E}_S 
  =  
@@ -34,7 +37,7 @@ where the polarization operator has only off-diagonal entries in the matrix repr
 \]
 $E_S$ is the (slowly varying) amplitude of the generated field
 \[
- \boldsymbol{E}_S = \frac{1}{2} \, E_s(z,t) \, e^{-i (\omega_L t - k z)}  + c.c. \quad .
+ \boldsymbol{E}_S =   E_s(z,t) \, e^{-i (\omega_L t - k z)}   \quad .
 \]
 Also in the wave equation we  use of the slowly-varying envelope approximation and get (using $\rho_{10}' = u - i v$)
 \[
@@ -49,7 +52,7 @@ This forms together with the Bloch equations from last chapter the Maxwell-Bloch
   N L \frac{k }{2 \epsilon_0}  \mu_{01} (v + i u)
   \propto \mu_{01} \Im (\rho_{01}' ) 
 \]
-It is thus the $v$ component of the Bloch vector (or $\Im (\rho_{01}'$) ) that produces the optical field\footcite[chapter V.B.1]{CT-atom-photon}, as the $ + c.c.$  in the definition of $ \boldsymbol{E}_S $ selects the real part of $ E_S$.
+It is thus the $v$ component of the Bloch vector (or $\Im (\rho_{01}'$) ) that produces the optical field\footcite[chapter V.B.1]{CT-atom-photon}.
 %
 %The resulting field is\footcite[eq. 4.4]{Hamm-dummies}\footcite[eq. 3.9.16 !! update nomenclature !!]{Rand2016}
 %\[
@@ -61,11 +64,11 @@ It is thus the $v$ component of the Bloch vector (or $\Im (\rho_{01}'$) ) that p
 
 Let us discuss as example the absorption of a single photon, which transfers the system from the ground state to the excited state, or equivalently is the action of a $\pi$-pulse. We start by a two-level system in den ground state. The Bloch vector points to the north pole. We shine in an optical field on resonance with the system ($\omega_0 = \omega_L$). The duration of the light pulse $\Delta t$ should be such that is a $\pi$-pulse, i.e.
 \[
- \theta = \pi = \int_0^{\Delta t} \, \Omega(t) \, dt =  \int_0^{\Delta t} \, \frac{2 \, \mu \, E(t)}{\hbar} \, dt
+ \theta = \pi = \int_0^{\Delta t} \, \Omega(t) \, dt =  \int_0^{\Delta t} \, \frac{ \mu \, E(t)}{\hbar} \, dt
 \]
 When the light pulse has the amplitude $E_0$ during $t= 0 \cdots \Delta t$ we get
 \[
- \Delta t = \pi \frac{\hbar}{2 \mu E_0}  = \pi \, \frac{1}{\Omega}
+ \Delta t = \pi \frac{\hbar}{\mu E_0}  = \pi \, \frac{1}{\Omega}
 \] 
 The $w$ component of the Bloch vector follows the Rabi oscillation, i.e.
 \[
@@ -97,9 +100,55 @@ The presence of the absorbing two-level system leads to a change in detected pow
 where $\sigma = N L $ is the projected area density of the two-level systems. The integral gives $2 \Delta t/\pi$ so that
 \[
  \Delta P =-  \sigma \frac{k c}{2}  E_0 \mu_{01} \frac{2 \Delta t}{\pi}
-= -  \sigma \frac{k c}{2}  E_0 \mu_{01}  \frac{\hbar}{\mu E_0} 
-= -  \sigma \, \frac{ \hbar \omega }{2 }  
+= -  \sigma k c   E_0 \mu_{01}  \frac{\hbar}{\mu E_0} 
+= -  \sigma \,  \hbar \omega  
 \]
-Each atom removes the energy of one photon, decorated by the factor $1/2$ which should not be there ....
+Each atom removes the energy of one photon!
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir photon1.png}
+\caption{Absorption of a photon as seen in the density matrix}
+\end{marginfigure}
+
+
+\section{Absorption of half of a photon}
+
+We keep the amplitude of the laser field the same, but reduce the pulse length to $\Delta t / 2$, i.e. a $\pi/2$ pulse. This does only change the upper limit in the integral, so that 
+\[
+ \Delta P 
+= -  \frac{1}{2} \sigma \,  \hbar \omega  
+\]
+Each atom removes half the energy  of a photon. How is that possible?  Here the power of the density matrix comes into play. It describes a statistical ensemble. Half of the atoms absorb a photon, half of them don't. But all atoms undergo the $\pi/2$ Rabi cycle, moving the Bloch vector into the equatorial plane, and describing a state $\ket{\psi}$
+\[
+ \ket{\psi} = \sqrt{\frac{1}{2}} \left( \ket{0} + \ket{1} \right)
+\]
+However, at this point our experiment is not finished yet. We still have coherence in the system, it is not decided yet if the Schrodinger's cat is dead or alive. The experiment if finished only when all coherence has decayed, into
+\[
+ \ket{\psi} = \ket{0}  \quad \text{or} \quad \ket{\psi} = \ket{1} 
+\]
+When decoherence is much faster than population decay, then both final states will be reached with equal probability. On average, each atoms absorbs half the energy of a photon.
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir pi-pulse.png}
+\caption{A $pi$ pulse and a $pi/2$ pulse acting on the ground state.}
+\end{marginfigure}
+
+\section{Pump-Probe Experiments}
+
+The timescale of the experiment is set by the decay of the coherence and the populations. In many cases, this is faster than the temporal resolution of photodetectors. One method to investigate the dynamics of a system under these conditions is pump-probe spectroscopy. A pump-pulse starts a process and some (short) time later, a probe-pulse interrogates the system. The detector does not need a time resolution and can average over many pump-probe pulse pairs. The time resolution comes by the pulse length and their temporal separation. In many cases, the effect of the pump pulse on the system is weak, i.e. the probe pulse would measure almost the same, independent whether the pump was present or not. To increase the signal to noise ration in these cases, on investigates the relative change of the signal
+\[
+ \frac{\Delta I}{I} = \frac{I_\text{with pump} - I_\text{without pump} }{I_\text{without pump}}
+\]
+The pump-pulse is switched using a mechanical chopper or a acousto-optical modulator at as high as possible frequencies to avoid $1/f$-noise. The detector should only detect the probe pulse (and the field radiated by the coherence), otherwise $\Delta I$ is overwhelmed by leaking pump pulse. A convenient way to discriminate pump and probe is the polarization direction of the light field, setting the orientation of the transition dipole moment at $45^\circ$ between pump and probe.
+
+
+
+\section{Spectra}
+
+While we have discussed above the electric fields in time domain, i.e. $E(t)$, of course we could also discuss frequency domain, or spectra. The relation is given by the Fourier transformation, e..g.
+\[
+\Delta I (\omega) = \frac{1}{2} \, \epsilon_0 c \, \, \Re \left( E_0(\omega) \, \mathcal{FT} ( E_S(t) ) \, \right)
+\]
+
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
