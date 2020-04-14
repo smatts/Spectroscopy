@@ -1,0 +1,28 @@
+
+InAs/GaAs
+
+Ulrich PRL 2011:  18 (eg = 1.35 eV)
+
+Kim APL 2010: 8 (trion)
+
+Vamivakas Nat. Phys. 2009:  29 
+
+
+Borri, Phys Rev B 2002: 34
+
+
+
+GaAs fluctuation 
+
+Patton, PRL 05: 30-40
+
+J. R. Guest, Phys. Rev. B  2002 .: 50- 100 
+
+Stievater PRL 2001, 75
+
+
+
+ Stranski-Krastanov CdSe/ZnSe QD 
+
+Akimov PRL 96, 067401 (2006): 27 debye
+

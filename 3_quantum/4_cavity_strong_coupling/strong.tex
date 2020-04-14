@@ -3,19 +3,66 @@
 \chapter{Strong coupling of cavity and emitter}
 
 
-\textit{Pelton data ?}
 
+
+\section{Tasks}
+
+\begin{itemize}
+\item Pelton data ?
+\end{itemize}
 
 
 
 \section{Experiment}
 
-The data sets contain absorption spectra as measured with a commercial UV/VIS spectrometer. Determine the absorption cross section of each species and compare to its geometrical size. Determine also the oscillator strength, the transition dipole moment, and the transition matrix element.
-
-assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Note that this absorption cross section $\sigma$ is not a function of angular frequency $\omega$ anymore, but an spectral integrated cross section assuming a black body spectrum.\sidenote{really ???}
+some text
 
 
+\section{Quantization of the light field}
+The Rabi model assumed a classical electrical field in which the particle nature of light is not relevant. But now we need to take the quantized nature of light into account. In quantum mechanics this is often called 'second quantization' and we will briefly have a look at the main results.
+
+The principle idea is very similar to a quantum mechanical harmonic oscillator, i.e. a series of equidistant states that has a bottom boundary. We describe the states by a quantum number $n$, starting from $n=0$. The Hamiltonian reads
+\[
+\hat{H} \ket{n} = E_n \ket{n} = \left( n + \frac{1}{2} \right) \, \hbar \omega \, \ket{n}
+\]
+where $\hbar \omega$ is the energy distance between the states.
+
+It is convenient to use ladder operators for the creation ($\hat{a}^\dagger$) and annihilation ($\hat{a}$) of  a quantum of energy, i.e.
+\[
+ \hat{a}^\dagger \ket{n} = \sqrt{n+1}\, \ket{n+1}  \quad \text{and} \quad
+  \hat{a} \ket{n} = \sqrt{n}\, \ket{n-1}
+\]
+Useful properties are 
+\[
+ \hat{a} \ket{0} = \ket{0}  \quad \text{and} \quad
+  \hat{a}^\dagger  \hat{a} \ket{n} = n \ket{n}
+\]
+
+Now this need to be connected to the classical electrodynamics. We assume a single optical mode in a small optical resonator, similar to a laser cavity. In the dark, i.e. in the state $\ket{0}$, quantum mechanics gives an eigen-energy $E_n = 1/2 \hbar \omega$. This is what we require then from classical electrodynamics:
+\[
+E_0 = 
+ \int_\text{cavity} \frac{1}{2} 
+ \left( \boldsymbol{H} \cdot  \boldsymbol{B} + \boldsymbol{E} \cdot  \boldsymbol{D} \right) \, dr = 
+  \int_\text{cavity}  \epsilon_0 \boldsymbol{E}^2 \, dr = \frac{1}{2} \, \hbar \omega
+\]
+so that
+\[
+E_{vac} = \sqrt{\frac{\hbar \omega}{2 \epsilon_0 \, V}}
+\]
+is the amplitude of the field in the dark vacuum, with $V$ being the volume of the cavity.\sidenote{This is the reason we require a cavity. Otherwise the integral would diverge.} One obtains the volume by integrating over full space, weighted by the local intensity:
+\[
+V =  \frac{1}{\text{max}(\boldsymbol{E}_c)^2} \, \int_\text{cavity} \boldsymbol{E}_c^2\, dr
+\]
+where $\boldsymbol{E}_c$ can be a field of any amplitude inside the cavity.
+
+\section{Ladder operators for atoms}
+
+The two-level system representing our atom is a spin $1/2$ system, i.e., a Fermion, not a Boson as the photons in the cavity. We can use nevertheless ladder operators 
 
 
+
+
+\section{Jaynes-Cummings-Model}
+. In the Jaynes-Cummings-model we take into account that light is quantized. Sometimes this model is also called 'dressed atom' model.\footcite[chap. 6.8]{Rand2016} \footcite[chap. 4.5]{GerryKnight2005} \footcite[chap. 10.4]{Fox}  \footcite[chap. 3.4]{HarocheRaimond2006}
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
