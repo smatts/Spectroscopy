@@ -26,13 +26,13 @@ In this chapter, we change our point of view a little bit. We consider small, mo
 
 A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\footcite{Jackson-ED}\footcite[excercise 2.4.2]{Nolting-ED}\footcite[chapter 5.2]{BH-book}
 The sphere responds to the light field with a polarization of
-\[
+\begin{equation}
  \mathbf{p}(t) = \epsilon_0 \,  \epsilon_{out} \, \alpha \, \mathbf{E}(t)
-\]
+\end{equation}
 with the polarisability
-\[
+\begin{equation}
  \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}
-\]
+\end{equation}
 We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$, which requires one dielectric function to be negative, as it is the case in metals. Small metal particles show thus exceptional strong interaction with light in a certain spectral range.
 
 
@@ -43,31 +43,31 @@ We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$,
 
 
 As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polarization $p$ oscillates and radiates a secondary, scattered electromagnetic field 
-\[
+\begin{equation}
   \mathbf{E}_S = \frac{ e^{i \, k  r} }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{1}{r^3}\left\{
       (k r )^2 \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} +
       \left( 1 -  i k r \right)
         \left( 3\hat{\mathbf{r}} \left[\hat{\mathbf{r}} \cdot \mathbf{p}\right] - \mathbf{p} \right)
     \right\}
-\]
+\end{equation}
 where $k = 2 \pi / \lambda$ is the length of the wave vector in the medium. In the optical far-field, i.e. for $r \gg \lambda$ or $k \, r \gg 1$ this simplifies to 
-\[
+\begin{equation}
   \mathbf{E}_S = \frac{e^{ikr}}{4\pi\epsilon_0 \epsilon_{out} } 
       \frac{( k \, r)^2}{ r^3} \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} 
-\]
+\end{equation}
 The total, space-integrated and time-averaged power of this scattered wave is\footcite[chapter 4.5.2]{Nolting-ED}
-\[
+\begin{equation}
 P_{scat} =\frac{c  }{12 \pi  \, \epsilon_0 \, \epsilon_{out} } \, k^4 \, |p|^2 =
 \frac{c \, \epsilon_0 \epsilon_{out} }{12 \pi  } \, k^4 \, |\alpha|^2 \, |E_0|^2
-\]
+\end{equation}
 The power density of the incoming plane wave is given by the absolute value of the Poynting vector to \footcite[chapter 4.3.8]{Nolting-ED}
-\[
+\begin{equation}
  |S| = \frac{1}{2} \, c \, \epsilon_0 \, \epsilon_{out} \, |E_0|^2
-\]
+\end{equation}
 and we thus can define a scattering cross section
-\[
+\begin{equation}
 \sigma_{scat} = \frac{P_{scat}}{|S|} = \frac{k^4}{6 \pi }  \, |\alpha|^2 
-\]
+\end{equation}
 We find the $\omega^4$ frequency dependence typical for Rayleigh scattering.
 
 
@@ -82,29 +82,29 @@ The scatted wave is not only responsible for light propagation in direction diff
 \end{marginfigure}
 
 Far away from the scattering object, the scattered wave will be spherical, only the amplitude $f$ could depend on scattering direction $\theta$. Taking the incoming and the scatted wave together, and restricting us to a scalar discussion, we get\footcite{Newton:1976cz}
-\[
+\begin{equation}
  E_{tot} =  e^{i k z} + \frac{e^{i k r}}{r} \, f(\theta)
-\]
+\end{equation}
 In almost forward direction ($\theta \ll 1$) we get
-\[
+\begin{equation}
 r = \sqrt{x^2 + y^2 + z^2} \approx z + \frac{x^2 + y^2}{2z }
-\]
+\end{equation}
 The intensity is thus
-\[
+\begin{equation}
  I = |E_{tot}|^2 \approx \left|e^{i k z} + e^{i k z} \frac{e^{i k (x^2 + y^2)/2z }}{z} \, f(\theta) \right| ^2 = \left|1 + \frac{1}{z} \, f(\theta) e^{i k (x^2 + y^2)/2z } \right| ^2
-\]
+\end{equation}
 where we once even took $r \approx z$. When dropping terms quadratic in the scattering amplitude $f$ and assuming $f(\theta) \approx f(0)$ we get
-\[
+\begin{equation}
  I = |E_{tot}|^2 \approx 1 +   \frac{1}{2 z} \, \Re  \left( f(0) e^{i k (x^2 + y^2)/2z } \right)
-\]
+\end{equation}
 We now integrate\footcite{Newton:1976cz} over a screem that is so large that the argument of the exponentioal function oscillates rapidly ($k R^2 / z \gg 2 \pi$), but that is still conecntrated along the forward direction ($R/z \ll 1$):
-\[
+\begin{equation}
  I = |E_{tot}|^2 \approx A  - \frac{4 \pi }{k} \Im ( f(0) )
-\]
+\end{equation}
 where $A$ is the size of the screen. The second term is the extinction cross section
-\[
+\begin{equation}
  \sigma_{ext} = \sigma_{scat}  + \sigma_{abs}  = \frac{4 \pi }{k} \Im ( f(0) )
-\]
+\end{equation}
 Extinction looks at missing power in a transmitted beam. It does not distinguish between power that remains in the object, e.g. in form of heat, and power that is scattered into a different direction.
 
 
@@ -112,90 +112,83 @@ Extinction looks at missing power in a transmitted beam. It does not distinguish
 
 Let us apply the Optical Theorem to the case of a small sphere, described by an ideal dipole.
 The scattering amplitude in forward direction of a dipolar scatterer is related to its p polarizability $\alpha$ by 
-\[
+\begin{equation}
  f(0) = \frac{k^2}{4 \pi} \, \alpha
-\]
+\end{equation}
 We  then get the extinction coefficient from the optical theorem
-\[
+\begin{equation}
  \sigma_{ext} = k \, \Im ( \alpha )
-\]
+\end{equation}
 
 We can also calculated the power that is absorbed by the dipole\footcite[Chapter 8]{Novotny-Hecht2012}
-\[
+\begin{equation}
  P_{abs} = \frac{\omega}{c} \, \Im \left( \mathbf{p} \, \mathbf{E}^\star \right) 
-\]
+\end{equation}
 so that we get 
-\[
+\begin{equation}
  \sigma_{abs} = k \, \Im ( \alpha )
-\]
+\end{equation}
 
 If both $\sigma_{abs}$ and $\sigma_{ext}$  would equal $ k \, \Im ( \alpha )$, then now power would be left for scattering. But we calculated a non-zero scattering cross section. 
 This puzzle is solved by taking radiation reaction into account, as discussed in chapter 8.4.2 of \cite{Novotny-Hecht2012}. Starting from a quasi-static polarizability $\alpha$ was a too much of a simplification to calculate propagating and oscillating fields  for the optical theorem. An effective  polarizability $\alpha_{\text{eff}}$ can be constructed \sidenote{Our definition of $\alpha$ does not include an $\epsilon_0$ as in exercise 8.5 in \cite{Novotny-Hecht2012}}
-\[
+\begin{equation}
  \alpha_{\text{eff}} = \frac{\alpha}{1 - \frac{i k^3 }{6 \pi} \alpha}
  \approx \alpha  - \frac{i k^3 }{6 \pi} \alpha^2
-\]
+\end{equation}
 and then we get
-\begin{eqnarray*}
+\begin{eqnarray}
  \sigma_{ext} &= & k \, \Im ( \alpha_{\text{eff}}  ) \approx 
  k \, \Im ( \alpha  )  + \frac{k^4}{6 \pi} \left( \Im (\alpha)^2 - \Re (\alpha)^2 \right) \\
   \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha_{\text{eff}} |^2  \approx  \frac{k^4}{6 \pi }  \, |\alpha |^2 \\
    \sigma_{abs} &=&  \sigma_{ext} - \sigma_{scat} \approx  k \, \Im ( \alpha  ) 
-\end{eqnarray*}
+\end{eqnarray}
 
 
-%All together we have
-%\begin{eqnarray}
-% \sigma_{ext} &= &  k \, \Im ( \alpha ) \\
-% \sigma_{scat} & = &  \frac{k^4}{6 \pi }  \, |\alpha|^2 \\
-% \sigma_{abs}  &=&  \sigma_{ext} - \sigma_{scat}
-%\end{eqnarray}
-%where $k$ is always the wave vector in the medium and $\alpha$ is defined as above\sidenote{In some sources, $\alpha$ includes already an $\epsilon_{out}$, which changes the definition of the cross sections!}
 
 \section{Mie Scattering}
 
 Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution fpr the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in an homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite[chapter 4]{BH-book} The idea is the develop the scattered field in vector spherical harmonics.
 
 For the cross sections one gets
-\begin{eqnarray*}
+\begin{eqnarray}
 \sigma_{scat} & = \frac{2 \pi }{k^2} \sum\limits_{n=1}^{\infty} (2 n+1) \, \left( |a_n|^2 + |b_n|^2 \right) \\
 \sigma_{ext} & = \frac{2 \pi }{k^2} \sum\limits_{n=1}^{\infty} ( 2n+1)\, \Re \left( a_n + b_n \right) 
-\end{eqnarray*}
+\end{eqnarray}
 %
 with the coefficients
 %
-\begin{eqnarray*}
+\begin{eqnarray}
  a_n &= & \frac{m S_n (m x) S_n' (x) - S_n (x) S_n' (m x)}
  {m S_n (m x) C_n' (x) -  C_n (x) S_n' (m x)}  \\
  %
  b_n &=  &\frac{S_n (m x) S_n' (x) - m S_n (x) S_n' (mx)}
   {S_n (mx) C_n' (x) - m C_n (x) S_n' (m x)} 
-\end{eqnarray*}
+\end{eqnarray}
 where $x =k a $ is the dimensionless size of the sphere with radius $a$ and $m = n_{particle} / n_{medium}$ is the relative refractive index. The prime indicates a differentiation with respect to the argument. The $S_n$ and $C_n$ are Ricatti-Bessel functions, which can be expressed in terms of spherical Bessel functions:
-\begin{eqnarray*}
+\begin{eqnarray}
 S_n ( \rho) & =& \rho \, j_n (\rho) \\
 C_n (\rho)  &= & \rho \, h_n^{(1)} (\rho)  = \rho \left(  j_n (\rho)  + i \,  y_n (\rho) \right)
-\end{eqnarray*}
+\end{eqnarray}
 
 The index $n$ gives the order of the spherical harmonics and thus the order of the multipole. $n=1$ corresponds to dipole fields, $n=2$ to quadrupole fields, $n=3$ to octupole fields etc. \footcite{KV-book} The $a$ coefficients describe electric modes, the $b$ coefficients magnetic modes.\footcite{KV-book, BH-book} 
 
 
 We can recover the physics of a small sphere from the full Mie theorie.\footcite[chapter 5]{BH-book} A Taylor-expansion of the coefficzients $a_n$ and $b_n$ for small size parameter $x$ gives
-\begin{alignat*}{3}
+\begin{alignat}{3}
  a_1 &= -i \frac{2x^3}{3} \frac{m^2 -1}{m^2 + 2} && -i \frac{2x^5}{5} \frac{(m^2 -2)(m^2-1)}{(m^2 + 2)^2} + \mathcal{O}(x^6)  && + \mathcal{O}(x^7) \\
  b_1 &=  && -i \frac{2x^5}{45} (m^2 -1)^2  &&+ \mathcal{O}(x^7)  \\
  a_2 &=   &&-i \frac{2x^5}{15} \frac{m^2-1}{2 m^2 +3} &&+ \mathcal{O}(x^7)  \\
 b_2 &= && &&+ \mathcal{O}(x^7)  
-\end{alignat*}
+\end{alignat}
 We note that the magnetic dipolar $b_1$ mode appears to the same order as the electric quadrupolar $a_2$ mode. The distinction between them is dependent on the gauge used.\footnote{Needs reference !}
 
 When we restrict us to third order in $x$, we recover the Rayleigh limit
-\begin{eqnarray*}
+\begin{eqnarray}
 \sigma_{scat} & = \frac{2 \pi }{k^2} \, 3 \, \left| a_1 \right|^2 
  = \frac{k^4}{6 \pi} \left| 4 \pi a^3  \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}} \right|^2 \\
 \sigma_{ext} & = \frac{2 \pi }{k^2} \, 3 \, \Re \left( a_1 \right) 
 = k \, \Im \left( 4 \pi a^3 \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}  \right)
-\end{eqnarray*}
+\end{eqnarray}
 
 
 \section{More questions}

@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 7, 2020}
+\renewcommand{\lastmod}{May 1, 2020}
 
 
 \chapter{Rabi Oscillations}
@@ -26,49 +26,49 @@ We start by introducing the density matrix.\footcite{Rand2016,Parson,Hamm-dummie
 It is a tool in quantum mechanics to describe not only purely coherent states, but also statistical mixtures, as we will see below. The density matrix is a bit at the edge of the classical canon of quantum mechanics lectures.
 
 When  writing our wave function $\ket{\psi}$ in  a basis $\ket{n}$ as
-\[
+\begin{equation}
  \ket{\psi} = \sum_n c_n \, \ket{n}
-\]
+\end{equation}
 then we can define a density operator $\hat{\rho}$ as
-\[
+\begin{equation}
 \hat{\rho} =  \ket{\psi}\bra{\psi} = \sum_{m,n} c_n c_m^\star \, \ket{n}\bra{m}
-\]
+\end{equation}
 and the matrix elements of $\rho$ are $\rho_{n,m} =  c_n c_m^\star$. The density matrix allows to calculate the expectation value of any operator $\hat{A}$ as
-\[
+\begin{equation}
  \braket{\hat{A}} =  \braket{\psi | \hat{A} | \psi}  = \sum_{m,n} c_n c_m^\star \, A_{m,n} = \sum_{m,n} \rho_{n,m} \,  \, A_{m,n} = Tr ( A \rho)
-\]
+\end{equation}
 where the trace sums over the diagonal elements
-\[
+\begin{equation}
  Tr (U ) = \sum_n U_{n,n}  \quad .
-\]
+\end{equation}
 The trace of the density matrix is one for normalized states 
-\[
+\begin{equation}
  Tr (\rho) = \sum_n \rho_{n,n} = \sum_n c_n c_n^\star = 1 \quad \text{if normalized}
-\]
+\end{equation}
 The interesting thing comes when looking at pure and mixed states. Pure states are the 'conventional' states discussed in quantum mechanics, for example this superposition of states
-\[
+\begin{equation}
 \ket{\psi} = \sqrt{\frac{1}{2}} \left( \ket{1} + \ket{2} \right) 
-\]
+\end{equation}
 In this example, the density matrix reads
-\[
+\begin{equation}
  \rho = \frac{1}{2} \begin{pmatrix}
  1 & 1 \\ 1 & 1 \\
  \end{pmatrix}
-\]
+\end{equation}
 and its trace is one. But the density matrix also allows to describe new things, beyond pure states, namely statistical mixtures of states. We can describe an ensemble of two-level systems, of which half the ensemble is in state $\ket{1}$, the other half in state $\ket{2}$. This can \emph{not} be written as 
 $\ket{1} + \ket{2} $, but a density matrix description is possible as
-\[
+\begin{equation}
  \rho = \frac{1}{2} \begin{pmatrix}
  1 & 0 \\ 0 & 1 \\
  \end{pmatrix} \quad .
-\]
+\end{equation}
 The diagonal elements of the density matrix describe the populations of the states, i.e. $|c_n|^2$. The off-diagonal elements describe coherence between states. In a statistical mixture there is no coherence between the states, as one sub-ensemble is in one state, another in another state, and they don't know anything of each other.
 
 We can distinguish between pure and mixed states by looking at the trace of the squared density matrix
-\begin{eqnarray*}
+\begin{eqnarray}
  Tr (\rho^2) & = & 1 \quad \text{pure state} \\
- 				& < & 1 \quad \text{mixed state} \\
-\end{eqnarray*}
+ 				& < & 1 \quad \text{mixed state}
+\end{eqnarray}
 
 Mixed states can be  used not only to describe an ensemble of systems in different states, but also to describe a single system that at different times is in different states. Even if we can do an experiment on  a single quantum system, we have to repeat it very often to reduce noise by averaging. But the experiment does not always run along the same path: either a photon is absorbed or not, but it will most likely not \emph{always}  we absorbed. The time-average of such an experiment will thus need  an statistical mixture for its description.
 
@@ -77,60 +77,60 @@ Mixed states can be  used not only to describe an ensemble of systems in differe
 We can construct a differential equation for the time evolution of the density matrix that is a direct analogue of the Schrodinger equation, just that is also takes mixed states into account.
 
 The time-derivative of the density matrix $\rho$ is
-\[
+\begin{equation}
  \frac{d}{dt} \rho = \frac{d}{dt} \left( \ket{\psi} \bra{\psi} \right) 
  =  \left( \frac{d}{dt}  \ket{\psi} \right) \bra{\psi} 
  + \ket{\psi} \left( \frac{d}{dt}  \bra{\psi} \right) 
-\]
+\end{equation}
 Making use of the Schrodinger equation
-\[
+\begin{equation}
  \frac{d}{dt} \ket{\psi} = - \frac{i}{\hbar} \, \hat{H} \, \ket{\psi}
-\]
+\end{equation}
 we get the Liouville--von Neumann equation
-\[
+\begin{equation}
  \frac{d}{dt} \rho = - \frac{i}{\hbar} 
  \left[ \hat{H} , \rho \right]  \quad .
-\]
+\end{equation}
 
 As an example, let us look at a two-level system with the eigen-energies $E_0= 0$ and $E_1 = \hbar \omega_0$. The Hamilton operator is thus
-\[
+\begin{equation}
  \hat{H } = \begin{pmatrix}
   0 & 0 \\ 0 & \hbar \omega_0 \\
  \end{pmatrix}
-\]
+\end{equation}
 The commutator becomes
-\[
+\begin{equation}
  \left[ \hat{H}, \rho \right] = 
  \begin{pmatrix}
  0 & - \hbar \omega_0 \, \rho_{01} \\   \hbar \omega_0 \, \rho_{10} & 0 \\
  \end{pmatrix}
-\]
+\end{equation}
 The  diagonal elements of the density matrix $\rho$, i.e., the populations, remain thus constant in time, as expected for this Hamiltonian. The off-diagonal elements, the coherences acquire a phase-factor proportional to the energy difference, i.e.
-\[
+\begin{equation}
  \rho_{01}(t) =  \rho_{01}(0) \, \exp \left(i \, \omega_0 \, t \right) 
-\]
+\end{equation}
 
 \section{Optical Bloch Equations}
 
 Now we switch on light and add an interaction Hamiltonian $\hat{H}_I = -\boldsymbol{\mu} \, \boldsymbol{E}$ of dipole operator $\boldsymbol{\mu} $ and optical field   $\boldsymbol{E}$. In total, the Hamilton operator reads\footcite[chap. 3.8]{Rand2016}
-\[
+\begin{equation}
  \hat{H } = \begin{pmatrix}
   0 & - {\boldsymbol{\mu}} \, \boldsymbol{E} \\ - {\boldsymbol{\mu}}^\star \, \boldsymbol{E}^\star & \hbar \omega_0 \\
  \end{pmatrix}
-\]
+\end{equation}
 The differential equations for the density matrix become the Bloch equations
-\begin{eqnarray*}
+\begin{eqnarray}
 \dot{\rho}_{00} &=&  - \frac{i}{\hbar} \left( \rho_{01} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star - \rho_{10} \boldsymbol{\mu} \, \boldsymbol{E} \right) \\
 %
 \dot{\rho}_{11} &=&  - \frac{i}{\hbar} \left( \rho_{10} \boldsymbol{\mu} \, \boldsymbol{E} - \rho_{01} \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
 %
 \dot{\rho}_{01} &=& - \frac{i}{\hbar}  \left( - \rho_{01} \hbar \omega_0 + (\rho_{00} - \rho_{11})  \boldsymbol{\mu} \, \boldsymbol{E}\right) \\
 %
-\dot{\rho}_{10} &=& - \frac{i}{\hbar}  \left( + \rho_{10} \hbar \omega_0 + (\rho_{11} - \rho_{00})  \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) \\
+\dot{\rho}_{10} &=& - \frac{i}{\hbar}  \left( + \rho_{10} \hbar \omega_0 + (\rho_{11} - \rho_{00})  \boldsymbol{\mu}^\star \, \boldsymbol{E}^\star \right) 
 %
-\end{eqnarray*}
+\end{eqnarray}
 We can simplify things by skipping some algebraic transformations and introducing the Bloch\sidenote{The physics of two-level systems is always the same. This formalism also applies to spin-1/2 systems like electron spins or nuclear spins in ESR and NMR experiments.} vector $\boldsymbol{S}$ with
-\[
+\begin{equation}
 \boldsymbol{S} = 
 \begin{pmatrix}
 u \\ v \\ w \\
@@ -143,9 +143,9 @@ u \\ v \\ w \\
 \begin{pmatrix}
 2 \Re (\rho_{01})  \\ \ 2 \Im (\rho_{01}) \\ \rho_{00} - \rho_{11} \\
 \end{pmatrix}
-\]
+\end{equation}
 With this we can write the system of differential equation as 
-\[
+\begin{equation}
  \dot{\boldsymbol{S}} = \boldsymbol{M}   \times \boldsymbol{S} 
  \quad \text{with} \quad 
  \boldsymbol{M}  = 
@@ -154,27 +154,27 @@ With this we can write the system of differential equation as
  - \frac{2}{\hbar} \, \Im ( \boldsymbol{\mu} \, \boldsymbol{E} ) \\
   \omega_0
  \end{pmatrix}
-\]
+\end{equation}
 The time evolution of the Bloch vector, and by this of the density matrix, can be described by the action of a torque vector $\boldsymbol{M}$. Without optical field, the Bloch vector rotates around its $w$ axis, as seen in the phase oscillation of the coherences in the last chapter. With optical field, also the populations changes, and things become complicated.
 
 To simplify things, we assume that our optical field is a single mode with a slowly varying amplitude only, i.e.
-\[
+\begin{equation}
  \boldsymbol{E}(t) = \boldsymbol{x} \, E_0(t) \left( e^{i \omega_L t} + e^{-i \omega_L t} \right)
-\]
+\end{equation}
 The time-dependence of $E(t)$ should be slow compared to $\omega_L$. This is the slowly-varying amplitude approximation (SVEA). We do the same with the off-diagonal elements of the density matrix
-\[
+\begin{equation}
  \rho_{01}' = \rho_{01} \, e^{-i \omega_L t}  \quad \text{and} \quad
  \rho_{10}' = \rho_{10} \, e^{+i \omega_L t} = \rho_{01}'^\star
-\]
+\end{equation}
 We thus factor out a phase oscillation with the laser frequency and keep only the slowly-varying rest.\sidenote{The diagonal elements do not phase-rotate and remain unchanged.} Inspecting the differential equations for the density matrix, this leads together with our definition of $\boldsymbol{E}$ to the following modifications
-\[
+\begin{equation}
  \omega_0 \rightarrow \omega_0 - \omega_L \quad \text{and} \quad 
  \boldsymbol{\mu} \, \boldsymbol{E}  \rightarrow \mu \, E_0  \, ( 1+ e^{i 2\omega_L t} ) \approx \mu \, E_0 
-\]
+\end{equation}
 As we assumed the elements of $\rho'$ to vary slowly, we neglect the term $\exp(i 2 \omega_L t)$, as it will average out.  This is the rotating wave approximation (RWA). Effectively, we are going into a 
 rotating frame. Our new coordinate system rotates around the $w$ axis with the angular frequency of the laser $\omega_L$. The optical frequency of the transition $\omega_0$ is close to this laser frequency. We neglect terms of $\omega_0 + \omega_L$ and only keep terms of  $\omega_0 - \omega_L$. In total we get\sidenote{someone should check this!}
-\[
- \dot{\boldsymbol{a}'} = \boldsymbol{M}'   \times \boldsymbol{a}' 
+\begin{equation}
+ \dot{\boldsymbol{S}'} = \boldsymbol{M}'   \times \boldsymbol{S}' 
  \quad \text{with} \quad 
  \boldsymbol{M}'  = 
  \begin{pmatrix}
@@ -187,7 +187,7 @@ rotating frame. Our new coordinate system rotates around the $w$ axis with the a
 0 \\
 \omega_0 - \omega_L
  \end{pmatrix}
-\]
+\end{equation}
 with the (angular) Rabi frequency\sidenote{Some definitions include a factor of 2 here.} $\hbar \Omega = \mu    E_0(t) $ and $\mu = \boldsymbol{\mu \, x}$ the projection of the transition dipole moment on the polarization direction of the light field. In the following, we stay in the rotating frame and leave out the prime symbols.
 
 
@@ -207,21 +207,21 @@ A two-level system in the ground state is on the north pole of the sphere. The s
 
 
 The torque $\boldsymbol{M}$ rotates the Bloch vector around  $\boldsymbol{M}$ with a angular frequency  $|\boldsymbol{M}|$. A resonant laser field, i.e., $\omega_L = \omega_0$ rotates the Bloch vector around the $u$ axis. When this field acts continuously, the Bloch vector moves from the north pole via the equator to the south pole and back to the north pole and so on. The population of the states changes periodically from zero to one:
-\[
+\begin{equation}
  \rho_{00} = \cos ( \Omega \, t / 2)^2 \quad .
-\]
+\end{equation}
 These are the Rabi oscillations. In a laser pulse, the amplitude $E_0(t)$ of the optical field varies, for example like a Gaussian. In this case, the instantaneous Rabi frequency $\Omega$ also varies and it is convenient to quantify the total effect of a single pulse by the pulse area $\theta$
-\[
+\begin{equation}
  \theta = \int_{pulse} \Omega (t) \, dt
-\]
+\end{equation}
 A $\pi$ pulse, acting on a system in the ground state, will thus lead to a system in the excited state. A $2\pi$ pulse leaves the populations unchanged.\sidenote{but has an effect on the phase}
 
 
 
 When the laser is not fully resonant, the Bloch vector rotates around an axis in the $u$-$w$ plane. Starting from the ground state at the north pole, it thus does not reach the south pole any more. The population of the excited state will  not reach one. At the same time, the phase oscillations of the two-level system are not fully taken care of by the rotating frame anymore. A little bit of rotation remains. In combination, this gives a complicated precession of the Bloch vector $S$ around the torque $M$ with an effective Rabi frequency 
-\[
+\begin{equation}
  \Omega_\text{eff} = \sqrt{\Omega^2 + (\omega_0 - \omega_L)^2 }
-\]
+\end{equation}
 
 \begin{marginfigure} 
     \centering
@@ -237,17 +237,16 @@ We can observe these oscillations by any method that can determine the populatio
 
 \section{Damping and dephasing}
 
-
-\begin{align*}
-    i\hbar \dot{\hat{\rho}} =& [\hat{H},\hat{\rho}] + \text{relaxation}
-     \notag\\
-    =& [\hat{H},\hat{\rho}] \pm i\hbar\Lambda \pm i\hbar\gamma \hat{\rho} - i\hbar \Gamma \hat{\rho}
-\end{align*}
-
-
-The first term takes into account the decrease due to incoherent pumping, the second the radiative and non-radiative population relaxation. The last one considers dephasing. 
-
-
+In reality, both a coherence as well as the population of an excited state decays in the course of time. Without going into further detail, we can add these processes phenomenologically as operator $\boldsymbol{L}$ to the Liouville-von Neumann equation
+\begin{equation}
+    i\hbar \dot{\hat{\rho}} =
+    [\hat{H},\hat{\rho}] - \boldsymbol{L}  \hat{\rho} \quad .
+\end{equation}
+Excited state populations decay exponentially with a lifetime $T_1$. The coherence between two states decays with a time constant $T_2$ with
+\begin{equation}
+    \frac{1}{T_2} = \frac{1}{T_2^\star} + \frac{1}{2 \, T_1}
+\end{equation}
+where $T_2^\star$ is called pure dephasing time. The $T_1$ time enters, as a decaying population also removes coherence. The prefactor of $2$ is a consequence of effective spin-$1/2$-system. On the Bloch sphere, these processes let Bloch vector move back to the north pole, but not along the surface of the sphere but with varying length of the vector.\sidenote{In the original work of Bloch this scheme was applied to the magnetisation of a spin-$1/2$ system which decays towards the center of the sphere, as thermal energy leads to almost equal population of both states.}
 
 
 

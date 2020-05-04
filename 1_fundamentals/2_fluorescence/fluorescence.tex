@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 29, 2020}
+\renewcommand{\lastmod}{May 1, 2020}
 
 
 \chapter{Fluorescence}
@@ -29,13 +29,13 @@
 It is helpful to consider how the spectrum of light is really measured. A light beam is dispersed, typically on a grating. As function of the dispersion angle one measures light intensity by converting photons into electrons, either in a CCD camera or a photodiode. The signal amplitude is thus proportional to the  photon rate, not the power, or the energy per photon.
 
 The resolution of a grating spectrometer is determined by the width of the CCD pixels, the size of the diode or of the entrance slit, by the size of a monochromatic focus, or a combination of all. But in all cases, it is constant over the spectrum when measured in wavelength. The natural unit of a grating spectrometer is wavelength, not frequency. The reciprocal relation between wavelength and frequency leads to 
-\[
+\begin{equation}
  \Delta \nu = \nu_2 - \nu_2 = \frac{c}{\lambda_2} - \frac{c}{\lambda_1}  = c \frac{\lambda_1 - \lambda_2}{\lambda_1 \lambda_2} \approx \frac{c}{\lambda^2} \, \Delta \lambda
-\]
+\end{equation}
 In the frequency domain, the spectral resolution is thus not constant, but proportional to $\nu^2$. As consequence, converting a data set from wavelength domain to frequency domain does not only entail converting the $x$-values, but also the $y$-values. The integral or total number of photons has to stay the same.
-\[
+\begin{equation}
  \left( \lambda \, ; \, F(\lambda) \right) \, \rightarrow  \left( \nu = \frac{c}{ \lambda} \, ; \,  F(\nu) = \frac{\lambda^2}{ c } \, F(\lambda) \right) 
-\]
+\end{equation}
 This problem only occurs for spectra of light. Absorption spectra are the ratio of two spectra of light, of the signal and reference beam. In this case, the prefactors cancel out and only the $x$-values need to be converted. The spectrally integrated absorption does not have any meaning, in contrast to the spectrally integrated photon flux.
 
 
@@ -63,40 +63,40 @@ This technique measures the arrival time of single photons relative to the laser
 
 
 The Einstein coefficients for emission $A_{21}$, absorption $B_{12}$ and stimulated emission $B_{21}$ relate the populations $N_1$ and $N_2$ of a lower and upper state to the spectral energy density $u(\omega)$ of the optical field (units of energy per volume and angular frequency intervall). They define transition rates in units of Hz
-\begin{eqnarray*}
+\begin{eqnarray}
  k_{\text{spontaneous emission}} &=& A_{21} \\
   k_{\text{absorption}}  & = & B_{12} \,   u(\omega) \\
   k_{\text{stimulated emission }} & =&  B_{21} \,  u(\omega)  \quad .
-\end{eqnarray*}
+\end{eqnarray}
 %
 In steady state we get
-\[
+\begin{equation}
  \frac{d N_1}{dt} =  A_{21} N_2 \, - \, B_{12} \, N_1 \, u(\omega) \, + \, B_{21}\, N_2 \,u(\omega)  = 0 \quad .
-\]
+\end{equation}
 At the same time, the ratio of the populations is given by Boltzmann's law as
-\[
+\begin{equation}
  \frac{N_2}{N_1} = \frac{g_2}{g_1} \, \exp \left( - \frac{\hbar \omega}{kT} \right)
-\]
+\end{equation}
 where the $g_i$ are the degeneracy of the respective state. The spectral energy density is given by the black-body spectrum, as we are in thermal equilibrium
-\[
+\begin{equation}
  u(\omega) = \frac{\omega^2}{\pi^2 c^3} \, \hbar \omega \, \frac{1}{\exp \left( \hbar \omega / kT \right) - 1} \quad .
-\]
+\end{equation}
 Altogether this leads to 
-\begin{eqnarray*}
+\begin{eqnarray}
  g_1 \, B_{12} &=& g_2 \, B_{21} \\
  A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21} 
-\end{eqnarray*}
+\end{eqnarray}
 Different prefactors can be found in literature for these equations, depending on the exact definition of $u$.
  \footcite{Hilborn:2002wj} 
  As each absorption event takes out the energy $\hbar \omega$ and the energy density $u(\omega)$ moves with the velocity of light $c$, we get for the absorption cross section
-\[
+\begin{equation}
 \int \sigma d \omega = \frac{\hbar \omega \, B_{12} \, u(\omega)  }{c \, u(\omega) }  =
    \frac{\hbar \omega  }{c  }    \, B_{12}
-\]
+\end{equation}
 assuming that almost all atoms are in the ground state ($N_2 \ll N_1$) and
-\[
+\begin{equation}
 B_{12} = \frac{\pi}{3 \, \hbar^2 \, \epsilon_0} \,  |\mathbf{\mu}_{if} |^2  \quad ,
-\]
+\end{equation}
 taking rotational averaging into account.
 
 
@@ -105,25 +105,26 @@ taking rotational averaging into account.
 \section{Strickler-Berg-Equation} 
 
 
-In condensed matter at room temperature, optical transitions are spectrally broad and not at all delta-like. One still finds a relation similar to the relation between the Einstein $A$ and $B$ coefficient between absorption and emission, when integrating over the spectral width. This relation is the  Strickler-Berg equation.\footcite[chapter 5.3][]{Strickler_Berg, Parson}  
+In condensed matter at room temperature, optical transitions are spectrally broad and not at all delta-like. One still finds a relation similar to the relation between the Einstein $A$ and $B$ coefficient between absorption and emission, when integrating over the spectral width. This relation is the  Strickler-Berg equation.\footcite[chapter 5.3][]{Strickler_Berg, Parson}\footcite[chapter 
+1.4.3.2]{KoehlerBaessler2015}
 
 
 A molecule has the electronic ground state $g$ and the first excited state $e$, and each electronic state has a progression of vibrational states $m$ and $n$. We first look at the spontaneous emission rate  $k_{\text{sp}} =  A_{21}$
 from the state $e,n$ into any vibrational state of $g$, 
 %
-\[
+\begin{equation}
 k_{e,n \rightarrow g}  = \sum_m  k_{e,n \rightarrow g,m}  = \frac{\hbar}{\pi^2 c^3} \sum_m  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 \, B_{ge} 
-\]
+\end{equation}
 where we have used the relation between the Einstein $A$ and $B$ coefficients and taken into account the Frank-Condon factors $ | \braket {\chi_m | \chi_n} |^2 $ for the overlapp of the vibrational wave functions $\chi$ of the nuclei.
 %
 The EInstein coefficient for absorption $B_{ge} $ is related to the molar extinction coefficient $\epsilon(\omega)$, as we have seem in the chapter on absorption
-\[
+\begin{equation}
  k_{e,n \rightarrow g}  = \frac{\ln(10)}{\pi^2 c^2 N_A} \sum_m  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2
  \int \frac{\epsilon(\omega)}{\omega} \, d \omega
-\]
+\end{equation}
 %
 As the  $\chi_m$ form a full basis set $\sum_m  | \braket {\chi_m | \chi_n} |^2 = 1$,  we can write
-\[
+\begin{equation}
  k_{e,n \rightarrow g}  = \frac{\ln(10)}{\pi^2 c^2 N_A} 
 %
 \frac{ 
@@ -131,16 +132,16 @@ As the  $\chi_m$ form a full basis set $\sum_m  | \braket {\chi_m | \chi_n} |^2 
  { \sum_m  | \braket {\chi_m | \chi_n} |^2 }
  %
  \int \frac{\epsilon(\omega)}{\omega} \, d \omega
-\]
+\end{equation}
 The fluorescence emission spectrum $F(\omega)$ is determined up to spectrally constant factors by the $\omega^3$ term and the Franck-Condon factors, i.e.
-\[
+\begin{equation}
  F(\omega =  \omega_{e,n \rightarrow g,m} )  \propto  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 
-\]
+\end{equation}
 so that we can write by replacing the sums over $m$ by  spectral integrals
-\[
+\begin{equation}
  k_{e,n \rightarrow g}  =  \frac{\ln(10)}{\pi^2 c^2 N_A} \frac{\int F(\omega) \, d \omega}{\int \omega^{-3} F(\omega) \, d \omega }
  \int \frac{\epsilon(\omega)}{\omega} \, d \omega   \quad. 
-\]
+\end{equation}
 This is the Strickler-Berg equation. Conveniently, all prefactors connected to $F(\omega)$ drop out, especially also experimentally difficult to access absolute emission intensities. Absolute absorption is much more easy to measure. The Strickler-Berg equation conveniently connects these spectra such that we can calculate the rate of spontaneous fluorescence emission. For molecules in a solvent, one should take into account that the refractive index $n$ of the solvent enters via $c = c_0 / n$. 
 
 In the literature, different prefactors can be found, related to integrals over frequency $\nu$ or wave numbers $\bar{\nu}$. Sometimes also an additional factor of 1000 appears, stemming from assumptions on the units of the molar extinction.
@@ -164,18 +165,18 @@ In the literature, different prefactors can be found, related to integrals over 
 
 
 In contrast to an atom in vacuum, a molecule in condensed matter has other options beyond light emission to lower its total energy. These non-radiative processes include vibrational relaxation, inter-system crossing, internal conversion and other energy transfer mechanism. The total rate $k_{tot}$ by which the population of an excited state changes is thus the sum of several rates, a radiative  (as given by the Strickler-Berg equation) and several non-radiative rates 
-\[
+\begin{equation}
  k_{tot} = k_{rad} + k_{non rad} 
-\]
+\end{equation}
 %
 The population of an excited state is thus, neglecting other processes that  potentially re-excite this state,
-\[
+\begin{equation}
  N(t) = N(0) \, \exp \left( - k_{tot}  \,t \right)
-\]
+\end{equation}
 The fluorescence intensity $F(t)$ is given by the population and the radiative rate
-\[
+\begin{equation}
  F(t) = k_{rad} \, N(t) = k_{rad} \,  N(0) \, \exp \left( - k_{tot} \, t \right)
-\]
+\end{equation}
 After switching off the excitation laser, the fluorescence intensity drops thus exponentially with the total rate, not the radiative rate. When measuring the arrival time of a fluorescence photon after impulsive laser excitation, one can find this exponential decay in the arrival time histogram. This technique is called time-correlated single-photon counting (TCSPC). The total rate is thus much easier to measure than the radiative rate. 
 
 
@@ -188,9 +189,9 @@ After switching off the excitation laser, the fluorescence intensity drops thus 
 The fluorescence lifetime is the reciprocal of the total decay rate $k_{tot}$ and determines the TCSPC trace. The reciprocal of the radiative rate is sometimes called radiative lifetime.
 
 The fluorescence quantum yield $\eta$ gives the probability that a decay out of the excited state results in a photon, i.e.
-\[
+\begin{equation}
  \eta   = \frac{k_{rad}}{k_{tot}} = \frac{k_{rad}}{k_{rad} + k_{non rad}}
-\]
+\end{equation}
 
 
 
