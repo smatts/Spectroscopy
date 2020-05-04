@@ -22,7 +22,7 @@ plot(wl, em_ip)
 hold off
 
 data = [wl; abs_ip; em_ip]';
-save('tdi_abs_em.dat','data','-ascii')
+%save('tdi_abs_em.dat','data','-ascii')
 
 
 %---------------------------
@@ -42,11 +42,11 @@ emission_tcspc = emission_tcspc(ids);
 semilogy(time_tcspc,emission_tcspc)
 
 data = [time_tcspc; emission_tcspc']';
-save('tdi_tcspc.dat','data','-ascii')
+%save('tdi_tcspc.dat','data','-ascii')
 
 %xlim([-10,30])
 
-if (1 == 0)
+if (1 == 1)
 
 figure
 
@@ -83,10 +83,10 @@ h = 4.13e-15; % eV s
 omega = energy ./ (h ./ (2 .* pi)); %  energy is in eV !
 domega = omega(2) - omega(1);
 
-len = 0.001;  % 1cm
+len = 0.01;  % 1cm
 concentration = 1e-5 .* 1e+3; % = 1mM, needs Mol / m^3
 
-absorption_e = absorption_e / 10;  % guess
+
 epsilon = absorption_e ./ (concentration .* len);
 
 

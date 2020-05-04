@@ -99,10 +99,14 @@
   urlcolor=RoyalBlue
 }
 
+\newcommand{\chapterauthors}{Markus Lippitz}
+\newcommand{\lastmod}{\Filemodtoday{\currfilepath}}
+
+
 \newcommand{\addtochapter}{%
 \vspace*{-12mm}{
 \setlength{\parindent}{0pt}
-Markus Lippitz \newline \Filemodtoday{\currfilepath}
+\chapterauthors \newline \lastmod
 }
 \vspace*{12mm}
 }
@@ -115,6 +119,13 @@ Markus Lippitz \newline \Filemodtoday{\currfilepath}
 \def\nostarchapter[#1]#2{\stdchapter[{#1}]{#2} \addtochapter}
 \makeatother
 
+
+\makeatletter
+  \def\my@tag@font{\scriptsize}
+  \def\maketag@@@#1{\hbox{\m@th\normalfont\color{gray}\my@tag@font#1}}
+  \let\amsmath@eqref\eqref
+  \renewcommand\eqref[1]{{\let\my@tag@font\relax\amsmath@eqref{#1}}}
+\makeatother
 
 \begin{document}
 
@@ -134,24 +145,24 @@ Markus Lippitz \newline \Filemodtoday{\currfilepath}
 \part{Fundamentals}
 
 \include{1_fundamentals/1_absorption/absorption}
-\include{1_fundamentals/2_fluorescence/fluorescence}
-\include{1_fundamentals/3_vibrations/vibrations}
-\include{1_fundamentals/4_mie/mie}
-\include{1_fundamentals/5_aggregates/molecular_aggregates}
-
-%\include{1_fundamentals/6_raman/raman}
-
-%%%-------
+%\include{1_fundamentals/2_fluorescence/fluorescence}
+%\include{1_fundamentals/3_vibrations/vibrations}
+%\include{1_fundamentals/4_mie/mie}
+%\include{1_fundamentals/5_aggregates/molecular_aggregates}
+%
+%%\include{1_fundamentals/6_raman/raman}
+%
+%%%%-------
+%%
+%%
+%\part{Two Level Systems}
+%
+%\include{2_quantum/1_rabi/rabi}
+%\include{2_quantum/2_FID/fid}
+%%\include{3_quantum/3_quantum_beats/beats}
+%\include{2_quantum/4_cavity_strong_coupling/strong}
 %
 %
-\part{Two Level Systems}
-
-\include{2_quantum/1_rabi/rabi}
-\include{2_quantum/2_fid/fid}
-%\include{3_quantum/3_quantum_beats/beats}
-\include{2_quantum/4_cavity_strong_coupling/strong}
-
-
 %%-------
 %
 %%
@@ -179,6 +190,7 @@ Markus Lippitz \newline \Filemodtoday{\currfilepath}
 %
 %\part{Nano Optics and Plasmonics}
 %
+%\include{5_nanooptics/1_surfaceplasmons/surfaceplasmon}
 %\include{5_nanooptics/overview_NO}
 
 %-------

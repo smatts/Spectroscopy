@@ -1,0 +1,56 @@
+Hallo Markus,
+
+kein Problem, die Rohdaten liegen im .csv Format vor. Zusätzlich hab ich die 
+analysierten Daten auch noch als .csv Files exportiert - die sind im 
+"Analysis" Ordner. Unten hab ich ein paar Kommentare, die vielleicht helfen 
+könnten, noch zusammengefasst.
+
+Viel Erfolg und Spaß bei der Vorlesungsvorbereitung und lass mich gerne 
+wissen, falls ich helfen kann.
+
+Viele liebe Grüße aus Hamburg,
+Tobi
+
+tobias.kroh@cfel.de
+
+
+
+Ein paar Anmerkungen zur Auswertung und den Files:
+
+1) Verwendete Konzentrationen
+- Die Konzentrationen sind in Einheiten von M in den Plots vermerkt
+- Für die Berechnung des Extinktionskoeffizienten ist es einfacher die 
+Konzentrationen in g/l umzurechnen. Diese Werte sind in den ausgewerteten 
+.csv Files in der letzen Spalte jeweils aufgeführt als zweiter numerischer 
+Wert dort.
+
+2) Absorptions-Spektren
+- Rohdaten: 1. Spalte = Wellenlänge in nm; 2. Spalte = OD; Dezimaltrennung 
+durch "."; Spaltentrennung durch ","
+- Für die Auswertung hatten wir den Background der Spektren via den OD-Wert 
+bei 1200nm subtrahiert
+- Die Wellenlängen-Achse wurde in eV umskaliert
+- Der Extinktionskoeffizient wurde dann unter Verwendung der Küvettendicke 
+von entweder 10mm oder 1mm berechnet
+	- Für die Konzentrationen c3 - c5 wurden 10mm Küvetten verwendet. Für 
+höhere Konzentrationen (c0 - c2) konnte dann aber der Absorptionspeak nicht 
+mehr vermessen werden, da die Transmission zu gering war.
+	- Für die Konzentrationen c0-c2 lies sich selbst bei 1mm dicker Küvette nur 
+c2 richtig vermessen.
+- Die Molare Masse die zur Berechnung verwendet wurde war M = 762.53 g/mol
+
+3) PL-Spektren
+- Rohdaten: 1. Spalte = Wellenlänge in nm; 2. Spalte = PL; Dezimaltrennung 
+durch ","; Spaltentrennung durch ";"
+- Für die Auswertung wurde glaube ich erst der PL Hintergrund einer reinen 
+NaOH Lösung abgezogen, hier bin ich mir aber leider nicht mehr sicher. Da 
+müsste ich notfalls nochmal genauer nachschauen. An sich sollte das aber 
+keinen großen Effekt bei höheren Konzentrationen haben.
+- Für den Plot in der BA wurde die Wellenlängenskalierung in eV umgerechnet
+- Die PL Spektren müssen fürs Plotten gegen die Energie/Frequenz 
+entsprechend umskaliert werden --> das ist beim ersten Mal plotten eine 
+häufige Fehlerquelle und könnte bestimmt einigen Studenten passieren.
+- Anschließend wurde jeweils auf das Maximum normiert, für den Plot aus der 
+Arbeit.
+
+

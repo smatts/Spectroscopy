@@ -1,0 +1,6 @@
+Absorptionsspektren von Gold-Partikeln
+Messung von Patrick Knödler, Bayreuth
+
+Die Daten beinhalten die Extinktion = - log (Transmission) durch eine 10mm Küvette mit Gold-Partikeln in Wasser. "blank.csv" ist reines Wasser, das _nicht_ von den Daten abgezogen wurde. 
+
+Es gibt zwei Reihen von Datensätzen, A und B, die systematisch variieren. Ein Datensatz hat auch nach Korrektur um das blank eine Kante bei 900 nm, die ein experimentelles Artefakt ist.

@@ -1,3 +1,4 @@
+\renewcommand{\lastmod}{April 15, 2020}
 
 
 \chapter{Strong coupling of cavity and emitter}
@@ -38,7 +39,7 @@ Useful properties are
   \hat{a}^\dagger  \hat{a} \ket{n} = n \ket{n}
 \]
 
-Now this need to be connected to the classical electrodynamics. We assume a single optical mode in a small optical resonator, similar to a laser cavity. In the dark, i.e. in the state $\ket{0}$, quantum mechanics gives an eigen-energy $E_n = 1/2 \hbar \omega$. This is what we require then from classical electrodynamics:
+Now this needs to be connected to  classical electrodynamics. We assume a single optical mode in a small optical resonator, similar to a laser cavity. In the dark, i.e. in the state $\ket{0}$, quantum mechanics gives an eigen-energy $E_n = 1/2 \, \hbar \omega$. This is what we require also from classical electrodynamics:\footcite[chap. 7.5]{Fox}
 \[
 E_0 = 
  \int_\text{cavity} \frac{1}{2} 
@@ -55,14 +56,82 @@ V =  \frac{1}{\text{max}(\boldsymbol{E}_c)^2} \, \int_\text{cavity} \boldsymbol{
 \]
 where $\boldsymbol{E}_c$ can be a field of any amplitude inside the cavity.
 
-\section{Ladder operators for atoms}
+The electrical field of a single optical mode in a cavity then becomes\footcite[chap. 2.1 and 2.4]{GerryKnight2005}\footcite[chap. 6.1]{Rand2016}
+\[
+\hat{\boldsymbol{E}}(z,t) = \boldsymbol{x} \, E_{vac} \, (\hat{a} \, e^{i (k z - \omega t)} + \hat{a}^\dagger   \, e^{-i (k z - \omega t)} ) 
+\]
+where $\boldsymbol{x}$ is a unit vector defining the direction of polarization. 
 
-The two-level system representing our atom is a spin $1/2$ system, i.e., a Fermion, not a Boson as the photons in the cavity. We can use nevertheless ladder operators 
+\section{Pauli matrices for atoms}
 
+The two-level system representing our atom is a spin $1/2$ system, i.e., a Fermion, not a Boson as the photons in the cavity. We can use operators similar to the ladder operators to excite ($  \hat{\sigma}_+$) or relax ($  \hat{\sigma}_-$) the two-level system
+\[
+ \hat{\sigma}_+ = \ket{e} \bra{g} \quad \text{and} \quad 
+  \hat{\sigma}_- = \ket{g} \bra{e}
+\]
+The third operator to complete the Pauli spin algebra is the inversion operator, i.e. the third component of the Bloch vector
+\[
+ \hat{\sigma}_3 = \ket{e} \bra{e} - \ket{g} \bra{g}
+\] 
 
 
 
 \section{Jaynes-Cummings-Model}
-. In the Jaynes-Cummings-model we take into account that light is quantized. Sometimes this model is also called 'dressed atom' model.\footcite[chap. 6.8]{Rand2016} \footcite[chap. 4.5]{GerryKnight2005} \footcite[chap. 10.4]{Fox}  \footcite[chap. 3.4]{HarocheRaimond2006}
+Now we put everything together to  the Jaynes-Cummings-model. Sometimes this model is also called 'dressed atom' model.\footcite[chap. 6.8]{Rand2016} \footcite[chap. 4.5]{GerryKnight2005} \footcite[chap. 10.4]{Fox}  \footcite[chap. 3.4]{HarocheRaimond2006}
+
+We construct an Hamiltonian of three parts:  atom, optical field, and light-matter interaction. The atom part is, using $\hbar \omega_0 = E_e - E_g$ 
+\[
+\hat{H}_A = \frac{1}{2} \, \hbar \omega_0 \, \hat{\sigma}_3
+\]
+where we have set the zero of the energy scale half way between ground and excited state. The optical field part is
+\[
+\hat{H}_F = \hbar \omega \, \hat{a} \hat{a}^\dagger
+\]
+with the optical frequency $\omega$ and the zero of the energy scale set to the vacuum energy. Light-matter interaction is given in the dipole approximation and neglecting terms that violate energy conservation by\footcite[chap. 6.7.1]{Rand2016}
+\[
+\hat{H}_I = - \boldsymbol{\mu} \, \boldsymbol{E} =
+ \hbar g \, (\hat{\sigma}_+ \, \hat{a} + \hat{\sigma}_- \,\hat{a}^\dagger )
+\]
+Absorption of a photon ($\hat{a}$) excites the atom ($\hat{\sigma}_+$) and the other way round.
+The coupling constant $g$ is given by
+\[
+ g = - \mu_{eg} \, \sqrt{\frac{\omega}{2 \hbar \, \epsilon_0 \, V}}
+\]
+where $\mu_{eg} $ is the projection of the transition dipole moment on the polarization direction of the light field. In total we have thus
+\[
+ \hat{H} = \frac{1}{2} \, \hbar \omega_0 \, \hat{\sigma}_3 
+ +  \hbar \omega \, \hat{a} \hat{a}^\dagger
+ + \hbar g \, (\hat{\sigma}_+ \, \hat{a} + \hat{\sigma}_- \,\hat{a}^\dagger )
+\]
+
+The idea of the Jaynes-Cummings-Model is to find eigen-states of this Hamiltonian. This is the same idea as in a coupled pendulum: the atom is one pendulum, the light field another, and the spring connecting the pendula is the coupling constant $g$. The uncoupled eigen-states are $\ket{g, n}$ and  $\ket{e, n-1}$, i.e. atom in ground or excited state, and either $n$ or $n-1$ photons in the cavity. For these two states, the Hamilton operator reads in matrix form
+\[
+\hat{H} = \hbar 
+\begin{pmatrix}
+n \omega - \frac{1}{2} \omega_0  & g \sqrt{n} \\
+g \sqrt{n} & (n-1) \omega + \frac{1}{2} \omega_0 \\
+\end{pmatrix}
+\]
+The new eigen-states are linear combinations of the old, obtained by diagonalizing the Hamilton operator in matrix form. For the eigen-energy we get
+\[
+E_\pm = \left( n - \frac{1}{2} \right) \hbar \omega \, \pm \, \frac{1}{2} \hbar
+\sqrt{\Delta^2 + 4 |g|^2 n}
+\]
+where $\Delta = \omega_0 - \omega$
+is energy difference between the uncoupled eigen-states, or the detuning between atom and field. The square-root is called generalized Rabi frequency $\Omega_R = \sqrt{\Delta^2 + 4 |g|^2 n}$. The new eigen-states are called dressed states $\ket{D_\pm}$ as the photons are 'dressing' the atom
+\begin{eqnarray*}
+\ket{D_+} = \sin \theta \ket{g,n} + \cos \theta \ket{e,n-1} \\
+\ket{D_-} = \cos \theta \ket{g,n} - \sin \theta \ket{e,n-1} 
+\end{eqnarray*}
+with $\cos 2\theta = \Delta / \Omega_R$. On resonance, i.e. $\Delta = 0$, the two dressed states are the symmetric and anti-symmetric combinations of the uncoupled states.
+
+\section{Mollow Triplet}
+
+%https://demonstrations.wolfram.com/MollowTriplet/
+
+%https://demonstrations.wolfram.com/CavityQuantumElectrodynamicsWithBosonsEmissionSpectraInTheSt/
+
+\section{Vacuum Rabi Splitting}
+
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]

@@ -1,3 +1,4 @@
+\renewcommand{\lastmod}{April 27, 2020}
 
 
 \chapter{Molecular Aggregates --- Coupled Two-Level Systems}
@@ -7,7 +8,9 @@
 \section{Tasks}
 
 \begin{itemize}
-\item The data contains spectra and TCSPC traces of the molecule TDBC in solution at different concentrations. Determine the number of chromophores that contribute to the delocalized state,
+\item The data contains absorption spectra of the molecule TDBC in solution at different concentrations. Determine the number of chromophores that contribute to the delocalized state. Data by Tobias Kroh, Bayreuth.
+
+\item The second data set contains emission spectra of TDBC in solution at different concentrations. Plot the normalized emission spectrum and discuss.Data by Tobias Kroh, Bayreuth.
 \end{itemize}
 
 
@@ -60,19 +63,19 @@ When we have two of such states, we can  write matrix equation
 \hat{H}_0 \, \psi_0 = \begin{pmatrix}  E_a & 0 \\ 0 & E_b \end{pmatrix} \,
 	 \begin{pmatrix}  \psi_ a\\ \psi_b\end{pmatrix}  \quad .
 \]
-The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one states depends somehow on the other. In the matrix we include a coupling energy $\beta$ in the off-diagonal elements
+The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one states depends somehow on the other. In the matrix we include a coupling energy $J$ in the off-diagonal elements
 \[
-\hat{H}_{coupled}  = \begin{pmatrix}  E_a & \beta \\ \beta & E_b \end{pmatrix} 
+\hat{H}_{coupled}  = \begin{pmatrix}  E_a & J \\ J & E_b \end{pmatrix} 
 \]
 As a consequence, the original eigen-functions $\psi_0$ are no longer eigen-functions of this coupled Hamilton operator. We find new eigen-functions and eigen-values by diagonalizing $\hat{H}_{coupled}$, so that the diagonal elements become
 \[
- E_\pm = \frac{E_a + E_b}{2} \pm \sqrt{ \left( \frac{E_a - E_b}{2} \right)^2 + \beta^2 }
+ E_\pm = \frac{E_a + E_b}{2} \pm \sqrt{ \left( \frac{E_a - E_b}{2} \right)^2 + J^2 }
 \]
-and the new (not normalized) eigen-functions are\sidenote{A more symmetrical equation is given  in \cite{Parson}}
+and the new (not normalized) eigen-functions are\sidenote{A more symmetrical equation is given  in \cite[eq. 8.10]{Parson}}
 \[
- \psi_{\pm} = \psi_b + \psi_a \left[ \frac{E_a - E_b}{2 \beta} \pm \sqrt{ \left( \frac{E_a - E_b}{2 \beta} \right)^2 + 1  } \, \right]
+ \psi_{\pm} = \psi_b + \psi_a \left[ \frac{E_a - E_b}{2 J} \pm \sqrt{ \left( \frac{E_a - E_b}{2 J} \right)^2 + 1  } \, \right]
 \]
-We can distinguish two limiting cases. The coupling energy $\beta$ can be larger than die energy difference between the two states, i.e. $\beta \gg |E_a - E_b| / 2$. Then then new eigen-energies are split up by $\pm \beta$ around the average of the old eigen-energies $(E_a + E_b) /2$. The eigen-functions in this situation are symmetric and anti-symmetric combinations of the old eigen-function, i.e. $\psi_\pm = \pm \psi_a + \psi_b$. When the coupling energy is small, i.e. $\beta \ll |E_a - E_b| / 2$, then the new eigen-energies and eigen-functions are close to the old.
+We can distinguish two limiting cases. The coupling energy $J$ can be larger than die energy difference between the two states, i.e. $|J| \gg |E_a - E_b| / 2$. Then then new eigen-energies are split up by $\pm J$ around the average of the old eigen-energies $(E_a + E_b) /2$. The eigen-functions in this situation are symmetric and anti-symmetric combinations of the old eigen-function, i.e. $\psi_\pm = \pm \psi_a + \psi_b$. When the coupling energy is small, i.e. $|J| \ll |E_a - E_b| / 2$, then the new eigen-energies and eigen-functions are close to the old.
 
 
 
@@ -81,11 +84,14 @@ We can distinguish two limiting cases. The coupling energy $\beta$ can be larger
 \caption{Eigen-Energies and weights of the eigen-functions as function of the unperturbed energies ($E_b = 1$).}
 \end{figure}
 
-\textit{If coupling is EM wave, this is AC Stark effect}
+A few side remarks and things that are left open for future versions of this text: 
+\begin{itemize}
+    \item When the coupling interaction is the electromagnetic wave, then this formalism describes the AC Stark effect, i.e., the shift of atomic transitions in the presence of strong optical fields.
+    \item The coupling constant $\beta$ can be complex-valued, i.e., can include a phase lag.
+    \item Preparation and temporal evolution of coupled states could be interesting to discuss.
+\end{itemize}
 
-\textit{time-dependence after preparation of a state}
 
-\textit{include complex beta ?}
 
 
 \section{Coupling of two transition dipole moments}
@@ -103,8 +109,13 @@ The coupling energy $J$ depends on distance $\boldsymbol{r}_{ab}$ and relative o
   }{ |\boldsymbol{r}_{ab}|^5 } \\
    & = & \frac{\mu_a \mu_b }{r_{ab}^3} \left( \cos \theta - 3 \cos \alpha \, \cos \beta \right)  = \frac{\mu_a \mu_b }{r_{ab}^3} \, \kappa
 \end{eqnarray*}
-where the angles are defined in the sketch.\sidenote{NEEDS figure}
+where the angles are defined in the sketch.
 
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir/angles.png}
+\caption{Sketch showing 
+the angles used to calculate the coupling factor $\kappa$}
+\end{marginfigure}
 
 A similar coupling term also exist for the non-resonant coupling\footcite{knoester-book}
 \[
@@ -131,80 +142,31 @@ The brightness of the absorption line is for identical molecules, i.e. $\mu = \m
 \]
 where $\theta$ is as above the angle between the transition dipole moments. The same relation hold for the radiative rate.
 
-The spectroscopic signature of coherent coupling between two molecules is thus a splitting of the absorption line into two lines, separated by twice the coupling energy $J$. The sum of the line amplitudes remains unchanged, but in some cases (J-aggregates, $\theta = 0$) one transition will take the whole amplitude and the other remains dark. In these cases, no splitting but a shift of the absorption line is observed. 
-
-\begin{tabular}{llll}
-$\theta$	&	$0^\circ$ & $90^\circ$ & $0^\circ$  \\
-$\alpha$ & $0^\circ$ & $0^\circ$ & $90^\circ$  \\
-$\beta$ & $0^\circ$ & $90^\circ$ & $90^\circ$  \\
-$\kappa$  & $-2	$	& 	 $	0	$				& $1$   \\
-\end{tabular}
-
-needs vocabulary: Davydov splitting, cooperrative superradiance, H/J Aggregate
-
-motional narrowing over inhom ensemble
-
-ladder operator and more than 2 dipoles
+The spectroscopic signature of coherent coupling between two molecules is thus a splitting of the absorption line into two lines, separated by twice the coupling energy $J$. The sum of the line amplitudes remains unchanged, but in some cases (H- and J-aggregates, see below) one transition will take the whole amplitude and the other remains dark. In these cases, no splitting but a shift of the absorption line is observed. The coupling vanishes when both dipoles are oriented perpendicular to each other ($\theta = 90^\circ$)
 
 
-%
-%
-%
-%\section{Quantenmechanik gekoppelter Systeme\protect\footnote{Parson, Kap. 7.1 und 8.1, Stephan Wiesneth}} 
-%
-%
-%
-%Two molecules should be so close to each other that after excitation, it is no longer possible to determine which of the two molecules is excited. The excitation is thus delocalized via the system, which is also called \textit{exciton}. The exciton interaction does not physically differ from the interaction at resonance energy transfer.
-%
-%The state wave functions are again represented as a combination of the wave functions of the individual molecules:
-%\[ \Psi_A = \phi_{1a}\chi_{1a}\phi_{2a}\chi_{2a} \]
-%\[ \Psi_B = C_1\psi_1 + C_2\psi_2 = C_1\phi_{1b}\chi_{1b}\phi_{2a}\chi_{2a} + C_2\phi_{1a}\chi_{1a}\phi_{2b} \] 
-%$\Psi_A$ corresponds to the basic state, $\Psi_B$ to the excited state of the dimmer. The $\psi_1$ and $\psi_2$ are not stationary states here, since the energy is quickly transferred back and forth between the molecules.
-%
-%The energy of the ground state is calculated as follows:
-%\begin{equation}
-%    E_A = \langle\phi_{1a}\phi_{2a}\lvert\tilde{H}_1+\tilde{H}_2+\tilde{H}'\rvert\phi_{1a}\phi_{2a}\rangle = E_{1a}+E_{2a}+\langle\phi_{1a}\phi_{2a}\lvert\tilde{H}'\rvert\phi_{1a}\phi_{2a}\rangle.
-%\end{equation}
-%The last term is very small compared to the first two if the molecules are uncharged and have a small transition dipole moment.
-%
-%For the energy of the excited state results
-%\begin{equation}
-%    E_B = \lvert C_1\rvert^2 E_1 + \lvert C_2\rvert^2 E_2 + \langle C_1\psi_1 + C_2\psi_2\lvert\tilde{H}'\rvert C_1\psi_1 + C_2\psi_2\rangle
-%\end{equation}
-%For a more precise calculation of the last term the stationary Schrödinger equation $\tilde{H}\Psi_B = E_B\Psi_B$ is used. This is multiplied once by $\psi_1*$ and once by $\psi_2*$. This gives the following system of equations:
-%\[ C_1 \left [\langle\psi_1\lvert\tilde{H}_1\rvert\psi_1\rangle+\langle\psi_1\lvert\tilde{H}'\rvert\psi_1\rangle - E_B\right] + C_2\langle\psi_1\lvert\tilde{H}'\rvert\psi_2\rangle = 0 \]
-%\[ C_1\langle\psi_2\lvert\tilde{H}'\rvert\psi_1\rangle + C_2 \left [\langle\psi_2\lvert\tilde{H}_2\rvert\psi_2\rangle+\langle\psi_2\lvert\tilde{H}'\rvert\psi_2\rangle - E_A\right] = 0 \]
-%The non-trivial solution is obtained by equating the zero:
-%\[ \begin{vmatrix}
-%    H_{11} - E_A & H_{21} \\
-%    H_{21} & H_{22} - E_B
-%   \end{vmatrix} = 0 \] 
-%Where $H_{11}=E_1+\langle\psi_1\lvert\tilde{H}'\rvert\psi_1\rangle$, corresponding for $H_{22}$ and $H_{21}=\langle\psi_2\lvert\tilde{H}'\rvert\psi_1\langle$. This gives you two possible values for $E_{B\pm}$, as well as two wave functions $\Psi_{B\pm}$:
-%
-%\begin{equation}
-%    E_{B\pm} = E_0 \pm \frac{1}{2}\sqrt{\delta^2 + 4H_{12}^2}  
-%\end{equation}
-%\begin{equation}
-%    \Psi_{B\pm} = \sqrt{\frac{1+s}{2}}\cdot\psi_1 \pm \sqrt{\frac{1-s}{2}}\cdot\psi_2
-%\end{equation}
-%The newly introduced variables are $\delta = H_{11}-H_{22}$, $E_0 = \frac{H_{11}+H_{22}}{2}$ and $s = \delta/\sqrt{\delta^2+4H_{21}^2}$. In a dimer the excited states of the individual molecules are thus split into two new energy levels.
-%\begin{figure}
-%    \centering
-%    \includegraphics{\currfiledir/avoided_crossing.png}
-%    \caption{Energies of the two new states depending on the energy difference of the single excited molecules}
-%    \label{avoided_crossing}
-%\end{figure}
-%In figure \ref{avoided_crossing} it can be clearly seen that the energies of the states are never identical, which is also called \textit{avoided-crossing}.
-%
-%\section{Spectroscopy of dimers\protect\footnote{Parson, ch. 8.2}} 
-%
-%Which spectroscopic signature do coupled
-%Fluorophores?
-%
-%\section{Antenna complexes\protect\footnote{Parson, section 8.5}} 
-%
-%In nature, coupled fluorophores are found in
-%chlorophyll-antenna complexes. Why?
+\section{H- and J-aggregates}
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir/aggregates.png}
+\caption{J- and H aggregates.}
+\end{marginfigure}
+
+Two important limiting cases are the H- and J-aggregates. In a J-aggregate, the dipoles are oriented parallel and head-to-tail, i.e. $\alpha = \beta = \theta = 0$ and therefore $\kappa = -2$. A negative $\kappa$ implies that the coupling constant $J$ is negative. The state $\Psi_+$, which carries all the oscillator strength, has the energy $E_+ = (E_a + E-B) / 2 + J$, which is lower than the average energy of the uncoupled states. The absorption line thus shifts to the red. The same hold for the fluorescence emission spectrum.
+
+In an H-aggregate, the dipoles orient also parallel, but side-to-side, i.e.  $\alpha = \beta = 90^\circ$ and $\theta = 0$. In this case is $\kappa =1$ and $J$ positive. The absorption line shifts to the blue upon formation of aggregates, as again the  $\Psi_+$ state gets all the oscillator strength. However, as fluorescence emission is slow compared to other relaxation processes, this high energy state does not emit light. In emission, H-aggregates appear dark.
+
+The width of the absorption line of a dye at room temperature is determined by dephasing, i.e., fluctuations in the environment that are fast compared to the lifetime of the excited state, and by static differences in the environment of different chromophores. The spectral position of the absorption line in a molecular aggregate is the average of two single chromophore transitions. As in the propagation of uncertainties in an experiment, the width of the new distribution, generated as the average over two values from the old distribution, is reduced by a factor of $\sqrt{2}$. This holds more generally\footcite{Knapp1984}, so that an aggregate of $N$ chromophores is expected to have a spectral line width reduced\sidenote{This is the same physics as motional narrowing in NMR.} by $\sqrt{N}$.
+
+
+
+
+%\begin{tabular}{llll}
+%$\theta$	&	$0^\circ$ & $90^\circ$ & $0^\circ$  \\
+%$\alpha$ & $0^\circ$ & $0^\circ$ & $90^\circ$  \\
+%$\beta$ & $0^\circ$ & $90^\circ$ & $90^\circ$  \\
+%$\kappa$  & $-2	$	& 	 $	0	$				& $1$   \\
+%\end{tabular}
 
 
 
