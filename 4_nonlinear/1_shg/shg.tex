@@ -1,0 +1,302 @@
+\renewcommand{\lastmod}{May 7, 2020}
+\chapter{Second harmonic generation}
+
+
+\section{Tasks}
+
+\begin{itemize}
+\item lkdlkweq
+\end{itemize}
+
+\section{Experiment}
+
+
+\section{Nonlinear Susceptibility}
+
+The interaction of light with a dielectric medium is described\footcite{MilonniEberly1988,Yariv1989} by the  susceptibility $\chi$ .
+An electric field $E$ shifts the
+charge carriers and generates a polarization $P$
+\begin{equation}
+  P(E) = \epsilon_0 \; \chi \; E \quad.
+\end{equation}
+This can be understood by means of the classical Lorentz oscillator model,
+in which electrons are bound  in a one-dimensional potential $V(x)$. In first approximation this potential can be described as
+harmonic potential so that the deflection
+$x$ of the electrons is proportional to the incoming field $E$.
+If the field strength of the field $E$ increases, the deflection
+$x$ sometime is so large that the approximation of the potential by
+parabola is no longer valid and higher-order terms in the
+potential need to be added. This then leads to the deflection
+$x$ and thus also the polarization $P$ depending also in higher
+order  on the electric field $E$:
+\begin{equation}
+  P(E) = \epsilon_0 \; \left( \chi^{(1)} E + \chi^{(2)} E^2 + \chi^{(3)}
+  E^3 + \cdots \right)  \quad .
+\end{equation}
+The higher-order terms in $E$  put an end to the 
+superposition principle of linear optics and 
+ waves of different
+frequency $\omega$ can no longer be treated independently.
+A $n$-th order process in $E$ mixes $n$ monochromatic
+waves $E(\omega_i)$. In addition, the individual waves
+$E_{\omega_i}$ do not have to be parallel wave vectors and also
+polarization $P$ not necessarily needs to be parallel to the electric field. The susceptibilities $\chi^{(i)}$ are therefore tensors of
+(i+1)-th stage, so that the above equation
+ should be written as
+\begin{equation}
+  P_i = \epsilon_0 \; \left( \sum_j \chi^{(1)}_{ij} E_j(\omega_1)
+     + \sum_{j,k} \chi^{(2)}_{ijk} E_j(\omega_1) E_k(\omega_2) +
+    \sum_{j,k,l} \chi^{(3)}_{ijkl} E_j(\omega_1) E_k(\omega_2) E_l(\omega_3) + \cdots \right)  ,
+\end{equation}
+where $E_i(\omega_j)$ is the $i$-th vector component of a
+monochromatic wave with frequency $\omega_j$. The
+polarization $P$ in turn is the source of the electric field $E$:
+\begin{equation}
+   \nabla^2 E - \epsilon_0 \; \mu_0 \; \ddot{E} = \mu_0 \ddot{P}  \quad .
+   \label{eq_shg_wave equation}
+\end{equation}
+
+Due to the non-linear relationship between the field $E$ and the
+polarization $P$ new frequency components appear in $E$. This
+is shown in the figure,
+where the series expansion was limited to the quadratic term. In the output field $E$ there is  additional to the 
+Input frequency $\omega$ a component with frequency zero and --- based on the asymmetry of the positive and negative half-waves ---
+one with the doubled frequency. The first causes a
+shifting the average value compared to the input field, the second
+an asymmetry of the oscillation around this mean value. The absolute value of the polarization $P$ is not invariant under flipping of the  sign of the electric field $E$ , as can be seen in part A of the figure.
+
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir theo_nlo_nl_polarisation.pdf}
+\caption{Influence of a non-linear relationship between
+incident field $E$ and polarization $P$. A: linear and non-linear relationship
+between $E$ and $P$. B: in the linear case the polarization follows
+the field. C: in the nonlinear case, on the one hand the mean value
+shifted (DC part of the output field) and on the other hand the
+curve is deformed (additional component with doubled frequency).}
+\label{fig_shg_nonlinear_polarization}
+\end{figure}
+
+
+
+
+
+Let us investigate the mixing of waves more in detail.
+We assume the fields $E(\omega)$ as plane waves
+\begin{equation}
+  E(\omega) = \hat{E}(z) \; e^{-i \; (\omega \;
+  t - k \; z)} \qquad \text{with} \qquad k = n
+  \omega / c = \omega \; \sqrt{\epsilon_0 \; \mu_0 [1+
+  \chi^{(1)}(\omega)]} \quad.
+\end{equation}
+The left side of the wave equation
+\ref{eq_shg_wave equation} is calculated under the slowly varying envelope approximation (SVEA), i.e., assuming that 
+ the amplitude $ \hat{E}(z)$ does not vary much on the wavelength scale. We get
+\begin{eqnarray}
+ \nabla^2 E & \approx &  \left( 2 i k \frac{d
+ \hat{E}(z)}{dz} - k^2 \hat{E}(z) \right) e^{-i \; (\omega \;
+  t - k \; z)}  \quad ,\label{gl_theo_nlo_nabla2E}\\
+%
+ \epsilon_0 \; \mu_0 \; \frac{\partial^2 E}{\partial t^2} &=& -   \epsilon_0 \;
+ \mu_0 \omega^2 E(\omega)  \quad .\label{gl_theo_nlo_partial2E_t2}
+\end{eqnarray}
+%
+In the collinear case, the second time derivative 
+$\ddot{P}$ of the polarization on the right-hand side of the wave equation Eq.~\ref{eq_shg_wave equation} becomes, again limiting us the quadratic terms, 
+\begin{equation}
+  \mu_0 \ddot{P} = - \mu_0 \epsilon_0 \; \left( \sum_j \chi^{(1)}_{j}\; \omega_j^2 \; E(\omega_j)
+     + \sum_{j,k} \chi^{(2)}_{jk} \; (\omega_j + \omega_k)^2 \; E(\omega_j) E(\omega_k) \right) \quad .
+     \label{gl_theo_nlo_ddot_p}
+\end{equation}
+If the wave equation  has to be fulfilled for
+three fixed but different frequencies $\omega_i$ for all
+times $t$ , it must be fulfilled independent of  $t$ for each
+$\omega_i$. To simplify things, we distinguish 
+incoming waves from outgoing waves by the sign of the
+frequency $\omega$ or the wave vector $k$: 
+incoming waves are given a negative sign.
+Likewise their amplitude $\hat{E}$ will be inserted as complex conjugated. Conservation of energy can then be conveniently expressed as $\sum
+\omega_i = 0$. Finally one obtains after some shuffling
+ three
+equations 
+\begin{equation}
+ \frac{d  \hat{E_a}(z)}{dz} \;
+= %
+- \; \frac{i}{2}   \sqrt{ \frac{\mu_0} {\epsilon_a}}\;\epsilon_0
+  \; \omega_a \; \chi^{(2)} \; \hat{E}_b^{\star} \hat{E}_c^{\star}  e^{-i  \Delta k \; z}
+  \qquad \text{with} \qquad \Delta k = \sum k_i
+  \label{eq_shg_e_of_z_nl}
+\end{equation}
+with  cyclically swapped  indices
+$\{a,b,c\} = \{1,2,3\} $.
+
+
+\section{Frequency Doubling}
+
+The simplest case of non-linear generation of new frequencies
+is the one already shown in figure \ref{fig_shg_nonlinear_polarization}: 
+ frequency doubling or second harmonic generation. It results from the equation
+\ref{eq_shg_e_of_z_nl}, if we set
+\begin{equation}
+  \omega_1 = \omega_2 = - \omega \qquad \text{and} \qquad
+  \omega_3 = 2\omega
+\end{equation}
+This satisfies the energy conservation. The
+conservation of momentum, in this context also called phase matching, is described by
+\begin{equation}
+ \Delta k = 2 k_{\omega} - k_{2 \omega} = 2 \omega
+ \sqrt{\epsilon_0 \; \mu_0} \left[ n(\omega) - n(2 \omega) \right]
+\end{equation}
+We will consider only the case of non-depleted pump, i.e., that the amplitude of the incomming wvae does not change although energy is transferred into the beam at the second harmonic, so that
+$\hat{E}_1(z) = \hat{E}_2(z)
+= const$. This allows simple integration of $\hat{E}_3(z) = \hat{E}_{2\omega}(z)$
+and we obtain
+\begin{eqnarray}
+ \hat{E}_{2\omega}(L) &=& - \; \frac{i}{2}   \sqrt{ \frac{\mu_0} {\epsilon_{2\omega}}}\;\epsilon_0
+  \; (2 \omega) \; \chi^{(2)} \; (\hat{E}_{\omega})^2   \int_0^L  e^{i  \Delta k \;
+  z'} dz  \\
+  &= & %
+- \;    \sqrt{ \frac{\mu_0} {\epsilon_{2\omega}}}\;\epsilon_0
+  \;  \omega \; \chi^{(2)} \; (\hat{E}_{\omega})^2  \, \frac{  e^{i  \Delta k \;
+  L} -1}{\Delta k}
+\end{eqnarray}
+and
+\begin{equation}
+  \left| \hat{E}_{2\omega}(L) \right|^2 = %
+  \frac{\mu_0} {\epsilon_{2\omega}} \; \left(\epsilon_0
+  \;  \omega \; \chi^{(2)} \right)^2 \; (\hat{E}_{\omega})^4  \; L^2 \, \text{sinc} ( \Delta k \; L /2 )
+   \quad . \label{eq_shg_efficiency_shg}
+\end{equation}
+The intensity at the doubled frequency is proportional to
+the square of the intensity of the incident wave, since two photons
+of frequency $\omega$ are converted into one photon of frequency $2\omega$. The conversion efficiency increases with the
+square of the crystal  length $L$. At the same time with 
+growing $L$ the condition for phase matching becomes stricter, because we need 
+$\Delta k \; L / 2 \ll 1 $. To obtain a high
+conversion efficiency, phase matching should therefore be
+be optimal. This also applies if the above restriction to
+constant intensity of the excitation wave is dropped.
+
+The influence of phase matching is qualitatively shown in figure
+\ref{fig_shg_phase_matching}. The upper part shows the nonlinear 
+polarization $P \propto E_{\omega}^2$. It oscillates
+at twice the frequency of the incident field. At the instances indicated by the circles,  a partial wave should  be generated with
+the doubled frequency (half wavelength). If the
+refractive index $n$ for both wavelengths $\lambda_1$ and
+$\lambda_2$ is equal, then both partial waves overlap
+constructively and the initial intensity of the second harmonic
+is rising. However, if the refractive index $n(\lambda_2)$ is higher,
+the two partial waves are partially extinguished and the
+output intensity is lower. Equation
+\ref{eq_shg_efficiency_shg} also shows that 
+phase matching (i.e. momentum conservation) does not need to be fulfilled  exactly.  The Heisenberg uncertainty relation gives some freedom
+\footcite{Demtroeder_laser,SalehTeich1991}:
+The conversion of the two fundamental photons into one second-harmonic photon 
+must occur somewhere in the crystal. This gives an upper limit for  the position uncertainty and thus a lower limit for the momentum uncertainty.
+Within
+of this  range of momentum mismatch frequency doubling  is possible, which is described by $\text{sinc}(\Delta k L/2)$.
+
+
+
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir theo_nlo_shg_phasematching.pdf}
+\caption{Schematic representation of 
+phase matching.
+In the instances marked by circles a
+partial wave with doubled frequency is launched. When the
+refractive indices $n(\omega)$ and $n(2 \omega)$ do not
+match, the partial waves cancel out each other  and
+the intensity of the second harmonic does not increase.}
+\label{fig_shg_phase_matching}
+\end{figure}
+
+
+\section{Phase matching by birefringent crystals}
+
+
+For optimum phase matching, the refractive index of
+excitation wave and second harmonic need to coincide. Since the
+refractive index  depends on the frequency of the field, this
+match is  usually not given. 
+Birefringent crystals provide a way out. In such crystals, the refractive index differs  
+ between ordinary and extraordinary
+polarized waves as long as the propagation direction is not along the
+optical crystal axis. Figure
+\ref{fig_shg_birefringence} shows the relationship between
+the axes. For the refractive index $n_{eo}(\omega, \theta)$ of a
+extraordinary wave holds
+\begin{equation}
+  \frac{1}{n_{eo}^2(\omega, \theta)} = \frac{\cos^2
+  \theta}{n_{o}^2(\omega)}+ \frac{\sin^2 \theta}{n_{eo}^2(\omega)} \quad
+  ,
+\end{equation}
+where $n_{eo}(\omega) = n_{eo}(\omega, \theta = \pi/2)$. 
+By choosing the 
+angle $\theta$ between the direction of propagation and
+of the optical crystal axis, the refractive index can now be tuned
+so that (in case of a negative uniaxial crystal with
+$n_{eo} < n_o$)
+\begin{equation}
+  n_{eo}(2 \omega, \theta) = n_0(\omega) \quad.
+\end{equation}
+This is illustrated by the example of $\beta$-Bariumborate (BBO,
+$\beta$-BaB$_2$O$_4$) in figure
+\ref{fig_shg_birefringence}. Funfdamental  and
+second harmonic  wave are polarized perpendicular to each other. With
+this method it is therefore possible to achieve optimum phase matching for
+a pair of frequencies $\omega$, $2\omega$. But it 
+has several disadvantages: The crystal must be rotated
+to achieve phase matching. This results in a variable beam
+offset
+when tuning the fundamental frequency, so that this method can only be used with great effort in a laser
+resonator. Moreover, to achieve a high intensity of the incident field, the laser beam
+needs to be focused tightly. However, this changes the angle of incidence over
+the beam cross section and thus the quality of the
+phase matching, so that not the whole beam is frequency doubled. Finally, birefringence means that the propagation direction of  ordinary and  extraordinary ray are different, so that they do not overlap optimally over the whole crystal length. The beams walk off.
+All these disadvantages are compensated by
+the so-called \emph{non-critical phase matching}
+\footcite{Demtroeder_laser,Hopf86}:
+the angle $\theta$ is chosen to be 90 degrees. Thus the
+refractive index $n_{eo}(\omega, \theta)$ depends only very weakly
+(not critical) on the angle of incidence $\theta$, so that
+the phase adjustment is equally good even with strong focusing. In this case
+the direction of propagation does not differ between ordinary and
+extraordinary beam, so that the entire crystal length
+can be exploited. To use  non-critical
+phase matching, the different
+temperature dependence of the two refractive indices is exploited  and
+the crystal is either cooled or heated. This process
+does not require a change of the beam path with variation
+the wavelength anymore, making it suitable for use in a
+laser resonator.
+
+\begin{figure}
+\center
+\includegraphics[width=\textwidth]{\currfiledir theo_nlo_shg_doppelbrech.pdf}
+\caption{Phase matching by birefringence using the example of
+$\beta$-barium borate (BBO). By suitable choice of the angle
+$\theta$ of the optical crystal axis to the direction of propagation of
+beams, the refractive index for the extraordinary wave is adjusted
+so that $n_{eo}(2 \omega, \theta) = n_0(\omega)$. }
+\label{fig_shg_birefringence}
+
+\end{figure}
+
+
+
+\section{Symmetry}
+
+
+\section{SHG at nanostructures}
+
+
+\section{SHG spectroscopy}
+
+
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]

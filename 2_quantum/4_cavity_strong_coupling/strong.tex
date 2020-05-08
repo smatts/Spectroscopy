@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 15, 2020}
+\renewcommand{\lastmod}{May 7, 2020}
 
 
 \chapter{Strong coupling of cavity and emitter}
@@ -9,15 +9,16 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Pelton data ?
+\item Assume a layer of quantum dots with dipole moment $\mu$ and area density $\sigma$ in the center of a planar $\lambda/2$ cavity of index of refraction $n=3.5$. Which dipole moment per area is required so that a coupling strength of $\hbar g = 80$~meV is reached, as in \cite{Reithmaier04}. Does it help that the authors used a pillar in stead of a planar cavity?
+
+\item Draw a level scheme to convince yourself of the Mollow Triplet and the Vacuum Rabi Splitting.
 \end{itemize}
 
 
 
 \section{Experiment}
 
-some text
-
+\cite{Reithmaier04}, observed strong coupling between a single emitter in solid state (a InGaAs quantum dot) and a micro-cavity. This is again an analogue of a coupled pendulum. One can not say anymore if the excitation is in the dot or in the cavity. On resonance, both cease to exist and new coupled stated emerge. The new states are in all properties mixtures of the old ones, for example in line width or intensity, see Fig. 4 in the manuscript.
 
 \section{Quantization of the light field}
 The Rabi model assumed a classical electrical field in which the particle nature of light is not relevant. But now we need to take the quantized nature of light into account. In quantum mechanics this is often called 'second quantization' and we will briefly have a look at the main results.
@@ -95,7 +96,9 @@ with the optical frequency $\omega$ and the zero of the energy scale set to the 
 Absorption of a photon ($\hat{a}$) excites the atom ($\hat{\sigma}_+$) and the other way round.
 The coupling constant $g$ is given by
 \begin{equation}
- g = - \mu_{eg} \, \sqrt{\frac{\omega}{2 \hbar \, \epsilon_0 \, V}}
+ g = \frac{\mu_{eg} \, E_{vac} }{\hbar}
+ =
+  \mu_{eg} \, \sqrt{\frac{\omega}{2 \hbar \, \epsilon_0 \, V}}
 \end{equation}
 where $\mu_{eg} $ is the projection of the transition dipole moment on the polarization direction of the light field. In total we have thus
 \begin{equation}
@@ -120,18 +123,28 @@ E_\pm = \left( n - \frac{1}{2} \right) \hbar \omega \, \pm \, \frac{1}{2} \hbar
 where $\Delta = \omega_0 - \omega$
 is energy difference between the uncoupled eigen-states, or the detuning between atom and field. The square-root is called generalized Rabi frequency $\Omega_R = \sqrt{\Delta^2 + 4 |g|^2 n}$. The new eigen-states are called dressed states $\ket{D_\pm}$ as the photons are 'dressing' the atom
 \begin{eqnarray}
-\ket{D_+} = \sin \theta \ket{g,n} + \cos \theta \ket{e,n-1} \\
-\ket{D_-} = \cos \theta \ket{g,n} - \sin \theta \ket{e,n-1} 
+\ket{D_+} &= &\sin \theta \ket{g,n} + \cos \theta \ket{e,n-1} \\
+\ket{D_-} & = &\cos \theta \ket{g,n} - \sin \theta \ket{e,n-1} 
 \end{eqnarray}
 with $\cos 2\theta = \Delta / \Omega_R$. On resonance, i.e. $\Delta = 0$, the two dressed states are the symmetric and anti-symmetric combinations of the uncoupled states.
 
 \section{Mollow Triplet}
+
+We now label the above dressed states by their characteristic photon number $n$ as $\ket{D_+^{(n)}}$ and $\ket{D_-^{(n)}}$. This allows us to take into account also the two states $\ket{D_+^{(n+1)}}$ and $\ket{D_-^{(n+1)}}$. 
+When $n \gg 1$ as in a laser field,  we can assume that the Rabi frequency $\Omega_R = \sqrt{\Delta^2 + 4 |g|^2 n}$ does not differ between these states. In this case, the four optical transitions that take out energy will lead to   only three different lines in the spectrum. This is called the Mollow Triplet. The (degenerate) center line is at the laser frequency, the outer two separated by the Rabi frequency.
+
 
 %https://demonstrations.wolfram.com/MollowTriplet/
 
 %https://demonstrations.wolfram.com/CavityQuantumElectrodynamicsWithBosonsEmissionSpectraInTheSt/
 
 \section{Vacuum Rabi Splitting}
+
+The splitting into dressed states $\ket{D_+^{(n)}}$ and $\ket{D_-^{(n)}}$ does only exist for a photon number $n \ge 1$. The uncoupled state $\ket{g, n=0}$ can not couple with the non-existing state   $\ket{e, n = -1}$. The lowest state in the ladder does thus not split. From there we can reach two states,  $\ket{D_+^{(1)}}$ and $\ket{D_-^{(1)}}$,
+by absorbing a single photon in the system. These two states are at  $\omega_0 \pm \hbar g$. (as $\omega_{cav} = \omega_{atom}$). This effect is called Vacuum Rabi Splitting, as it exists in the dark. The photon is only needed to detect its presence.
+
+A consequence of this effect is the photon blockade. The first photon can be absorbed at $\omega_0 \pm \hbar g$, but not a second one!  In this regime, we can not neglect that the Rabi frequency depends on the photon number $n$. The second pair of states is at 
+$2 \omega_0 \pm \sqrt{2} \hbar g$, i.e., not at twice the energy of the first pair. Absorbing the first photon blocks this transition for any further absorption.
 
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
