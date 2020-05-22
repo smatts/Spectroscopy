@@ -1,5 +1,5 @@
 \renewcommand{\lastmod}{May 7, 2020}
-\chapter{Two-photon absorption}
+\chapter{Two-Dimensional Spectroscopy}
 
 
 \section{Tasks}
@@ -10,11 +10,11 @@
 
 \section{Experiment}
 
-\section{History}
+\section{History of Two-Photon-Absorption}
 
 The possibility of simultaneous absorption of two photons in
-a quantum process was already described in 1931 by Maria Göppert-Mayer in
-of her dissertation\footcite{goeppert31}  'Über Elementarakte mit zwei Quantensprüngen' \sidenote{About elementary acts with two quantum jumps} . One year.
+a quantum process was  described already  in 1931  by Maria Göppert-Mayer in
+of her dissertation\footcite[About elementary acts with two quantum jumps]{goeppert31}  'Über Elementarakte mit zwei Quantensprüngen'. One year
 after the realization of the ruby laser by Maiman
 \footcite{maiman60} succeeded in 1961 the first experimental proof of
 two-photon excitation of CaF$_2$:Eu$^{2+}$ by Kaiser and
@@ -27,16 +27,16 @@ molecular beam (introduction in
 \cite{Demtroeder_laser}) and the optical
 spectroscopy of transitions which are forbidden for a single-photon process \footcite{birge86}. The development of 
 two-photon microscopy with the aim of detecting individual
-molecules began iwth the work of  \cite{denk90}.
+molecules began with the work of  \cite{denk90}. Nowadays, two-photon absorption is widely used in live science for imaging in tissues.
 
 \section{Second-order perturbation theory}
 
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{\currfiledir theo_nlo_tpe_qm_system.pdf}
 \caption{
-A distinction is made between the states of the absorbing system
-($|g>$, $|e'>$, $|e>$) and the states of the whole system, which
-also includes the light field with initially $n$ photons.}
+We distinguish between the states of the absorbing system
+($\ket{g}$, $\ket{e'}$, $\ket{e}$) and the states of the whole system, which
+also includes the light field with initially $n$ photons: $\ket{i}$, $\ket{x}$, $\ket{f}$. }
 \label{fig_tpe_qm_system}
 \end{marginfigure}
 
@@ -55,7 +55,7 @@ The wave function $\psi$ of the entire system is
 \psi = \sum_{\mu \in \{i, x, f\}} c_{\mu} \psi_{\mu} \quad.
 \end{equation}
 At the beginning the system is in ground state, so $c_i(0)
-= $1 and all others $c_{\mu}(0) = 0$. We are looking for the population
+= 1$ and all others $c_{\mu}(0) = 0$. We are looking for the population
 of the final state $\ket{f}$ depending on the time $t$, i.e.,
 $|c_f(t)|^2$. The Hamilton operator $H$ is splitted in a fixed and a perturbing part as
  $H = H^0 + H^S$ . 
@@ -106,7 +106,7 @@ P_e = \int D(\Delta \omega) \frac{|X_{fi}|^2}{\hbar^2} \; t^2 \;
 \omega) \quad .
 \end{equation}
 For times $t \gg 1 / \Gamma$ is $\text{sinc}^2\left[ \Delta
-\omega \,t / 2 \right]$ different from zero only for $\delta \omega = 0$  so that
+\omega \,t / 2 \right]$ different from zero only for $\Delta \omega = 0$  so that
 \begin{equation}
 P_e =  \frac{2}{ \Gamma} \frac{|X_{fi}|^2}{ \hbar^2} \; t \qquad
 \text{and} \qquad w_{fi} =  \frac{2}{ \Gamma} \frac{|X_{fi}|^2}{
@@ -147,8 +147,8 @@ constant, because it is advantageous to use a pulsed laser. This leads to an ave
   \left(\frac{\left< I \right>}{\hbar \; \omega}\right)^2 \quad .
 \end{equation}
 Here $g^{(2)}(\tau = 0)$ denotes the 
-intensity autocorrelation fucntion, evaluated at  time zero. 
-Knwoing the pulse hsape we can calculate 
+intensity autocorrelation function, evaluated at  time zero. 
+Knowing the pulse shape we can calculate 
  $g^{(2)}(\tau
 = 0)$ so that
 \begin{equation}
@@ -232,21 +232,16 @@ concentrate on this effect and find values of  $\sigma_{TPE}$ of more than 1000~
 
 With two-photon excitation 
 states in atoms and molecules can be reached that are not accessible for
-the one-photon absorption (OPA).
-In the case of TPE the parity of the
+ one-photon absorption (OPA).
+In the case of TPE  the parity of the
 initial state is equal to the final state, whereas it
 must be different for OPE.  However, even for
 large atoms the selection rules are relaxed, so that the distinction between
-different classes of states of molecules not always
-is possible. Figure~\ref{fig_tpe_trp} shows
+different classes of molecular states is not always
+ possible. Figure~\ref{fig_tpe_trp} shows
 absorption spectra of two amino acids, tryptophan and tyrosine,
 recorded with OPA and TPE. In both cases
 transitions of the aromatic part of the molecule are excited. 
-
-
-
-
-
 
 In the spectra of tyrosine it can be seen that the
 two-photon transition occurs at wavelengths shorter than one expects from 
@@ -263,8 +258,7 @@ leads to the fact that a mixture of these two amino acids in
 ratio Trp:Tyr = 1:25 for single-photon excitation ($\lambda =
 285$~nm) is dominated by tyrosine emission,  but at
 two-photon excitation at twice the wavelength  the
-tryptophan emission predominates\footcite{kierdaszuk95}. Therefore proteins can be excited by two-photons with 
- wavelengths shorter than 295~nm
+tryptophan emission dominates\footcite{kierdaszuk95}. Therefore proteins can be excited by two-photons with  wavelengths shorter than 295~nm
 without generating tyrosine fluorescence which is not the case for one-photon absorption.
 
 
