@@ -1,0 +1,54 @@
+\renewcommand{\lastmod}{June 3, 2020}
+
+
+\chapter{Weak coupling of cavity and emitter: Purcell Effect}
+
+
+
+
+\section{Tasks}
+
+\begin{itemize}
+\item Lutz Gong Experiment ?
+\end{itemize}
+
+
+
+\section{Experiment}
+
+
+
+\section{Spontaneous Emission}
+Spontaneous emission like fluorescence is a tricky problem from the point of view of quantum mechanics, which we tried to avoid up to now. The reason is that the electronic excited state is an eigen-state of the Hamilton operator and should be stable in time. As fluorescence also happens in the dark, an electric field that couples states in a perturbation operator does not help here. We circumvented this point by either discussing absorption (bright fields that couple states) or by using Einstein coefficients (no quantum mechanics). The quantization of the electrical field introduced in the last chapter now in principle allows to investigate spontaneous emission with the tools of quantum mechanics.
+
+We again couple two states of the type $\ket{g, n}$ and $\ket{e, n-1}$, i.e. $n$ photons in the cavity and the atom in either ground or excited state. Let us look at the case $n=1$, i.e. $\ket{g, 1}$ and $\ket{e, 0}$. This is what we need to describe spontaneous emission: an exited atom in a dark cavity coupled to the atom in the ground state with a single photon in the cavity. The coupling constant is again $g$, as defined in the last chapter, without any prefactors.
+
+The first thing to note is that a dark cavity without any photons ($n=0$) is not dark in all senses. The expectation value of the electric field is zero in this case
+\begin{equation}
+ \braket{ 0 | \hat{E} | 0} = 
+    E_{vac} \braket{0 | \hat{a}  + \hat{a}^\dagger    | 0  } 
+       = 0
+\end{equation}
+while the intensity does not vanish
+\begin{equation}
+ \braket{ 0 | \hat{E}^2 | 0} = E_{vac}^2
+    \braket{0 | (\hat{a}  + \hat{a}^\dagger )^2   | 0  }  
+    =    E_{vac}^2 \quad .
+\end{equation}
+We required the vacuum to contain the ground state energy of $\frac{1}{2} \hbar \omega$ which results in an non-zero in intensity. While the average value of the field is zero, its fluctuations lead to an average non-zero intensity. These vacuum fluctuation cause spontaneous emission. Spontaneous emission is stimulated emission by vacuum fluctuations.
+
+Second, spontaneous emission depends on the position of the atom in the cavity. The coupling constant $g$ is defined by
+\begin{equation}
+\hbar  g = \mu_{eg} \, E_{vac} 
+\end{equation}
+but the field amplitude $ E_{vac} $ inside the cavity is not constant, but a standing wave. At the nodes of the field the coupling constant $g$ is zero, for example when the two mirrors are separated by exactly a wavelength and the atom is positioned in the exactly the middle. In such a situation, the states $\ket{g, 1}$ and $\ket{e, 0}$ are \emph{not coupled} and the excited atom will not decay by spontaneous emission.\sidenote{Better: will not decay into this cavity mode. If other modes are available, for example of the free space, then the atom can decay by emission into these modes.}
+
+\section{Purcell Effect}
+
+
+\section{Drexhage's Experiment}
+
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
