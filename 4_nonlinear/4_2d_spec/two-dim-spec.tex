@@ -1,0 +1,253 @@
+\renewcommand{\lastmod}{July 7, 2020}
+\chapter{Two-Dimensional Spectroscopy}
+
+
+\section{Tasks}
+
+\begin{itemize}
+\item lkdlkweq
+\end{itemize}
+
+\section{Interaction Picture}
+
+A more complete introduction into 2D-spectroscopy and double-sided Feynman Diagrams can be found in \cite{Hamm-dummies} which is a short version of \cite{HammZanni2011} which is a short version of \cite{Mukamel1995}.
+
+
+In the Schrödinger picture, all the time-dependence sits in the wave function
+\begin{eqnarray}
+ \hat{H} & = & const. \\
+ \frac{d}{dt} \ket{\psi(t)} &=& - \frac{i}{\hbar} \, \hat{H} \, \ket{\psi(t)} \\
+ \braket{\hat{A}} &=& \braket{\psi(t) \, | \,\hat{A} \, |\, \psi(t) } 
+\end{eqnarray}
+The solution to the differential equation for $\ket{\psi(t)}$ is
+\begin{equation}
+ \ket{\psi(t)} =  \exp \left(- \frac{i}{\hbar} \hat{H} \, t \right) \,\ket{\psi(0)} 
+\end{equation}
+
+
+In the Heisenberg picture, all the time-dependence sits in the operator
+\begin{eqnarray}
+ \ket{\psi} &=& const. \\
+ \frac{d}{dt} \hat{A}(t) &=& - \frac{i}{\hbar} \, \left[ \hat{H} , \hat{A}(t) \right] \\
+ \braket{\hat{A}} &=& \braket{\psi \, | \,\hat{A} (t) \, |\, \psi } 
+\end{eqnarray}
+The solution to the differential equation for  $\hat{A}(t)$ is
+\begin{equation}
+ \hat{A}(t) = \exp \left(+ \frac{i}{\hbar} \hat{H} \, t \right) \, \hat{A}(0) \, \exp \left(- \frac{i}{\hbar} \hat{H} \, t \right)
+\end{equation}
+
+
+In the following, we will use the interaction picture, which is in a sense half-way between Schrödinger and Heisenberg: We assume a small perturbation $\hat{H}'(t)$ addition to an unperturbed $\hat{H}_0$
+\begin{equation}
+ \hat{H}(t) = \hat{H}_0 + \hat{H}'(t)
+\end{equation}
+The effect of  $\hat{H}_0$ is to modify the operators, while $\hat{H}'(t)$ modifies the wave functions
+\begin{eqnarray}
+  \frac{d}{dt} \ket{\psi(t)} &=& - \frac{i}{\hbar} \, \hat{H}' \, \ket{\psi(t)} \\
+ \frac{d}{dt} \hat{A}(t) &=& - \frac{i}{\hbar} \, \left[ \hat{H}_0 , \hat{A}(t) \right] \\
+ \braket{\hat{A}} &=& \braket{\psi(t) \, | \,\hat{A} (t) \, |\, \psi(t) } 
+\end{eqnarray}
+
+Using this formalism, we now integrate up the Schrödinger equation
+\begin{equation}
+\frac{d}{dt} \ket{\psi(t)} = - \frac{i}{\hbar} \, \hat{H}(t) \, \ket{\psi(t)} 
+\end{equation}
+and get
+\begin{eqnarray}
+\ket{\psi(t)}  & = & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \, \hat{H}(\tau) \, \ket{\psi(\tau)} \\ 
+ & \approx & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)} 
+\end{eqnarray}
+with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ to $t_2$
+\begin{equation}
+ U_0(t_2, t_1) = \exp \left(- \frac{i}{\hbar} \hat{H}_0 \, ( t_2- t_1) \right)
+\end{equation}
+The interpretation of eq. XX is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
+
+We are especially interested in the time evolution of the density matrix according to the Liouville-von Neumann equation. Starting from $\tau = t_0$, we take more and more interactions into account. $\rho^{(n)}$ describes the change of the density matrix assuming $n$ interactions between $\tau = t_0$ and $\tau = t$
+\begin{equation}
+\rho(t) = \rho(t_0)  + \sum_n  \rho^{(n)} (t)
+\end{equation}
+The term for $n=1$ reads, equivalent to eq. XXX above,
+\begin{equation}
+ \rho^{(1)} (t) = - \frac{i}{\hbar} \int_{t_0}^t \, d\tau \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau) \, , \, \rho(t_0) \right] \, U_0^\star (t, t_0)
+\end{equation}
+where $\hat{H}'_I(\tau) $ is the perturbation operator in the interaction representation, i.e., decorated with $\exp(\pm i H_0 (t-t0)/\hbar)$ on both sides. Multiple interactions now lead to cascaded commutators, i.e.
+\begin{equation}
+ \rho^{(2)} (t) = \left(- \frac{i}{\hbar}\right)^2   \int_{t_0}^t \, d\tau_2   \int_{t_0}^{\tau_2} \, d\tau_1 \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau_2) \, , \, \left[ \hat{H}'_I(\tau_1) \, , \, \rho(t_0) \right] \right] \, U_0^\star (t, t_0)
+\end{equation}
+
+In spectroscopy, we are interested in a perturbation operator $\hat{H}'$ that contains an $\mu \cdot E$ term for the incoming, exciting field. We see that $\rho^{(n)}$ depends on $n$ optical fields, so that we identify  these processes with the $n$-th order nonlinear processes described by the nonlinear susceptibility $\chi^{(n)}$. This nonlinear susceptibility creates a nonlinear polarization $P^{(n)}$. In quantum mechanics, this is the expectation value of the dipole operator 
+\begin{equation}
+P^{(n)} (t) = \braket{ \mu \, \rho^{(n)}(t) }
+\end{equation}
+For third-order nonlinear effects, we thus get
+\begin{equation}
+ \left(- \frac{i}{\hbar}\right)^3   \iiint E(\tau_3) E(\tau_2) E(\tau_1)
+ \braket{ \mu \, 
+  \left[ \mu_3 , \, \left[ \mu_2 , \, \left[ \mu_1 , \, \rho(t_0) \, \right] \right]  \right] }
+\end{equation}
+The cascaded commutator expands to $2^3=8$ terms, where one half is the complex-conjugate of the other, effectively giving $4$ terms.
+
+In the experiment, the electric fields for a third-order nonlinearity would be creates by three different laser pulses. Generally, each  electric field $E(\tau_i)$ at time $\tau_i$ could be a superposition of the three pulses. We make the approximation, that the pulses do not overlap in time (time ordering). We also assume that the pulses are shorter  than the time scale of the system\footnote{and thus shorter than the delay between the pulses}, but much longer than the oscillation period of the light wave. Each electric field can thus be described by two terms of the form $\exp( \pm i (\omega t - k r) )$. In total, this makes $2^3=8$ terms for the field, multiplied by the 4 terms from the commutator gives 32 terms.
+In the remaining, we try to keep track of all these terms.
+
+
+\section{Double-Sided Feynman Diagrams}
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir f1.png}
+\caption{
+Example of a Double-Sided Feynman Diagram.}
+\label{fig_2d_f1}
+\end{marginfigure}
+
+The idea is to describe the evolution of the density matrix when interacting with multiple optical fields.
+Time runs from bottom to top. The two vertical lines represent the ket (left) and bra (right) part of the density matrix element. The quantum numbers are written between the lines and we start from the ground state $\ket{0}\, \bra{0}$. Diagonal arrows represent the light fields interacting with the system. Inwards pointing arrows increase the quantum number, outwards pointing fields are the complex-conjugate with negative frequency that decrease the quantum number. The last, top-most arrow is drawn with a dashed or wavy line and represents the dipole operator $\mu$ outside the commutator in eq. XXX. This is the radiating nonlinear polarization. By convention, it is on the left side and points to the top left. This convention fixes the mirror symmetry that all schemes would exist also in a complex-conjugate form. At the end, after the nonlinear polarization is emitted, all coherences have to have vanished and the system has to be in a population state, i.e., both quantum number have to be identical\sidenote{but not necessarily zero}.
+
+
+
+We still have the choice of the sign in $E \propto \exp( \pm i (\omega t - k r) )$. We write this as  $\exp(- i (\omega t - k r) )$ and chose the sign of $\omega$ and $k$.
+A positive sign is represented by an arrow pointing to the right, a negative sign pointing to the left. The positive frequency is thus absorption at the left vertical line, or emission at the right, and the vice versa. Phase matching, i.e, $\Delta k = 0$ and the rotating wave approximation come together here. The number of left and right going arrows have to agree when including the special radiation polarization arrow.
+
+Each diagram has an overall sign, stemming from the minus sign in the commutators in eq. XXX. The sign is $(-1)^m$ where $m$ is the number of interactions on the right side of the diagram.
+
+The diagram represents a path between elements of the density matrix. As we have seen in the chapter on Rabi Oscillations when introducing the density matrix, a light field causes as first step a non-zero value of the corresponding off-diagonal element. A field acting from the left generates $\ket{1} \bra{0}$, while a field acting from the right generates $\ket{0} \bra{1}$. Figure XXX show sthe path in Liouville space that corresponds to our example Fig. XXX.
+
+
+
+At the end, we are interested in $P^{(3)}(t)$ or $P^{(3)}(\omega)$. We can easily obtain it by multiplying the elements along the path. In time domain\footcite{Mukamel1995,HammZanni2011,Hamm-dummies}, each interaction with an optical field contributes
+\begin{equation}
+ - \frac{i}{\hbar} \, \mu_{ba} \, E_i(t)  \, e^{-i \omega_i \, t}
+\end{equation}
+where $a$ ($b$) is the quantum number before (after) the interaction. When the arrow points to the left, the field is taken complex-conjugate (and thus with negative frequency, see below). The time interval $t_i$ between two interactions contributes 
+5
+\begin{equation}
+ e^{-i \, \omega_{ab} \, t_i - \Gamma_{ab} \, t_i}
+\end{equation}
+%
+where we have assume the state to be $\ket{a} \bra{b}$, and 
+$\hbar \omega_{ab} = E_a - E_b$ so that $\omega_{ab}  = - \omega_{ba} $. The last outgoing arrow of the radiating polarization only contributes a dipole moment, as this is the dipole moment multiplied to the left of the cascaded commutators.
+
+In frequency domain\footcite{Boyd2008,Shen2003}, we get for the interactions
+\begin{equation}
+ - \frac{i}{\hbar} \, \mu_{ba} \, E_i(\omega_i)  
+\end{equation}
+The phase evolution during the time interval $t_j$ needs a Fourier transform. 
+The Fourier-conjugate variable\footcite{Tokmakoff09} to $t_j$  is $\Omega_j$, which is the sum of all laser frequencies up to interaction $j$, i.e.,
+\begin{equation}
+ \Omega_j = \sum_{k=1}^j \pm \omega_k
+\end{equation}
+The sign is again taken from the direction of the arrow (positive to the right). We thus get\sidenote{check UNITS and prefactors}
+ by a Fourier transform\sidenote{Note that $P=0$ for $t_j < 0$}  along $t_j$ 
+\begin{equation}
+ e^{ (-i \omega_{ab} - \Gamma_{ab}) t_j }  \quad \rightarrow \quad
+ \frac{1}{\sqrt{2\pi}} \, \frac{i }{\Omega_j - \omega_{ab}  + i \Gamma_{ab} } 
+\end{equation}
+
+
+
+
+\section{Example: Pump-Probe Spectroscopy}
+
+Let us discuss pump-probe spectroscopy as an example. As we have seen in the chapter in four-wave mixing, pump-probe spectroscopy is a third-order nonlinear optical process of the form
+\begin{equation}
+ P^{(3)} =  \chi^{(3)} E_\text{pump} \, E_\text{pump}^\star \, E_\text{probe}
+\end{equation}
+We assume for simplicity that the probe pulse comes after the pump-pulse. The nonlinear emission has to be in the direction of the probe pulse so that it can serve as local oscillator. As the emitting arrow points to the left, the probe arrow has to point to the right. The sub-schemes A and B fulfill this requirement,.
+
+
+\begin{figure}
+\includegraphics[width=\textwidth]{\currfiledir f2.png}
+\caption{
+Building blocks for the interaction of the probe pulse (panels A and B) and the pump-pulse (panels 1 to 4) in a pump-probe experiment.}
+\label{fig_2d_f2}
+\end{figure}
+
+The direction of the pump beam has to cancel out, $E_\text{pump} $ enters only as absolute-squared. This means that the two pump arrows have to point in different directions. The sub-schemes 1 to 4 fulfill this requirement.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{\currfiledir f3.png}
+\caption{
+Six double-sided Feynman diagrams describe pump-probe spectroscopy.}
+\label{fig_2d_f3}
+\end{figure}
+
+Of the eight combinations two are not allowed. The variants A3 and A4 would describe  emission from ground state  $\ket{0} \bra{0}$ which is of course forbidden. Variants A2 and A2 describe stimulated emission, B1 and B2 excited state absorption and B3 and B4 ground state bleaching.
+
+From the diagrams we can now read the nonlinear polarization, multiplying together the contribution of each interaction and the times $t_i$ between them.
+For the diagram A1 and A2 we get
+\begin{eqnarray}
+P^{(3)}_{A1} & =& \frac{i}{\hbar^3} \,  E_1 E_2^\star E_3 \, \mu_{10}^4 \,
+e^{ (-i \omega_{10} - \Gamma_{10}) t_1 } \,
+e^{  - \Gamma_{11} t_2 } \,
+e^{ (-i \omega_{10} - \Gamma_{10}) t_3 }  \\
+P^{(3)}_{A2} & =& \frac{i}{\hbar^3} \,  E_1^\star E_2 E_3 \, \mu_{10}^4 \,
+e^{ (+i \omega_{10} - \Gamma_{10}) t_1 } \,
+e^{  - \Gamma_{11} t_2 } \,
+e^{ (-i \omega_{10} - \Gamma_{10}) t_3 }  
+\end{eqnarray}
+where only the direction of the phase rotation during time interval $t_1$ between the first and second interaction changes (and the field that enters stared). In pump-probe spectroscopy we assume that both $E_1$ and $E_2$ stem from the same laser pulse, the pump pulse, and that we can neglect $t_1$ as the pulse is short. We thus get for stimualted emission (SE)
+\begin{eqnarray}
+P^{(3)}_{SE} & =& 2 \frac{i}{\hbar^3} \,  | E_\text{pump}|^2 E_\text{probe} \, \mu_{10}^4 \,
+e^{  - \Gamma_{11} t_2 } \,
+e^{ (-i \omega_{10} - \Gamma_{10}) t_3 } 
+\end{eqnarray}
+In a similar way we get for excited state absorption (ESA) and ground state bleaching (GSB)
+\begin{eqnarray}
+P^{(3)}_{ESA} & =& -2 \frac{i}{\hbar^3} \,  | E_\text{pump}|^2 E_\text{probe} \, \mu_{10}^2 \mu_{21}^2 \,
+e^{  - \Gamma_{11} t_2 } \,
+e^{ (-i \omega_{21} - \Gamma_{21}) t_3 }  \\
+P^{(3)}_{GSB}  & =& 2 \frac{i}{\hbar^3} \,  | E_\text{pump}|^2 E_\text{probe} \, \mu_{10}^4 \,
+e^{ (-i \omega_{10} - \Gamma_{10}) t_3 } 
+\end{eqnarray}
+The minus sign in the ESA term stems from the global sign of the diagram, as the ESA diagrams have only one interaction from the right side. The GSB term does not contain a decay of the population during time interval $t_2$, as the ground state does not decay. When we neglect the decay of the population during $t_2$, the terms for GSB and SE are identical. The nonlinear polarization is the sum of these three terms.
+
+
+As discussed in the chapter on the free induction decay, a polarization (or coherence) is source of a radiated field that interference with a local oscillator, if present. In pump-probe spectroscopy, the probe field acts as local oscillator. The pump-induced variation in the probe power is caused by the cross term of local oscillator and signal field
+\begin{equation}
+ \Delta P = \frac{1}{2} \epsilon_0 \int_\text{pulse}  2 E_\text{probe} \; \Im (E_\text{signal} ) \, dt 
+ = N L \frac{k}{2}  \int_\text{pulse}   E_\text{probe} \; \Im ( P^{(3)} ) \, dt
+\end{equation}
+
+For pump-probe spectroscopy we get for the differential spectrum, assuming a spectrally flat probe pulse with $\omega_3 = \omega_\text{probe}$
+\begin{equation}
+\frac{\Delta P (\omega_3)} {P_\text{probe}(\omega_3)} 
+\propto
+%=  N L \frac{k}{2 \sqrt{2 \pi} \hbar^3}  | E_\text{pump}|^2  \left( 
+- \frac{4 \, \mu_{10}^4 \, \Gamma_{10} } { (\omega_3 - \omega_{10})^2 + \Gamma_{10}^2} 
++ \frac{2 \, \mu_{10}^2  \, \mu_{21}^2 \, \Gamma_{21} } { (\omega_3 - \omega_{21})^2 + \Gamma_{21}^2} 
+%\right)
+\end{equation}
+
+
+\section{Two-Photon Absorption}
+
+The formalism of double-sided Feynman diagrams allows us to obtain results from perturbation theory by just reading the diagram. For comparison, we turn back to the example of \cite{Winterhalder11}, discussed in the last chapter. We read the $\nu g $-coherence as
+\begin{equation}
+\rho_{\nu g}(t_1, t_2) = \frac{(-i)^2}{\hbar^2} \, \mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 \,
+e^{-i \omega_{eg} t_1 - \Gamma_{eg} t_1} \, 
+e^{-i \omega_{\nu g} t_2 - \Gamma_{\nu g} t_2} 
+\end{equation}
+Fourier transformation leads to\sidenote{someone should check units !}
+\begin{eqnarray}
+\rho_{\nu g}(\omega_1, \omega_2) &=& \frac{(-i)^2}{\hbar^2} \, \mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 \,
+  \frac{1}{2\pi} \, \frac{i }{\Omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
+  \, \frac{i }{\Omega_2  -\omega_{\nu g}  + i \Gamma_{\nu g} } \\
+  %
+  &=& \frac{\mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 }{2\pi \hbar^2} \,
+  \frac{1 }{\omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
+  \, \frac{1}{\omega_1 - \omega_2  -\omega_{\nu g}  + i \Gamma_{\nu g} } 
+\end{eqnarray}
+which is eq. 1b in \cite{Winterhalder11}
+%
+%
+%\begin{marginfigure}
+%%\includegraphics[width=\textwidth]{\currfiledir theo_nlo_tpe_qm_system.pdf}
+%\caption{
+%We distinguish between the states of the absorbing system
+%($\ket{g}$, $\ket{e'}$, $\ket{e}$) and the states of the whole system, which
+%also includes the light field with initially $n$ photons: $\ket{i}$, $\ket{x}$, $\ket{f}$. }
+%\label{fig_2d}
+%\end{marginfigure}
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
