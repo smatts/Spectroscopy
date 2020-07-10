@@ -1,11 +1,15 @@
-\renewcommand{\lastmod}{July 7, 2020}
+\renewcommand{\lastmod}{July 10, 2020}
 \chapter{Two-Dimensional Spectroscopy}
 
 
 \section{Tasks}
 
 \begin{itemize}
-\item lkdlkweq
+\item Find all possible Feynman diagrams for a 3-level V-system, by hand or using a computer. Group them by their phase-matching condition. Assume some parameters and plot 2D spectra. The elearning course has some useful Matlab routines.
+
+\item Investigate the possibility of 2D spectroscopy to find coupling between systems with the example of a 'diamond' level system. A ground state $\ket{0}$ is connected to a top-most excited state $\ket{3}$ via two 'paths' passing state $\ket{1}$ or $\ket{2}$. The energetic position of state $\ket{3}$ is $E_3 = E_1 + E_2 + \delta$ ($E_0= 0$). Discuss why $\delta = 0$ corresponds to two uncoupled systems. Plot the rephased and non-rephased spectra and their sum for zero and non-zero values of $\delta$.
+
+
 \end{itemize}
 
 \section{Interaction Picture}
@@ -85,6 +89,7 @@ For third-order nonlinear effects, we thus get
  \left(- \frac{i}{\hbar}\right)^3   \iiint E(\tau_3) E(\tau_2) E(\tau_1)
  \braket{ \mu \, 
   \left[ \mu_3 , \, \left[ \mu_2 , \, \left[ \mu_1 , \, \rho(t_0) \, \right] \right]  \right] }
+  \label{eq:2d-p3-commutator}
 \end{equation}
 The cascaded commutator expands to $2^3=8$ terms, where one half is the complex-conjugate of the other, effectively giving $4$ terms.
 
@@ -102,18 +107,23 @@ Example of a Double-Sided Feynman Diagram.}
 \end{marginfigure}
 
 The idea is to describe the evolution of the density matrix when interacting with multiple optical fields.
-Time runs from bottom to top. The two vertical lines represent the ket (left) and bra (right) part of the density matrix element. The quantum numbers are written between the lines and we start from the ground state $\ket{0}\, \bra{0}$. Diagonal arrows represent the light fields interacting with the system. Inwards pointing arrows increase the quantum number, outwards pointing fields are the complex-conjugate with negative frequency that decrease the quantum number. The last, top-most arrow is drawn with a dashed or wavy line and represents the dipole operator $\mu$ outside the commutator in eq. XXX. This is the radiating nonlinear polarization. By convention, it is on the left side and points to the top left. This convention fixes the mirror symmetry that all schemes would exist also in a complex-conjugate form. At the end, after the nonlinear polarization is emitted, all coherences have to have vanished and the system has to be in a population state, i.e., both quantum number have to be identical\sidenote{but not necessarily zero}.
+Time runs from bottom to top. The two vertical lines represent the ket (left) and bra (right) part of the density matrix element. The quantum numbers are written between the lines and we start from the ground state $\ket{0}\, \bra{0}$. Diagonal arrows represent the light fields interacting with the system. Inwards pointing arrows increase the quantum number, outwards pointing fields are the complex-conjugate with negative frequency that decrease the quantum number. The last, top-most arrow is drawn with a dashed or wavy line and represents the dipole operator $\mu$ outside the commutator in eq. \ref{eq:2d-p3-commutator}. This is the radiating nonlinear polarization. By convention, it is on the left side and points to the top left. This convention fixes the mirror symmetry that all schemes would exist also in a complex-conjugate form. At the end, after the nonlinear polarization is emitted, all coherences have to have vanished and the system has to be in a population state, i.e., both quantum number have to be identical\sidenote{but not necessarily zero}.
 
 
 
 We still have the choice of the sign in $E \propto \exp( \pm i (\omega t - k r) )$. We write this as  $\exp(- i (\omega t - k r) )$ and chose the sign of $\omega$ and $k$.
 A positive sign is represented by an arrow pointing to the right, a negative sign pointing to the left. The positive frequency is thus absorption at the left vertical line, or emission at the right, and the vice versa. Phase matching, i.e, $\Delta k = 0$ and the rotating wave approximation come together here. The number of left and right going arrows have to agree when including the special radiation polarization arrow.
 
-Each diagram has an overall sign, stemming from the minus sign in the commutators in eq. XXX. The sign is $(-1)^m$ where $m$ is the number of interactions on the right side of the diagram.
+Each diagram has an overall sign, stemming from the minus sign in the commutators in eq. \ref{eq:2d-p3-commutator}. The sign is $(-1)^m$ where $m$ is the number of interactions on the right side of the diagram.
 
-The diagram represents a path between elements of the density matrix. As we have seen in the chapter on Rabi Oscillations when introducing the density matrix, a light field causes as first step a non-zero value of the corresponding off-diagonal element. A field acting from the left generates $\ket{1} \bra{0}$, while a field acting from the right generates $\ket{0} \bra{1}$. Figure XXX show sthe path in Liouville space that corresponds to our example Fig. XXX.
+The diagram represents a path between elements of the density matrix. As we have seen in the chapter on Rabi Oscillations when introducing the density matrix, a light field causes as first step a non-zero value of the corresponding off-diagonal element. A field acting from the left generates $\ket{1} \bra{0}$, while a field acting from the right generates $\ket{0} \bra{1}$. Figure \ref{fig_2d_path} shows possible path in Liouville space (that do not correspond to our example Fig. \ref{fig_2d_f1}).
 
-
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir f4.png}
+\caption{
+Two different paths  through the density matrix by applying four times the dipole operator.}
+\label{fig_2d_path}
+\end{marginfigure}
 
 At the end, we are interested in $P^{(3)}(t)$ or $P^{(3)}(\omega)$. We can easily obtain it by multiplying the elements along the path. In time domain\footcite{Mukamel1995,HammZanni2011,Hamm-dummies}, each interaction with an optical field contributes
 \begin{equation}
@@ -141,7 +151,7 @@ The sign is again taken from the direction of the arrow (positive to the right).
  by a Fourier transform\sidenote{Note that $P=0$ for $t_j < 0$}  along $t_j$ 
 \begin{equation}
  e^{ (-i \omega_{ab} - \Gamma_{ab}) t_j }  \quad \rightarrow \quad
- \frac{1}{\sqrt{2\pi}} \, \frac{i }{\Omega_j - \omega_{ab}  + i \Gamma_{ab} } 
+ \frac{i }{\Omega_j - \omega_{ab}  + i \Gamma_{ab} } 
 \end{equation}
 
 
@@ -186,7 +196,7 @@ e^{ (+i \omega_{10} - \Gamma_{10}) t_1 } \,
 e^{  - \Gamma_{11} t_2 } \,
 e^{ (-i \omega_{10} - \Gamma_{10}) t_3 }  
 \end{eqnarray}
-where only the direction of the phase rotation during time interval $t_1$ between the first and second interaction changes (and the field that enters stared). In pump-probe spectroscopy we assume that both $E_1$ and $E_2$ stem from the same laser pulse, the pump pulse, and that we can neglect $t_1$ as the pulse is short. We thus get for stimualted emission (SE)
+where only the direction of the phase rotation during time interval $t_1$ between the first and second interaction changes (and the field that enters stared). In pump-probe spectroscopy we assume that both $E_1$ and $E_2$ stem from the same laser pulse, the pump pulse, and that we can neglect $t_1$ as the pulse is short. We thus get for stimulated emission (SE)
 \begin{eqnarray}
 P^{(3)}_{SE} & =& 2 \frac{i}{\hbar^3} \,  | E_\text{pump}|^2 E_\text{probe} \, \mu_{10}^4 \,
 e^{  - \Gamma_{11} t_2 } \,
@@ -220,7 +230,7 @@ For pump-probe spectroscopy we get for the differential spectrum, assuming a spe
 \end{equation}
 
 
-\section{Two-Photon Absorption}
+\section{Example: Two-Photon Absorption}
 
 The formalism of double-sided Feynman diagrams allows us to obtain results from perturbation theory by just reading the diagram. For comparison, we turn back to the example of \cite{Winterhalder11}, discussed in the last chapter. We read the $\nu g $-coherence as
 \begin{equation}
@@ -231,23 +241,60 @@ e^{-i \omega_{\nu g} t_2 - \Gamma_{\nu g} t_2}
 Fourier transformation leads to\sidenote{someone should check units !}
 \begin{eqnarray}
 \rho_{\nu g}(\omega_1, \omega_2) &=& \frac{(-i)^2}{\hbar^2} \, \mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 \,
-  \frac{1}{2\pi} \, \frac{i }{\Omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
+    \frac{i }{\Omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
   \, \frac{i }{\Omega_2  -\omega_{\nu g}  + i \Gamma_{\nu g} } \\
   %
-  &=& \frac{\mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 }{2\pi \hbar^2} \,
+  &=& \frac{\mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 }{\hbar^2} \,
   \frac{1 }{\omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
   \, \frac{1}{\omega_1 - \omega_2  -\omega_{\nu g}  + i \Gamma_{\nu g} } 
 \end{eqnarray}
-which is eq. 1b in \cite{Winterhalder11}
-%
-%
-%\begin{marginfigure}
-%%\includegraphics[width=\textwidth]{\currfiledir theo_nlo_tpe_qm_system.pdf}
-%\caption{
-%We distinguish between the states of the absorbing system
-%($\ket{g}$, $\ket{e'}$, $\ket{e}$) and the states of the whole system, which
-%also includes the light field with initially $n$ photons: $\ket{i}$, $\ket{x}$, $\ket{f}$. }
-%\label{fig_2d}
-%\end{marginfigure}
+which is eq. 1b in \cite{Winterhalder11}.
+ 
+
+\section{2D spectroscopy}
+
+
+In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by in interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the forth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir 2d_1.png}
+\caption{The phase-matching direction selects the observed process. Interference with a local oscillator allows detection of a complex-valued polarization.}
+\label{fig_2d_setup}
+\end{marginfigure}
+
+
+How can we do spectroscopy when all laser pulses have the same spectrum? The approach is the same as in Fourier transform (infrared) spectroscopy. Two laser pulses separated by a short time interval interfere with each other and lead to a sinusoidal modulation of the combined spectrum. Fourier transform from the delay time interval to frequency space then gives the frequency axis for spectroscopy. In 2D spectroscopy, we Fourier-transform along the first and third time interval. During these times, the system is in a coherent superposition between two states, described by the density matrix element $\ket{a}\bra{b}$ with $a \neq b$. The second, not Fourier-transformed time interval is called population time, as here the system is (typically) in a population state $\ket{a}\bra{a}$. Note that the third time interval needs an end. It ends via the radiation of the nonlinear polarization. This is not controlled by a laser pulse on the system. However, when we use the fourth laser pulse as local oscillator, we can decide at which  time we want to amplify and then detected the emitting polarization. Or we let physics do the Fourier transform and detected the emitted radiation without further interference by a spectrometer, which does not need time resolution.\sidenote{We detect $|P|^2$ in this way, not the complex valued $P$.}
+
+We obtain 2D spectra, along an excitation and a detection frequency, for a fixed population time interval $t_2$. One can imagine getting similar spectra by scanning both pump and probe wavelength in a pump-probe experiment. One big difference is that the pulses in such a pump-probe experiment would need to be rather long, as they need to be spectrally rather narrow. This limits the time resolution in $t_2$. With the four-pulse experiment, we get both high time resolution and spectral information.
+
+Which features do we find in a 2D spectrum? Along the diagonal, it contains the linear absorption spectrum. We pump and probe the same molecules. If our ensemble of molecules is inhomogeneously broadened, i.e., the molecule differ in absorption wavelength much more than the width of their individual absorption spectrum, then the peak in the 2D spectrum will be elongated along the diagonal and narrow along the anti-diagonal. We pump one sub-ensemble of molecules, and only these will not be able to absorb the probe pulse. 2D spectroscopy thus can distinguish between homogeneous and inhomogeneous broadening, similar to spectral hole burning.
+
+
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{\currfiledir 2d_2.png}
+\caption{An inhomogeneous ensemble of molecules leads to a elongated peak in the 2D spectrum. Along the anti-diagonal direction it has the \emph{homogeneous} linewidth.}
+\label{fig_2d_inhom}
+\end{marginfigure}
+
+
+
+2D spectroscopy can also find coupled (or interacting) systems. With linear spectroscopy, we only find the energy difference between initial and final state. When we have two peaks in an absorption spectrum, we can not say if there are three or four states involved. We could have two  different molecules (4 states) or a V level system in one molecule (3 states). 2D spectroscopy can decide this question: In the coupled case, we find cross-peaks at the  other two corners  of the square which is formed by the two transition frequencies. At these points, we pump one transition and find an influence on the other transition. This is only possible if these transitions are somehow coupled. Molecule A would not care if molecule B would be excited.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{\currfiledir 2d_3.png}
+\caption{Cross-peaks outside the diagonal signal coupling between systems. This information is not present in the linear absorption spectrum.}
+\label{fig_2d_crosspeak}
+\end{figure}
+
+
+\section{Rephasing}
+
+The set of all allowed double-sided Feynman diagrams for a given quantum-mechanical system can be grouped by their phase-matching condition, i.e., the signs on front of the $\pm k_i$. An important property of these groups of diagrams is whether rephasing occurs or not. The question is how the coherences during interval one and three are related. When the system is during interval one in state $\ket{a}\bra{b}$  and then during interval three in state $\ket{b}\bra{a}$, this is called rephasing. Both intervals cancel their phase contribution to $P^{(3)}$, as
+\begin{equation}
+  e^{- i \omega_{ba} \, t_1} \,   e^{- i \omega_{ab} \, t_3} =   e^{- i  \omega_{ba} \, ( t_1 - t_3)}
+\end{equation}
+This is important as the transition energy $\hbar \omega_{ba}$ varies between different molecules in an ensemble and fluctuates for a single molecule during time. In rephasing diagrams the influence of this homogeneity is canceled out. This is very similar to the echo formation in pulsed NMR, as the sign of the phase factor represents the rotation direction. Rephasing diagrams let the phase rotate first in one direction, then in the opposite direction, so that all 'runners' arrive together again.\footnote{See the 'runner' example for NMR echos is this sounds strange to you.} When adding rephasing and non-rephasing 2D spectra, one obtains a purely absorptive spectrum which has narrow peaks and no side-effects from Fouier transform.
+
+
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
