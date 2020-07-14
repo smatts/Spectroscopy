@@ -59,23 +59,23 @@ Using this formalism, we now integrate up the Schrödinger equation
 and get
 \begin{eqnarray}
 \ket{\psi(t)}  & = & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \, \hat{H}(\tau) \, \ket{\psi(\tau)} \\ 
- & \approx & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)} 
+ & \approx & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)}  \label{eq:2d_time_evol}
 \end{eqnarray}
 with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ to $t_2$
 \begin{equation}
  U_0(t_2, t_1) = \exp \left(- \frac{i}{\hbar} \hat{H}_0 \, ( t_2- t_1) \right)
 \end{equation}
-The interpretation of eq. XX is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
+The interpretation of eq. \ref{eq:2d_time_evol} is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
 
 We are especially interested in the time evolution of the density matrix according to the Liouville-von Neumann equation. Starting from $\tau = t_0$, we take more and more interactions into account. $\rho^{(n)}$ describes the change of the density matrix assuming $n$ interactions between $\tau = t_0$ and $\tau = t$
 \begin{equation}
 \rho(t) = \rho(t_0)  + \sum_n  \rho^{(n)} (t)
 \end{equation}
-The term for $n=1$ reads, equivalent to eq. XXX above,
+The term for $n=1$ reads, equivalent to eq.  \ref{eq:2d_time_evol}  above,
 \begin{equation}
  \rho^{(1)} (t) = - \frac{i}{\hbar} \int_{t_0}^t \, d\tau \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau) \, , \, \rho(t_0) \right] \, U_0^\star (t, t_0)
 \end{equation}
-where $\hat{H}'_I(\tau) $ is the perturbation operator in the interaction representation, i.e., decorated with $\exp(\pm i H_0 (t-t0)/\hbar)$ on both sides. Multiple interactions now lead to cascaded commutators, i.e.
+where $\hat{H}'_I(\tau) $ is the perturbation operator in the interaction representation, i.e., decorated with $\exp(\pm i H_0 (t-t_0)/\hbar)$ on both sides. Multiple interactions now lead to cascaded commutators, i.e.
 \begin{equation}
  \rho^{(2)} (t) = \left(- \frac{i}{\hbar}\right)^2   \int_{t_0}^t \, d\tau_2   \int_{t_0}^{\tau_2} \, d\tau_1 \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau_2) \, , \, \left[ \hat{H}'_I(\tau_1) \, , \, \rho(t_0) \right] \right] \, U_0^\star (t, t_0)
 \end{equation}
@@ -93,7 +93,7 @@ For third-order nonlinear effects, we thus get
 \end{equation}
 The cascaded commutator expands to $2^3=8$ terms, where one half is the complex-conjugate of the other, effectively giving $4$ terms.
 
-In the experiment, the electric fields for a third-order nonlinearity would be creates by three different laser pulses. Generally, each  electric field $E(\tau_i)$ at time $\tau_i$ could be a superposition of the three pulses. We make the approximation, that the pulses do not overlap in time (time ordering). We also assume that the pulses are shorter  than the time scale of the system\footnote{and thus shorter than the delay between the pulses}, but much longer than the oscillation period of the light wave. Each electric field can thus be described by two terms of the form $\exp( \pm i (\omega t - k r) )$. In total, this makes $2^3=8$ terms for the field, multiplied by the 4 terms from the commutator gives 32 terms.
+In the experiment, the electric fields for a third-order nonlinearity would be created by three different laser pulses. Generally, each  electric field $E(\tau_i)$ at time $\tau_i$ could be a superposition of the three pulses. We make the approximation, that the pulses do not overlap in time (time ordering). We also assume that the pulses are shorter  than the time scale of the system\footnote{and thus shorter than the delay between the pulses}, but much longer than the oscillation period of the light wave. Each electric field can thus be described by two terms of the form $\exp( \pm i (\omega t - k r) )$. In total, this makes $2^3=8$ terms for the field, multiplied by the 4 terms from the commutator gives 32 terms.
 In the remaining, we try to keep track of all these terms.
 
 
@@ -130,12 +130,12 @@ At the end, we are interested in $P^{(3)}(t)$ or $P^{(3)}(\omega)$. We can easil
  - \frac{i}{\hbar} \, \mu_{ba} \, E_i(t)  \, e^{-i \omega_i \, t}
 \end{equation}
 where $a$ ($b$) is the quantum number before (after) the interaction. When the arrow points to the left, the field is taken complex-conjugate (and thus with negative frequency, see below). The time interval $t_i$ between two interactions contributes 
-5
+%
 \begin{equation}
  e^{-i \, \omega_{ab} \, t_i - \Gamma_{ab} \, t_i}
 \end{equation}
 %
-where we have assume the state to be $\ket{a} \bra{b}$, and 
+where we have assumed the state to be $\ket{a} \bra{b}$, and 
 $\hbar \omega_{ab} = E_a - E_b$ so that $\omega_{ab}  = - \omega_{ba} $. The last outgoing arrow of the radiating polarization only contributes a dipole moment, as this is the dipole moment multiplied to the left of the cascaded commutators.
 
 In frequency domain\footcite{Boyd2008,Shen2003}, we get for the interactions
@@ -159,7 +159,7 @@ The sign is again taken from the direction of the arrow (positive to the right).
 
 \section{Example: Pump-Probe Spectroscopy}
 
-Let us discuss pump-probe spectroscopy as an example. As we have seen in the chapter in four-wave mixing, pump-probe spectroscopy is a third-order nonlinear optical process of the form
+Let us discuss pump-probe spectroscopy as an example. As we have seen on the chapter in four-wave mixing, pump-probe spectroscopy is a third-order nonlinear optical process of the form
 \begin{equation}
  P^{(3)} =  \chi^{(3)} E_\text{pump} \, E_\text{pump}^\star \, E_\text{probe}
 \end{equation}
@@ -254,7 +254,7 @@ which is eq. 1b in \cite{Winterhalder11}.
 \section{2D spectroscopy}
 
 
-In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by in interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the forth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
+In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by  interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the forth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ is used to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
 
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{\currfiledir 2d_1.png}
@@ -293,7 +293,7 @@ The set of all allowed double-sided Feynman diagrams for a given quantum-mechani
 \begin{equation}
   e^{- i \omega_{ba} \, t_1} \,   e^{- i \omega_{ab} \, t_3} =   e^{- i  \omega_{ba} \, ( t_1 - t_3)}
 \end{equation}
-This is important as the transition energy $\hbar \omega_{ba}$ varies between different molecules in an ensemble and fluctuates for a single molecule during time. In rephasing diagrams the influence of this homogeneity is canceled out. This is very similar to the echo formation in pulsed NMR, as the sign of the phase factor represents the rotation direction. Rephasing diagrams let the phase rotate first in one direction, then in the opposite direction, so that all 'runners' arrive together again.\footnote{See the 'runner' example for NMR echos is this sounds strange to you.} When adding rephasing and non-rephasing 2D spectra, one obtains a purely absorptive spectrum which has narrow peaks and no side-effects from Fouier transform.
+This is important as the transition energy $\hbar \omega_{ba}$ varies between different molecules in an ensemble and fluctuates for a single molecule during time. In rephasing diagrams the influence of this inhomogeneity is canceled out. This is very similar to the echo formation in pulsed NMR, as the sign of the phase factor represents the rotation direction. Rephasing diagrams let the phase rotate first in one direction, then in the opposite direction, so that all 'runners' arrive together again.\footnote{See the 'runner' example for NMR echos is this sounds strange to you.} When adding rephasing and non-rephasing 2D spectra, one obtains a purely absorptive spectrum which has narrow peaks and no side-effects from Fourier transform.
 
 
 

@@ -1,0 +1,4 @@
+double-sided Feynman diagrams in Matlab
+
+Diese Sammlung von Skripten berechnet die NL Polarisation in Zeit und Frequenz eines gegebene double-sided Diagramms. Los geht es mit "tracks_demo.m". Diese benutzt nur die Frequenz-Domaine. Alternativ kann man das auch in der Zeit-Domaine machen und via "my2DFFT" konvertieren. Ich hab mir noch ein Skript geschrieben, das alle möglichen Diagramme erzeugt, aber das dürfen sie selber machen.
+
