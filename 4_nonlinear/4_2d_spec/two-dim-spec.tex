@@ -41,43 +41,66 @@ The solution to the differential equation for  $\hat{A}(t)$ is
 \end{equation}
 
 
-In the following, we will use the interaction picture, which is in a sense half-way between Schrödinger and Heisenberg: We assume a small perturbation $\hat{H}'(t)$ addition to an unperturbed $\hat{H}_0$
+The formalism uses the  interaction picture, which is in a sense half-way between Schrödinger and Heisenberg: We assume a small perturbation $\hat{H}'(t)$ addition to an unperturbed $\hat{H}_0$
 \begin{equation}
- \hat{H}(t) = \hat{H}_0 + \hat{H}'(t)
+ \hat{H}(t) = \hat{H}_0 + \hat{H}'(t) \label{eq:2d_hamilton_perturbation}
 \end{equation}
 The effect of  $\hat{H}_0$ is to modify the operators, while $\hat{H}'(t)$ modifies the wave functions
 \begin{eqnarray}
-  \frac{d}{dt} \ket{\psi(t)} &=& - \frac{i}{\hbar} \, \hat{H}' \, \ket{\psi(t)} \\
+  \frac{d}{dt} \ket{\psi(t)} &=& - \frac{i}{\hbar} \, \hat{H}' \, \ket{\psi(t)}  \label{eq:2d_schroedinger_interaction}\\
  \frac{d}{dt} \hat{A}(t) &=& - \frac{i}{\hbar} \, \left[ \hat{H}_0 , \hat{A}(t) \right] \\
  \braket{\hat{A}} &=& \braket{\psi(t) \, | \,\hat{A} (t) \, |\, \psi(t) } 
 \end{eqnarray}
 
-Using this formalism, we now integrate up the Schrödinger equation
+
+In the interaction picture, we now can integrate up  the Schrödinger equation \ref{eq:2d_schroedinger_interaction} and transform  back into the Schrödinger picture. To keep things simple, I only show the results when transformed back. Intermediate steps are given in \cite{Hamm-dummies}.
+
+
+We assume  that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series. With that we get
 \begin{equation}
-\frac{d}{dt} \ket{\psi(t)} = - \frac{i}{\hbar} \, \hat{H}(t) \, \ket{\psi(t)} 
+\ket{\psi(t)}  
+  \approx  \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t , \tau) \,\hat{H}'(\tau) \,  U_0 (\tau , t_0) \, \ket{\psi(t_0)}  \label{eq:2d_time_evol}
 \end{equation}
-and get
-\begin{eqnarray}
-\ket{\psi(t)}  & = & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \, \hat{H}(\tau) \, \ket{\psi(\tau)} \\ 
- & \approx & \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)}  \label{eq:2d_time_evol}
-\end{eqnarray}
 with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ to $t_2$
 \begin{equation}
  U_0(t_2, t_1) = \exp \left(- \frac{i}{\hbar} \hat{H}_0 \, ( t_2- t_1) \right)
 \end{equation}
-The interpretation of eq. \ref{eq:2d_time_evol} is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
+
+
+%
+%
+%Using this formalism, we now integrate up the Schrödinger equation \ref{eq:2d_schroedinger_interaction}. We have to taken into account that wave functions and operators in eq.  \ref{eq:2d_schroedinger_interaction} are in the interaction picture, while we usually state things as eq. \ref{eq:2d_hamilton_perturbation} in the Schrödinger picture. We thus need to time-evolve the perturbation operator
+%\begin{equation}
+%  H'_I(t) = U_0^\star(t, t_0) \, H'_S(t) \, U_0(t, t_0)
+%\end{equation}
+%with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ to $t_2$
+%\begin{equation}
+% U_0(t_2, t_1) = \exp \left(- \frac{i}{\hbar} \hat{H}_0 \, ( t_2- t_1) \right)
+%\end{equation}
+%We get
+%\begin{equation}
+%\ket{\psi(t)}  
+%  \approx  \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)}  \label{eq:2d_time_evol}
+%\end{equation}
+%
+%The interpretation of eq. \ref{eq:2d_time_evol} is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
 
 We are especially interested in the time evolution of the density matrix according to the Liouville-von Neumann equation. Starting from $\tau = t_0$, we take more and more interactions into account. $\rho^{(n)}$ describes the change of the density matrix assuming $n$ interactions between $\tau = t_0$ and $\tau = t$
 \begin{equation}
-\rho(t) = \rho(t_0)  + \sum_n  \rho^{(n)} (t)
+\rho(t) = \rho_0  + \sum_n  \rho^{(n)} (t)
 \end{equation}
+where $\rho_0$ is the equilibrium density matrix which does not evolve in time.
 The term for $n=1$ reads, equivalent to eq.  \ref{eq:2d_time_evol}  above,
 \begin{equation}
- \rho^{(1)} (t) = - \frac{i}{\hbar} \int_{t_0}^t \, d\tau \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau) \, , \, \rho(t_0) \right] \, U_0^\star (t, t_0)
+ \rho^{(1)} (t) = - \frac{i}{\hbar} \int_{t_0}^t \, d\tau \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau) \, , \, \rho_0 \right] \, U_0^\star (t, t_0)
 \end{equation}
-where $\hat{H}'_I(\tau) $ is the perturbation operator in the interaction representation, i.e., decorated with $\exp(\pm i H_0 (t-t_0)/\hbar)$ on both sides. Multiple interactions now lead to cascaded commutators, i.e.
+where $\hat{H}'_I(\tau) $ is the perturbation operator in the interaction picture
 \begin{equation}
- \rho^{(2)} (t) = \left(- \frac{i}{\hbar}\right)^2   \int_{t_0}^t \, d\tau_2   \int_{t_0}^{\tau_2} \, d\tau_1 \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau_2) \, , \, \left[ \hat{H}'_I(\tau_1) \, , \, \rho(t_0) \right] \right] \, U_0^\star (t, t_0)
+\hat{H}'_I(\tau) =  U_0^\star (\tau , t_0) \, \hat{H}'(\tau) \, U_0 (\tau , t_0) \,
+\end{equation}
+ Multiple interactions now lead to cascaded commutators, i.e.
+\begin{equation}
+ \rho^{(2)} (t) = \left(- \frac{i}{\hbar}\right)^2   \int_{t_0}^t \, d\tau_2   \int_{t_0}^{\tau_2} \, d\tau_1 \, U_0(t, t_0) \, \left[ \hat{H}'_I(\tau_2) \, , \, \left[ \hat{H}'_I(\tau_1) \, , \, \rho_0 \right] \right] \, U_0^\star (t, t_0)
 \end{equation}
 
 In spectroscopy, we are interested in a perturbation operator $\hat{H}'$ that contains an $\mu \cdot E$ term for the incoming, exciting field. We see that $\rho^{(n)}$ depends on $n$ optical fields, so that we identify  these processes with the $n$-th order nonlinear processes described by the nonlinear susceptibility $\chi^{(n)}$. This nonlinear susceptibility creates a nonlinear polarization $P^{(n)}$. In quantum mechanics, this is the expectation value of the dipole operator 
@@ -88,7 +111,7 @@ For third-order nonlinear effects, we thus get
 \begin{equation}
  \left(- \frac{i}{\hbar}\right)^3   \iiint E(\tau_3) E(\tau_2) E(\tau_1)
  \braket{ \mu \, 
-  \left[ \mu_3 , \, \left[ \mu_2 , \, \left[ \mu_1 , \, \rho(t_0) \, \right] \right]  \right] }
+  \left[ \mu_3 , \, \left[ \mu_2 , \, \left[ \mu_1 , \, \rho_0 \, \right] \right]  \right] }
   \label{eq:2d-p3-commutator}
 \end{equation}
 The cascaded commutator expands to $2^3=8$ terms, where one half is the complex-conjugate of the other, effectively giving $4$ terms.

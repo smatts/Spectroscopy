@@ -4,6 +4,7 @@
  \pgfplotsset{compat=newest}
 
 
+\usepackage{currfile,hyperxmp}
 
 
 \begin{document}
@@ -25,7 +26,9 @@ tufte line/.style={
   
   
 \begin{tikzpicture}
-    \begin{axis}[no markers,  tufte line, xlabel={wavelength (nm)},
+\useasboundingbox (0,-1) rectangle (5,4);
+
+    \begin{axis}[no markers,  tufte line, xlabel={wavelength (nm)}, width=65mm,
     ]
     \addplot table [x index=0, y index=1] {\currfiledir handout/tdi_abs_em.dat};
     \addplot table [x index=0, y index=2] {\currfiledir handout/tdi_abs_em.dat};
