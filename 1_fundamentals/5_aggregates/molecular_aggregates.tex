@@ -10,7 +10,7 @@
 \begin{itemize}
 \item The data contains absorption spectra of the molecule TDBC in solution at different concentrations. Determine the number of chromophores that contribute to the delocalized state. Data by Tobias Kroh, Bayreuth.
 
-\item The second data set contains emission spectra of TDBC in solution at different concentrations. Plot the normalized emission spectrum and discuss.Data by Tobias Kroh, Bayreuth.
+\item The second data set contains emission spectra of TDBC in solution at different concentrations. Plot the normalized emission spectrum and discuss. Data by Tobias Kroh, Bayreuth.
 \end{itemize}
 
 
@@ -63,7 +63,7 @@ When we have two of such states, we can  write matrix equation
 \hat{H}_0 \, \psi_0 = \begin{pmatrix}  E_a & 0 \\ 0 & E_b \end{pmatrix} \,
 	 \begin{pmatrix}  \psi_ a\\ \psi_b\end{pmatrix}  \quad .
 \end{equation}
-The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one states depends somehow on the other. In the matrix we include a coupling energy $J$ in the off-diagonal elements
+The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one state depends somehow on the other. In the matrix we include a coupling energy $J$ in the off-diagonal elements
 \begin{equation}
 \hat{H}_{coupled}  = \begin{pmatrix}  E_a & J \\ J & E_b \end{pmatrix} 
 \end{equation}
@@ -97,7 +97,7 @@ A few side remarks and things that are left open for future versions of this tex
 \section{Coupling of two transition dipole moments}
 
 
-We consider two molecules, $a$ and $b$, each with a ground ($0$) and excited ($1$) state. We write the wave function on the form $\ket{ab}$, i.e. $\ket{01}$ is molecule $a$ in ground state, molecule $b$ in excited state. In each molecule, an optical transition diopole moment couples ground and excited state, i.e. $\braket{10| \hat{\mu}_a | 00}$ and $\braket{01| \hat{\mu}_b | 00}$ are different from zero and describe an excitation of the molecule  $a$ and $b$, respectively. Additionally, the two transition dipole moments interact and lead to a resonant coupling of the 
+We consider two molecules, $a$ and $b$, each with a ground ($0$) and excited ($1$) state. We write the wave function on the form $\ket{ab}$, i.e. $\ket{01}$ is molecule $a$ in ground state, molecule $b$ in excited state. In each molecule, an optical transition dipole moment couples ground and excited state, i.e. $\braket{10| \hat{\mu}_a | 00}$ and $\braket{01| \hat{\mu}_b | 00}$ are different from zero and describe an excitation of the molecule  $a$ and $b$, respectively. Additionally, the two transition dipole moments interact and lead to a resonant coupling of the 
 $\ket{01}$ and $\ket{10}$ state\footcite{knoester-book}
 \begin{equation}
 \hat{H}_{coupling} = J \left(  \ket{10}\bra{01} + \ket{01}\bra{10}  \right)
@@ -121,7 +121,7 @@ A similar coupling term also exist for the non-resonant coupling\footcite{knoest
 \begin{equation}
 \hat{H}_{non-res} = J \left(  \ket{11}\bra{00} + \ket{00}\bra{11}  \right)
 \end{equation}
-but this can be ignored, as it is non-resonant. All together, the Hamilton operator reads in matrix form
+but this can be ignored, as it is non-resonant. Altogether, the Hamilton operator reads in matrix form
 \begin{equation}
 \hat{H} = \begin{pmatrix}
 0   					& \mu_a 						&	\mu_b						& 		J 		\\

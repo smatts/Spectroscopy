@@ -1,0 +1,18 @@
+Four-wave mixing an einer Gold-Oberfläche
+(Messungen von Christoph Schnupfhagn)
+
+
+1) fwm_spectrum.dat
+
+Die Datei hat 3 Spalten: Wellenlänge, Anregungsspektrum, FWM-Spektrum
+Die Absolutwerte sind willkürlich. 
+
+Sagen Sie aus dem Anregungsspektrum das FWM-Spektrum voraus.
+
+
+2) Linearer Phasen-Offset
+
+Das Anregungsspektrum ist jetzt rechteckig mit zwei Rechtecken zentriert bei 720 nm und 820 nm. In der Form "narrow" sind die Rechtecke 10 nm breit, in der Form "wide" 20 breit. Das Laserlicht bei der niedrigen (Variante 1) bzw. hohen Wellenlänge (Variante 2) wird jetzt durch einen Pulse Shaper mit einem linearen Phasenverlauf versehen, also phi(t) = d_phi * t. Für jeden Wert von d_phi wird ein FWM-Spektrum gemessen. Die Datei linphase.dat beinhaltet die Werte von d_phi (Einheit fs), die Datei wl.dat die Wellenlängenachse des FWM-Spektrums (Einheit nm). Die Dateien fwm_FORM_VARIANTE.dat die eigentlichen Daten.
+
+Modellieren sie diese Messung.
+

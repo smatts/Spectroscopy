@@ -1,0 +1,19 @@
+SHG an plasmonischen Nanostrukturen
+
+Die Dateien beinhalten das Ergebnis von numerischen Simulationen (COMSOL, Julian Obermeier). Berechnet ist das elektrische Feld in der Ebene z=0 entlang der Oberfläche einer Nanostruktur bei Beleuchtung entlang der z-Achse. Die Ausdehnung der Struktur in z-Richtung beträgt 30 nm, also von z=+15 nm bis z=-15 nm.
+
+In den Spalten finden sich
+* X-Koordinate (nm)
+* Y-Koordinate (nm)
+* Real(E_x)
+* Imag (E_x)
+* Real(E_y)
+* Imag (E_y)
+* Real(E_z)
+* Imag (E_z)
+
+Der Dateinamen gibt die Wellenlänge in nm sowie die Polarisationsrichtung an. Die absolute Größe des elektrischen Feldes ist hier willkürlich.
+
+Stellen sie jeweils die Feldverteilung sowie die nichtlineare Polarisation P^(2) grafisch dar. Berechnen sei die Effizienz, mit der SHG im Fernfeld detektiert werden sollte. Ab welcher Größe der Nanostruktur wird dies richtungsabhängig?
+
+PS: siehe Matlab quiver plot oder andere Methoden, ein Vektorfeld darzustellen.

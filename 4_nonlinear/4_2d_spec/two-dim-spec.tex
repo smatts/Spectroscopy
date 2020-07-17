@@ -186,11 +186,12 @@ Let us discuss pump-probe spectroscopy as an example. As we have seen on the cha
 \begin{equation}
  P^{(3)} =  \chi^{(3)} E_\text{pump} \, E_\text{pump}^\star \, E_\text{probe}
 \end{equation}
-We assume for simplicity that the probe pulse comes after the pump-pulse. The nonlinear emission has to be in the direction of the probe pulse so that it can serve as local oscillator. As the emitting arrow points to the left, the probe arrow has to point to the right. The sub-schemes A and B fulfill this requirement,.
+We assume for simplicity that the probe pulse comes after the pump-pulse. The nonlinear emission has to be in the direction of the probe pulse so that it can serve as local oscillator. As the emitting arrow points to the left, the probe arrow has to point to the right. The sub-schemes A and B fulfill this requirement.
 
 
 \begin{figure}
-\includegraphics[width=\textwidth]{\currfiledir f2.png}
+%\includegraphics[width=\textwidth]{\currfiledir f2.png}
+\includestandalone[width=106mm]{\currfiledir f2tikz}
 \caption{
 Building blocks for the interaction of the probe pulse (panels A and B) and the pump-pulse (panels 1 to 4) in a pump-probe experiment.}
 \label{fig_2d_f2}
@@ -199,7 +200,8 @@ Building blocks for the interaction of the probe pulse (panels A and B) and the 
 The direction of the pump beam has to cancel out, $E_\text{pump} $ enters only as absolute-squared. This means that the two pump arrows have to point in different directions. The sub-schemes 1 to 4 fulfill this requirement.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{\currfiledir f3.png}
+%\includegraphics[width=\textwidth]{\currfiledir f3.png}
+\includestandalone[width=106mm]{\currfiledir f3tikz}
 \caption{
 Six double-sided Feynman diagrams describe pump-probe spectroscopy.}
 \label{fig_2d_f3}
@@ -277,7 +279,7 @@ which is eq. 1b in \cite{Winterhalder11}.
 \section{2D spectroscopy}
 
 
-In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by  interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the forth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ is used to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
+In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by  interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the fourth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ is used to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
 
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{\currfiledir 2d_1.png}
@@ -290,7 +292,7 @@ How can we do spectroscopy when all laser pulses have the same spectrum? The app
 
 We obtain 2D spectra, along an excitation and a detection frequency, for a fixed population time interval $t_2$. One can imagine getting similar spectra by scanning both pump and probe wavelength in a pump-probe experiment. One big difference is that the pulses in such a pump-probe experiment would need to be rather long, as they need to be spectrally rather narrow. This limits the time resolution in $t_2$. With the four-pulse experiment, we get both high time resolution and spectral information.
 
-Which features do we find in a 2D spectrum? Along the diagonal, it contains the linear absorption spectrum. We pump and probe the same molecules. If our ensemble of molecules is inhomogeneously broadened, i.e., the molecule differ in absorption wavelength much more than the width of their individual absorption spectrum, then the peak in the 2D spectrum will be elongated along the diagonal and narrow along the anti-diagonal. We pump one sub-ensemble of molecules, and only these will not be able to absorb the probe pulse. 2D spectroscopy thus can distinguish between homogeneous and inhomogeneous broadening, similar to spectral hole burning.
+Which features do we find in a 2D spectrum? Along the diagonal, it contains the linear absorption spectrum. We pump and probe the same molecules. If our ensemble of molecules is inhomogeneously broadened, i.e., the molecules differ in absorption wavelength much more than the width of their individual absorption spectrum, then the peak in the 2D spectrum will be elongated along the diagonal and narrow along the anti-diagonal. We pump one sub-ensemble of molecules, and only these will not be able to absorb the probe pulse. 2D spectroscopy thus can distinguish between homogeneous and inhomogeneous broadening, similar to spectral hole burning.
 
 
 \begin{marginfigure}
@@ -301,7 +303,7 @@ Which features do we find in a 2D spectrum? Along the diagonal, it contains the 
 
 
 
-2D spectroscopy can also find coupled (or interacting) systems. With linear spectroscopy, we only find the energy difference between initial and final state. When we have two peaks in an absorption spectrum, we can not say if there are three or four states involved. We could have two  different molecules (4 states) or a V level system in one molecule (3 states). 2D spectroscopy can decide this question: In the coupled case, we find cross-peaks at the  other two corners  of the square which is formed by the two transition frequencies. At these points, we pump one transition and find an influence on the other transition. This is only possible if these transitions are somehow coupled. Molecule A would not care if molecule B would be excited.
+2D spectroscopy can also find coupled (or interacting) systems. With linear spectroscopy, we only find the energy difference between initial and final state. When we have two peaks in an absorption spectrum, we cannot say if there are three or four states involved. We could have two  different molecules (4 states) or a V level system in one molecule (3 states). 2D spectroscopy can decide this question: In the coupled case, we find cross-peaks at the  other two corners  of the square which is formed by the two transition frequencies. At these points, we pump one transition and find an influence on the other transition. This is only possible if these transitions are somehow coupled. Molecule A would not care if molecule B would be excited.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{\currfiledir 2d_3.png}

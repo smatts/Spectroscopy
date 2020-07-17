@@ -14,8 +14,8 @@
 
 The laser creates pules that are shorter than 10 fs, or about 250 nm wide. Such pulses are very delicate, as almost all reflecting and transmitting optical elements change the phase differently for the red and the blue part of the laser pulse spectrum. For longer, i.e. spectrally narrower pulses, this does not pose a relevant problem, but for wide pulses, this has to be taken into account. A 'pulse shaper' is a device to compensate these effects and will be discussed in a separate chapter.
 
-Such a pulse shaper allows to generate laser pulses of almost arbitrary amplitude and phase spectrum. Here, we use it to demonstrate four-wave mixing. The data gives the laser intensity spectrum. The phase is either made to be constant, or varies linear  in time.
-We separate excitation and detection spectrally by a dichroic beam splitter, and detect all light below a certain corner wavelength. 
+Such a pulse shaper allows to generate laser pulses of almost arbitrary amplitude and phase spectrum. Here, we use it to demonstrate four-wave mixing. The data gives the laser intensity spectrum. The phase is either made to be constant or varies linear  in time.
+We separate excitation and detection spectrally by a dichroic beam splitter and detect all light below a certain corner wavelength. 
 
 \section{Generation of short pulses}
 
@@ -107,7 +107,7 @@ are called Fourier-limited. If the available
 to get the shortest possible pulses, i.e. the smallest $\tau_p$,
 then the measured time-bandwidth product exceeds the
 value of 0.441. Provided that pulse shape is Gaussian, the time-bandwidth product tells whether the 
-laser system is adjusted optimally .
+laser system is adjusted optimally.
 
 \section{Dispersion}
 
@@ -154,14 +154,14 @@ $\sqrt{1 + a^2}$. Higher order polynomial terms in the time-dependence of the ph
 
 
 
-Group velocity dispersion (GVD) can not be avoided  in an
-optical resonator . How transmitting and
+Group velocity dispersion (GVD) cannot be avoided  in an
+optical resonator. How transmitting and
 also reflective elements change the phase of the
 electromagnetic wave  depends strongly on the wavelength. In order to still achieve an optimal, i.e. Fourier limited pulse
-the entire GVD must be as wavelength-independent as possible. The influence of the individual elements should therefore 
+the entire GVD must be as wavelength independent as possible. The influence of the individual elements should therefore 
 compensate  each other. In glasses, the positive second derivative of the refractive index
 is dominating  the GVD. To compensate for this, a section with
-negative GVD is needed in the resonator. This can be  achived by two prisms as shown in figure
+negative GVD is needed in the resonator. This can be  achieved by two prisms as shown in figure
 \ref{fig_pulses_prism}. Two equal
 prisms are placed in front of a mirror such 
 that all spectral components hit the mirror perpendicularly
@@ -182,7 +182,7 @@ negative GVD. The path inside the prisms contributes  positive GVD.  By varying 
 
 \section{Autocorrelation}
 
-A pulse width $\tau_P$ in the range of a few pico- or femto-seconds can not be measured electronically, as the involved frequencies  would be too high. The idea is to measure the pulse length optically, using the  laser pulse to sample itself. The beam is divided into two parts, one of which is delayed with respect to the other before they are overlaid again.
+A pulse width $\tau_P$ in the range of a few pico- or femto-seconds cannot be measured electronically, as the involved frequencies  would be too high. The idea is to measure the pulse length optically, using the  laser pulse to sample itself. The beam is divided into two parts, one of which is delayed with respect to the other before they are overlaid again.
  Times in the 
 range of femtoseconds correspond to lengths in the range of
 micrometers, which can be easily controlled. A detector that responds quadratically in intensity (not field!) is able to measure  overlap of two halves $a$ and $b$ as
@@ -192,7 +192,7 @@ micrometers, which can be easily controlled. A detector that responds quadratica
 \end{equation}
 Often  frequency doubling is used for this purpose by focusing the
 recombined beam onto a frequency doubling crystal.
-The detector is sensitive only for light at half the wavelength. With variable delay $\tau$ the time-integrated signal is sufficient and  the temporal resolution
+The detector is sensitive only for light at half the wavelength. With variable delay $\tau$ the time-integrated signal is sufficient, and  the temporal resolution
 of the detector is  irrelevant. One thus measures
 \begin{equation}
   G(\tau) = \left< I(t) \times I(t-\tau) \right> \quad.
@@ -216,7 +216,7 @@ Let us now turn to the spectroscopic consequences of the phase dispersion over t
   P^{(3)}_i = \epsilon_0 \; 
     \sum_{j,k,l} \chi^{(3)}_{ijkl} E_j(\omega_1) E_k(\omega_2) E_l(\omega_3)  
 \end{equation}		
-where three optical waves produce a nonlinear polarization which radiates a new optical field\sidenote{Similar to the chapter on the free induction decay}. This field is sometimes directed directly, sometimes interfered with  a forth field acting as local oscillator. A \emph{third-order} nonlinearity describes thus the mixing of \emph{four} waves.
+where three optical waves produce a nonlinear polarization, which radiates a new optical field\sidenote{Similar to the chapter on the free induction decay}. This field is sometimes directed directly, sometimes interfered with  a fourth field acting as local oscillator. A \emph{third-order} nonlinearity describes thus the mixing of \emph{four} waves.
 		
 		
 Several different processes are 	summarized as four-wave mixing (FWM) effects and depicted in figure \ref{fig:processes}.  The generated nonlinear polarization oscillates at the sum of the three input frequencies. Complex conjugate input fields are again counted as negative frequencies and depicted as downward arrows in Fig. \ref{fig:processes}.
@@ -285,7 +285,7 @@ Neglecting the tensorial nature of $\chi$ we can write
   P^{(3)}(\omega_4) = \epsilon_0 \; 
     \int_{\omega_1, \omega_2} \chi^{(3)}(\omega_4; \omega_1, \omega_2, \omega_3) \,  E(\omega_1) E(\omega_2) E(\omega_3) \, d\omega_1 \, d\omega_2  
 \end{equation}	
-where $\omega_3$ is calculated at each point of the integral such that energy conservation is fulfilled, e.g. $\omega_3 = \omega_4 - \omega_1 - \omega_2$. Again the above rule for negative frequencies, complex conjugates, and downward arrows applies.
+where $\omega_3$ is calculated at each point of the integral such that energy conservation is fulfilled, e.g. $\omega_3 = \omega_4 - \omega_1 - \omega_2$. Again, the above rule for negative frequencies, complex conjugates, and downward arrows applies.
 
 The spectral dependence of $\chi^{(3)}(\omega_4; \omega_1, \omega_2, \omega_3)$ is determined by the process that causes the nonlinearity. As in linear spectroscopy, the spectral shape if  $\chi^{(3)}$ is related to the response of the system in time domain, its pulse response\sidenote{Multiplication in frequency domain becomes by Fourier transform a convolution in time domain.} A fast system has thus a spectrally flat susceptibility. In the limit of instantaneous response, the nonlinear susceptibility is spectrally constant.
 		

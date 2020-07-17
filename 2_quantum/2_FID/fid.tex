@@ -20,7 +20,7 @@
 \section{Experiment}
 
 An epitaxial quantum dot can be approximated by a V-shaped level system: depending on the polarization direction of the light, two different excited states $\ket{h}$ and $\ket{v}$
- can be populated. The excited states differ in the spin of the electron, so that an interchange is slow on the relevant timescales. Such a V-system allows to use one transition 'normal' two-level system, and the other transition to switch off the first: when the system is in $\ket{v}$, the transition $\braket{h | \mu | g}$ is not possible any more. This does not change much the physics, but makes experiments much simpler, as the influence of the  $\braket{h | \mu | g}$ transition can be modulated in a pump-probe scheme and is such much easier to detect.
+ can be populated. The excited states differ in the spin of the electron, so that an interchange is slow on the relevant timescales. Such a V-system allows to use one transition 'normal' two-level system, and the other transition to switch off the first: when the system is in $\ket{v}$, the transition $\braket{h | \mu | g}$ is not possible anymore. This does not change much the physics, but makes experiments much simpler, as the influence of the  $\braket{h | \mu | g}$ transition can be modulated in a pump-probe scheme and is such much easier to detect.
  
 \begin{marginfigure}
 \includegraphics[width=0.8\textwidth]{\currfiledir v-system.png}
@@ -34,13 +34,13 @@ In the present experiment, one measures the absorption spectrum of the  $\braket
 \section{Coherence as a Source of Radiation}
 
 
-Let us look at methods to measure elements of the density matrix $\rho$. We can measure populations, i.e., diagonal elements of $\rho$ by fluorescence emission or electron tunneling. If an atom, molecule, quantum dot is in the excited state, it can emit a fluorescence photon and revert to the ground state. All coherence is lost in this process, neither the fluorescence photon nor the ground state carry any phase relation to the excited state. The excite state is also destroyed, as afterwards the system is in the ground state. But we can observe the fluorescence photon and from the fluorescence rate we can determine how many systems of an ensemble or how often a single system is (better: was) in the excited state. We thus measure population of the emitting state. In the same way, we can use electrons tunneling out of the excited state, for example in a diode structure which also supplies  a new electron to the ground state. Also this tunneling signal is incoherent.
+Let us look at methods to measure elements of the density matrix $\rho$. We can measure populations, i.e., diagonal elements of $\rho$ by fluorescence emission or electron tunneling. If an atom, molecule, quantum dot is in the excited state, it can emit a fluorescence photon and revert to the ground state. All coherence is lost in this process, neither the fluorescence photon nor the ground state carries any phase relation to the excited state. The excite state is also destroyed, as afterwards the system is in the ground state. But we can observe the fluorescence photon and from the fluorescence rate we can determine how many systems of an ensemble or how often a single system is (better: was) in the excited state. We thus measure population of the emitting state. In the same way, we can use electrons tunneling out of the excited state, for example in a diode structure which also supplies  a new electron to the ground state. Also this tunneling signal is incoherent.
 
 We can also measure coherences, i.e., off-diagonal elements in the density matrix $\rho$, as these coherences are the source of radiation. To see this, we need to connect the microscopic description by the density matrix to the macroscopic world of Maxwell's equations, resulting in the Maxwell-Bloch equations \footcite[chapter 8.3]{MilonniEberly1988} \footcite[chapter 3.9]{Rand2016}\footcite{Meschede-OLL}. This is what the expectation value does. The  polarization $p$ of a single two-level system at position $z$ in the pumping laser beam is given by the expectation value of the polarization operator $\hat{\mu}$
 \begin{equation}
  p(t,z) = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10}'  \, e^{-i (\omega_L t - k z)}  
 \end{equation}
-where the polarization operator has only off-diagonal entries in the matrix representation.\sidenote{Only the real part has physical significance.} The prime signals once more the density matrix in the rotating frame. The macroscopic polarisation $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
+where the polarization operator has only off-diagonal entries in the matrix representation.\sidenote{Only the real part has physical significance.} The prime signals once more the density matrix in the rotating frame. The macroscopic polarization $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
 \begin{equation}
   \frac{\partial^2}{\partial z^2} \boldsymbol{E}_S  - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \boldsymbol{E}_S 
  =  
@@ -124,7 +124,7 @@ Each atom removes the energy of one photon!
 
 \section{Absorption of half of a photon}
 
-We keep the amplitude of the laser field the same, but reduce the pulse length to $\Delta t / 2$, i.e. a $\pi/2$ pulse. This does only change the upper limit in the integral, so that 
+We keep the amplitude of the laser field the same but reduce the pulse length to $\Delta t / 2$, i.e. a $\pi/2$ pulse. This does only change the upper limit in the integral, so that 
 \begin{equation}
  \Delta P 
 = -  \frac{1}{2} \sigma \,  \hbar \omega  
@@ -137,7 +137,7 @@ However, at this point our experiment is not finished yet. We still have coheren
 \begin{equation}
  \ket{\psi} = \ket{0}  \quad \text{or} \quad \ket{\psi} = \ket{1} 
 \end{equation}
-When decoherence is much faster than population decay, then both final states will be reached with equal probability. On average, each atoms absorbs half the energy of a photon.
+When decoherence is much faster than population decay, then both final states will be reached with equal probability. On average, each atom absorbs half the energy of a photon.
 
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{\currfiledir pi-pulse.png}
@@ -146,11 +146,11 @@ When decoherence is much faster than population decay, then both final states wi
 
 \section{Pump-Probe Experiments}
 
-The timescale of the experiment is set by the decay of the coherence and the populations. In many cases, this is faster than the temporal resolution of photodetectors. One method to investigate the dynamics of a system under these conditions is pump-probe spectroscopy. A pump-pulse starts a process and some (short) time later, a probe-pulse interrogates the system. The detector does not need a time resolution and can average over many pump-probe pulse pairs. The time resolution comes by the pulse length and their temporal separation. In many cases, the effect of the pump pulse on the system is weak, i.e. the probe pulse would measure almost the same, independent whether the pump was present or not. To increase the signal to noise ration in these cases, on investigates the relative change of the signal
+The timescale of the experiment is set by the decay of the coherence and the populations. In many cases, this is faster than the temporal resolution of photodetectors. One method to investigate the dynamics of a system under these conditions is pump-probe spectroscopy. A pump-pulse starts a process and some (short) time later, a probe-pulse interrogates the system. The detector does not need a time resolution and can average over many pump-probe pulse pairs. The time resolution comes by the pulse length and their temporal separation. In many cases, the effect of the pump pulse on the system is weak, i.e. the probe pulse would measure almost the same, independent whether the pump was present or not. To increase the signal to noise ratio in these cases, on investigates the relative change of the signal
 \begin{equation}
  \frac{\Delta I}{I} = \frac{I_\text{with pump} - I_\text{without pump} }{I_\text{without pump}}
 \end{equation}
-The pump-pulse is switched using a mechanical chopper or a acousto-optical modulator at as high as possible frequencies to avoid $1/f$-noise. The detector should only detect the probe pulse (and the field radiated by the coherence), otherwise $\Delta I$ is overwhelmed by leaking pump pulse. A convenient way to discriminate pump and probe is the polarization direction of the light field, setting the orientation of the transition dipole moment at $45^\circ$ between pump and probe.
+The pump-pulse is switched using a mechanical chopper or an acousto-optical modulator at as high as possible frequencies to avoid $1/f$-noise. The detector should only detect the probe pulse (and the field radiated by the coherence), otherwise $\Delta I$ is overwhelmed by leaking pump pulse. A convenient way to discriminate pump and probe is the polarization direction of the light field, setting the orientation of the transition dipole moment at $45^\circ$ between pump and probe.
 
 
 

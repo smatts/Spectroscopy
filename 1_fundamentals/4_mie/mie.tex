@@ -10,7 +10,7 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Determine the size and the concentration of the gold particles from their extinction spectrum (data by Patrick Knödler, Bayreuth). Are they spherical ? On the server you find an Matlab / Octave implementation of the Mie $a_n$ and $b_n$ coefficients. The dielectric functions can be found at \href{https://refractiveindex.info/}{refractiveindex.info}.
+\item Determine the size and the concentration of the gold particles from their extinction spectrum (data by Patrick Knödler, Bayreuth). Are they spherical? On the server you find an Matlab / Octave implementation of the Mie $a_n$ and $b_n$ coefficients. The dielectric functions can be found at \href{https://refractiveindex.info/}{refractiveindex.info}.
 
 \item Assign transitions to the peaks in the spectrum. For which spectra does the Rayleigh approximation hold?
 
@@ -21,7 +21,7 @@
 \section{Rayleigh scattering of small spheres}
 
 
-In this chapter, we change our point of view a little bit. We consider small, mostly spherical, inclusion of material with one dielectric function in an environment with another dielectric function. At the end, we will make the connection to molecules and nanocrystals, but for the moment we stay with classical electrodynanics.
+In this chapter, we change our point of view a little bit. We consider small, mostly spherical, inclusion of material with one dielectric function in an environment with another dielectric function. At the end, we will make the connection to molecules and nanocrystals, but for the moment we stay with classical electrodynamics.
 
 
 A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\footcite{Jackson-ED}\footcite[excercise 2.4.2]{Nolting-ED}\footcite[chapter 5.2]{BH-book}
@@ -29,7 +29,7 @@ The sphere responds to the light field with a polarization of
 \begin{equation}
  \mathbf{p}(t) = \epsilon_0 \,  \epsilon_{out} \, \alpha \, \mathbf{E}(t)
 \end{equation}
-with the polarisability
+with the polarizability
 \begin{equation}
  \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}
 \end{equation}
@@ -97,7 +97,7 @@ where we once even took $r \approx z$. When dropping terms quadratic in the scat
 \begin{equation}
  I = |E_{tot}|^2 \approx 1 +   \frac{1}{2 z} \, \Re  \left( f(0) e^{i k (x^2 + y^2)/2z } \right)
 \end{equation}
-We now integrate\footcite{Newton:1976cz} over a screem that is so large that the argument of the exponentioal function oscillates rapidly ($k R^2 / z \gg 2 \pi$), but that is still conecntrated along the forward direction ($R/z \ll 1$):
+We now integrate\footcite{Newton:1976cz} over a screen that is so large that the argument of the exponential function oscillates rapidly ($k R^2 / z \gg 2 \pi$), but that is still concentrated along the forward direction ($R/z \ll 1$):
 \begin{equation}
  I = |E_{tot}|^2 \approx A  - \frac{4 \pi }{k} \Im ( f(0) )
 \end{equation}
@@ -120,7 +120,7 @@ We  then get the extinction coefficient from the optical theorem
  \sigma_{ext} = k \, \Im ( \alpha )
 \end{equation}
 
-We can also calculated the power that is absorbed by the dipole\footcite[Chapter 8]{Novotny-Hecht2012}
+We can also calculate the power that is absorbed by the dipole\footcite[Chapter 8]{Novotny-Hecht2012}
 \begin{equation}
  P_{abs} = \frac{\omega}{c} \, \Im \left( \mathbf{p} \, \mathbf{E}^\star \right) 
 \end{equation}
@@ -147,7 +147,7 @@ and then we get
 
 \section{Mie Scattering}
 
-Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution fpr the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in an homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite[chapter 4]{BH-book} The idea is the develop the scattered field in vector spherical harmonics.
+Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution for the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in a homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite[chapter 4]{BH-book} The idea is the develop the scattered field in vector spherical harmonics.
 
 For the cross sections one gets
 \begin{eqnarray}
@@ -173,7 +173,7 @@ C_n (\rho)  &= & \rho \, h_n^{(1)} (\rho)  = \rho \left(  j_n (\rho)  + i \,  y_
 The index $n$ gives the order of the spherical harmonics and thus the order of the multipole. $n=1$ corresponds to dipole fields, $n=2$ to quadrupole fields, $n=3$ to octupole fields etc. \footcite{KV-book} The $a$ coefficients describe electric modes, the $b$ coefficients magnetic modes.\footcite{KV-book, BH-book} 
 
 
-We can recover the physics of a small sphere from the full Mie theorie.\footcite[chapter 5]{BH-book} A Taylor-expansion of the coefficzients $a_n$ and $b_n$ for small size parameter $x$ gives
+We can recover the physics of a small sphere from the full Mie theorie.\footcite[chapter 5]{BH-book} A Taylor-expansion of the coefficients $a_n$ and $b_n$ for small size parameter $x$ gives
 \begin{alignat}{3}
  a_1 &= -i \frac{2x^3}{3} \frac{m^2 -1}{m^2 + 2} && -i \frac{2x^5}{5} \frac{(m^2 -2)(m^2-1)}{(m^2 + 2)^2} + \mathcal{O}(x^6)  && + \mathcal{O}(x^7) \\
  b_1 &=  && -i \frac{2x^5}{45} (m^2 -1)^2  &&+ \mathcal{O}(x^7)  \\
