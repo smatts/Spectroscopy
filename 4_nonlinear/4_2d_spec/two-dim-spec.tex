@@ -67,23 +67,6 @@ with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ 
 \end{equation}
 
 
-%
-%
-%Using this formalism, we now integrate up the Schrödinger equation \ref{eq:2d_schroedinger_interaction}. We have to taken into account that wave functions and operators in eq.  \ref{eq:2d_schroedinger_interaction} are in the interaction picture, while we usually state things as eq. \ref{eq:2d_hamilton_perturbation} in the Schrödinger picture. We thus need to time-evolve the perturbation operator
-%\begin{equation}
-%  H'_I(t) = U_0^\star(t, t_0) \, H'_S(t) \, U_0(t, t_0)
-%\end{equation}
-%with the operator for free (= unperturbed) time evolution $U_0$ from time $t_1$ to $t_2$
-%\begin{equation}
-% U_0(t_2, t_1) = \exp \left(- \frac{i}{\hbar} \hat{H}_0 \, ( t_2- t_1) \right)
-%\end{equation}
-%We get
-%\begin{equation}
-%\ket{\psi(t)}  
-%  \approx  \ket{\psi(t_0)} - \frac{i}{\hbar} \int_{t_0}^t d \tau \,  U_0( t - \tau) \,\hat{H}'(\tau) \,  U_0 (\tau - t_0) \, \ket{\psi(t_0)}  \label{eq:2d_time_evol}
-%\end{equation}
-%
-%The interpretation of eq. \ref{eq:2d_time_evol} is that the system experiences a perturbation by the operator $\hat{H}'$ at time $\tau$, but evolves unperturbed in the remaining parts of the time interval from $t_0$ to $t$. We made the approximation that only one interaction takes place in that interval, which is only the first element of a power series 
 
 We are especially interested in the time evolution of the density matrix according to the Liouville-von Neumann equation. Starting from $\tau = t_0$, we take more and more interactions into account. $\rho^{(n)}$ describes the change of the density matrix assuming $n$ interactions between $\tau = t_0$ and $\tau = t$
 \begin{equation}
@@ -190,8 +173,9 @@ We assume for simplicity that the probe pulse comes after the pump-pulse. The no
 
 
 \begin{figure}
-%\includegraphics[width=\textwidth]{\currfiledir f2.png}
-\includestandalone[width=106mm]{\currfiledir f2tikz}
+%\includestandalone[width=106mm]{\currfiledir f2tikz}
+\inputtikz{\currfiledir feynman_pp_elements}
+
 \caption{
 Building blocks for the interaction of the probe pulse (panels A and B) and the pump-pulse (panels 1 to 4) in a pump-probe experiment.}
 \label{fig_2d_f2}
@@ -201,7 +185,8 @@ The direction of the pump beam has to cancel out, $E_\text{pump} $ enters only a
 
 \begin{figure}
 %\includegraphics[width=\textwidth]{\currfiledir f3.png}
-\includestandalone[width=106mm]{\currfiledir f3tikz}
+\inputtikz{\currfiledir feynman_pump_probe}
+%\includestandalone[width=106mm]{\currfiledir f3tikz}
 \caption{
 Six double-sided Feynman diagrams describe pump-probe spectroscopy.}
 \label{fig_2d_f3}

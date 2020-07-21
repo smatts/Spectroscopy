@@ -1,0 +1,90 @@
+
+\begin{tikzpicture}[
+     every left delimiter/.style={xshift=0.6em},
+     every right delimiter/.style={xshift=-1em},
+]
+\useasboundingbox (0.,0) rectangle (10.6,5.1);
+
+\tikzmath{ \y1 = 0.8; \x1 = 1.3; \dx = 3; \y2 = 3.5;}
+
+%\draw (0.,0) rectangle (10.6,5.1);
+
+%-------------
+\matrix[mymat] at (\x1,\y1) (mat1)
+{   1 & 1\\
+    1 & 0\\
+    0 & 0\\
+};
+
+\interactRp{mat1}{1}{pu};
+\interactLp{mat1}{2}{pu};
+
+
+%-------------
+\matrix[mymat] at (\x1 + 1 * \dx,\y1) (mat2)
+{   1 & 1\\
+    0 & 1\\
+    0 & 0\\
+};
+
+\interactLp{mat2}{1}{pu};
+\interactRp{mat2}{2}{pu};
+
+
+%-------------
+\matrix[mymat] at (\x1 + 2 * \dx,\y1) (mat3)
+{   0 & 0\\
+    1 & 0\\
+    0 & 0\\
+};
+
+\interactLm{mat3}{1}{pu};
+\interactLp{mat3}{2}{pu};
+
+
+
+%-------------
+\matrix[mymat] at (\x1 + 3 * \dx -1,\y1) (mat4)
+{   0 & 0\\
+    0 & 1\\
+    0 & 0\\
+};
+
+\interactRm{mat4}{1}{pu};
+\interactRp{mat4}{2}{pu};
+
+%-------------
+
+\matrix[mymat] at (\x1 + 0 * \dx,\y2) (mata)
+{   a & a \\
+    b & a \\
+    b & b \\
+};
+
+
+
+\interactout{mata}{out};
+\interactRm{mata}{2}{pr};
+
+%-------------
+
+\matrix[mymat] at (\x1 + 1 * \dx,\y2) (matb) 
+{   a & a \\
+    b & a \\
+    a & a \\
+} ;
+
+
+
+\interactout{matb}{out};
+\interactLp{matb}{2}{pr};
+
+\node[draw,yshift=5mm] at (mata.north) {a};
+\node[draw,yshift=5mm] at (matb.north) {b};
+
+\node[draw,yshift=5mm] at (mat1.north) {1};
+\node[draw,yshift=5mm] at (mat2.north) {2};
+\node[draw,yshift=5mm] at (mat3.north) {3};
+\node[draw,yshift=5mm] at (mat4.north) {4};
+\end{tikzpicture}
+

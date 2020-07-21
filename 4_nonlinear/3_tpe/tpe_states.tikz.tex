@@ -1,0 +1,33 @@
+%\documentclass[margin=0mm]{standalone}
+%\input{../../tikz_header}
+%
+%\usepackage{braket}
+%
+%\begin{document}
+%
+
+
+\begin{tikzpicture}
+%\useasboundingbox (0.,0) rectangle (10.6,8.3);
+
+\tikzmath{\x = 0.; \y0 = 0.3; \y1 = 1.2; \y2 = 1.8; \dy = 0.25; \len = 1;};
+
+%\draw (0.,0) rectangle (5.1,5.1);
+
+
+\draw (\x,\y0) -- (\x + \len,\y0) node [right] {$\ket{e}$ initial state $\ket{i} = \ket{g, n}$};
+
+\draw  (\x,\y1) -- (\x + \len,\y1)  node  [right] {$\ket{e'}$ intermediate state $\ket{x} = \ket{e', n-1}$};
+
+\draw [dashed] (\x,\y2 ) -- (\x + \len,\y2)  ;
+
+\draw  (\x,\y2 + \dy) -- (\x + \len,\y2 + \dy)  node  [right] {$\ket{g}$ final state $\ket{} =f \ket{e, n-2}$};
+
+\tikzmath{\midml=(\y2 - \y0)/2;};
+
+\draw[->] (\x + \len /2, \y0) --  (\x + \len /2, \y0 + \midml);
+\draw[->] (\x + \len /2, \y0 + \midml) --  (\x + \len /2, \y0 +2 *  \midml);
+
+\end{tikzpicture}
+
+%\end{document}

@@ -36,7 +36,9 @@ molecules began with the work of  \cite{denk90}. Nowadays, two-photon absorption
 \section{Second-order perturbation theory}
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir theo_nlo_tpe_qm_system.pdf}
+%\includegraphics[width=\textwidth]{\currfiledir theo_nlo_tpe_qm_system.pdf}
+\inputtikz{\currfiledir tpe_states}
+
 \caption{
 We distinguish between the states of the absorbing system
 ($\ket{g}$, $\ket{e'}$, $\ket{e}$) and the states of the whole system, which
@@ -159,7 +161,7 @@ The energy difference $E_\mu - E_i$ can also be expressed as $E_u - \hbar
 \end{equation}
 All in all, this results in the following transition rate $w_{fi}$ 
 \begin{equation}
-w_{fi} =  \frac{2}{\hbar^2 \Gamma} \; I(\omega)^2  \; \left|
+w_{fi} =  \frac{2}{\hbar^2 \Gamma} \; \left| \hat{E}(\omega) \right|^4  \; \left|
 \sum_{u} \frac{\mu_{e u} \; \mu_{u g}}{E_{u} - \hbar \omega}
 \right|^2 = \frac{1}{2} \; \sigma_{TPE} \;
 \left(\frac{I(\omega)}{\hbar \; \omega}\right)^2 \quad ,
