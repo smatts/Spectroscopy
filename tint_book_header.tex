@@ -151,9 +151,9 @@
 % The 'fancy' page style is the default style for all pages.
 \fancyhf{} % clear header and footer fields
 \ifthenelse{\boolean{@tufte@twoside}}
-  %{\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plainauthor}}}%
-  %  \fancyhead[RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
-  %{\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
+%  {\fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\plaintitle}}}%
+%    \fancyhead[RO]{\smallcaps{\newlinetospace{\plainauthor}}\quad\thepage}}
+%  {\fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}}
   {\fancyhead[LE]{\thepage\quad{\newlinetospace{\plaintitle}}}%
     \fancyhead[RO]{{\newlinetospace{\plaintitle}}\quad\thepage}}%
   {\fancyhead[RE,RO]{{\newlinetospace{\plaintitle}}\quad\thepage}}

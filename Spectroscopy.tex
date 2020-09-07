@@ -1,5 +1,5 @@
 
-\documentclass[notoc,nofonts,a4paper,oneside,nobib]{tufte-book}
+\documentclass[notoc,nofonts,a4paper,twoside,nobib]{tufte-book}
 %\documentclass[nofonts,a4paper,twoside]{book}
 
 \usepackage{currfile,hyperxmp}
@@ -70,11 +70,19 @@
 
 \usepackage{calc}
 
+
 \input{tint_book_header}
 
 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}%
 
 
+\ifthenelse{\boolean{@tufte@twoside}}
+  {\fancyhead[LE]{\thepage\quad{\newlinetospace{Experiments in Spectroscopy}}}%
+    \fancyhead[RO]{{\newlinetospace{\leftmark}}\quad\thepage}}%
+  {\fancyhead[RE,RO]{{\newlinetospace{c}}\quad\thepage}}
+  
+ 
 %\makeatletter
 \fancypagestyle{mystyle}{%
 \fancyhf{}%
@@ -138,7 +146,8 @@
 \title{Experiments in Spectroscopy}
 
 \author{Markus Lippitz}
-\date{\today}
+%\date{\today}
+\date{July 21, 2020}
 
 
 \maketitle
@@ -206,7 +215,7 @@
 %%\include{5_nanooptics/1_surfaceplasmons/surfaceplasmon}
 %%\include{5_nanooptics/overview_NO}
 %
-%%-------
+%-------
 %
 %%\nocite{*}
 
