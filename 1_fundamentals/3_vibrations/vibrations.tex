@@ -1,4 +1,3 @@
-\renewcommand{\lastmod}{May 1, 2020}
 
 
 \chapter{Molecular Vibrations}
@@ -51,11 +50,12 @@ The energies of the quantum mechanical eigenstates are
 \begin{eqnarray}
   E_{g, n} &=&  (n + 1/2) \, \hbar \omega  \\
   E_{e, m} &=&  (m + 1/2) \, \hbar \omega  +  E_{eg} - \frac{A^2}{2 m \omega^2} =
-   (m + 1/2 - S^2) \, \hbar \omega  +  E_{eg} 
+   (m + 1/2 - S) \, \hbar \omega  +  E_{eg}  \nonumber
 \end{eqnarray}
 We introduce the Huang-Rhys factor $S$ as dimensionless coupling constant
 \begin{equation}
- S = \frac{A}{\hbar \omega} \sqrt{\frac{\hbar}{2 m \omega}} \quad .
+ S = \frac{A^2}{\hbar \omega} \frac{1}{2 m \omega^2}
+ = \frac{1}{2} \, \left( r \, \sqrt{\frac{m \, \omega}{\hbar}}\, \right)^2 \quad ,
 \end{equation}
 The eigenfunctions $\chi_n$ of the nuclear vibrations are Hermite polynomials. The Franck-Condon factor describes the overlap integral of the vibrational wavefunction of ground and excited state. As the electronic transition is fast compared to nuclear motion, the nuclear coordinate cannot change during the transition (Born-Oppenheimer approximation), and both ground and excited state need a non-vanishing probability to be at the same coordinate $r$. When one of the states is in a vibrational ground state, i.e., $n$ or $m$ equals zero, the Franck-Condon factor takes the form\sidenote{This notation is sloppy in the sense that the bra wavefunction is an electronic excited state, the ket function an electronic ground state!}
 \begin{equation}
@@ -94,11 +94,15 @@ Not only the spectral positions, but also the amplitude of the peaks in absorpti
    F(\omega =  \omega_{e,n \rightarrow g,m} ) & \propto & \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 
 \, B_{ge}
 \end{eqnarray}
-In each case, one factor of $\omega$ appears due to the photon energy $\hbar \omega$, as the right-hand side considers single absorption or emission events,  but the right-hand side uses spectra in terms of power per spectral interval, not photons. The fluorescence spectrum gets an additional factor of $\omega^2$ due to the optical mode density in 3D space, as it enters the black-body spectrum and the relation between the Einstein $A$ and $B$ coefficients.
-Taking everything together, one should therefor compare $\epsilon / \omega$ and $F / \omega^3$.
+Actually, the spectral integral over a line in $A(\omega )$ or $F(\omega)$ is associated with a transition and thus a Franck-Condon factor. The integral has been solved assuming a line form. Thereby a factor $\omega$ remains on the right side of both equations. The fluorescence spectrum gets an additional factor of $\omega^2$ due to the optical mode density in three-dimensional space, as it appears in the blackbody spectrum and in the relation between the Einstein coefficients $A_{12}$ and $B_{12}$.
+All together, therefore, one should compare $A / \omega$ and $F / \omega^3$.
 
 
-\textbf{todo}: explain Stokes shift better / at all, include solvent in discussion
+
+
+
+
+\textbf{todo: explain Stokes shift better / at all, include solvent in discussion}
 
 
 

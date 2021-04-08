@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 29, 2020}
+%\renewcommand{\lastmod}{April 29, 2020}
 
 \chapter{Absorption}
 
@@ -35,7 +35,8 @@ MEH-PPV conjugated polymer  & \cite{Hou:2017jm}, Fig. 3 \\
 An UV/VIS spectrometer measures the  power $P$ transmitted through a cuvette of optical path length $L$ and compares it to the power $P_0$ in a reference path. In most cases, also here, the reference path holds a cuvette containing  the plain solvent. The transmission $T = P / P_0$ is converted into the absorbance $A = - \log_{10} T = - \log_{10} ( P / P_0)$. The data set gives absorbance as function of wavelength.
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir/uvvis.png}
+\inputtikz{\currfiledir/uvvis}
+%\includegraphics[width=\textwidth]{\currfiledir/uvvis.png}
 \caption{Sketch of a UV/VIS spectrometer}
 \end{marginfigure}
 
@@ -65,7 +66,9 @@ so that the molar absorption coefficient has the unit 1/(M  cm). As we are conce
 
 The interaction cross section $\sigma$ of a process is an imagined area around the particle, which, when hit by a photon, triggers the considered process. When a photon hits on the absorption cross section $\sigma_{\text{abs}}$ of a molecule it will be absorbed. If it does not hit it will pass unperturbed. All details of the physics are summarized in the area, which makes it easy to relate the absorption cross section with the absorbance. 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir/crosssections.png}
+\inputtikz{\currfiledir/crosssection}
+
+%\includegraphics[width=\textwidth]{\currfiledir/crosssections.png}
 \caption{Sketch  disks hit by rays}
 \end{marginfigure}
 
@@ -89,7 +92,9 @@ which has the unit of an area. As the  molar absorption coefficient $\epsilon$  
 
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir/lorentz.png}
+%\includegraphics[width=\textwidth]{\currfiledir/lorentz.png}
+\inputtikz{\currfiledir/mass_spring}
+
 \caption{A Lorentz oscillator}
 \end{marginfigure}
 
@@ -119,7 +124,7 @@ The time-averaged power  that the damped oscillator takes out of the driving for
  % & = & Re \left\{ \frac{i \omega}{2} \frac{e^2  E_0^2 }{2 m \omega_0}  \frac{1}{\omega_0 - \omega +  i \gamma } \right\}  \\
 %& \approx & Im \left( \frac{e^2  E_0^2 }{4 m }  \frac{1}{\omega_0 - \omega + i \gamma }  \right)
 & = & \frac{e^2 E_0^2  }{4 m }  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2}  \\
-&  = &  \frac{e^2  }{2 \epsilon_0 \, m \,c }  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2}  \, |S|  \quad .\\
+&  = &  \frac{e^2  }{2 \epsilon_0 \, m \,c }  \frac{\gamma }{(\omega_0 - \omega)^2 +  \gamma ^2}  \, |S|  \quad .
 \end{eqnarray}
 %
 The time average has produced a factor of $1/2$ and in the last step we have used the definition of the amplitude of the Poynting vector $|S| = \frac{1}{2} \epsilon_0 c |E_0|^2$. 
@@ -145,7 +150,9 @@ The spectral integral of the absorption cross section is independent of its widt
 \section{Transition dipole moment}
 
 \begin{marginfigure}
-\includegraphics[width=0.7\textwidth]{\currfiledir/tls.png}
+%\includegraphics[width=0.7\textwidth]{\currfiledir/tls.png}
+\inputtikz{\currfiledir/tls_absorption}
+
 \caption{A light beam induces a transition from $\ket{i}$ to the  $\ket{f}$.}
 \end{marginfigure}
 

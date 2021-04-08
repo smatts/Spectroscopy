@@ -1,0 +1,55 @@
+\documentclass[margin=0mm]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+ \pgfplotsset{compat=newest}
+\usepackage{braket}
+
+\usepackage{currfile,hyperxmp}
+\usetikzlibrary{math,calc,matrix,fit,positioning,intersections}
+\usetikzlibrary{patterns,decorations.pathmorphing,decorations.markings}
+
+ 
+\usepackage{xfp}
+
+
+
+\begin{document}
+
+\begin{tikzpicture}%[every node/.style={draw,outer sep=0pt,thick}]
+
+\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
+
+\tikzstyle{photon}=[decorate,decoration={snake,pre length=0.15cm,post length=0.15cm,segment length=5}]
+
+
+
+\draw [thick] (0.1,0) -- +(4.8cm, 0) node [right] {  $\ket{1}$};
+\draw [thick] (.10,2cm) -- +(4.8cm, 0) node [right] {  $\ket{2}$};
+
+\draw [<-] (0.3,0.1) -- (0.3,1.9);
+\draw  [->, photon] (0.35, 1.2) -- node [below] {$A_{21}$} +(+0.95,0);
+
+\draw [->] (2.5,0.1) -- (2.5,1.9);
+\draw  [<-, photon] (2.45, 0.8) -- node [below] {$B_{12}$} +(-0.95,0);
+
+\draw [<-] (3.8,0.1) -- (3.8,1.9);
+\draw  [<-, photon] (3.75, 1.2) -- +(-0.95,0);
+\draw  [->, photon] (3.85, 1.2) -- +(0.95,0);
+\draw  [->, photon] (3.85, 0.9) -- node [below] {$B_{21}$}  +(0.95,0);
+
+%
+%\node (M) [circle,draw, thick,minimum width=8mm] {$m, q$};
+%
+%\node (wall) [ rotate=-90, minimum width=1.2cm,yshift=-3cm] {};
+%
+%\draw (wall.north east) -- (wall.north west);
+%
+%\draw [photon] (wall) -- (M.west);
+%
+%\draw [-latex, thick] (M.south west) ++ (-2mm,-0.3cm) -- node[below] {$\mathbf{E}$} + (12mm,0) ;
+%
+%\draw [|-latex] (M.north) ++ (0,2mm) -- node[above] {$x$} + (5mm,0) ;
+
+\end{tikzpicture}
+
+\end{document}

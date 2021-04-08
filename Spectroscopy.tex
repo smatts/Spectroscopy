@@ -25,8 +25,8 @@
 
 
 \input{tikz_header}
-%\usetikzlibrary{external}
-%\tikzexternalize[prefix=figures/]
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/]
 
 
 
@@ -140,14 +140,19 @@
   \renewcommand\eqref[1]{{\let\my@tag@font\relax\amsmath@eqref{#1}}}
 \makeatother
 
+%\includeonly{1_fundamentals/1_absorption/absorption}
+%\includeonly{1_fundamentals/2_fluorescence/fluorescence}
+
+
 \begin{document}
+  \tikzexternaldisable
 
 
 \title{Experiments in Spectroscopy}
 
 \author{Markus Lippitz}
-%\date{\today}
-\date{July 21, 2020}
+\date{\today}
+%\date{July 21, 2020}
 
 
 \maketitle
@@ -156,7 +161,7 @@
 %
 \tableofcontents
 
-\include{preface}
+%\include{preface}
 
 %
 \part{Fundamentals}

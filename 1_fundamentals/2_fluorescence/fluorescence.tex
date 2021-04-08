@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{May 1, 2020}
+%\renewcommand{\lastmod}{May 1, 2020}
 
 
 \chapter{Fluorescence}
@@ -45,7 +45,9 @@ This problem only occurs for spectra of light. Absorption spectra are the ratio 
 \subsection{Time correlated single photon counting}
 
 \begin{marginfigure}
-   \includegraphics[width=\textwidth]{\currfiledir tcspc.png}
+  % \includegraphics[width=\textwidth]{\currfiledir tcspc.png}
+   \inputtikz{\currfiledir/tcspc}
+
   \caption{Sketch of a TCSPC setup}
 \end{marginfigure}
 
@@ -58,7 +60,8 @@ This technique measures the arrival time of single photons relative to the laser
 \section{Einstein coefficients}
 
 \begin{marginfigure}
-   \includegraphics[width=\textwidth]{\currfiledir einstein.png}
+ %  \includegraphics[width=\textwidth]{\currfiledir einstein.png}
+\inputtikz{\currfiledir/einstein-coeff}
 
   \caption{Einstein coefficients}
 \end{marginfigure}
@@ -183,7 +186,9 @@ After switching off the excitation laser, the fluorescence intensity drops thus 
 
 
 \begin{marginfigure}
-   \includegraphics[width=\textwidth]{\currfiledir rates.png}
+ %  \includegraphics[width=\textwidth]{\currfiledir rates.png}
+   \inputtikz{\currfiledir/rates}
+
   \caption{A fluorescence decay trace gives the total rate.}
 \end{marginfigure}
 

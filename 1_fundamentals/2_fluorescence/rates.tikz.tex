@@ -1,0 +1,43 @@
+
+
+\begin{tikzpicture}%[every node/.style={draw,outer sep=0pt,thick}]
+
+\tikzstyle{spring}=[thick,decorate,decoration={zigzag,pre length=0.3cm,post length=0.3cm,segment length=6}]
+
+\tikzstyle{photon}=[decorate,decoration={snake,pre length=0.15cm,post length=0.15cm,segment length=5}]
+
+
+\begin{scope}[scale=0.8]
+
+\draw [thick] (0.1,0) -- +(2cm, 0) node [right] {  $\ket{1}$};
+\draw [thick] (.10,2cm) -- +(2cm, 0) node [right] {  $\ket{2}$};
+
+\draw [<-] (0.3,0.1) -- node[right] {$k_{r}$} (0.3,1.9);
+\draw [<-] (1.5,0.1) -- node[right] {$k_{nr}$} (1.5,1.9);
+
+
+
+\begin{scope}[xshift=4cm]
+  \draw [->] (0,0) -- (2cm,0) node [below] {$\tau$};
+  \draw [->] (0,0) --node [above,rotate=90] {$\log(N_2)$} (0,2cm);
+
+  \draw [name path=line1] (0.2, 1.5) -- (1.9, 0.7);
+  \coordinate (a) at (1, 1.3);
+  \node [xshift=2.5mm, yshift=2mm] at (a) {$k_r + k_{nr}$};
+  
+  \path[name path=fl1] (a)--++(-90:2);
+\path[name path=fl2] (a) --++(-180:2);
+
+\path[name intersections={of=fl1 and line1,by={c}}];
+\path[name intersections={of=fl2 and line1,by={d}}];
+
+  
+  
+\draw (a) -- (c);
+\draw (a) -- (d);
+
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
