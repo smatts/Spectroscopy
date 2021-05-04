@@ -14,7 +14,7 @@ em_ip = em_ip ./ max(em_ip);
 
 %molar extinction coefficient also increases from 60 000 M^-1 cm^-1 (PDI) to 93 000 M^-1 cm^-1 (TDI).
 
-abs_ip = abs_ip ./ 10;  % fake absolute value of absorption spectrum
+%abs_ip = abs_ip ./ 10;  % fake absolute value of absorption spectrum
 
 plot(wl, abs_ip)
 hold on
@@ -84,7 +84,7 @@ omega = energy ./ (h ./ (2 .* pi)); %  energy is in eV !
 domega = omega(2) - omega(1);
 
 len = 0.01;  % 1cm
-concentration = 1e-5 .* 1e+3; % = 1mM, needs Mol / m^3
+concentration = 1e-5 .* 1e+3; % = 10 uM, needs Mol / m^3
 
 
 epsilon = absorption_e ./ (concentration .* len);

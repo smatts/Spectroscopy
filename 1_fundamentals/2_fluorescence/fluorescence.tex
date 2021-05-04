@@ -32,7 +32,7 @@ It is helpful to consider how the spectrum of light is really measured. A light 
 
 The resolution of a grating spectrometer is determined by the width of the CCD pixels, the size of the diode or of the entrance slit, by the size of a monochromatic focus, or a combination of all. But in all cases, it is constant over the spectrum when measured in wavelength. The natural unit of a grating spectrometer is wavelength, not frequency. The reciprocal relation between wavelength and frequency leads to 
 \begin{equation}
- \Delta \nu = \nu_2 - \nu_2 = \frac{c}{\lambda_2} - \frac{c}{\lambda_1}  = c \frac{\lambda_1 - \lambda_2}{\lambda_1 \lambda_2} \approx \frac{c}{\lambda^2} \, \Delta \lambda
+ \Delta \nu = \nu_2 - \nu_1 = \frac{c}{\lambda_2} - \frac{c}{\lambda_1}  = c \frac{\lambda_1 - \lambda_2}{\lambda_1 \lambda_2} \approx \frac{c}{\lambda^2} \, \Delta \lambda
 \end{equation}
 In the frequency domain, the spectral resolution is thus not constant, but proportional to $\nu^2$. As consequence, converting a data set from wavelength domain to frequency domain does not only entail converting the $x$-values, but also the $y$-values. The integral or total number of photons has to stay the same.
 \begin{equation}
@@ -89,21 +89,78 @@ where the $g_i$ are the degeneracy of the respective state. The spectral energy 
 Altogether this leads to 
 \begin{eqnarray}
  g_1 \, B_{12} &=& g_2 \, B_{21} \\
- A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21} 
+ A_{21} &=&  \frac{\hbar \, \omega^3}{\pi^2 c^3} \, B_{21}  \label{eq:fl_Einstein_A_B}
 \end{eqnarray}
 Different prefactors can be found in literature for these equations, depending on the exact definition of $u$.
  \footcite{Hilborn:2002wj} 
  As each absorption event takes out the energy $\hbar \omega$ and the energy density $u(\omega)$ moves with the velocity of light $c$, we get for the absorption cross section
 \begin{equation}
-\int \sigma d \omega = \frac{\hbar \omega \, B_{12} \, u(\omega)  }{c \, u(\omega) }  =
-   \frac{\hbar \omega  }{c  }    \, B_{12}
+\int \sigma(\omega) \, d \omega = \frac{\hbar \omega_{12} \, B_{12} \, u(\omega_{12})  }{c \, u(\omega_{12}) }  =
+   \frac{\hbar \omega_{12}  }{c  }    \, B_{12}
 \end{equation}
-assuming that almost all atoms are in the ground state ($N_2 \ll N_1$) and
+assuming that almost all atoms are in the ground state ($N_2 \ll N_1$). Using \ref{eq:abs_sigma_mu} and taking rotational averaging into account, we get
 \begin{equation}
-B_{12} = \frac{\pi}{3 \, \hbar^2 \, \epsilon_0} \,  |\mathbf{\mu}_{if} |^2  \quad ,
+B_{12} = \frac{\pi}{3 \, \hbar^2 \, \epsilon_0} \,  |\mathbf{\mu}_{if} |^2  \quad . \label{eq:fl_B_from_mu}
 \end{equation}
-taking rotational averaging into account.
 
+\section{Relation between absorption and emission spectra for atoms}
+
+As we have seen in the last chapter, the extinction spectrum $A(\omega)$ of an atomic gas is.
+\begin{equation}
+A(\omega) = \epsilon(\omega) C d = \frac{N_A C d}{\ln(10)} \sigma(\omega) = \frac{N_A C d}{\ln(10)}
+\frac{\pi \omega_{if}}{ \hbar c \epsilon_0}
+  L(\omega - \omega_{if}) \, | \mu_{if} |^2 \label{eq:fl_absspec}
+\end{equation}
+where $C$ is the concentration of the atoms in the gas cell of thickness $d$. We used  again the line-shape function $L(\Delta \omega)$.
+
+The  spectrum\sidenote{Note that the spectrum is in units of photons per wavelength or frequency interval, and not power per interval.} of the spontaneous fluorescence emission $F(\omega)$ is proportional to the spectral dependence of the radiative decay rate and thus to the  Einstein $A_{21}$ coefficient.
+Combining eq. \ref{eq:fl_B_from_mu} and \ref{eq:fl_Einstein_A_B}
+we get
+\begin{equation}
+ A_{21} =  \frac{\hbar \, \omega_{if}^3}{\pi^2 c^3} \, B_{21}  = 
+\frac{ \omega_{if}^3}{3 \, \pi \hbar \, \epsilon_0 \, c^3}    |\mathbf{\mu}_{if} |^2  
+\end{equation}
+or, with the line-shape function $L$ and a concentration $C$
+\begin{equation}
+F(\omega) \propto C \frac{ \omega_{if}^3}{3 \, \pi \hbar \, \epsilon_0 \, c^3}   L(\omega - \omega_{if}) \,   |\mathbf{\mu}_{if} |^2  \label{eq:fl_emspec}
+\end{equation}
+Note that both the absorption and the emission spectrum are proportional to the square of the transition dipole moment $|\mathbf{\mu}_{if} |^2 $, but the first is obtained by multiplying with $\omega_{if}$, the second by multiplying with $\omega_{if}^3$
+
+
+\section{Molecules}
+
+
+Molecules are a bit more complicated than atoms.
+The Born-Oppenheimer approximation  allows to separate the wave functions of electrons $ \phi(\mathbf{r}, \mathbf{R})$ and nucleus $ \chi(\mathbf{R}) $:
+\begin{equation}
+ \Psi = \chi(\mathbf{R}) \, \phi(\mathbf{r}, \mathbf{R}) \label{eq:elec_wf_FC}
+\end{equation}
+where the nuclear ($\mathbf{R}$) and electron ($\mathbf{r}$) coordinates include the coordinate of \emph{all} electrons and nuclei, respectively, and the nuclear coordinates $\mathbf{R}$ are only fixed parameters in the electronic wave function. The matrix element of the dipole transition operator $\hat{\mu}$ then reads
+\begin{equation}
+ \mu_{if} = \iint \chi_f(\mathbf{R}) \, \phi_f(\mathbf{r} , \mathbf{R}) \; \hat{\mu}
+ \, \chi_i(\mathbf{R}) \, \phi_i(\mathbf{r}, \mathbf{R}) \, d \mathbf{r} \, d \mathbf{R} \
+\end{equation}
+
+
+We now divide the dipole operator $\hat{\mu}$ into a part acting only on the position of the negative charges, i.e., the electrons, and a part acting only on the position of the positive charges, i.e., the nuclei
+\begin{equation}
+\hat{\mu} = \hat{\mu}_e + \hat{\mu}_k = q_e \mathbf{r} + q_k \mathbf{R}
+\end{equation}
+Thus we obtain
+\begin{align}
+\mu_{if} = & \braket{ \chi_f, \phi_f | \hat{\mu}_e | \chi_i \phi_i} 
++ \braket{ \chi_f, \phi_f | \hat{\mu}_k | \chi_i \phi_i}  \\
+= & \braket{\chi_f | \chi_i} \, \braket{ \phi_f | \hat{\mu}_e | \phi_i} 
++ \braket{ \phi_f | \phi_i} \,
+\braket{ \chi_f | \hat{\mu}_k | \chi_i }  
+\end{align} 
+In the second step, we assumed that the electron wavefunction $ \phi(\mathbf{r}, \mathbf{R})$ depends only weakly on $\mathbf{R}$. The electron wavefunctions $\phi_i$ are orthogonal to each other. Thus, the second summand vanishes. The prefactor in front of the first one is not zero because the nuclear wavefunctions belong to different equilibrium distances. This factor 
+\begin{equation}
+ F = \braket{\chi_f | \chi_i} = 
+ \int \chi_f(\mathbf{R}) \, \chi_i(\mathbf{R}) \, d \mathbf{R} 
+\end{equation}
+is called \emph{Franck-Condon factor}. It describes the spatial overlap of the oscillatory wave function of the initial and target states.
+We will investigate this more in detail in the next chapter. In essence, we need to decorate all equations stemming from atomic transitions with $|F|^2$ to take the nuclear vibration into account.
 
 
 
@@ -122,7 +179,7 @@ k_{e,n \rightarrow g}  = \sum_m  k_{e,n \rightarrow g,m}  = \frac{\hbar}{\pi^2 c
 \end{equation}
 where we have used the relation between the Einstein $A$ and $B$ coefficients and taken into account the Frank-Condon factors $ | \braket {\chi_m | \chi_n} |^2 $ for the overlap of the vibrational wave functions $\chi$ of the nuclei.
 %
-The Einstein coefficient for absorption $B_{ge} $ is related to the molar extinction coefficient $\epsilon(\omega)$, as we have seem in the chapter on absorption
+The Einstein coefficient for absorption $B_{ge} $ is related to the molar extinction coefficient $\epsilon(\omega)$, as we have seen in the chapter on absorption
 \begin{equation}
  k_{e,n \rightarrow g}  = \frac{\ln(10)}{\pi^2 c^2 N_A} \sum_m  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2
  \int \frac{\epsilon(\omega)}{\omega} \, d \omega
@@ -138,9 +195,9 @@ As the  $\chi_m$ form a full basis set $\sum_m  | \braket {\chi_m | \chi_n} |^2 
  %
  \int \frac{\epsilon(\omega)}{\omega} \, d \omega
 \end{equation}
-The fluorescence emission spectrum $F(\omega)$ is determined up to spectrally constant factors by the $\omega^3$ term and the Franck-Condon factors, i.e.
+The fluorescence emission spectrum $F(\omega)$ is determined\sidenote{see also next chapter} up to spectrally constant factors by the $\omega^3$ term and the Franck-Condon factors, i.e.
 \begin{equation}
- F(\omega =  \omega_{e,n \rightarrow g,m} )  \propto  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 
+ F(\omega =  \omega_{e,n \rightarrow g,m} )  \propto  \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 \, | \mu_{eg} |^2
 \end{equation}
 so that we can write by replacing the sums over $m$ by  spectral integrals
 \begin{equation}

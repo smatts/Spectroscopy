@@ -52,65 +52,70 @@ mode = 2;   % given:
     
     eps = alpha .* NA ./ (log(10) .* c_volume)
      
+   %inhom. linewidth
+    d_omega_eV = 60e-3; % inhom. linewidth = 60 meV
+    d_omega = d_omega_eV .*  2 .* pi .* q_electron ./ h;
+
+    % eq 1.33
     lhs = eps ./ omega .* d_omega;
     mu = sqrt(lhs .* 1 .* log(10) .* hq .* c .* eps0 ./ ( pi .* NA));
     
     mu ./ debye
      
 % CdSe
-
-    eps = 2E5  .* 10 ; % 1/cm M  .* 10 = SI
-    lambda = 550e-9;
-    omega = 2 .* pi .* c ./ lambda;
-
-    
-    sigma_peak = eps .* log(10) ./ NA;
-    sigma_peak .* 1e18  % nm^2
-    
-    
-    
-    mu_peak = sqrt( sigma_peak .* 3 .* hq .* c .* eps0 ./ (pi .* omega));
-    mu_peak ./ debye
-    
-    d_lambda = 20e-9;
-    d_omega = omega .* d_lambda ./ lambda;
-    
-    lhs = eps ./ omega .* d_omega;
-    mu = sqrt(lhs .* 1 .* log(10) .* hq .* c .* eps0 ./ ( pi .* NA));
-     mu ./ debye
-
-
-
-% Xanthen dye
-%     sigma = 0.44e-20;
-%     lambda = 565e-9;
-
-% MEH
-%     sigma = 11.2e-18;
-%     lambda = 815e-9%488e-9;
+% 
+%     eps = 2E5  .* 10 ; % 1/cm M  .* 10 = SI
+%     lambda = 550e-9;
+%     omega = 2 .* pi .* c ./ lambda;
+% 
+%     
+%     sigma_peak = eps .* log(10) ./ NA;
+%     sigma_peak .* 1e18  % nm^2
+%     
+%     
+%     
+%     mu_peak = sqrt( sigma_peak .* 3 .* hq .* c .* eps0 ./ (pi .* omega));
+%     mu_peak ./ debye
+%     
+%     d_lambda = 20e-9;
+%     d_omega = omega .* d_lambda ./ lambda;
+%     
+%     lhs = eps ./ omega .* d_omega;
+%     mu = sqrt(lhs .* 1 .* log(10) .* hq .* c .* eps0 ./ ( pi .* NA));
+%      mu ./ debye
 % 
 % 
-% %Frequ
-% w = 2*pi*c/lambda;
 % 
+% % Xanthen dye
+% %     sigma = 0.44e-20;
+% %     lambda = 565e-9;
 % 
-% switch(mode)
-%     case 1  %1  eps
-%         sigma = log(10)*eps/NA;
-%         mu = sqrt(3*hq*c*eps0*sigma/(pi*w));
-%         
-%     case 2  %2  sigma
-%         eps = NA*sigma/log(10);
-%         mu = sqrt(3*hq*c*eps0*sigma/(pi*w));
-%         
-%     case 3  %3  mu
-%         sigma = pi*w*mu*mu/(3*hq*c*eps0);
-%         eps = NA*sigma/log(10);
-% end
-% 
-% 
-% %Units
-% eps = eps*1e-2;         %[cm^-1]
-% sigma = sigma*1e18;     %[nm^2]
-% mu = mu/(0.208e-10*q_electron);  %[D]
-% 
+% % MEH
+% %     sigma = 11.2e-18;
+% %     lambda = 815e-9%488e-9;
+% % 
+% % 
+% % %Frequ
+% % w = 2*pi*c/lambda;
+% % 
+% % 
+% % switch(mode)
+% %     case 1  %1  eps
+% %         sigma = log(10)*eps/NA;
+% %         mu = sqrt(3*hq*c*eps0*sigma/(pi*w));
+% %         
+% %     case 2  %2  sigma
+% %         eps = NA*sigma/log(10);
+% %         mu = sqrt(3*hq*c*eps0*sigma/(pi*w));
+% %         
+% %     case 3  %3  mu
+% %         sigma = pi*w*mu*mu/(3*hq*c*eps0);
+% %         eps = NA*sigma/log(10);
+% % end
+% % 
+% % 
+% % %Units
+% % eps = eps*1e-2;         %[cm^-1]
+% % sigma = sigma*1e18;     %[nm^2]
+% % mu = mu/(0.208e-10*q_electron);  %[D]
+% % 

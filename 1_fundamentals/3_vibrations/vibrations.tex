@@ -29,35 +29,37 @@
 
 \section{Franck-Condon and Huang-Rhys}
 
-A molecule with an electronic ground state $g$ and electronic excited state $e$ can undergo periodic oscillations of the nuclei positions along a coordinate $r$. We assume\footcite{Kuzmany} that the potential of these oscillations is harmonic, i.e.
+A molecule with an electronic ground state $g$ and electronic excited state $e$ can undergo periodic oscillations of the nuclei positions along a coordinate $R$. We assume\footcite{Kuzmany} that the potential of these oscillations is harmonic, i.e.
 \begin{eqnarray}
- U_g(r) &=& \frac{1}{2} \, k\, r^2 = \frac{1}{2} \, m \, \omega^2 \, r^2 \\
-  U_e(r) &=&  U_g(r) + E_{eg} - A \, r = E_{eg}  - A \, r + \frac{1}{2} \, m \, \omega^2 \, r^2 
+ U_g(R) &=& \frac{1}{2} \,  K \, R^2 = \frac{1}{2} \, M \, \Omega^2 \, R^2 \\
+  U_e(R) &=&  U_g(R) + E_{eg} - A \, R = E_{eg}  - A \, R + \frac{1}{2} \, M \, \Omega^2 \, R^2 
  \end{eqnarray}
-where $E_{eg}$ is the electronic contribution to the energy difference. We assumed that both potentials have the same shape, i.e., the same vibrational frequency. The term $A \, r$ couples the electronic state and the nuclear oscillator. It shifts the excited state potential along the $r$ coordinate. While the ground state potential has its minimum at $r=0$, the minimum for the excited state is at
+where $E_{eg}$ is the electronic contribution to the energy difference. We assumed that both potentials have the same shape, i.e., the same vibrational frequency. The term $A \, R$ couples the electronic state and the nuclear oscillator. It shifts the excited state potential along the $R$ coordinate. While the ground state potential has its minimum at $R=0$, the minimum for the excited state is at $R = R_e$
 %
 %
 \begin{marginfigure}
-   \includestandalone[width=50mm]{\currfiledir fig_parabola}
-\caption{The coupling term $-A r$ in the potential of the excited state $e$ shifts the minimum of the parabola to larger values of $r$ and lower values of the potential. }
+ %  \includestandalone[width=50mm]{\currfiledir fig_parabola}
+      \inputtikz{\currfiledir/fig_parabola}
+
+\caption{The coupling term $-A R$ in the potential of the excited state $e$ shifts the minimum of the parabola to larger values of $R$ and lower values of the potential. }
 \end{marginfigure}
 %
 %
 \begin{equation}
- A = m \, \omega^2 \,  r	 \quad \text{i.e.} \quad r = \frac{A}{m \omega^2}
+ A = M \, \Omega^2 \, R_e	 \quad \text{i.e.} \quad R_e = \frac{A}{M \Omega^2}
 \end{equation}
 The energies of the quantum mechanical eigenstates are 
 \begin{eqnarray}
-  E_{g, n} &=&  (n + 1/2) \, \hbar \omega  \\
-  E_{e, m} &=&  (m + 1/2) \, \hbar \omega  +  E_{eg} - \frac{A^2}{2 m \omega^2} =
+  E_{g, n} &=&  (n + 1/2) \, \hbar \Omega  \\
+  E_{e, m} &=&  (m + 1/2) \, \hbar \Omega  +  E_{eg} - \frac{A^2}{2 M \Omega^2} =
    (m + 1/2 - S) \, \hbar \omega  +  E_{eg}  \nonumber
 \end{eqnarray}
 We introduce the Huang-Rhys factor $S$ as dimensionless coupling constant
 \begin{equation}
- S = \frac{A^2}{\hbar \omega} \frac{1}{2 m \omega^2}
- = \frac{1}{2} \, \left( r \, \sqrt{\frac{m \, \omega}{\hbar}}\, \right)^2 \quad ,
+ S = \frac{A^2}{\hbar \Omega} \frac{1}{2 M \Omega^2}
+ = \frac{1}{2} \, \left( R_e \, \sqrt{\frac{M \, \Omega}{\hbar}}\, \right)^2 \quad ,
 \end{equation}
-The eigenfunctions $\chi_n$ of the nuclear vibrations are Hermite polynomials. The Franck-Condon factor describes the overlap integral of the vibrational wavefunction of ground and excited state. As the electronic transition is fast compared to nuclear motion, the nuclear coordinate cannot change during the transition (Born-Oppenheimer approximation), and both ground and excited state need a non-vanishing probability to be at the same coordinate $r$. When one of the states is in a vibrational ground state, i.e., $n$ or $m$ equals zero, the Franck-Condon factor takes the form\sidenote{This notation is sloppy in the sense that the bra wavefunction is an electronic excited state, the ket function an electronic ground state!}
+The eigenfunctions $\chi_n$ of the nuclear vibrations are Hermite polynomials. The Franck-Condon factor describes the overlap integral of the vibrational wavefunction of ground and excited state. As the electronic transition is fast compared to nuclear motion, the nuclear coordinate cannot change during the transition (Born-Oppenheimer approximation), and both ground and excited state need a non-vanishing probability to be at the same coordinate $R$. When one of the states is in a vibrational ground state, i.e., $n$ or $m$ equals zero, the Franck-Condon factor takes the form\sidenote{This notation is sloppy in the sense that the bra wavefunction is an electronic excited state, the ket function an electronic ground state!}
 \begin{equation}
  | \braket{ \chi_0 | \chi_m } | ^2  =  | \braket{ \chi_m | \chi_0 } | ^2 = \frac{S^m \exp(-S)}{m!}
 \end{equation}
@@ -74,16 +76,16 @@ The Debye-Waller factor $D$ gives the ratio of the coherently scattered wave to 
 \end{equation}
 
 
-\section{Stokes shift and mirror rule}
+\section{Mirror rule}
 
 
-When we keep the assumptions of the last section, that the vibrational frequency of ground and excited state is the same, both potentials are harmonic, and of course the Born-Oppenheimer approximation hold, then absorption and emission spectrum are closely related. The 0--0 transition at energy $E_{00}$ from the vibrational ground state of the electronic ground state to the vibrational ground state of the electronic excited state appears both in absorption and emission. As the thermal energy $kT$ is in most cases small compared to the vibrational energy $\hbar \omega$, almost all molecules are in the vibrational ground state. Absorption then only occurs at energies larger than $E_{00}$ into higher vibrational state of the electronic excited state. These energies are
+When we keep the assumptions of the last section, that the vibrational frequency of ground and excited state is the same, both potentials are harmonic, and of course the Born-Oppenheimer approximation hold, then absorption and emission spectrum are closely related. The 0--0 transition at energy $E_{00}$ from the vibrational ground state of the electronic ground state to the vibrational ground state of the electronic excited state appears both in absorption and emission. As the thermal energy $kT$ is in most cases small compared to the vibrational energy $\hbar \Omega$, almost all molecules are in the vibrational ground state. Absorption then only occurs at energies larger than $E_{00}$ into higher vibrational state of the electronic excited state. These energies are
 \begin{equation}
-  E_{abs, n} = E_{00} + n \, \hbar \omega
+  E_{abs, n} = E_{00} + n \, \hbar \Omega
 \end{equation}
 Fluorescence emission also occurs out of a vibrational ground state, but due to different reasons than absorption. In molecules, vibrational relaxation  (some ps) is much faster\sidenote{'Faster' means here that the rates are larger. The event itself can be assumed to be instantaneous. } than fluorescence emission (some ns). The emission occurs thus into different vibrational levels of the electronic ground state at
 \begin{equation}
-  E_{em, n} = E_{00} - n \, \hbar \omega
+  E_{em, n} = E_{00} - n \, \hbar \Omega
 \end{equation}
 The spectral position of the absorption and emission peaks are thus mirrored\footcite[chapter 1.3.2 and 1.3.3]{Lakowicz2010} around the 0--0 transition  energy $E_{00}$.
 
@@ -93,16 +95,19 @@ Not only the spectral positions, but also the amplitude of the peaks in absorpti
 \, B_{eg} \\
    F(\omega =  \omega_{e,n \rightarrow g,m} ) & \propto & \omega_{e,n \rightarrow g,m}^3 \,  | \braket{\chi_m |  \chi_n} |^2 
 \, B_{ge}
-\end{eqnarray}
-Actually, the spectral integral over a line in $A(\omega )$ or $F(\omega)$ is associated with a transition and thus a Franck-Condon factor. The integral has been solved assuming a line form. Thereby a factor $\omega$ remains on the right side of both equations. The fluorescence spectrum gets an additional factor of $\omega^2$ due to the optical mode density in three-dimensional space, as it appears in the blackbody spectrum and in the relation between the Einstein coefficients $A_{12}$ and $B_{12}$.
+\end{eqnarray} 
+This is the same as in eq.\ref{eq:fl_absspec} and \ref{eq:fl_emspec}.
+The spectral integral over a line in $A(\omega )$ or $F(\omega)$ is associated with a transition and thus a Franck-Condon factor. The integral has been solved assuming a line shape. Thereby a factor $\omega$ remains on the right side of both equations. The fluorescence spectrum gets an additional factor of $\omega^2$ due to the optical mode density in three-dimensional space, as it appears in the blackbody spectrum and in the relation between the Einstein coefficients $A_{12}$ and $B_{12}$.
 All together, therefore, one should compare $A / \omega$ and $F / \omega^3$.
 
 
 
+\section{Stokes shift}
 
+When comparing absorption and emission spectra as above, one realizes that the  0--0 transition  energies do not fully agree. This is the Stokes shift. Its amplitude depends on the molecule and the environment of the molecule. When a molecule is transferred into an electronic excited state, the spacial distribution of electron density changes. This influences the environment, for example the solvent molecules, in position and orientation. Directly after excitation, the solvent molecules are still in the position that gives lowest energy when the dye molecule is in the ground state. With the excited state, they will shift and reorient to reduce the overall energy. The fluorescence emission takes thus place from a different electric environment that the absorption, which leads to a shift in transition energy, the Stokes shift.
 
+In a more general way, not only the difference between then 0--0 transition, but the difference between the peaks of absorption and emission spectra is sometimes called Stokes shift. This then includes also vibrational relaxation of the dye molecule itself.
 
-\textbf{todo: explain Stokes shift better / at all, include solvent in discussion}
 
 
 
