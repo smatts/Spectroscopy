@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 27, 2020}
+%\renewcommand{\lastmod}{April 27, 2020}
 
 
 \chapter{Rayleigh and Mie Scattering}
@@ -31,17 +31,11 @@ The sphere responds to the light field with a polarization of
 \end{equation}
 with the polarizability
 \begin{equation}
- \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}}
+ \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}} \quad .
 \end{equation}
 We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$, which requires one dielectric function to be negative, as it is the case in metals. Small metal particles show thus exceptional strong interaction with light in a certain spectral range.
 
 
-\begin{marginfigure}
-  % \includegraphics[width=\textwidth]{\currfiledir scat_1.png}
-   \inputtikz{\currfiledir/scattering_s1}
-
-  \caption{Scattered field of  a sphere}
-\end{marginfigure}
 
 
 As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polarization $p$ oscillates and radiates a secondary, scattered electromagnetic field 
@@ -50,17 +44,25 @@ As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polar
       (k r )^2 \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} +
       \left( 1 -  i k r \right)
         \left( 3\hat{\mathbf{r}} \left[\hat{\mathbf{r}} \cdot \mathbf{p}\right] - \mathbf{p} \right)
-    \right\}
+    \right\} \quad ,
 \end{equation}
+%
+\begin{marginfigure}
+  % \includegraphics[width=\textwidth]{\currfiledir scat_1.png}
+   \inputtikz{\currfiledir/scattering_s1}
+
+  \caption{Scattered field of  a sphere}
+\end{marginfigure}
+%
 where $k = 2 \pi / \lambda$ is the length of the wave vector in the medium. In the optical far-field, i.e. for $r \gg \lambda$ or $k \, r \gg 1$ this simplifies to 
 \begin{equation}
   \mathbf{E}_S = \frac{e^{ikr}}{4\pi\epsilon_0 \epsilon_{out} } 
-      \frac{( k \, r)^2}{ r^3} \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} 
+      \frac{( k \, r)^2}{ r^3} \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}}  \quad .
 \end{equation}
 The total, space-integrated and time-averaged power of this scattered wave is\footcite[chapter 4.5.2]{Nolting-ED}
 \begin{equation}
 P_{scat} =\frac{c  }{12 \pi  \, \epsilon_0 \, \epsilon_{out} } \, k^4 \, |p|^2 =
-\frac{c \, \epsilon_0 \epsilon_{out} }{12 \pi  } \, k^4 \, |\alpha|^2 \, |E_0|^2
+\frac{c \, \epsilon_0 \epsilon_{out} }{12 \pi  } \, k^4 \, |\alpha|^2 \, |E_0|^2 \quad .
 \end{equation}
 The power density of the incoming plane wave is given by the absolute value of the Poynting vector to \footcite[chapter 4.3.8]{Nolting-ED}
 \begin{equation}
@@ -68,7 +70,7 @@ The power density of the incoming plane wave is given by the absolute value of t
 \end{equation}
 and we thus can define a scattering cross section
 \begin{equation}
-\sigma_{scat} = \frac{P_{scat}}{|S|} = \frac{k^4}{6 \pi }  \, |\alpha|^2 
+\sigma_{scat} = \frac{P_{scat}}{|S|} = \frac{k^4}{6 \pi }  \, |\alpha|^2  \quad .
 \end{equation}
 We find the $\omega^4$ frequency dependence typical for Rayleigh scattering.
 
@@ -76,37 +78,46 @@ We find the $\omega^4$ frequency dependence typical for Rayleigh scattering.
 
 \section{Optical Theorem and Extinction Cross Section}
 
-The scatted wave is not only responsible for light propagation in direction different from the incoming beam, but also for a reduction of the transmitted beam. Both effects are two sides of the same coin. This relation runs under the name of Optical Theorem\sidenote{Jackson}\footcite{Newton:1976cz}.
-
 \begin{marginfigure}
  %  \includegraphics[width=\textwidth]{\currfiledir scat_2.png}
       \inputtikz{\currfiledir/scattering}
   \caption{Scattering in forward direction interferes with the exciting beam.}
 \end{marginfigure}
 
-Far away from the scattering object, the scattered wave will be spherical, only the amplitude $f$ could depend on scattering direction $\theta$. Taking the incoming and the scatted wave together, and restricting us to a scalar discussion, we get\footcite{Newton:1976cz}
+The scatted wave is not only responsible for light propagation in direction different from the incoming beam, but also for a reduction of the transmitted beam. Both effects are two sides of the same coin. This relation runs under the name of Optical Theorem\sidenote{Jackson}\footcite{Newton:1976cz}.
+
+
+Far away from the scattering object, the scattered wave will be spherical, only the amplitude\sidenote{$f$ has the unit of  a length} $f$ could depend on scattering direction $\theta$. Taking the incoming and the scatted wave together, and restricting us to a scalar discussion, we get\footcite{Newton:1976cz}
 \begin{equation}
- E_{tot} =  e^{i k z} + \frac{e^{i k r}}{r} \, f(\theta)
+ E_{tot} =  e^{i k z}  \, E_{in}  +  \frac{e^{i k r}}{r} \, f(\theta) \,  E_{in} \quad , 
 \end{equation}
+where $E_{in}$ is the incoming field at the position at which we place the particle.
 In almost forward direction ($\theta \ll 1$) we get
 \begin{equation}
-r = \sqrt{x^2 + y^2 + z^2} \approx z + \frac{x^2 + y^2}{2z }
+r = \sqrt{x^2 + y^2 + z^2} \approx z + \frac{x^2 + y^2}{2z } \quad .
 \end{equation}
-The intensity is thus
+The field in forward direction is thus
 \begin{equation}
- I = |E_{tot}|^2 \approx \left|e^{i k z} + e^{i k z} \frac{e^{i k (x^2 + y^2)/2z }}{z} \, f(\theta) \right| ^2 = \left|1 + \frac{1}{z} \, f(\theta) e^{i k (x^2 + y^2)/2z } \right| ^2
+ E_{tot} \approx 
+ %e^{i k z} + e^{i k z} \frac{e^{i k (x^2 + y^2)/2z }}{z} \, f(\theta)  = 
+ E_{in} \, e^{i k z} \, 
+ \left[1 + \frac{1}{z} \, f(\theta) \, e^{i k (x^2 + y^2)/2z } \right|  \quad ,
 \end{equation}
-where we once even took $r \approx z$. When dropping terms quadratic in the scattering amplitude $f$ and assuming $f(\theta) \approx f(0)$ we get
+%The intensity\sidenote{units W/m$^2$} is thus
+%\begin{equation}
+% I  \propto \left|e^{i k z} + e^{i k z} \frac{e^{i k (x^2 + y^2)/2z }}{z} \, f(\theta) \right| ^2 \approx \left|1 + \frac{1}{z} \, f(\theta) e^{i k (x^2 + y^2)/2z } \right| ^2
+%\end{equation}
+where we once even took $r \approx z$. When dropping terms quadratic in the scattering amplitude $f$ and assuming $f(\theta) \approx f(0)$ we get for the  intensity\sidenote{units W/m$^2$}
 \begin{equation}
- I = |E_{tot}|^2 \approx 1 +   \frac{1}{2 z} \, \Re  \left( f(0) e^{i k (x^2 + y^2)/2z } \right)
+ I  \approx \frac{1}{2} c \, \epsilon_0 \,|E_{in}|^2 \left[ 1 +   \frac{1}{2 z} \, \Re  \left( f(0) \, e^{i k (x^2 + y^2)/2z } \right) \right] \quad .
 \end{equation}
 We now integrate\footcite{Newton:1976cz} over a screen that is so large that the argument of the exponential function oscillates rapidly ($k R^2 / z \gg 2 \pi$), but that is still concentrated along the forward direction ($R/z \ll 1$):
 \begin{equation}
- I = |E_{tot}|^2 \approx A  - \frac{4 \pi }{k} \Im ( f(0) )
+ P_\text{screen} = \int_\text{screen} I \, dR^2  \approx  \frac{1}{2} c \, \epsilon_0 \,|E_{in}|^2 \left[  A  - \frac{4 \pi }{k} \Im ( f(0) ) \right] \quad ,
 \end{equation}
-where $A$ is the size of the screen. The second term is the extinction cross section
+where $A$ is the size of the screen. The second term in the brackets is the extinction cross section
 \begin{equation}
- \sigma_{ext} = \sigma_{scat}  + \sigma_{abs}  = \frac{4 \pi }{k} \Im ( f(0) )
+ \sigma_{ext} = \sigma_{scat}  + \sigma_{abs}  = \frac{4 \pi }{k} \Im ( f(0) ) \quad .
 \end{equation}
 Extinction looks at missing power in a transmitted beam. It does not distinguish between power that remains in the object, e.g. in form of heat, and power that is scattered into a different direction.
 
@@ -116,20 +127,20 @@ Extinction looks at missing power in a transmitted beam. It does not distinguish
 Let us apply the Optical Theorem to the case of a small sphere, described by an ideal dipole.
 The scattering amplitude in forward direction of a dipolar scatterer is related to its p polarizability $\alpha$ by 
 \begin{equation}
- f(0) = \frac{k^2}{4 \pi} \, \alpha
+ f(0) = \frac{k^2}{4 \pi} \, \alpha \quad .
 \end{equation}
 We  then get the extinction coefficient from the optical theorem
 \begin{equation}
- \sigma_{ext} = k \, \Im ( \alpha )
+ \sigma_{ext} = k \, \Im ( \alpha ) \quad .
 \end{equation}
 
 We can also calculate the power that is absorbed by the dipole\footcite[Chapter 8]{Novotny-Hecht2012}
 \begin{equation}
- P_{abs} = \frac{\omega}{c} \, \Im \left( \mathbf{p} \, \mathbf{E}^\star \right) 
+ P_{abs} = \frac{\omega}{c} \, \Im \left( \mathbf{p} \, \mathbf{E}^\star \right)  \quad ,
 \end{equation}
 so that we get 
 \begin{equation}
- \sigma_{abs} = k \, \Im ( \alpha )
+ \sigma_{abs} = k \, \Im ( \alpha ) \quad .
 \end{equation}
 
 If both $\sigma_{abs}$ and $\sigma_{ext}$  would equal $ k \, \Im ( \alpha )$, then now power would be left for scattering. But we calculated a non-zero scattering cross section. 
@@ -150,7 +161,7 @@ and then we get
 
 \section{Mie Scattering}
 
-Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution for the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in a homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite[chapter 4]{BH-book} The idea is the develop the scattered field in vector spherical harmonics.
+Above we have discussed the optical properties of a small particle, small compared to the wavelength of light in the medium. The reason for this restriction was that in this case we could use the quasi-static approximation to obtain a solution for the polarization $\mathbf{p}$ and continue from there. In the special case of spherical particles in a homogeneous environment, we also can find analytical solutions, first published by Gustav Mie.\footcite[chapter 4]{BH-book} The idea is to develop the scattered field in vector spherical harmonics.
 
 For the cross sections one gets
 \begin{eqnarray}

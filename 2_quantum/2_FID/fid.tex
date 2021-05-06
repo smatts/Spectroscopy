@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{May 1, 2020}
+%\renewcommand{\lastmod}{May 1, 2020}
 
 
 \chapter{(Perturbed) Free Induction Decay}
@@ -23,7 +23,8 @@ An epitaxial quantum dot can be approximated by a V-shaped level system: dependi
  can be populated. The excited states differ in the spin of the electron, so that an interchange is slow on the relevant timescales. Such a V-system allows to use one transition 'normal' two-level system, and the other transition to switch off the first: when the system is in $\ket{v}$, the transition $\braket{h | \mu | g}$ is not possible anymore. This does not change much the physics, but makes experiments much simpler, as the influence of the  $\braket{h | \mu | g}$ transition can be modulated in a pump-probe scheme and is such much easier to detect.
  
 \begin{marginfigure}
-\includegraphics[width=0.8\textwidth]{\currfiledir v-system.png}
+%\includegraphics[width=0.8\textwidth]{\currfiledir v-system.png}
+\inputtikz{\currfiledir v-system}
 \caption{Sketch of a V-level system. The energy difference is the fine structure splitting (FSS).}
 \end{marginfigure}
 
@@ -140,7 +141,13 @@ However, at this point our experiment is not finished yet. We still have coheren
 When decoherence is much faster than population decay, then both final states will be reached with equal probability. On average, each atom absorbs half the energy of a photon.
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir pi-pulse.png}
+%\includegraphics[width=\textwidth]{\currfiledir pi-pulse.png}
+\hspace*{\fill} \input{\currfiledir blochsphere_pi.tikz.tex}
+
+\vspace{5mm}
+
+\hspace*{\fill} \input{\currfiledir blochsphere_pi_half.tikz.tex}
+
 \caption{A $pi$ pulse and a $pi/2$ pulse acting on the ground state.}
 \end{marginfigure}
 

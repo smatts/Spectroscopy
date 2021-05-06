@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{April 27, 2020}
+%\renewcommand{\lastmod}{April 27, 2020}
 
 
 \chapter{Molecular Aggregates --- Coupled Two-Level Systems}
@@ -23,7 +23,7 @@
 
 A mathematical pendulum of point mass $m$ and rod length $L$ is governed by the differential equation of its angular displacement $\phi$
 \begin{equation}
- \ddot{\phi} + \frac{g}{L} \, \phi = 0 \quad \text{with} \quad \omega^2 = \frac{g}{l}
+ \ddot{\phi} + \frac{g}{L} \, \phi = 0 \quad \text{with} \quad \omega^2 = \frac{g}{l}  \quad , 
 \end{equation}
 where $g$ is the acceleration due to gravity and $\omega$ its angular eigen-frequency. When two of such pendula are coupled by a spring between the two masses, we get a coupled system of differential equations
 \begin{eqnarray}
@@ -33,7 +33,7 @@ where $g$ is the acceleration due to gravity and $\omega$ its angular eigen-freq
 with the spring constant $k$.  For the moment, we assume that the pendula are identical, i.e., $L = L_1 = L_2$ and $m = m_1 =m_2$. The eigen-frequencies are then
 \begin{equation}
  \omega_{+}^2 = \frac{g}{L} \quad \text{and} \quad 
-  \omega_{-}^2 = \frac{g}{L}  + 2 \frac{k}{m}
+  \omega_{-}^2 = \frac{g}{L}  + 2 \frac{k}{m} \quad ,
 \end{equation}
 where in the mode with frequency $\omega_{+}$ both masses move to the same direction, in the $\omega_{-}$ in opposite directions. Only in the latter case the coupling spring comes into play.
 
@@ -43,11 +43,12 @@ To investigate the general case, we assume harmonic oscillations, i.e. $\phi(t) 
   \frac{g}{L_1} +  \frac{k}{m_1}&  - \frac{k}{m_1}\\
  - \frac{k}{m_2} &  \frac{g}{L_2} +  \frac{k}{m_2}
 \end{pmatrix}  \boldsymbol{\phi}	= \omega^2   \, \boldsymbol{\phi}
+\quad .
 \end{equation}
 We thus search eigen-values and eigen-vectors of  $\boldsymbol{M}$. Assuming individual lengths, but identical masses, we get
 \begin{equation}
  \omega_{\pm}^2 = \left( \frac{\omega_1^2 + \omega_2^2}{2}  + \frac{k}{m} \right)
-  \pm \sqrt{  \left( \frac{\omega_1^2 - \omega_2^2}{2}   \right)^2 + \left(  \frac{k}{m} \right)^2 }
+  \pm \sqrt{  \left( \frac{\omega_1^2 - \omega_2^2}{2}   \right)^2 + \left(  \frac{k}{m} \right)^2 } \quad .
 \end{equation}
 For identical lengths, i.e., identical eigen-frequencies $\omega_1 = \omega_2$, this recovers the results from above.
 
@@ -66,26 +67,39 @@ When we have two of such states, we can  write matrix equation
 The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one state depends somehow on the other. In the matrix we include a coupling energy $J$ in the off-diagonal elements
 \begin{equation}
 \hat{H}_{coupled}  = \begin{pmatrix}  E_a & J \\ J & E_b \end{pmatrix} 
+\quad . 
 \end{equation}
 As a consequence, the original eigen-functions $\psi_0$ are no longer eigen-functions of this coupled Hamilton operator. We find new eigen-functions and eigen-values by diagonalizing $\hat{H}_{coupled}$, so that the diagonal elements become
 \begin{equation}
  E_\pm = \frac{E_a + E_b}{2} \pm \sqrt{ \left( \frac{E_a - E_b}{2} \right)^2 + J^2 }
 \end{equation}
-and the new (not normalized) eigen-functions are\sidenote{A more symmetrical equation is given  in \cite[eq. 8.10]{Parson}}
+and the new  eigen-functions are\footcite[eq. 8.10]{Parson}
 \begin{equation}
- \psi_{\pm} = \psi_b + \psi_a \left[ \frac{E_a - E_b}{2 J} \pm \sqrt{ \left( \frac{E_a - E_b}{2 J} \right)^2 + 1  } \, \right]
+ \psi_{\pm} = 
+\sqrt{\frac{1+s}{2}} \,  \psi_a \, |,  \pm \, \, \sqrt{\frac{1-s}{2}}  \, \psi_b \quad ,
 \end{equation}
+with
+\begin{equation}
+s = \frac{E_a - E_b}{\sqrt{(E_a - E_b)^2 + (2J)^2}} \quad .
+\end{equation}
+%
+%and the new (not normalized) eigen-functions are\sidenote{A more symmetrical equation is given  in \cite[eq. 8.10]{Parson}}
+%\begin{equation}
+% \psi_{\pm} = \psi_b + \psi_a \left[ \frac{E_a - E_b}{2 J} \pm \sqrt{ \left( \frac{E_a - E_b}{2 J} \right)^2 + 1  } \, \right]
+%\end{equation}
 We can distinguish two limiting cases. The coupling energy $J$ can be larger than die energy difference between the two states, i.e. $|J| \gg |E_a - E_b| / 2$. Then then new eigen-energies are split up by $\pm J$ around the average of the old eigen-energies $(E_a + E_b) /2$. The eigen-functions in this situation are symmetric and anti-symmetric combinations of the old eigen-function, i.e. $\psi_\pm = \pm \psi_a + \psi_b$. When the coupling energy is small, i.e. $|J| \ll |E_a - E_b| / 2$, then the new eigen-energies and eigen-functions are close to the old.
 
 
 
 \begin{figure}
-   \includestandalone[width=10cm]{\currfiledir anticrossing}
+  % \includestandalone[width=10cm]{\currfiledir anticrossing}
+   \inputtikz{\currfiledir/anticrossing_v2}
+
 \caption{Eigen-Energies and weights of the eigen-functions as function of the unperturbed energies ($E_b = 1$).}
 \end{figure}
 
 A few side remarks and things that are left open for future versions of this text: 
-\begin{itemize}
+\begin{itemize} \setlength{\itemsep}{0pt}
     \item When the coupling interaction is the electromagnetic wave, then this formalism describes the AC Stark effect, i.e., the shift of atomic transitions in the presence of strong optical fields.
     \item The coupling constant $\beta$ can be complex-valued, i.e., can include a phase lag.
     \item Preparation and temporal evolution of coupled states could be interesting to discuss.
@@ -100,19 +114,21 @@ A few side remarks and things that are left open for future versions of this tex
 We consider two molecules, $a$ and $b$, each with a ground ($0$) and excited ($1$) state. We write the wave function on the form $\ket{ab}$, i.e. $\ket{01}$ is molecule $a$ in ground state, molecule $b$ in excited state. In each molecule, an optical transition dipole moment couples ground and excited state, i.e. $\braket{10| \hat{\mu}_a | 00}$ and $\braket{01| \hat{\mu}_b | 00}$ are different from zero and describe an excitation of the molecule  $a$ and $b$, respectively. Additionally, the two transition dipole moments interact and lead to a resonant coupling of the 
 $\ket{01}$ and $\ket{10}$ state\footcite{knoester-book}
 \begin{equation}
-\hat{H}_{coupling} = J \left(  \ket{10}\bra{01} + \ket{01}\bra{10}  \right)
+\hat{H}_{coupling} = J \left(  \ket{10}\bra{01} + \ket{01}\bra{10}   \right) \quad .
 \end{equation}
 The coupling energy $J$ depends on distance $\boldsymbol{r}_{ab}$ and relative orientation of the transition dipoles $\boldsymbol{\mu}_{a,b}$. It can be seen as the energy of one dipole in the field of another\sidenote{does this need more details? See Parson}
 \begin{eqnarray}
  J & = & \frac{\boldsymbol{\mu}_a \cdot  \boldsymbol{\mu}_b }{|\boldsymbol{r}_{ab}|^3} 
   + 3 \frac{ (\boldsymbol{\mu}_a \cdot  \boldsymbol{r}_{ab})  (\boldsymbol{\mu}_b \cdot  \boldsymbol{r}_{ab})
   }{ |\boldsymbol{r}_{ab}|^5 } \\
-   & = & \frac{\mu_a \mu_b }{r_{ab}^3} \left( \cos \theta - 3 \cos \alpha \, \cos \beta \right)  = \frac{\mu_a \mu_b }{r_{ab}^3} \, \kappa
+   & = & \frac{\mu_a \mu_b }{r_{ab}^3} \left( \cos \theta - 3 \cos \alpha \, \cos \beta \right)  = \frac{\mu_a \mu_b }{r_{ab}^3} \, \kappa  
 \end{eqnarray}
 where the angles are defined in the sketch.
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir/angles.png}
+%\includegraphics[width=\textwidth]{\currfiledir/angles.png}
+   \inputtikz{\currfiledir/angles}
+
 \caption{Sketch showing 
 the angles used to calculate the coupling factor $\kappa$}
 \end{marginfigure}
@@ -128,17 +144,17 @@ but this can be ignored, as it is non-resonant. Altogether, the Hamilton operato
 \mu_a^\star	& \hbar \omega_a		&	J								& \mu_b	\\
 \mu_b^\star  &  J^\star					& \hbar \omega_b		& \mu_a	\\
 J^\star				& \mu_b^\star			& \mu_a^\star			& \hbar (\omega_a + \omega_b) \\
-\end{pmatrix}
+\end{pmatrix} \quad .
 \end{equation}
 When we ignore the double-excited state $\bra{11}$, the essence in contained in the center $2 \times 2$ matrix which we discussed already in the preceding section.
 
 When $\ket{\psi}$ is a linear combination of $\ket{01}$ and $\ket{10}$, then also the transition dipole moment from $\ket{00}$ to $\ket{\psi}$ is a linear combination of $\mu_a$ and $\mu_b$ with the same weights. When $J \gg |E_a - E_b| / 2$ then we get
 \begin{equation}
- \boldsymbol{\mu}_{\pm} = \sqrt{1/2} \, \left( \boldsymbol{\mu}_a \pm  \boldsymbol{\mu}_b  \right) 
+ \boldsymbol{\mu}_{\pm} = \sqrt{1/2} \, \left( \boldsymbol{\mu}_a \pm  \boldsymbol{\mu}_b  \right)  \quad .
 \end{equation}
 The brightness of the absorption line is for identical molecules, i.e. $\mu = \mu_a = \mu_b$
 \begin{equation}
- I \propto |\boldsymbol{\mu}_{\pm}|^2 = (1/2) \, \left| \boldsymbol{\mu}_a \pm  \boldsymbol{\mu}_b  \right|^2 =  \left( 1 \pm \cos \theta \right) \, \left| \boldsymbol{\mu}   \right| ^2 
+ I \propto |\boldsymbol{\mu}_{\pm}|^2 = (1/2) \, \left| \boldsymbol{\mu}_a \pm  \boldsymbol{\mu}_b  \right|^2 =  \left( 1 \pm \cos \theta \right) \, \left| \boldsymbol{\mu}   \right| ^2  \quad ,
 \end{equation}
 where $\theta$ is as above the angle between the transition dipole moments. The same relation hold for the radiative rate.
 
@@ -148,7 +164,9 @@ The spectroscopic signature of coherent coupling between two molecules is thus a
 \section{H- and J-aggregates}
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir/aggregates.png}
+%\includegraphics[width=\textwidth]{\currfiledir/aggregates.png}
+   \inputtikz{\currfiledir/jh}
+
 \caption{J- and H aggregates.}
 \end{marginfigure}
 

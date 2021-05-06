@@ -29,12 +29,6 @@
 
 \section{Franck-Condon and Huang-Rhys}
 
-A molecule with an electronic ground state $g$ and electronic excited state $e$ can undergo periodic oscillations of the nuclei positions along a coordinate $R$. We assume\footcite{Kuzmany} that the potential of these oscillations is harmonic, i.e.
-\begin{eqnarray}
- U_g(R) &=& \frac{1}{2} \,  K \, R^2 = \frac{1}{2} \, M \, \Omega^2 \, R^2 \\
-  U_e(R) &=&  U_g(R) + E_{eg} - A \, R = E_{eg}  - A \, R + \frac{1}{2} \, M \, \Omega^2 \, R^2 
- \end{eqnarray}
-where $E_{eg}$ is the electronic contribution to the energy difference. We assumed that both potentials have the same shape, i.e., the same vibrational frequency. The term $A \, R$ couples the electronic state and the nuclear oscillator. It shifts the excited state potential along the $R$ coordinate. While the ground state potential has its minimum at $R=0$, the minimum for the excited state is at $R = R_e$
 %
 %
 \begin{marginfigure}
@@ -45,20 +39,41 @@ where $E_{eg}$ is the electronic contribution to the energy difference. We assum
 \end{marginfigure}
 %
 %
+
+
+A molecule with an electronic ground state $g$ and electronic excited state $e$ can undergo periodic oscillations of the nuclei positions along a coordinate $R$. We assume\footcite{Kuzmany} that the potential of these oscillations is harmonic, i.e.
+\begin{eqnarray}
+ U_g(R) &=& \frac{1}{2} \,  K \, R^2 = \frac{1}{2} \, M \, \Omega^2 \, R^2 \\
+  U_e(R) &=&  U_g(R) + E_{eg} - A \, R = E_{eg}  - A \, R + \frac{1}{2} \, M \, \Omega^2 \, R^2 
+ \end{eqnarray}
+where $E_{eg}$ is the electronic contribution to the energy difference. We assumed that both potentials have the same shape, i.e., the same vibrational frequency. 
+The term $A R $ couples the electronic state and the nuclear oscillator. It shifts the excited state potential along the $R$ coordinate. 
+%
+We introduce a reduced space coordinate $\tilde{R}$ with
 \begin{equation}
- A = M \, \Omega^2 \, R_e	 \quad \text{i.e.} \quad R_e = \frac{A}{M \Omega^2}
+\tilde{R} = \frac{R}{x} \quad \text{with} \quad x = \sqrt{\frac{\hbar}{M \Omega}} 
 \end{equation}
+The new  space coordinate $\tilde{R}$ is scaled such that the parabola of the potential crosses the energy of the  vibrational ground state $\hbar \Omega/2$ at $\tilde{R} = 1$.
+In these coordinates, the minimum of the excited state parabola is at $\tilde{R} = \tilde{R}_e$ with
+\begin{equation}
+\tilde{R}_e = \frac{A \, x}{ \hbar \Omega}
+\end{equation}
+The equations then become
+\begin{eqnarray}
+ U_g(\tilde{R}) &=& \frac{1}{2}  \, \hbar \Omega \, \tilde{R}^2 \\
+  U_e(\tilde{R}) &=&   E_{eg} + \frac{1}{2}  \, \hbar \Omega  \, \left[  (\tilde{R} - \tilde{R}_e)^2 - \tilde{R}_e^2  \right]
+ \end{eqnarray}
 The energies of the quantum mechanical eigenstates are 
 \begin{eqnarray}
   E_{g, n} &=&  (n + 1/2) \, \hbar \Omega  \\
-  E_{e, m} &=&  (m + 1/2) \, \hbar \Omega  +  E_{eg} - \frac{A^2}{2 M \Omega^2} =
-   (m + 1/2 - S) \, \hbar \omega  +  E_{eg}  \nonumber
+  E_{e, m} &=&   E_{eg} +   (m + 1/2 - \tilde{R}_e^2  /2 ) \, \hbar \Omega  =  E_{eg} +   (m + 1/2 - S ) \, \hbar \Omega   \nonumber
 \end{eqnarray}
-We introduce the Huang-Rhys factor $S$ as dimensionless coupling constant
+where we have  introduced the Huang-Rhys factor $S$ as dimensionless coupling constant
 \begin{equation}
- S = \frac{A^2}{\hbar \Omega} \frac{1}{2 M \Omega^2}
- = \frac{1}{2} \, \left( R_e \, \sqrt{\frac{M \, \Omega}{\hbar}}\, \right)^2 \quad ,
+ S = \frac{1}{2} \, \tilde{R}_e^2  =
+ \frac{A^2}{\hbar \Omega} \frac{1}{2 M \Omega^2}
 \end{equation}
+
 The eigenfunctions $\chi_n$ of the nuclear vibrations are Hermite polynomials. The Franck-Condon factor describes the overlap integral of the vibrational wavefunction of ground and excited state. As the electronic transition is fast compared to nuclear motion, the nuclear coordinate cannot change during the transition (Born-Oppenheimer approximation), and both ground and excited state need a non-vanishing probability to be at the same coordinate $R$. When one of the states is in a vibrational ground state, i.e., $n$ or $m$ equals zero, the Franck-Condon factor takes the form\sidenote{This notation is sloppy in the sense that the bra wavefunction is an electronic excited state, the ket function an electronic ground state!}
 \begin{equation}
  | \braket{ \chi_0 | \chi_m } | ^2  =  | \braket{ \chi_m | \chi_0 } | ^2 = \frac{S^m \exp(-S)}{m!}
