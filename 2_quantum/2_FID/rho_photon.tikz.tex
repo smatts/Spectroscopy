@@ -1,0 +1,79 @@
+
+
+  
+\begin{tikzpicture}
+%\useasboundingbox (-1.0,-1.0) rectangle (10.2,4.2);
+%\draw (-1.5,-3.5) rectangle (5,3);
+%
+
+\pgfmathdeclarefunction{weight_p}{1}{%
+  \pgfmathparse{ (#1 -1)/ (2 * 0.1) + sqrt(   (#1 -1)^2/ (2 * 0.1)^2   + 1    ) }%
+}
+\pgfmathdeclarefunction{weight_m}{1}{%
+  \pgfmathparse{ (#1 -1)/ (2 * 0.1) - sqrt(   (#1 -1)^2/ (2 * 0.1)^2   + 1    ) }%
+}
+
+\pgfmathsetmacro\plotw{40mm} % width of subplots
+\pgfmathsetmacro\ploth{10mm} % height of smaller subplots
+\pgfmathsetmacro\vsep{4mm}  % vertical separation between subplots
+\pgfmathsetmacro\hsep{16mm}  % horizontal separation between subplots
+
+\begin{groupplot}[
+    group style={
+       group size=1 by 3,
+       vertical sep=\vsep,
+       horizontal sep=\hsep,
+       x descriptions at=edge bottom},
+    height=\ploth,
+    width=\plotw,    
+    xtick pos = bottom,
+    scale only axis
+    ]
+
+%\nextgroupplot[ylabel = {Extinktion},xmin=620, xmax = 820, xtick = {712}, ytick pos = left]
+\nextgroupplot[no markers, 
+       samples = 100,ymax = 1.1, ymin=-0.1, xmin = -55, xmax=235,   xtick = {0, 180},
+          axis y line=left,
+           axis x line=bottom,    ytick = {0,1},
+ylabel = {$E_0$}]
+
+\addplot [ domain=0:180, line width=1pt]     { 1};
+\addplot [domain=-45:0, line width=1pt]    { 0};
+\addplot [domain=180:225, line width=1pt]    { 0};
+\draw[line width=1pt]  (0,0) -- (0,1);
+\draw[line width=1pt]  (180,0) -- (180,1);
+
+\nextgroupplot[no markers, 
+   samples = 100, ymax = 1.1, ymin=-0.1,  xmin = -55, xmax=235,   xtick = {0, 180},
+             axis y line=left,
+           axis x line=bottom,
+                 ylabel = {$\rho_{11}$},   ytick = {0,1} ]
+]
+
+           
+\addplot [ domain=0:180, line width=1pt]     {  sin(x/2)^2};
+\addplot [domain=-45:0, line width=1pt]    { 0};
+\addplot [domain=180:225, line width=1pt]    { 1};
+
+
+
+\nextgroupplot[no markers, 
+        samples = 100, ymax = 0.1, ymin=-0.6,  xmin = -55, xmax=235,
+          axis y line=left,
+           axis x line=bottom,
+           xlabel = {time $t$},
+           ylabel = {$\Im(\rho_{01}')$} ,
+           xtick = {0, 180}, xticklabels={0, $\Delta t$},
+           ytick = {0,-0.5}, yticklabels={0, $- \frac{1}{2}$}
+           ]
+
+           
+\addplot [ domain=0:180, line width=1pt]    { - 0.5 * sin(x)};
+\addplot [domain=-45:0, line width=1pt]    { 0};
+\addplot [domain=180:225, line width=1pt]    { 0};
+
+
+\end{groupplot}
+
+\end{tikzpicture}
+

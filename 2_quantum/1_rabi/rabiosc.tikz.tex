@@ -9,18 +9,23 @@
            ]
 \addplot [line width=1pt,samples=100]    {(sin(180* x)^2};
 
-\coordinate (p) at (0.5,1);
+\coordinate (p1) at (0.5,1);
     \coordinate (p2) at (1,0);
+    \coordinate (p3) at (0.25,0 .5);
            \coordinate (ls) at (1.5,1);
 
        
 \end{axis}
 
-\draw[fill] (p) circle (1mm);
-\node[above] at (p) {$\pi/2$ pulse};
+\draw[fill] (p1) circle (1mm);
+\node[above] at (p1) {$\pi$ pulse};
     
 \draw[fill] (p2) circle (1mm);
-\node[xshift=7mm, yshift=1mm] at (p2) {$\pi$ pulse};
+\node[xshift=8mm, yshift=2mm] at (p2) {$2\pi$ pulse};
+
+\draw[fill] (p3) circle (1mm);
+\node[xshift=3mm, yshift=-2mm] at (p3) {$\pi/2$ };
+
 \node[right] at (ls) {\ $\sin (\Omega t / 2)^2$};
 
 \end{tikzpicture}

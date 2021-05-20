@@ -8,20 +8,20 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Reproduce Fig. 4b of \cite{Wolpert:2012hs} to model the data in Fig. 4a. As the quantum dot is buried beneath the surface, the reflected reference field $E_0$ is in its phase earlier than the signal field $E_S$ of the dot. In this sample, the lag is $\Delta \phi = 0.4 \pi$.
+\item Reproduce Fig. 4b of \cite{Wolpert:2012hs} to model the data in Fig. 4a. As the quantum dot is buried beneath the surface, the reflected reference field $E_0$ is in its phase earlier than the signal field $E_S$ of the dot. In this sample, the lag is $\Delta \phi = 0.4 \pi$. 
 \end{itemize}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{\currfiledir figure_rho.pdf}
-\caption{Perturbed free induction decay (at negative delay $\tau$) of a single GaAs quantum dot measured by pump-probe spectroscopy \citep{Wolpert:2012hs}. At negative delay, the pump comes after the probe pulse.}
+\caption{Perturbed free induction decay (at negative delay $\tau$) of a single GaAs quantum dot measured by pump-probe spectroscopy \citep{Wolpert:2012hs}. At negative delay, the pump comes after the probe pulse.} \label{fig:fid_wolpert}
 \end{figure}
 
 \section{Experiment}
 
-An epitaxial quantum dot can be approximated by a V-shaped level system: depending on the polarization direction of the light, two different excited states $\ket{h}$ and $\ket{v}$
- can be populated. The excited states differ in the spin of the electron, so that an interchange is slow on the relevant timescales. Such a V-system allows to use one transition 'normal' two-level system, and the other transition to switch off the first: when the system is in $\ket{v}$, the transition $\braket{h | \mu | g}$ is not possible anymore. This does not change much the physics, but makes experiments much simpler, as the influence of the  $\braket{h | \mu | g}$ transition can be modulated in a pump-probe scheme and is such much easier to detect.
- 
+In the experiment, one measures the change in the spectrum of a probe pulse due to the presence of a pump pulse. The probe pulse is reflected at a sample surface under which a quantum dot is buried. The vertical slices of the figure contain the spectrum. The energy axis is relative to the quantum dot transition energy. The pulse is temporally short ($\approx 1 $ps) and thus spectrally broad. The pump pulse is also short, and comes at a variable delay before or after the probe pulse (positive delay means pump before probe). The pump pulse is switched on and off, and the figure contains only the difference in reflected probe spectrum (grey means no difference). As only the quantum dot is influenced by the pump pulse, this makes visible the small contribution of the quantum dot reflectivity.
+At positive pump-probe delays, the pump comes before the probe and the spectrum is just the expected absorption spectrum. At negative delays, the probe comes before the pump pulse, and the spectrum shows fringes that increase in spacing with decreasing pump-probe delay. This is the perturbed free induction decay. The diagonal element of the density matrix is created by the probe pulse and removed by the pump. In between, it radiates a field that we see in the spectrum.
+
 \begin{marginfigure}
 %\includegraphics[width=0.8\textwidth]{\currfiledir v-system.png}
 \inputtikz{\currfiledir v-system}
@@ -29,40 +29,57 @@ An epitaxial quantum dot can be approximated by a V-shaped level system: dependi
 \end{marginfigure}
 
 
+To understand the influence of the pump pulse, we need to look more in detail at the levels of an epitaxial  quantum dot, which can  can be approximated by a V-shaped level system: depending on the polarization direction of the light, two different excited states $\ket{h}$ and $\ket{v}$
+ can be populated. The excited states differ in the spin of the electron, so that an interchange is slow on the relevant timescales. Such a V-system allows to use one transition as 'normal' two-level system, and the other transition to switch off the first: when the system is in $\ket{v}$, the transition $\braket{h | \mu | g}$ is not possible anymore. This does not change much the physics, but makes experiments much simpler, as the influence of the  $\braket{h | \mu | g}$ transition can be modulated in a pump-probe scheme and is such much easier to detect.
  
-In the present experiment, one measures the absorption spectrum of the  $\braket{h | \mu | g}$ transition by reflecting a probe laser pulse at the sample. One switches on and off the transition by a pump pulse and plots only the difference between these two spectra to make visible the small effect of a single quantum dot. At positive pump-probe delays, the pump comes before the probe and the spectrum is just the expected absorption spectrum. At negative delays, the probe comes before the pump pulse, and the spectrum shows fringes that increase in spacing with decreasing pump-probe delay. This is the perturbed free induction decay. The diagonal element of the density matrix is created by the probe pulse and removed by the pump. In between, it radiates a field that we see in the spectrum.
+
+
+\section{Pump-Probe Experiments}
+
+The timescale of the experiment is set by the decay of the coherence and the populations. In many cases, this is faster than the temporal resolution of photodetectors. One method to investigate the dynamics of a system under these conditions is pump-probe spectroscopy. A pump-pulse starts a process and some (short) time later, a probe-pulse interrogates the system. The detector does not need a time resolution and can average over many pump-probe pulse pairs. The time resolution comes by the pulse length and their temporal separation. In many cases, the effect of the pump pulse on the system is weak, i.e. the probe pulse would measure almost the same, independent whether the pump was present or not. To increase the signal to noise ratio in these cases, on investigates the relative change of the signal
+\begin{equation}
+ \frac{\Delta I}{I} = \frac{I_\text{with pump} - I_\text{without pump} }{I_\text{without pump}} \quad .
+\end{equation}
+The pump-pulse is switched using a mechanical chopper or an acousto-optical modulator at as high as possible frequencies to avoid $1/f$-noise. The detector should only detect the probe pulse (and the field radiated by the coherence), otherwise $\Delta I$ is overwhelmed by leaking pump pulse. A convenient way to discriminate pump and probe is the polarization direction of the light field, setting the orientation of the transition dipole moment at $45^\circ$ between pump and probe.
+
+\begin{questions}
+
+\item Estimate the fraction of probe power that is absorbed by the quantum dot, i.e., that is then missing in the reflected beam. The numerical aperture of the microscope objective is about 0.5. The spectral width of a pixel of the CCD camera is about 100 \textmu eV.
+
+\end{questions}
+ 
 
 \section{Coherence as a Source of Radiation}
 
 
-Let us look at methods to measure elements of the density matrix $\rho$. We can measure populations, i.e., diagonal elements of $\rho$ by fluorescence emission or electron tunneling. If an atom, molecule, quantum dot is in the excited state, it can emit a fluorescence photon and revert to the ground state. All coherence is lost in this process, neither the fluorescence photon nor the ground state carries any phase relation to the excited state. The excite state is also destroyed, as afterwards the system is in the ground state. But we can observe the fluorescence photon and from the fluorescence rate we can determine how many systems of an ensemble or how often a single system is (better: was) in the excited state. We thus measure population of the emitting state. In the same way, we can use electrons tunneling out of the excited state, for example in a diode structure which also supplies  a new electron to the ground state. Also this tunneling signal is incoherent.
+Let us look at methods to measure elements of the density matrix $\rho$. We can measure populations, i.e., diagonal elements of $\rho$ by fluorescence emission or electron tunneling. If an atom, molecule, quantum dot is in the excited state, it can emit a fluorescence photon and revert to the ground state. All coherence is lost in this process, neither the fluorescence photon nor the ground state carries any phase relation to the excited state. The excited state is also destroyed, as afterwards the system is in the ground state. But we can observe the fluorescence photon and from the fluorescence rate we can determine how many systems of an ensemble or how often a single system is (better: was) in the excited state. We thus measure population of the emitting state. In the same way, we can use electrons tunneling out of the excited state, for example in a diode structure which also supplies  a new electron to the ground state. Also this tunneling signal is incoherent.
 
-We can also measure coherences, i.e., off-diagonal elements in the density matrix $\rho$, as these coherences are the source of radiation. To see this, we need to connect the microscopic description by the density matrix to the macroscopic world of Maxwell's equations, resulting in the Maxwell-Bloch equations \footcite[chapter 8.3]{MilonniEberly1988} \footcite[chapter 3.9]{Rand2016}\footcite{Meschede-OLL}. This is what the expectation value does. The  polarization $p$ of a single two-level system at position $z$ in the pumping laser beam is given by the expectation value of the polarization operator $\hat{\mu}$
+We can also measure coherences, i.e., off-diagonal elements in the density matrix $\rho$, as these coherences are the source of radiation. To see this, we need to connect the microscopic description by the density matrix to the macroscopic world of Maxwell's equations, resulting in the Maxwell-Bloch equations \footcite[chapter 8.3]{MilonniEberly1988} \footcite[chapter 3.9]{Rand2016}\footcite{Meschede-OLL}. This is what the expectation value does. The  polarization $p$ of a single two-level system at position $z$ in the  laser beam is given by the expectation value of the polarization operator $\hat{\mu}$
 \begin{equation}
- p(t,z) = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10}'  \, e^{-i (\omega_L t - k z)}  
+ p(t,z) = \braket{\hat{\mu}} = Tr ( \mu \, \rho) = \mu_{01} \rho_{10}'  \, e^{-i (\omega_L t - k z)}  \quad ,
 \end{equation}
-where the polarization operator has only off-diagonal entries in the matrix representation.\sidenote{Only the real part has physical significance.} The prime signals once more the density matrix in the rotating frame. The macroscopic polarization $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
+where the polarization operator has only off-diagonal entries in the matrix representation.\sidenote{Only the real part has physical significance, or, we leave out the complex-conjugate part here.} The prime signals denote once more the density matrix in the rotating frame. The macroscopic polarization $P = N \, p$ of a volume of identical atoms is a source term in the one-dimensional wave equation
 \begin{equation}
   \frac{\partial^2}{\partial z^2} \boldsymbol{E}_S  - \frac{1}{c^2} \frac{\partial^2}{\partial t^2} \boldsymbol{E}_S 
  =  
-\frac{1}{c^2\, \epsilon_0} \frac{\partial^2}{\partial t^2} \boldsymbol{P}  
+\frac{1}{c^2\, \epsilon_0} \frac{\partial^2}{\partial t^2} \boldsymbol{P}   \quad .
 \end{equation}
-$E_S$ is the (slowly varying) amplitude of the generated field
+$ \boldsymbol{E}_S$ is the  generated field:
 \begin{equation}
- \boldsymbol{E}_S =   E_s(z,t) \, e^{-i (\omega_L t - k z)}   \quad .
+ \boldsymbol{E}_S =   E_S(z,t) \, e^{-i (\omega_L t - k z)}   \quad . \label{eq:fid_def_ES}
 \end{equation}
-Also in the wave equation we  use of the slowly-varying envelope approximation and get (using $\rho_{10}' = u - i v$)
+We assume that its amplitude $E_S(z,t) $ varies slowly in time and space, i.e., we use the  slowly-varying envelope approximation and get (with $\rho_{10}' = u - i v$)
 \begin{equation}
   \frac{\partial}{\partial z} E_S  - \frac{1}{c} \frac{\partial}{\partial t} E_S
  =  
-N \frac{i k }{2 \epsilon_0}  \mu_{01} ( u - i v)
+N \frac{i k }{2 \epsilon_0}  \mu_{01} ( u - i v) \quad .
 \end{equation}
 This forms together with the Bloch equations from last chapter the Maxwell-Bloch equations of a coupled light-matter system. As solution we find
 \begin{equation}
  E_S = N L \frac{i k }{2 \epsilon_0}  \mu_{01} ( u - i v)
  =
   N L \frac{k }{2 \epsilon_0}  \mu_{01} (v + i u)
-  \propto \mu_{01} \Im (\rho_{01}' ) 
+  \propto \mu_{01} \Im (\rho_{01}' )  \quad .
 \end{equation}
 It is thus the $v$ component of the Bloch vector (or $\Im (\rho_{01}'$) ) that produces the optical field\footcite[chapter V.B.1]{CT-atom-photon}.
 %
@@ -72,101 +89,209 @@ It is thus the $v$ component of the Bloch vector (or $\Im (\rho_{01}'$) ) that p
 %\end{equation}
 
 
+\begin{questions}
+
+\item Read in a  textbook of your choice on the wave equation with a source term. Usually this is discussed in 3d for dipole radiation and in 1d for lasers.
+
+\item Which requirements on  $E_S(z,t) $ does the slowly-varying envelope approximation have to transform second to first order derivatives along space and time?
+
+\item Think about Fermi's Golden Rule (chapter 1) and how the transition matrix element $\braket{2|\hat{\mu}|1}$ is necessary for absorption. Compare the temporal evolution of $\braket{2|\hat{\mathbf{r}}|1}$ with that of a system at the equator of the Bloch sphere.
+\end{questions}
+
+
+
 \section{Absorption of a single photon}
-
-Let us discuss as example the absorption of a single photon, which transfers the system from the ground state to the excited state, or equivalently is the action of a $\pi$-pulse. We start by a two-level system in den ground state. The Bloch vector points to the north pole. We shine in an optical field on resonance with the system ($\omega_0 = \omega_L$). The duration of the light pulse $\Delta t$ should be such that is a $\pi$-pulse, i.e.
-\begin{equation}
- \theta = \pi = \int_0^{\Delta t} \, \Omega(t) \, dt =  \int_0^{\Delta t} \, \frac{ \mu \, E(t)}{\hbar} \, dt
-\end{equation}
-When the light pulse has the amplitude $E_0$ during $t= 0 \cdots \Delta t$ we get
-\begin{equation}
- \Delta t = \pi \frac{\hbar}{\mu E_0}  = \pi \, \frac{1}{\Omega}
-\end{equation} 
-The $w$ component of the Bloch vector follows the Rabi oscillation, i.e.
-\begin{equation}
- w(t) = \cos ( \Omega t  ) = \cos \left( \pi  \frac{t}{\Delta t} \right)
-\end{equation}
-and the excited state population accordingly
-\begin{equation}
- \rho'_{11}(t) = \frac{1 - w}{2}  = \sin^2 ( \Omega t /2 )
-\end{equation}
-The imaginary part of the coherence, related to the $v$ component of the Bloch vector, is
-\begin{equation}
- \Im (\rho'_{01} ) = \frac{1}{2} v =  - \frac{1}{2}  \sin \left( \pi \frac{t}{\Delta t} \right)
-\end{equation}
-The radiated field is 
-\begin{equation}
- E_S  = N L \frac{k }{\epsilon_0}  \mu_{01} \Im (\rho_{01}' ) 
- = - N L \frac{k }{2 \epsilon_0}  \mu_{01} \sin \left( \pi \frac{t}{\Delta t} \right)
-\end{equation}
-On the detector, the pumping field $E_0$ and the radiated field $E_S$ interfere. We measure the power $P$ of a single pulse per area of the beam  
-\begin{equation}
-P  = \frac{1}{2} \epsilon_0 c \, \int_\text{pulse} | E_0 + E_S |^2 \ dt
-\end{equation}
-The presence of the absorbing two-level system leads to a change in detected power density, assuming $E_S \ll E_0$
-\begin{equation}
- \Delta P = \frac{1}{2} \epsilon_0 c \,  
-\int_\text{pulse} 2 E_0 E_S  \ dt
-  =-   \sigma \frac{k c }{2}  E_0 \mu_{01}  \int_0^{\Delta t}   \sin \left( \pi \frac{t}{\Delta t} \right)  \,  dt
-\end{equation}
-where $\sigma = N L $ is the projected area density of the two-level systems. The integral gives $2 \Delta t/\pi$ so that
-\begin{equation}
- \Delta P =-  \sigma \frac{k c}{2}  E_0 \mu_{01} \frac{2 \Delta t}{\pi}
-= -  \sigma k c   E_0 \mu_{01}  \frac{\hbar}{\mu E_0} 
-= -  \sigma \,  \hbar \omega  
-\end{equation}
-Each atom removes the energy of one photon!
-
-\begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir photon1.png}
-\caption{Absorption of a photon as seen in the density matrix}
-\end{marginfigure}
-
-
-\section{Absorption of half of a photon}
-
-We keep the amplitude of the laser field the same but reduce the pulse length to $\Delta t / 2$, i.e. a $\pi/2$ pulse. This does only change the upper limit in the integral, so that 
-\begin{equation}
- \Delta P 
-= -  \frac{1}{2} \sigma \,  \hbar \omega  
-\end{equation}
-Each atom removes half the energy  of a photon. How is that possible?  Here the power of the density matrix comes into play. It describes a statistical ensemble. Half of the atoms absorb a photon, half of them don't. But all atoms undergo the $\pi/2$ Rabi cycle, moving the Bloch vector into the equatorial plane, and describing a state $\ket{\psi}$
-\begin{equation}
- \ket{\psi} = \sqrt{\frac{1}{2}} \left( \ket{0} + \ket{1} \right)
-\end{equation}
-However, at this point our experiment is not finished yet. We still have coherence in the system, it is not decided yet if the Schrodinger's cat is dead or alive. The experiment if finished only when all coherence has decayed, into
-\begin{equation}
- \ket{\psi} = \ket{0}  \quad \text{or} \quad \ket{\psi} = \ket{1} 
-\end{equation}
-When decoherence is much faster than population decay, then both final states will be reached with equal probability. On average, each atom absorbs half the energy of a photon.
 
 \begin{marginfigure}
 %\includegraphics[width=\textwidth]{\currfiledir pi-pulse.png}
 \hspace*{\fill} \input{\currfiledir blochsphere_pi.tikz.tex}
 
-\vspace{5mm}
 
-\hspace*{\fill} \input{\currfiledir blochsphere_pi_half.tikz.tex}
-
-\caption{A $pi$ pulse and a $pi/2$ pulse acting on the ground state.}
+\caption{A $\pi$ pulse acting on the ground state.}
 \end{marginfigure}
 
-\section{Pump-Probe Experiments}
 
-The timescale of the experiment is set by the decay of the coherence and the populations. In many cases, this is faster than the temporal resolution of photodetectors. One method to investigate the dynamics of a system under these conditions is pump-probe spectroscopy. A pump-pulse starts a process and some (short) time later, a probe-pulse interrogates the system. The detector does not need a time resolution and can average over many pump-probe pulse pairs. The time resolution comes by the pulse length and their temporal separation. In many cases, the effect of the pump pulse on the system is weak, i.e. the probe pulse would measure almost the same, independent whether the pump was present or not. To increase the signal to noise ratio in these cases, on investigates the relative change of the signal
+Let us discuss as example the absorption of a single photon, which transfers the system from the ground state to the excited state, or equivalently is the action of a $\pi$-pulse. We start by a two-level system in den ground state. The Bloch vector points to the north pole. We shine in an optical field on resonance with the system ($\omega_0 = \omega_L$). The duration of the light pulse $\Delta t$ should be such that is a $\pi$-pulse, i.e.
 \begin{equation}
- \frac{\Delta I}{I} = \frac{I_\text{with pump} - I_\text{without pump} }{I_\text{without pump}}
+ \theta = \pi = \int_0^{\Delta t} \, \Omega(t) \, dt =  \int_0^{\Delta t} \, \frac{ \mu \, E(t)}{\hbar} \, dt \quad .
 \end{equation}
-The pump-pulse is switched using a mechanical chopper or an acousto-optical modulator at as high as possible frequencies to avoid $1/f$-noise. The detector should only detect the probe pulse (and the field radiated by the coherence), otherwise $\Delta I$ is overwhelmed by leaking pump pulse. A convenient way to discriminate pump and probe is the polarization direction of the light field, setting the orientation of the transition dipole moment at $45^\circ$ between pump and probe.
+When the light pulse has the amplitude $E_0$ during $t= 0 \cdots \Delta t$ we get
+\begin{equation}
+ \Delta t = \pi \frac{\hbar}{\mu E_0}  = \pi \, \frac{1}{\Omega} \quad .
+\end{equation} 
+The $w$ component of the Bloch vector follows the Rabi oscillation, i.e.
+\begin{equation}
+ w(t) = \cos ( \Omega t  ) = \cos \left( \pi  \frac{t}{\Delta t} \right) 
+\end{equation}
+and the excited state population accordingly
+\begin{equation}
+ \rho'_{11}(t) = \frac{1 - w}{2}  = \sin^2 ( \Omega t /2 ) \quad .
+\end{equation}
+%
+\begin{marginfigure}[-49mm]
+%\includegraphics[width=\textwidth]{\currfiledir photon1.png}
+\inputtikz{\currfiledir rho_photon}
 
+\caption{Absorption of a photon as seen in the density matrix}
+\label{fig:fid_rho_single_photon}
+\end{marginfigure}
+%
+The imaginary part of the coherence, related to the $v$ component of the Bloch vector, is
+\begin{equation}
+ \Im (\rho'_{01} ) = \frac{1}{2} v =  - \frac{1}{2}  \sin \left( \pi \frac{t}{\Delta t} \right) \quad .
+\end{equation}
+The radiated field is 
+\begin{equation}
+ E_S  = N L \frac{k }{\epsilon_0}  \mu_{01} \Im (\rho_{01}' ) 
+ = - N L \frac{k }{2 \epsilon_0}  \mu_{01} \sin \left( \pi \frac{t}{\Delta t} \right) \quad .
+\end{equation}
+On the detector, the pumping field $E_0$ and the radiated field $E_S$ interfere. We measure the power $P$ of a single pulse per area of the beam  
+\begin{equation}
+P  = \frac{1}{2} \epsilon_0 c \, \int_\text{pulse} | E_0 + E_S |^2 \ dt \quad .\label{eq:fid_P}
+\end{equation}
+The presence of the absorbing two-level system leads to a change in detected power density, assuming real-valued amplitudes with $E_S \ll E_0$
+\begin{equation}
+ \Delta P = \frac{1}{2} \epsilon_0 c \,  
+\int_\text{pulse} 2 E_0 E_S  \ dt
+  =-   \sigma \frac{k c }{2}  E_0 \mu_{01}  \int_0^{\Delta t}   \sin \left( \pi \frac{t}{\Delta t} \right)  \,  dt  \label{eq:fid_delta_P}
+\end{equation}
+where $\sigma = N L $ is the projected area density of the two-level systems. The integral gives $2 \Delta t/\pi$ so that
+\begin{equation}
+ \Delta P =-  \sigma \frac{k c}{2}  E_0 \mu_{01} \frac{2 \Delta t}{\pi}
+= -  \sigma k c   E_0 \mu_{01}  \frac{\hbar}{\mu E_0} 
+= -  \sigma \,  \hbar \omega   \quad .
+\end{equation}
+Each atom removes the energy of one photon!
+
+
+\begin{questions}
+\item Using your code to integrate the Bloch equations from last chapter, reproduce fig. \ref{fig:fid_rho_single_photon}. Calculate $\Delta P$  with eqs. \ref{eq:fid_P} and \ref{eq:fid_delta_P} for arbitrary detuning between laser and quantum dot and for arbitrary pulse length. Plot an absorption spectrum by scanning the laser frequency. What determines the spectral width?
+\end{questions}
+
+
+
+\section{Absorption of half of a photon}
+
+\begin{marginfigure}
+
+\input{\currfiledir blochsphere_pi_half.tikz.tex}
+
+\caption{A  $\pi/2$ pulse acting on the ground state.}
+\end{marginfigure}
+
+We keep the amplitude of the laser field the same but reduce the pulse length to $\Delta t / 2$, i.e. a $\pi/2$ pulse. This does only change the upper limit in the integral, so that 
+\begin{equation}
+ \Delta P 
+= -  \frac{1}{2} \sigma \,  \hbar \omega   \quad .
+\end{equation}
+Each atom removes half the energy  of a photon. How is that possible?  Here the power of the density matrix comes into play. It describes a statistical ensemble. Half of the atoms absorb a photon, half of them don't. But all atoms undergo the $\pi/2$ Rabi cycle, moving the Bloch vector into the equatorial plane, and describing a state $\ket{\psi}$
+\begin{equation}
+ \ket{\psi} = \sqrt{\frac{1}{2}} \left( \ket{0} - i \, \ket{1} \right) \quad .
+\end{equation}
+However, at this point our experiment is not finished yet. We still have coherence in the system, it is not decided yet if  Schrödinger's cat is dead or alive. The experiment is finished only when all coherence has decayed, into
+\begin{equation}
+ \ket{\psi} = \ket{0}  \quad \text{or} \quad \ket{\psi} = \ket{1}  \quad .
+\end{equation}
+When the decay of  coherence is much faster than population decay,  both final states will be reached with equal probability. On average, each atom absorbs half the energy of a photon.
 
 
 \section{Spectra}
 
-While we have discussed above the electric fields in time domain, i.e. $E(t)$, of course we could also discuss frequency domain, or spectra. The relation is given by the Fourier transformation, e.g.
+Even after applying the slowly-varying envelop approximation, the amplitude $E(t)$ of the electric field is varying so fast that we can not measure it. Even the fastest photo detectors have a response time of only picoseconds. We can measure time-integrated properties, such as $P$ in eq. \ref{eq:fid_P}. Or we can measure properties related to the Fourier transform of  $E(t)$. This is what a spectrometer does. Diffraction at the grating performs the Fourier transform. The CCD chip then measures
 \begin{equation}
-\Delta I (\omega) = \frac{1}{2} \, \epsilon_0 c \, \, \Re \left( E_0(\omega) \, \mathcal{FT} ( E_S(t) ) \, \right)
+ P (\omega) d\omega =  \frac{1}{2} \epsilon_0 c \,  \left| E(\omega) \right|^2 \ d\omega =  \frac{1}{2} \epsilon_0 c \,  \left|  \mathcal{FT} ( E(t) ) \right|^2 \ d\omega
 \end{equation}
+When interpreting the frequency $\omega$ in this equation, we have to pay attention to the definition of $E(t) $. If it contains a part $e^{i \omega_0 t}$ oscillating with the frequency of the optical field, then also $\omega$ is an optical frequency of some 100~THz. If the carrier frequency is split off, as in eq.  \ref{eq:fid_def_ES}, the frequency of the Fourier transform is only additive to the carrier frequency, can thus be much lower than THz. This comes from the convolution property of Fourier transforms
+\begin{align}
+ \mathcal{FT} \left( E(t) \, e^{i \omega_0 t} \right) 
+  = &
+  \mathcal{FT} \left( E(t)  \right)  \otimes
+ \mathcal{FT} \left(  e^{i \omega_0 t} \right)  \\
+ = &
+  E(\omega) \otimes
+\delta (\omega - \omega_0 ) =  
+E (\omega - \omega_0 )
+\end{align}
+where $\otimes$ is the convolution operator. 
+
+We  Fourier transform the fields with and without pump pulse 
+and subtract the resulting intensities. Using $E_S \ll E_0$ we get
+\begin{equation}
+ \left| E_0(\omega) + E_S(\omega) \right|^2 -  \left| E_0(\omega)  \right|^2 \approx  \Re \left[ E_0(\omega)   \, E_S(\omega)  \right]
+\end{equation}
+or
+\begin{equation}
+\Delta P (\omega) = \frac{1}{2} \, \epsilon_0 c \, \, \Re \left[  E_0(\omega)   \, E_S(\omega)  \right] \label{eq:fid_delta_P_spec}
+\end{equation}
+
+
+\begin{questions}
+
+\item Derive  eq. \ref{eq:fid_delta_P_spec} (and check if there is a factor $2$ missing).
+
+\end{questions}
+ 
+
+\section{Free induction decay}
+
+We discussed how a coherence in a two-level system is generated, but not so much how it decays. At the end of last chapter we mentioned the Lindblad $\boldsymbol{L}  $ operator that decays entries of the density matrix. But it is this decay that defines the spectral shape of an absorption line.
+
+We assume a short laser pulse, shorter than any characteristic decay time of a coherence population in our system. Such a pulse will generate a coherence, move the Bloch vector away from the north pole. A $\pi/2$ pulse would generate the maximum possible coherence, but any other pulse (except an exact $\pi$ pulse) will also create a coherence. After the pulse,  coherence  and population decay like
+\begin{align}
+ \rho_{11}(t) \propto & \rho_{11}(0)  \, e^{- t / T_1} \\
+ \rho_{01}(t) \propto & \rho_{01}(0)  \, e^{- t / T_2} 
+\end{align}
+Excited state populations decay exponentially with a lifetime $T_1$. The coherence between two states decays with a time constant $T_2$ with
+\begin{equation}
+    \frac{1}{T_2} = \frac{1}{T_2^\star} + \frac{1}{2 \, T_1} \quad ,
+\end{equation}
+where $T_2^\star$ is called pure dephasing time. The $T_1$ time enters, as a decaying population also removes coherence. The prefactor of $2$ is a consequence of effective spin-$1/2$-system.
+
+This decay of the coherence is called 'free induction decay' (dt: 'freier Induktionszerfall') in NMR experiments. In these experiments, the Bloch vector corresponds to a magnetization vector that rotates with the eigenfrequency of the system. This rotation induces a current in a pickup coil that is detected. The induction decays freely after switching off the exciting fields. This term in taken for the same effect in all equivalent spin-1/2 systems, so also for the decay of the coherence in our two-level system.
+
+The coherence, the off-diagonal entry of the density matrix $\rho_{01}(t)$ is source of the radiated field $E_S$. The time-dependence of the decay thus determines via Fourier transformation the spectral shape of the radiated field\sidenote{see also appendix in Fourier pairs}
+\begin{equation}
+ f(t) = \left\{ \begin{array}{ll}
+e^{- \gamma t } & \text{for} \quad t > 0 \\
+ 0 & \text{else} \\
+ \end{array}
+ \right.
+ \quad 
+ \leftrightarrow \quad
+  F(\omega) = \frac{1}{\gamma + i \, \omega}
+\end{equation}
+The absorption spectrum is thus
+\begin{equation}
+\Delta P (\omega)  \propto \Re \left[  \frac{e^{i \phi}}{\gamma + i \, \omega}       \right] \, \overset{\phi = 0}{=} \, \frac{\gamma}{\omega^2 + \gamma^2}
+\end{equation}
+where we have assumed that the driving probe pulse $E_0(\omega)$ is spectrally much broader than the absorption line and thus assumed to be constant. The factor $e^{i \phi}$ allows a phase lag between incoming and radiated field, as needed for buried quantum dots. For $\phi = 0$ we recover the expected Lorentz function. For other values the spectral shape changes
+
+\begin{questions}
+
+\item Using a computer program of your choice, calculate  the numerical Fourier transform of an exponential decay and compare to the Lorentz function. Take care the get the frequency axis right.
+
+\end{questions}
+ 
+ 
+ 
+\section{Perturbed free induction decay}
+
+A second laser pulse can perturb the decay of the coherence. In the experiment described at the beginning of this chapter, a pump-pulse acts on the other transition in the V-shaped level scheme. A full model, as used in \citep{Wolpert:2012hs}, would need a $3 \times 3$ density matrix and 9 coupled differential equations for its entries. We can simplify things when we do not care so much what happens during the laser pulses, but only how the relevant entry of the density matrix evolves between the pulses.
+
+The relevant entry is the  coherence  $\rho_{hg}  = c_h c_g^\star$ that is generated by the probe pulse and observed by measuring the reflected spectrum of the probe pulse. Without the pump pulse, it follows an exponential decay as described above. If the pump pulse comes before the probe pulse (positive delays in the figure), the pump has moved population to $\ket{v}$, i.e., $\rho_{vv}  = |c_v|^2 \neq 0 $. This reduces the population of the ground state and therefore also the coherence $\rho_{hg} $ that the probe pulse can generate. The radiated field will be lower, but have the same spectral shape.
+
+Things change when the pump pulse comes after the probe pulse. The action of  $\braket{v| \mu | g}$ increases $c_v$, but also decreases $c_g$ which decreased the probe coherence  $\rho_{hg}  = c_h c_g^\star$. The pump pulse leads to an abrupt drop in the coherence that is observed by the probe pulse. One can approximate 
+\begin{equation}
+\rho_{hg}(t) = \rho_{hg}(0) \, e^{- t / T_2} \, \left[ 1  - \beta \, \Theta( t - t_\text{pump} ) \, \right] \label{eq:fid_perturbed_fid}
+\end{equation}
+where $\Theta$ is the Heaviside step function and $\beta$ describes the effect of the pump pulse on the coherence. The two laser pulses define a rectangle of the coherence. Its Fourier transform, a sinc, causes the fringes at negative delay in the figure.
+
+
+\begin{questions}
+
+\item Calculate numerically the Fourier transform of \ref{eq:fid_perturbed_fid} and adjust the parameters to obtain Fig, \ref{fig:fid_wolpert}
+
+\end{questions}
 
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]

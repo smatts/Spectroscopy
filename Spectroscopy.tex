@@ -69,6 +69,7 @@
 \usepackage{morefloats}
 
 \usepackage{calc}
+\usepackage[titletoc]{appendix}
 
 
 \input{tint_book_header}
@@ -113,6 +114,7 @@
   urlcolor=RoyalBlue
 }
 
+\renewcommand{\chaptername}{Chapter\ }
 \newcommand{\chapterauthors}{Markus Lippitz}
 \newcommand{\lastmod}{\Filemodtoday{\currfilepath}}
 
@@ -140,6 +142,18 @@
   \renewcommand\eqref[1]{{\let\my@tag@font\relax\amsmath@eqref{#1}}}
 \makeatother
 
+\newcounter{questions}[chapter]
+
+\newenvironment{questions}{
+\subsection{\normalsize Questions}
+\begin{enumerate} \small
+\setcounter{enumi}{\value{questions}}
+}{
+\setcounter{questions}{\value{enumi}}
+\end{enumerate} 
+}
+
+
 %\includeonly{1_fundamentals/1_absorption/absorption}
 %\includeonly{1_fundamentals/2_fluorescence/fluorescence}
 %\includeonly{1_fundamentals/3_vibrations/vibrations}
@@ -150,6 +164,8 @@
 
 %\includeonly{5_nanooptics/2_tmatrix/tmatrix}
 %\includeonly{5_nanooptics/3_dda/dda}
+
+%\includeonly{9_appendix/1_fourier/fourier}
 
 
 \begin{document}
@@ -180,11 +196,11 @@
 \include{1_fundamentals/4_mie/mie}
 \include{1_fundamentals/5_aggregates/molecular_aggregates}
 %
-%%%\include{1_fundamentals/6_raman/raman}
-%
-%%%%-------
+%%%%\include{1_fundamentals/6_raman/raman}
 %%
-%%
+%%%%%-------
+%%%
+%%%
 \part{Two Level Systems}
 
 \include{2_quantum/1_rabi/rabi}
@@ -192,9 +208,9 @@
 %\include{2_quantum/3_quantum_beats/beats}
 \include{2_quantum/4_cavity_strong_coupling/strong}
 \include{2_quantum/5_purcell/purcell}
+%%%
+%%-------
 %%
-%-------
-%
 \part{Nonlinear Spectroscopy}
 
 \include{4_nonlinear/1_shg/shg}
@@ -202,8 +218,6 @@
 \include{4_nonlinear/3_tpe/tpe}
 \include{4_nonlinear/4_2d_spec/two-dim-spec}
 
-
-%%
 %%%%%-------
 %%
 %%%
@@ -216,10 +230,7 @@
 %%\include{3_single_molecule/5_antibunching/antibunching}
 %%\include{3_single_molecule/8_fret/fret}
 %
-%
-%
-%%
-%%
+
 %%%-------
 %%
 %%
@@ -232,7 +243,19 @@
 %%\include{5_nanooptics/overview_NO}
 %
 %-------
+\renewcommand{\chaptername}{Appendix\ }
+
+\addcontentsline{toc}{part}{Appendix} 
+%\addappheadtotoc
+
+\appendix
+\appendixpage
+
 %
+\include{9_appendix/1_fourier/fourier}
+
+
+
 %%\nocite{*}
 
 \printbibliography

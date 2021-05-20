@@ -55,6 +55,7 @@ a3 = a3 ./ max(a3);
 a4 = a4 ./ max(a4);
 a5 = a5 ./ max(a5);
 
+figure
 plot(data_c2(id1a:id2a,1), a2)
 hold on
 

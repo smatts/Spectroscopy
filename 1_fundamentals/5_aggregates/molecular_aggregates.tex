@@ -55,14 +55,24 @@ For identical lengths, i.e., identical eigen-frequencies $\omega_1 = \omega_2$, 
 
 \section{Quantum Mechanics of Coupled States}
 
-A quantum mechanical state is described by its eigen-function $\psi_a$ and the corresponding eigen-energy $E_a$ so that 
+A quantum mechanical state is described by its eigen-functions $\psi_i$ and the corresponding eigen-energies $E_i$ so that 
 \begin{equation}
-\hat{H_a}  \, \psi_a = E_a  \,\psi_a  \quad .
+\hat{H}  \, \psi_i = E_i  \,\psi_i  \quad .
 \end{equation}
-When we have two of such states, we can  write matrix equation
+The eigen-functions $\psi_j$ form a basis. We can describe all wave functions $\phi$ as
 \begin{equation}
-\hat{H}_0 \, \psi_0 = \begin{pmatrix}  E_a & 0 \\ 0 & E_b \end{pmatrix} \,
-	 \begin{pmatrix}  \psi_ a\\ \psi_b\end{pmatrix}  \quad .
+\phi = \sum_n \, c_n \, \psi_n \quad.
+\end{equation}
+In the same way, all operators $\hat{A}$ are fully described by their matrix element
+\begin{equation}
+ A_{ij} = \braket{ \psi_i | \hat{A} | \psi_j}
+\end{equation}
+where the brackets describe the integral over all relevant coordinates. We can then\sidenote{For details see a book on quantum mechanics, for example \cite{Schwabl2002_QM1}, chapter 8. } represent the wave function $\phi$ by a vector of the complex entries $c_n$ and the operator by a matrix of the elements $A_{ij}$.
+
+With two states $\psi_a$ and $\psi_b$ we have
+\begin{equation}
+\hat{H}_0  = \begin{pmatrix}  E_a & 0 \\ 0 & E_b \end{pmatrix} 
+	  \quad .
 \end{equation}
 The Hamilton operator $\hat{H}_0$ is thus described by a $2 \times 2$ matrix. When the two states $a$ and $b$ are coupled, then the energy of one state depends somehow on the other. In the matrix we include a coupling energy $J$ in the off-diagonal elements
 \begin{equation}
@@ -76,7 +86,7 @@ As a consequence, the original eigen-functions $\psi_0$ are no longer eigen-func
 and the new  eigen-functions are\footcite[eq. 8.10]{Parson}
 \begin{equation}
  \psi_{\pm} = 
-\sqrt{\frac{1+s}{2}} \,  \psi_a \, |,  \pm \, \, \sqrt{\frac{1-s}{2}}  \, \psi_b \quad ,
+\sqrt{\frac{1 \pm s}{2}} \,  \psi_a \, \,  \pm \, \, \sqrt{\frac{1 \mp s}{2}}  \, \psi_b \quad ,
 \end{equation}
 with
 \begin{equation}
@@ -171,7 +181,7 @@ The spectroscopic signature of coherent coupling between two molecules is thus a
 \end{marginfigure}
 
 
-Two important limiting cases are the H- and J-aggregates\footcite[chapters 2.1.4.3, 2.2.5.3]{KoehlerBaessler2015} In a J-aggregate, the dipoles are oriented parallel and head-to-tail, i.e. $\alpha = \beta = \theta = 0$ and therefore $\kappa = -2$. A negative $\kappa$ implies that the coupling constant $J$ is negative. The state $\Psi_+$, which carries all the oscillator strength, has the energy $E_+ = (E_a + E-B) / 2 + J$, which is lower than the average energy of the uncoupled states. The absorption line thus shifts to the red. The same hold for the fluorescence emission spectrum.
+Two important limiting cases are the H- and J-aggregates\footcite[chapters 2.1.4.3, 2.2.5.3]{KoehlerBaessler2015} In a J-aggregate, the dipoles are oriented parallel and head-to-tail, i.e. $\alpha = \beta = \theta = 0$ and therefore $\kappa = -2$. A negative $\kappa$ implies that the coupling constant $J$ is negative. The state $\Psi_+$, which carries all the oscillator strength, has the energy $E_+ = (E_a + E_b) / 2 + J$, which is lower than the average energy of the uncoupled states. The absorption line thus shifts to the red. The same hold for the fluorescence emission spectrum.
 
 In an H-aggregate, the dipoles orient also parallel, but side-to-side, i.e.  $\alpha = \beta = 90^\circ$ and $\theta = 0$. In this case is $\kappa =1$ and $J$ positive. The absorption line shifts to the blue upon formation of aggregates, as again the  $\Psi_+$ state gets all the oscillator strength. However, as fluorescence emission is slow compared to other relaxation processes, this high energy state does not emit light. In emission, H-aggregates appear dark.
 
