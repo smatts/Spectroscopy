@@ -1,11 +1,11 @@
-\renewcommand{\lastmod}{June 15, 2020}
+%\renewcommand{\lastmod}{June 15, 2020}
 \chapter{Two-Photon Absorption}
 
 
 \section{Tasks}
 
 \begin{itemize}
-\item Derive eq. \ref{eq:tpe_vib_ex_final} which is the same as the result of section 2.3.(i) in \cite{Winterhalder11} and plug in some typical values. The paper investigates the possibility of single molecule vibrational spectroscopy by stimulated Raman scattering followed by a 'normal' electronic excitation. The interesting part is the first half of the process, a two-photon excitation of a vibrational state. The technique to 'read' the formula from the interaction diagram will be discussed in a chapter on double-sided Feynman diagrams.
+\item Derive eq. \ref{eq:tpe_vib_ex_final} which is the same as the result of section 2.3.(i) in \cite{Winterhalder11} and plug in some typical values. The paper investigates the possibility of single molecule vibrational spectroscopy by stimulated Raman scattering followed by a 'normal' electronic excitation. The interesting part is the first half of the process, a two-photon excitation of a vibrational state. The technique to 'read' the formula from the interaction diagram will be discussed in a chapter on 2d spectroscopy.
 \end{itemize}
 
 
@@ -19,8 +19,8 @@ after the realization of the ruby laser by Maiman
 \footcite{maiman60} succeeded in 1961 the first experimental proof of
 two-photon excitation of CaF$_2$:Eu$^{2+}$ by Kaiser and
 Garrett \footcite{Kaiser61}. Two years later, fluorescence of 
-organic crystals (pyrene, anthracene) was observed after to
-two photon excitation  \footcite{peticolas63}.  Important
+organic crystals (pyrene, anthracene) was observed after 
+two-photon excitation  \footcite{peticolas63}.  Important
 fields of application of two-photon absorption are
 Doppler-free spectroscopy of atoms and molecules in the
 molecular beam (introduction in 
@@ -60,7 +60,7 @@ The wave function $\psi$ of the entire system is
 \begin{equation}
 \psi = \sum_{\mu \in \{i, x, f\}} c_{\mu} \psi_{\mu} \quad.
 \end{equation}
-At the beginning the system is in ground state, so $c_i(0)
+At the beginning the system is in the ground state, so $c_i(0)
 = 1$ and all others $c_{\mu}(0) = 0$. We are looking for the population
 of the final state $\ket{f}$ depending on the time $t$, i.e.,
 $|c_f(t)|^2$. The Hamilton operator $H$ is split in a fixed and a perturbing part as
@@ -105,7 +105,7 @@ and the outer integral
 \end{equation}
 While $\omega_{f \mu}+\omega_{ \mu i}= (E_e - E_g)/ \hbar - 2 \omega = \Delta \omega \approx 0$ guarantees  energy conservation,  terms with 
  $\omega_{f \mu} \gg 1$ oscillate so fast that they
-on average out and can be neglected. This is again the rotating wave approximation. This   results in
+ average out and can be neglected. This is again the rotating wave approximation. This   results in
 \begin{equation}
 c_f(t) =  \frac{1}{\hbar} \frac{e^{i \,\Delta \omega t} -1}{
 \Delta \omega } \sum_{\mu} \frac{H^S_{f \mu} (0) H^S_{\mu i}
@@ -117,7 +117,14 @@ and
 |c_f(t)|^2 = \frac{|X_{fi}|^2}{\hbar^2} \cdot t^2 \cdot
 \text{sinc}^2(\Delta \omega \,t / 2) \quad .
 \end{equation}
-With the transitions that were previously assumed to be infinitesimal sharp
+This is the most interesting point, the definition of an effective transition  matrix element $X_{fi}$
+\begin{equation}
+X_{fi} = \sum_{\mu} \frac{H^S_{f \mu} (0) H^S_{\mu i}
+(0)}{E_{\mu} - E_i}  \quad .
+\end{equation}
+
+From now on, we follow the normal route also used when deriving Fermi's Golden Rule. The effect of the second order in the perturbation theory is collapsed into  $X_{fi}$. Again we realize that with
+ infinitesimally sharp optical transitions
 the transition rate $w_{fi}$ at resonance ($\Delta \omega =
 0$) increase linearly with time $t$:
 \begin{equation}
@@ -137,8 +144,8 @@ P_e = \int D(\Delta \omega) \frac{|X_{fi}|^2}{\hbar^2} \; t^2 \;
 \text{sinc}^2\left[ \Delta \omega  \,t / 2 \right] \; d (\Delta
 \omega) \quad .
 \end{equation}
-For times $t \gg 1 / \Gamma$ is $\text{sinc}^2\left[ \Delta
-\omega \,t / 2 \right]$ different from zero only for $\Delta \omega = 0$  so that
+For times $t \gg 1 / \Gamma$ we find that $\text{sinc}^2\left[ \Delta
+\omega \,t / 2 \right]$ is different from zero only for $\Delta \omega = 0$  so that
 \begin{equation}
 P_e =  \frac{2}{ \Gamma} \frac{|X_{fi}|^2}{ \hbar^2} \; t \qquad
 \text{and} \qquad w_{fi} =  \frac{2}{ \Gamma} \frac{|X_{fi}|^2}{
@@ -168,8 +175,8 @@ w_{fi} =  \frac{2}{\hbar^2 \Gamma} \; \left| \hat{E}(\omega) \right|^4  \; \left
 \label{gl_theo_nlo_tpe_uebergansgrate}
 \end{equation}
 where $\sigma_{TPE}$ is the two-photon absorption cross section
-and the factor $1/2$ considers that two photons
-must be absorbed for excitation\footcite{xu97}. The
+and the factor $1/2$ takes into account\footcite{xu97} that two photons
+must be absorbed. The
 excitation intensity $I$ is  usually not temporally
 constant, because it is advantageous to use a pulsed laser. This leads to an average excitation rate $\alpha$
 \begin{equation}
@@ -193,6 +200,9 @@ $g_P = 0.66$, for sec$^2$-shaped pulses $g_P = 0.59$ applies
 \footcite{xu97}. $f$ denotes the repetition rate of the laser and
 $\tau_P$ the temporal FWHM of the pulse. 
 
+
+
+
 \section{Selection rules and cross sections}
 
 For two-photon absorption to take place, the
@@ -201,8 +211,6 @@ dipole transitions from the ground state  $\ket{g}$.
 All intermediate states  $\ket{x}$ of the molecule contribute, weighted  with their energetic
 distance to the photon energy.
 Since the summation occurs before taking the absolute value squared, interference between individual terms may arise.
-
-
 
 
 
@@ -262,29 +270,29 @@ concentrate on this effect and find values of  $\sigma_{TPE}$ of more than 1000~
 
  
 
-
-\begin{figure}
-\center
-\begin{tabular}{cccc}
-\begin{minipage}{1.6cm}
-\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_trp.pdf}
-\end{minipage}&
-\begin{minipage}{2.8cm}
-\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_trp.pdf}
-\end{minipage}&
-\begin{minipage}{2.8cm}
-\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_tyr.pdf}
-\end{minipage}&
-\begin{minipage}{1.6cm}
-\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_tyr.pdf}
-\end{minipage}
-\end{tabular}
-\caption{One and two-photon absorption of tryptophan and
-tyrosine(amide).  Spectra of one-photon absorption
-(OPA) and two-photon excitation (TPE) (from \cite{rehms93}). The
-OPA spectra are plotted for better comparison at the double
-wavelength. Outer panels: molecular structure } \label{fig_tpe_trp}
-\end{figure}
+%
+%\begin{figure}
+%\center
+%\begin{tabular}{cccc}
+%\begin{minipage}{1.6cm}
+%\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_trp.pdf}
+%\end{minipage}&
+%\begin{minipage}{2.8cm}
+%\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_trp.pdf}
+%\end{minipage}&
+%\begin{minipage}{2.8cm}
+%\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_tyr.pdf}
+%\end{minipage}&
+%\begin{minipage}{1.6cm}
+%\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_tyr.pdf}
+%\end{minipage}
+%\end{tabular}
+%\caption{One and two-photon absorption of tryptophan and
+%tyrosine(amide).  Spectra of one-photon absorption
+%(OPA) and two-photon excitation (TPE) (from \cite{rehms93}). The
+%OPA spectra are plotted for better comparison at the double
+%wavelength. Outer panels: molecular structure } \label{fig_tpe_trp}
+%\end{figure}
 
 
 With two-photon excitation 
@@ -295,28 +303,30 @@ initial state is equal to the final state, whereas it
 must be different for OPE.  However, even for
 large atoms the selection rules are relaxed, so that the distinction between
 different classes of molecular states is not always
- possible. Figure~\ref{fig_tpe_trp} shows
-absorption spectra of two amino acids, tryptophan and tyrosine,
-recorded with OPA and TPE. In both cases
-transitions of the aromatic part of the molecule are excited. 
-
-In the spectra of tyrosine, it can be seen that the
-two-photon transition occurs at wavelengths shorter than one expects from 
- single-photon absorption. The latter is plotted for better
-comparability at twice the wavelength. With
-TPE, a state is reached which is energetically higher than the final state of   OPA. However, the fluorescence is emitted after relaxation from the same state as reached by OPA.
-
-
-In the case of tryptophan, however, the spectra overlap almost 
-completely. Both  TPE and  OPA reach the same state.
-The selection rules are no longer strictly valid. The
-difference in the selection rules between tryptophan and tyrosine
-leads to the fact that a mixture of these two amino acids in
-ratio Trp:Tyr = 1:25 for single-photon excitation ($\lambda =
-285$~nm) is dominated by tyrosine emission,  but at
-two-photon excitation at twice the wavelength  the
-tryptophan emission dominates\footcite{kierdaszuk95}. Therefore, proteins can be excited by two-photons with  wavelengths shorter than 295~nm
-without generating tyrosine fluorescence which is not the case for one-photon absorption.
+ possible. 
+ 
+% Figure~\ref{fig_tpe_trp} shows
+%absorption spectra of two amino acids, tryptophan and tyrosine,
+%recorded with OPA and TPE. In both cases
+%transitions of the aromatic part of the molecule are excited. 
+%
+%In the spectra of tyrosine, it can be seen that the
+%two-photon transition occurs at wavelengths shorter than one expects from 
+% single-photon absorption. The latter is plotted for better
+%comparability at twice the wavelength. With
+%TPE, a state is reached which is energetically higher than the final state of   OPA. However, the fluorescence is emitted after relaxation from the same state as reached by OPA.
+%
+%
+%In the case of tryptophan, however, the spectra overlap almost 
+%completely. Both  TPE and  OPA reach the same state.
+%The selection rules are no longer strictly valid. The
+%difference in the selection rules between tryptophan and tyrosine
+%leads to the fact that a mixture of these two amino acids in
+%ratio Trp:Tyr = 1:25 for single-photon excitation ($\lambda =
+%285$~nm) is dominated by tyrosine emission,  but at
+%two-photon excitation at twice the wavelength  the
+%tryptophan emission dominates\footcite{kierdaszuk95}. Therefore, proteins can be excited by two-photons with  wavelengths shorter than 295~nm
+%without generating tyrosine fluorescence which is not the case for one-photon absorption.
 
 
 
@@ -326,7 +336,8 @@ without generating tyrosine fluorescence which is not the case for one-photon ab
 
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir sms-cars.png}
+
+\inputtikz{\currfiledir sms_cars}
 \caption{ Level scheme }
 \end{marginfigure}
 

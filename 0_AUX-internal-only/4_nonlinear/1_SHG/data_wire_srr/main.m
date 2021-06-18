@@ -5,10 +5,9 @@ close all, clear all
 %   y_pol -> along short axis of structure (off-resonant)
 
 
-data = load('Esplitring1750_x_pol_new.txt');
+%data = load('Esplitring1750_x_pol_new.txt');
 % data = load('Esplitring1750_y_pol_new.txt');
-
-% data = load('Ewire1400_x_pol_new.txt');
+ data = load('Ewire1400_x_pol_new.txt');
 % data = load('Ewire1400_y_pol.txt');
 
 %% process data      
@@ -45,8 +44,8 @@ normE = sqrt(Ex.*conj(Ex) + Ey.*conj(Ey) + Ez.*conj(Ez));
 
 % chi2-components
 X1 = 250;
-X2 = 1;
-X3=3.6;
+X2 = 0.* 1;
+X3=0 .* 3.6;
 
 % create nonlinear polarization in surface local coordinate system
 Et = tx.*Ex + ty.*Ey + tz.*Ez;

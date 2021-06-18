@@ -1,0 +1,82 @@
+
+
+\begin{tikzpicture}
+\useasboundingbox (0,0.5) rectangle (10.6,4.1);
+%\draw (0,0.5) rectangle (10.6,4.1);
+
+\tikzmath{ \width =0.6; \gs = 1; \xoffs=0.1;  \gap = 0.55;}
+
+% THG ---------------
+\tikzmath{\center = \gap + \width; \es=4;}
+
+\draw (\center - \width ,\gs) -- ++ ( 2 *\width,0)  node[midway,below] {THG}; 
+\draw[dashed] (\center - \width ,\es) -- ++ ( 2 *\width,0);
+
+\tikzmath{\thglength = (\es - \gs) / 3; };
+
+\draw[ ->] (\center - \xoffs, \gs) -- ++ (0, \thglength )  node[midway, rotate=90, above] {$\omega$}; 
+\draw[ ->] (\center - \xoffs, \gs  + \thglength) -- ++ (0, \thglength )  node[midway, rotate=90, above] {$\omega$}; 
+\draw[ ->] (\center - \xoffs, \gs + 2 *\thglength) -- ++ (0, \thglength )  node[midway, rotate=90, above] {$\omega$}; 
+
+\draw[ ->] (\center + \xoffs, \es) -- ++ (0, -3 * \thglength )  node[midway, rotate=90, below] {$3 \,\omega$}; 
+
+ % PP -------------
+ \tikzmath{\rightend = \center + \width;}
+\tikzmath{\width=1.2; \es1=3.5; \es2 = 4; \offspp = 0.6;}
+\tikzmath{\center = \rightend + \gap + \width;}
+
+\draw (\center - \width ,\gs) -- ++ ( 2 *\width,0)  node[midway,below] {pump-probe}; 
+\draw (\center - \width ,\es1) -- ++ ( 2 *\width,0);
+\draw (\center - \width ,\es2) -- ++ ( 2 *\width,0);
+
+\draw[ ->] (\center - \xoffs - \offspp, \gs) -- ++ (0, \es1 - \gs )  node[midway, rotate=90, above] {$\omega_\text{pump}$}; 
+\draw[ ->] (\center + \xoffs - \offspp, \es1) -- ++ (0, \gs - \es1 )  node[midway, rotate=90, below] {$\omega_\text{pump}$}; 
+
+\draw[ ->] (\center - \xoffs + \offspp, \gs) -- ++ (0, \es2 - \gs )  node[midway, rotate=90, above] {$\omega_\text{probe}$}; 
+\draw[ ->] (\center + \xoffs + \offspp, \es2) -- ++ (0, \gs - \es2 )  node[midway, rotate=90, below] {$\omega_\text{probe}$}; 
+
+\draw[ <->]  (\center + \xoffs - \offspp + 0.2, \gs + 0.2) --(\center - \xoffs + \offspp - 0.2, \gs + 0.2) node[midway, above] {$\Delta t$}; 
+
+
+% CARS --------------
+\tikzmath{\rightend = \center + \width;}
+\tikzmath{\width=1.2; \es1=3.5; \es2 = 4; \vib = 1.5; \offspp = 0.6;}
+\tikzmath{\center = \rightend + \gap + \width;}
+
+
+\draw (\center - \width ,\gs) -- ++ ( 2 *\width,0)  node[midway,below] {CARS}; 
+\draw (\center - \width ,\vib) -- ++ ( 2 *\width,0);
+\draw[dashed] (\center - \width ,\es1) -- ++ ( 2 *\width,0);
+\draw [dashed](\center - \width ,\es2) -- ++ ( 2 *\width,0);
+
+\draw[ ->] (\center - \xoffs - \offspp, \gs) -- ++ (0, \es1 - \gs )  node[midway, rotate=90, above] {$\omega_\text{pump}$}; 
+\draw[ ->] (\center + \xoffs - \offspp, \es1) -- ++ (0, \vib - \es1 )  node[midway, rotate=90, below] {$\omega_\text{Stokes}$}; 
+
+\draw[ ->] (\center - \xoffs + \offspp, \vib) -- ++ (0, \es2 - \vib )  node[midway, rotate=90, above] {$\omega_\text{pump}$}; 
+\draw[ ->] (\center + \xoffs + \offspp, \es2) -- ++ (0, \gs - \es2 )  node[midway, rotate=90, below] {$\omega_\text{CARS}$}; 
+
+\draw [ |-| ] (\center + \width + 0.2, \gs) -- ++ (0, \vib - \gs) node[midway,right] {$\Omega_\text{vib}$};
+ 
+ 
+ % FWM --------------
+ \tikzmath{\rightend = \center + \width + 0.7;}
+\tikzmath{ \width=0.6; \es=4; \l1 = 2; \l3 = 1.8;}
+\tikzmath{\center = \rightend + \gap + \width;}
+
+
+\draw (\center - \width ,\gs) -- ++ ( 2 *\width,0)  node[midway,below] {FWM}; 
+\draw[dashed] (\center - \width ,\es) -- ++ ( 2 *\width,0);
+
+\tikzmath{\l2 = (\es - \gs)  - \l1; };
+\tikzmath{\l4 = (\es - \gs)  - \l3; };
+
+\draw[ ->] (\center - \xoffs, \gs) -- ++ (0, \l1 )  node[midway, rotate=90, above] {$\omega_1$}; 
+\draw[ ->] (\center - \xoffs , \gs  + \l1) -- ++ (0, \l2 )  node[midway, rotate=90, above] {$\omega_2$}; 
+
+
+\draw[ ->] (\center + \xoffs , \es) -- ++ (0, -1 * \l3 )  node[midway, rotate=90, below] {$\omega_3$}; 
+\draw[ <-] (\center + \xoffs, \gs) -- ++ (0,  \l4 )  node[midway, rotate=90, below] {$\omega_4$}; 
+
+\end{tikzpicture}
+
+

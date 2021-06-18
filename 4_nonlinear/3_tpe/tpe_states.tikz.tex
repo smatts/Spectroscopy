@@ -15,13 +15,13 @@
 %\draw (0.,0) rectangle (5.1,5.1);
 
 
-\draw (\x,\y0) -- (\x + \len,\y0) node [right] {$\ket{e}$ initial state $\ket{i} = \ket{g, n}$};
+\draw (\x,\y0) -- (\x + \len,\y0) node [right] {$\ket{g}$ initial state $\ket{i} = \ket{g, n}$};
 
 \draw  (\x,\y1) -- (\x + \len,\y1)  node  [right] {$\ket{e'}$ intermediate state $\ket{x} = \ket{e', n-1}$};
 
 \draw [dashed] (\x,\y2 ) -- (\x + \len,\y2)  ;
 
-\draw  (\x,\y2 + \dy) -- (\x + \len,\y2 + \dy)  node  [right] {$\ket{g}$ final state $\ket{} =f \ket{e, n-2}$};
+\draw  (\x,\y2 + \dy) -- (\x + \len,\y2 + \dy)  node  [right] {$\ket{e}$ final state $\ket{f} =\ket{e, n-2}$};
 
 \tikzmath{\midml=(\y2 - \y0)/2;};
 

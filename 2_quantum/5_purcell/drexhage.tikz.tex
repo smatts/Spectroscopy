@@ -1,0 +1,66 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%\usepgfplotslibrary{fillbetween}
+%
+%\usetikzlibrary{calc}
+%
+%\usepackage{currfile,hyperxmp}
+%\usetikzlibrary{math,calc,matrix,fit,positioning,intersections}
+%\usetikzlibrary{patterns,decorations.pathmorphing,decorations.markings}
+%
+%
+%\begin{document}
+
+
+\begin{tikzpicture}[font=\footnotesize]
+%\useasboundingbox (0,0) rectangle (5,5);
+%\draw (0,0) rectangle (5,5);
+
+\tikzstyle{ground}=[fill,pattern=north east lines,draw=none,minimum width=0.75cm,minimum height=0.3cm]
+
+
+\tikzmath{\d = 1; \a = 30;};
+\coordinate (dipole) at (1,\d) ;
+\coordinate (imdipole) at (1,-\d) ;
+
+\coordinate (d2) at ($(dipole) + (-\a: 5cm)$);
+\coordinate (id2) at ($(imdipole) + (\a: 5cm)$);
+\coordinate (c) at (intersection of dipole--d2 and imdipole--id2);
+
+
+   
+ 
+\node [yshift=4mm] at (dipole)  {dipole};
+\node [yshift=-6mm] at (imdipole)  {image dipole};
+
+\draw[fill] (dipole) circle (1mm);
+\draw[fill, gray] (imdipole) circle (1mm);
+
+\draw[dashed] (dipole) -- (imdipole);
+
+\draw[thick, ->] (dipole) -- ++(\a: 2cm) node [right] {direct};
+\draw [thick, ->] (dipole) -- (c) -- ++(\a: 1cm) node [right] {reflected};
+\draw[thin] (imdipole) -- (c);
+
+\draw[dashed] (dipole) -- ($(imdipole)!(dipole)!(id2)$);
+\draw[|-|] ($ (imdipole)  + (-90+\a:2mm)$) -- node [below, xshift=3mm] {$2 d \cos \theta$}  ($(imdipole)!(dipole)!(id2) + (-90+\a:2mm)$);
+
+\draw[|-|] ($ (dipole)  - (2mm,0)$) -- node [left, xshift=0mm] {$d$}  ($(0,0)!(dipole)!(5,0) - (2mm,0)$);
+
+\draw[|-|] ($ (imdipole)  - (2mm,0)$) -- node [left, xshift=0mm] {$d$}  ($(0,0)!(dipole)!(5,0) - (2mm,0)$);
+
+\draw [ground] (0,0) rectangle (5,-0.2);
+\draw (0,0) -- (5,-0);
+
+\node [yshift=-3mm, xshift=1mm] at (c) {mirror};
+
+
+
+
+\end{tikzpicture}
+
+
+%\end{document}

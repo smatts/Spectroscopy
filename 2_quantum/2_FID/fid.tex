@@ -2,7 +2,7 @@
 
 
 \chapter{(Perturbed) Free Induction Decay}
-
+\label{chap:fid}
 
 
 \section{Tasks}
@@ -217,17 +217,17 @@ where $\otimes$ is the convolution operator.
 We  Fourier transform the fields with and without pump pulse 
 and subtract the resulting intensities. Using $E_S \ll E_0$ we get
 \begin{equation}
- \left| E_0(\omega) + E_S(\omega) \right|^2 -  \left| E_0(\omega)  \right|^2 \approx  \Re \left[ E_0(\omega)   \, E_S(\omega)  \right]
+ \left| E_0(\omega) + E_S(\omega) \right|^2 -  \left| E_0(\omega)  \right|^2 \approx 2  \Re \left[ E_0(\omega)^\star   \, E_S(\omega)  \right] \label{eq:fid_delta_E_spec}
 \end{equation}
 or
 \begin{equation}
-\Delta P (\omega) = \frac{1}{2} \, \epsilon_0 c \, \, \Re \left[  E_0(\omega)   \, E_S(\omega)  \right] \label{eq:fid_delta_P_spec}
+\Delta P (\omega) =  \epsilon_0 c \, \, \Re \left[  E_0(\omega)^\star   \, E_S(\omega)  \right] \label{eq:fid_delta_P_spec}
 \end{equation}
 
 
 \begin{questions}
 
-\item Derive  eq. \ref{eq:fid_delta_P_spec} (and check if there is a factor $2$ missing).
+\item Derive  eqs. \ref{eq:fid_delta_E_spec} and\ref{eq:fid_delta_P_spec}.% (and check if there is a factor $2$ missing).
 
 \end{questions}
  
@@ -289,7 +289,7 @@ where $\Theta$ is the Heaviside step function and $\beta$ describes the effect o
 
 \begin{questions}
 
-\item Calculate numerically the Fourier transform of \ref{eq:fid_perturbed_fid} and adjust the parameters to obtain Fig, \ref{fig:fid_wolpert}
+\item Calculate numerically the Fourier transform of \ref{eq:fid_perturbed_fid} and adjust the parameters to obtain Fig. \ref{fig:fid_wolpert}
 
 \end{questions}
 

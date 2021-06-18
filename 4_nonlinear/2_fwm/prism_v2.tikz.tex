@@ -1,0 +1,76 @@
+
+\begin{tikzpicture}
+\useasboundingbox (0.,0) rectangle (6.0,3.2);
+
+%\draw (0.,0) rectangle (6.0,3.2);
+
+% NB all angles made by hand, does not follow any Snels law !
+ 
+% mirror
+  \draw (5.2,0.1 ) rectangle (5.4,1.2 ) node[above ] {mirror}  ;
+
+
+\coordinate (tipa1) at (1.90, 3.04 );
+
+\coordinate (midbasea)  at ($ (tipa1) + (-120: 1.05)$);
+\coordinate (tipa2)  at ($ (midbasea) + (-30: 1.05 * 0.55) $);
+\coordinate (tipa3)  at ($ (midbasea) + (+150: 1.05 * 0.55)$);
+
+\draw[blue] (tipa2) -- (tipa3) -- (tipa1) -- cycle;
+
+
+\coordinate (tipb1) at (3.18, 0.30 );
+
+\coordinate (midbaseb)  at ($ (tipb1) - (-120: 1.05)$);
+\coordinate (tipb2)  at ($ (midbaseb) + (-30: 1.05 * 0.55) $);
+\coordinate (tipb3)  at ($ (midbaseb) + (+150: 1.05 * 0.55)$);
+
+\draw[blue] (tipb2) -- (tipb3) -- (tipb1) -- cycle;
+
+\draw[<->]  ($ (tipb1) - (-120: 1.1)$)  --  node[right] {$z$} ($ (tipb1) - (-120: 1.5)$);
+
+% blue beam
+
+\coordinate (blue1) at  (0.3, 2.79 );
+\coordinate (blue1h) at ($ (blue1) + (0:5)$);
+
+\coordinate (blue2) at (intersection of tipa1--tipa3 and blue1--blue1h);
+\coordinate (blue2h) at ($ (blue2) + (-30:5)$);
+
+\coordinate (blue3) at (intersection of tipa1--tipa2 and blue2--blue2h);
+\coordinate (blue3h) at ($ (blue3) + (-57:5)$);
+
+\coordinate (blue4) at (intersection of tipb1--tipb3 and blue3--blue3h);
+\coordinate (blue4h) at ($ (blue4) + (-45:5)$);
+
+\coordinate (blue5) at (intersection of tipb1--tipb2 and blue4--blue4h);
+\coordinate (blue5h) at ($ (blue5) + (0:5)$);
+
+\coordinate (blue6) at (intersection of (5.2,0 )--(5.2,1 ) and blue5--blue5h);
+
+\draw[thick] (blue1) -- (blue2) -- (blue3) --node [left] {blue}  (blue4) -- (blue5) -- (blue6);
+
+\draw [ <->, thick]  ($ (blue1) + (0: 0.3)$)  -- ($ (blue1) + (0: 0.8)$); 
+\draw [ <->, thick]  ($ (blue6) - (0: 0.3)$)  -- ($ (blue6) - (0: 0.8)$); 
+
+% red beam
+\coordinate (red2) at (blue2);
+\coordinate (red2h) at ($ (red2) + (-20:5)$);
+
+\coordinate (red3) at (intersection of tipa1--tipa2 and red2--red2h);
+\coordinate (red3h) at ($ (red3) + (-48:5)$);
+
+\coordinate (red4) at (intersection of tipb1--tipb3 and red3--red3h);
+\coordinate (red4h) at ($ (red4) + (-23:5)$);
+
+\coordinate (red5) at (intersection of tipb1--tipb2 and red4--red4h);
+\coordinate (red5h) at ($ (red5) + (0:5)$);
+
+\coordinate (red6) at (intersection of (5.2,0 )--(5.2,1 ) and red5--red5h);
+
+\draw[dashed,thick] (red2) -- (red3) --   node [right] {red} (red4) -- (red5) -- (red6);
+
+\draw [ <->, thick]  ($ (red6) - (0: 0.3)$)  -- ($ (red6) - (0: 0.8)$); 
+
+
+\end{tikzpicture}
