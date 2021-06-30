@@ -1,8 +1,23 @@
+\newcommand{\myarrow}[5]{\draw[#4](#1.south -| #2)  -- ++(#3 :6mm) node[above,pos=1]{$#5$};
+} 
+
+\newcommand{\interactLp}[3]{\myarrow{#1-#2-1}{#1.west}{-135}{<-}{#3}} 
+\newcommand{\interactLm}[3]{\myarrow{#1-#2-1}{#1.west}{+135}{->}{#3}} 
+\newcommand{\interactRp}[3]{\myarrow{#1-#2-2}{#1.east}{ -45}{<-}{#3}} 
+\newcommand{\interactRm}[3]{\myarrow{#1-#2-2}{#1.east}{ +45}{->}{#3}}  
+
+\newcommand{\interactout}[2]{\myarrow{#1-1-1}{#1.west}{+135}{->,dashed}{#2}} 
 
 \begin{tikzpicture}[
      every left delimiter/.style={xshift=0.6em},
-     every right delimiter/.style={xshift=-1em},
-]
+     every right delimiter/.style={xshift=-1em} ,  
+     mymat/.style={
+    matrix of math nodes,
+    left delimiter=|, right delimiter=|,
+    align=center,
+    column sep=-\pgflinewidth,
+}]
+
 \useasboundingbox (0.,0) rectangle (10.6,5.1);
 
 \tikzmath{ \y1 = 0.8; \x1 = 1.3; \dx = 3; \y2 = 3.5;}

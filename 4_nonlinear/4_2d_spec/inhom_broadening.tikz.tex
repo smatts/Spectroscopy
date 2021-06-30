@@ -1,0 +1,55 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepgfplotslibrary{groupplots}
+%
+%\usepackage{currfile,hyperxmp,calc}
+%\usetikzlibrary{calc,math}
+%\usetikzlibrary{calc,patterns,angles,quotes}
+%
+%
+%\usetikzlibrary{angles,quotes}
+%
+%\usetikzlibrary{math,matrix,fit,positioning,intersections}
+%\usetikzlibrary{patterns,decorations.pathmorphing,decorations.markings}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{arrows.meta} %needed tikz library
+%\usetikzlibrary{quotes,angles}
+%
+%\usepackage{braket}
+%
+% 
+%
+%
+%
+%
+%\begin{document}
+
+
+\begin{tikzpicture}[font=\footnotesize]
+%\useasboundingbox (0.,0) rectangle (10.6,8.3);
+
+\tikzmath{ \xs = 4; \de = 1.07; \di =0.15; }
+
+
+\draw[->] (0,0) -- node [below] {$\omega_{probe}$} ++ (\xs,0);
+\draw[->] (0,0) -- node [above,rotate=90] {$\omega_{pump}$}++ (0,\xs);
+
+\draw[dotted] (0,0) -- ++ (\xs,\xs);
+
+ \draw[rotate around={45:(2,2)}, fill=gray] (2,2) ellipse (1.5cm and 0.2cm);
+ 
+
+ 
+ \draw[|-|, shift = {(-45:0.4)}] (2 - \de,2-\de)  -- node [below, rotate=45] {inhomogeneous  width}  (2 + \de,2+\de) ;
+ 
+  \draw[|-|, shift = {(45:1.7)}]  (2 - \di,2+\di)   node [left] {homogeneous width}   --  (2 + \di,2-\di) ;
+  
+\end{tikzpicture}
+
+
+
+%\end{document}

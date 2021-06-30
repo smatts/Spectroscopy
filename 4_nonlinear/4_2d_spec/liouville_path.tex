@@ -1,0 +1,63 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepgfplotslibrary{groupplots}
+%
+%\usepackage{currfile,hyperxmp,calc}
+%\usetikzlibrary{calc,math}
+%\usetikzlibrary{calc,patterns,angles,quotes}
+%
+%
+%\usetikzlibrary{angles,quotes}
+%
+%\usetikzlibrary{math,matrix,fit,positioning,intersections}
+%\usetikzlibrary{patterns,decorations.pathmorphing,decorations.markings}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{arrows.meta} %needed tikz library
+%\usetikzlibrary{quotes,angles}
+%
+%\usepackage{braket}
+%
+% 
+%
+%
+%
+%
+%\begin{document}
+
+
+\begin{tikzpicture}
+%\useasboundingbox (0.,0) rectangle (10.6,8.3);
+
+\tikzmath{ \dx1 = -0.4; \dx2=-0.2; \dx3=+0.3;}
+
+%\draw (0.,0) rectangle (10.6,8.3);
+
+%-------------
+\matrix[ matrix of math nodes, column sep = 4mm, row sep = 3mm]  (mat)
+{   \ket{0}\bra{0} & \ket{1}\bra{0} & \ket{2}\bra{0} \\
+    \ket{0}\bra{1} & \ket{1}\bra{1} & \ket{2}\bra{1} \\
+  \ket{0}\bra{2} & \ket{1}\bra{2} & \ket{2}\bra{2}  \\
+  };
+
+
+\draw[->, blue] ($(mat-1-1.south) + (\dx1,0)$) --  ($(mat-2-1.north) + (\dx1,0)$);
+\draw[->, blue] ($(mat-2-1.south) + (\dx1,0)$) --  ($(mat-3-1.north) + (\dx1,0)$);
+
+\draw[<-, blue] ($(mat-1-1.south) + (\dx2,0)$) --  ($(mat-2-1.north) + (\dx2,0)$);
+\draw[<-, blue] ($(mat-2-1.south) + (\dx2,0)$) --  ($(mat-3-1.north) + (\dx2,0)$);
+
+\draw[->, red] (mat-1-1) --(mat-1-2); 
+\draw[->, red] (mat-1-2) --(mat-2-2); 
+\draw[->, red] (mat-2-2) --(mat-2-1); 
+\draw[<-, red] ($(mat-1-1.south) + (\dx3,0)$) --  ($(mat-2-1.north) + (\dx3,0)$);
+
+
+\end{tikzpicture}
+
+
+
+%\end{document}

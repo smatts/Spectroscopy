@@ -1,0 +1,89 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepgfplotslibrary{groupplots}
+%
+%\usepackage{currfile,hyperxmp,calc}
+%\usetikzlibrary{calc,math}
+%\usetikzlibrary{calc,patterns,angles,quotes}
+%
+%
+%\usetikzlibrary{angles,quotes}
+%
+%\usetikzlibrary{math,matrix,fit,positioning,intersections}
+%\usetikzlibrary{patterns,decorations.pathmorphing,decorations.markings}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{arrows.meta} %needed tikz library
+%\usetikzlibrary{quotes,angles}
+%
+%\usepackage{braket}
+%
+% 
+%
+
+
+
+%\begin{document}
+
+\newcommand{\myarrow}[5]{\draw[#4](#1.south -| #2)  -- ++(#3 :6mm) node[above,pos=1]{$#5$};
+} 
+
+\newcommand{\interactLp}[3]{\myarrow{#1-#2-1}{#1.west}{-135}{<-}{#3}} 
+\newcommand{\interactLm}[3]{\myarrow{#1-#2-1}{#1.west}{+135}{->}{#3}} 
+\newcommand{\interactRp}[3]{\myarrow{#1-#2-2}{#1.east}{ -45}{<-}{#3}} 
+\newcommand{\interactRm}[3]{\myarrow{#1-#2-2}{#1.east}{ +45}{->}{#3}}  
+
+\newcommand{\interactout}[2]{\myarrow{#1-1-1}{#1.west}{+135}{->,dashed}{#2}} 
+
+\begin{tikzpicture}[
+     every left delimiter/.style={xshift=0.6em},
+     every right delimiter/.style={xshift=-0.6em} ,  
+     mymat/.style={
+    matrix of math nodes,
+    left delimiter=|, right delimiter=|,
+    align=center,
+    column sep=-\pgflinewidth,
+}]
+%\useasboundingbox (0.,0) rectangle (10.6,8.3);
+
+%\tikzmath{ \y1 = 1.8; \x1 = 1.1; \dx = 2.7; \y2 = 6;}
+
+%\draw (0.,0) rectangle (10.6,8.3);
+
+%-------------
+\matrix[mymat]  (mat1)
+{   0 & 0\\
+    1 & 0\\
+    1 & 1\\
+     1 & 0\\
+    0 & 0\\
+};
+
+\interactout{mat1}{out};
+\interactLp{mat1}{4}{k_1};
+\interactRp{mat1}{3}{k_2};
+\interactRm{mat1}{2}{k_3};
+
+\draw[dashed, blue] (mat1-1-2.south east) -- (mat1-1-1.south west);
+\draw[dashed, blue] (mat1-2-2.south east) -- (mat1-2-1.south west);
+\draw[dashed, blue] (mat1-3-2.south east) -- (mat1-3-1.south west);
+\draw[dashed, blue] (mat1-4-2.south east) -- (mat1-4-1.south west);
+
+\draw[->, blue] (mat1-5-1.center) .. controls (mat1-5-1.north east) .. (mat1-4-1.center) ;
+\draw[->, blue] (mat1-4-2.center) .. controls (mat1-4-2.north west) .. (mat1-3-2.center) ;
+\draw[->, blue] (mat1-3-2.center) .. controls (mat1-3-2.north west) .. (mat1-2-2.center) ;
+\draw[->, blue] (mat1-2-1.center) .. controls (mat1-2-1.north east) .. (mat1-1-1.center) ;
+
+\node [blue, yshift=-7mm,xshift=-1mm] at  (mat1-5-1.center) {$\ket{n}$};
+\node [blue, yshift=-7mm] at  (mat1-5-2.center) {$\bra{m}$};
+
+\draw [->, blue] ($(mat1-5-1.south)  - (14mm,0)$) --  node[rotate=90,above] {time} ($(mat1-1-1.north)  - (14mm,0)$);
+
+\end{tikzpicture}
+
+
+
+%\end{document}

@@ -106,10 +106,10 @@ In the remaining, we try to keep track of all these terms.
 \section{Double-Sided Feynman Diagrams}
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir f1.png}
+\inputtikz{\currfiledir feynman_example}
 \caption{
 Example of a Double-Sided Feynman Diagram.}
-\label{fig_2d_f1}
+\label{fig:2d_example_feynman}
 \end{marginfigure}
 
 The idea is to describe the evolution of the density matrix when interacting with multiple optical fields.
@@ -122,13 +122,14 @@ A positive sign is represented by an arrow pointing to the right, a negative sig
 
 Each diagram has an overall sign, stemming from the minus sign in the commutators in eq. \ref{eq:2d-p3-commutator}. The sign is $(-1)^m$ where $m$ is the number of interactions on the right side of the diagram.
 
-The diagram represents a path between elements of the density matrix. As we have seen in the chapter on Rabi Oscillations when introducing the density matrix, a light field causes as first step a non-zero value of the corresponding off-diagonal element. A field acting from the left generates $\ket{1} \bra{0}$, while a field acting from the right generates $\ket{0} \bra{1}$. Figure \ref{fig_2d_path} shows possible path in Liouville space (that do not correspond to our example Fig. \ref{fig_2d_f1}).
+The diagram represents a path between elements of the density matrix. As we have seen in the chapter on Rabi Oscillations when introducing the density matrix, a light field causes as first step a non-zero value of the corresponding off-diagonal element. A field acting from the left generates $\ket{1} \bra{0}$, while a field acting from the right generates $\ket{0} \bra{1}$. Figure \ref{fig:2d_liouville_path} shows possible paths in Liouville space.
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir f4.png}
+\inputtikz{\currfiledir liouville_path}
+
 \caption{
-Two different paths  through the density matrix by applying four times the dipole operator.}
-\label{fig_2d_path}
+Two different paths  through the density matrix by applying four times the dipole operator. The red path correspinds to Fig. \ref{fig:2d_example_feynman}.}
+\label{fig:2d_liouville_path}
 \end{marginfigure}
 
 At the end, we are interested in $P^{(3)}(t)$ or $P^{(3)}(\omega)$. We can easily obtain it by multiplying the elements along the path. In time domain\footcite{Mukamel1995,HammZanni2011,Hamm-dummies}, each interaction with an optical field contributes
@@ -169,27 +170,24 @@ Let us discuss pump-probe spectroscopy as an example. As we have seen on the cha
 \begin{equation}
  P^{(3)} =  \chi^{(3)} E_\text{pump} \, E_\text{pump}^\star \, E_\text{probe}
 \end{equation}
-We assume for simplicity that the probe pulse comes after the pump-pulse. The nonlinear emission has to be in the direction of the probe pulse so that it can serve as local oscillator. As the emitting arrow points to the left, the probe arrow has to point to the right. The sub-schemes A and B fulfill this requirement.
+We assume for simplicity that the probe pulse comes after the pump pulse. The nonlinear emission has to be in the direction of the probe pulse so that it can serve as local oscillator. As the emitting arrow points to the left, the probe arrow has to point to the right. The sub-schemes A and B fulfil this requirement.
 
 
 \begin{figure}
-%\includestandalone[width=106mm]{\currfiledir f2tikz}
 \inputtikz{\currfiledir feynman_pp_elements}
 
 \caption{
 Building blocks for the interaction of the probe pulse (panels A and B) and the pump-pulse (panels 1 to 4) in a pump-probe experiment.}
-\label{fig_2d_f2}
+\label{fig:2d_feynman_pp_elements}
 \end{figure}
 
 The direction of the pump beam has to cancel out, $E_\text{pump} $ enters only as absolute-squared. This means that the two pump arrows have to point in different directions. The sub-schemes 1 to 4 fulfill this requirement.
 
 \begin{figure}
-%\includegraphics[width=\textwidth]{\currfiledir f3.png}
 \inputtikz{\currfiledir feynman_pump_probe}
-%\includestandalone[width=106mm]{\currfiledir f3tikz}
 \caption{
 Six double-sided Feynman diagrams describe pump-probe spectroscopy.}
-\label{fig_2d_f3}
+\label{fig:2d_feynman_pump_probe}
 \end{figure}
 
 Of the eight combinations two are not allowed. The variants A3 and A4 would describe  emission from ground state  $\ket{0} \bra{0}$ which is of course forbidden. Variants A2 and A2 describe stimulated emission, B1 and B2 excited state absorption and B3 and B4 ground state bleaching.
@@ -267,9 +265,10 @@ which is eq. 1b in \cite{Winterhalder11}.
 In contrast to pump-probe spectroscopy, we now assume that all three interactions happen at three different times so that we do not neglect any time interval $t_i$ anymore. However, all three pulses stem from the same laser, have the same spectrum, but individual propagation directions $k_i$. In 2D spectroscopy, in most cases one detects the generated nonlinear polarization by  interfering it with a fourth laser pulse acting as local oscillator\footcite{Ogilvie15,Scholes13}. In some variants, one uses the fourth pulse to generate a population that is then detected via electron or fluorescence emission. Also in some cases, not the propagation direction $k_i$ but an individual phase $\phi_i$ is used to distinguish the pulses. In the following discussion, we stick with the most common or 'traditional' approach.
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir 2d_1.png}
-\caption{The phase-matching direction selects the observed process. Interference with a local oscillator allows detection of a complex-valued polarization.}
-\label{fig_2d_setup}
+\inputtikz{\currfiledir fwm_phase_matching}
+
+\caption{The phase-matching direction selects the observed process. Interference with a local oscillator (LO) after reflection at a beam splitter (BS) allows detection (det) of a complex-valued polarization.}
+\label{fig:2d_setup_phasematch}
 \end{marginfigure}
 
 
@@ -281,9 +280,10 @@ Which features do we find in a 2D spectrum? Along the diagonal, it contains the 
 
 
 \begin{marginfigure}
-\includegraphics[width=\textwidth]{\currfiledir 2d_2.png}
+\inputtikz{\currfiledir inhom_broadening}
+
 \caption{An inhomogeneous ensemble of molecules leads to a elongated peak in the 2D spectrum. Along the anti-diagonal direction it has the \emph{homogeneous} linewidth.}
-\label{fig_2d_inhom}
+\label{fig:2d_inhom_broadening}
 \end{marginfigure}
 
 

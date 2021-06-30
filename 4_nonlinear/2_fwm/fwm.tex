@@ -57,7 +57,7 @@ However, if the individual modes are coupled, i.e., if they
 have a fixed phase relationship to each other,
 \begin{equation}
    \delta \phi = \phi_{n+1} - \phi_n = \text{const.} \quad,
-   \label{gl_theo_nlo_ml_phiconst}
+   \label{eq:fwm:gl_fwm_phiconst}
 \end{equation}
 then the temporal evolution of the electric field corresponds to the
 Fourier transforms the amplitude distribution. The constant
@@ -126,7 +126,7 @@ assume that $\phi(t)$ is a polynomial in $t$. This means that
 \begin{equation}
   E(t) = \hat{E}(t) \, e^{i ( \omega_0 \, t + \phi(t))}
   = \hat{E}(t) \, e^{i ( \omega_0 \, + d\phi(t)/dt) \, t} \, e^{i
-  \, \phi_0}  \quad . \label{gl_theo_nlo_ml_field_with_phase}
+  \, \phi_0}  \quad . \label{eq:fwm_field_with_phase}
 \end{equation}
 As long as $\phi(t)$ is only linearly dependent on the time $t$, the effect is
  only a shift the central frequency $\omega_0$ to
@@ -167,7 +167,7 @@ the entire GVD must be as wavelength independent as possible. The influence of t
 compensate  each other. In glasses, the positive second derivative of the refractive index
 is dominating  the GVD. To compensate for this, a section with
 negative GVD is needed in the resonator. This can be  achieved by two prisms as shown in figure
-\ref{fig_pulses_prism}. Two equal
+\ref{fig:fwm_prism}. Two equal
 prisms are placed in front of a mirror such 
 that all spectral components hit the mirror perpendicularly
 and  the resonator is closed.  
@@ -180,7 +180,7 @@ negative GVD. The path inside the prisms contributes  positive GVD.  By varying 
 \begin{marginfigure}
    \inputtikz{\currfiledir  prism_v2}
 \caption{This prism sequence allows to adjust the group velocity dispersion by the prism position along $z$. }
-\label{fig_pulses_prism}
+\label{fig:fwm_prism}
 \end{marginfigure}
 
 
@@ -236,7 +236,7 @@ Let us now turn to the spectroscopic consequences of the phase dispersion over t
 where three optical waves produce a nonlinear polarization, which radiates a new optical field\sidenote{Similar to the chapter on the free induction decay}. This field is sometimes detected directly, sometimes interfered with  a fourth field acting as local oscillator. A \emph{third-order} nonlinearity describes thus the mixing of \emph{four} waves.
 		
 		
-Several different processes are 	summarized as four-wave mixing (FWM) effects and depicted in figure \ref{fig:processes}.  The generated nonlinear polarization oscillates at the sum of the three input frequencies. Complex conjugate input fields are again counted as negative frequencies and depicted as downward arrows in Fig. \ref{fig:processes}.
+Several different processes are 	summarized as four-wave mixing (FWM) effects and depicted in figure \ref{fig:fwm_processes}.  The generated nonlinear polarization oscillates at the sum of the three input frequencies. Complex conjugate input fields are again counted as negative frequencies and depicted as downward arrows in Fig. \ref{fig:fwm_processes}.
 	
 \begin{figure}
 \inputtikz{\currfiledir  chi3-processes_v2}
@@ -246,20 +246,20 @@ Several different processes are 	summarized as four-wave mixing (FWM) effects an
 third-harmonic generation (THG), pump-probe spectroscopy (PP), coherent anti-Stokes Raman scattering (CARS), and  non-degenerate four-wave mixing (FWM).
 %
  All processes start and end at a real state  that can be populated (solid horizontal line). Intermediate states can be virtual states (dashed horizontal line). The interaction between light and matter occurs in time from left to right within each diagram. The last downward arrow symbolizes the emission process. Other downward  arrows symbolize incoming complex-conjugate fields that count negative when calculating the emission frequency.
-\label{fig:processes}}
+\label{fig:fwm_processes}}
 \end{figure}
 
 In third-harmonic generation, one optical wave at frequency $\omega$ generates a new optical field at frequency $3 \omega$: 
 %
 \begin{equation}
 P^{(THG)}(3 \omega) = \epsilon_0 \chi^{(3)} E(\omega)^3  \quad .
-\label{eq:chi3-thg}
+\label{eq:fwm_chi3-thg}
 \end{equation}
 %
 This is a coherent process, i.e., the phase of the new field is related to the phase of the fundamental wave, but homodyne interference is in contrast to linear absorption not possible. The detected signal intensity $I^{(THG)}$ is thus proportional to the third power of the fundamental intensity $I(\omega)$
 \begin{equation}
 I^{(THG)} \propto \left| P^{(THG)}(3 \omega) \right|^2 = \left| \epsilon_0 \chi^{(3)} E(\omega)^3 \right|^2 \propto I(\omega)^3 \quad .
-\label{eq:intensi-thg}
+\label{eq:fwm_intensity-thg}
 \end{equation}
 
 
@@ -272,29 +272,29 @@ P^{(pp)}(\omega_{\text{probe}}) = &
 = &
 \epsilon_0 \chi^{(3)} \, \left| E(\omega_{\text{pump}})  \right|^2 \, E(\omega_{\text{probe}})  
 \quad .
-\label{eq:chi3-pp}
+\label{eq:fwm_chi3-pp}
 \end{align}
 %
 From this notation, it is obvious that pump-probe spectroscopy does not depend on the phase relation between pump- and probe-beam.
 The generated nonlinear polarization oscillates at the frequency of the incoming probe beam which again allows homodyne detection. The observed signal is thus proportional to the amplitude of the interference between nonlinear polarization and probe field and not to the square of the nonlinear polarization itself as in third-harmonic generation. The  signal  scales linearly both  in pump and in probe power.
 
 
-In coherent anti-Stokes Raman scattering (CARS) the pump field also enters twice, as in pump-probe spectroscopy, but here it enters twice with the same phase. Both pump arrows point up in Figure \ref{fig:processes}. The nonlinear polarization is given by 
+In coherent anti-Stokes Raman scattering (CARS) the pump field also enters twice, as in pump-probe spectroscopy, but here it enters twice with the same phase. Both pump arrows point up in Figure \ref{fig:fwm_processes}. The nonlinear polarization is given by 
 %
 \begin{equation}
 P^{(CARS)}(\omega_{\text{CARS}}) = 
 \epsilon_0 \chi^{(3)} \, \ E(\omega_{\text{pump}}) \ E(\omega_{\text{pump}})  \, E^*(\omega_{\text{Stokes}}) 
-\label{eq:chi3-cars}
+\label{eq:fwm_chi3-cars}
 \end{equation}
 %
-and oscillates at a new frequency $\omega_{CARS} = 2 \omega_{pump} - \omega_{Stokes}$. Either one detects its square (similar to third-harmonic generation) or one supplies an additional field acting as local oscillator to produce a signal that is linear in the generated polarization. The intermediate state of lowest energy in Fig. \ref{fig:processes} is a vibrational state of a molecule. It enhances the efficiency of this process which can also take place without a real state at this energy. 
+and oscillates at a new frequency $\omega_{CARS} = 2 \omega_{pump} - \omega_{Stokes}$. Either one detects its square (similar to third-harmonic generation) or one supplies an additional field acting as local oscillator to produce a signal that is linear in the generated polarization. The intermediate state of lowest energy in Fig. \ref{fig:fwm_processes} is a vibrational state of a molecule. It enhances the efficiency of this process which can also take place without a real state at this energy. 
 
-In the most general case of four-wave mixing all three input waves differ in frequency. The examples above are cases of degenerate four-wave mixing (DFWM) where some frequencies coincide. Here, I use the term 'four-wave mixing' only for the non-degenerate case and stick to the more specialized terms otherwise. An experimentally accessible variant of four-wave mixing is depicted in Fig. \ref{fig:processes} where three similar but not identical waves produce a fourth wave which again is spectrally close to the input waves. This process scales linearly in all three input powers and also the phase relation between all waves is relevant.
+In the most general case of four-wave mixing all three input waves differ in frequency. The examples above are cases of degenerate four-wave mixing (DFWM) where some frequencies coincide. Here, I use the term 'four-wave mixing' only for the non-degenerate case and stick to the more specialized terms otherwise. An experimentally accessible variant of four-wave mixing is depicted in Fig. \ref{fig:fwm_processes} where three similar but not identical waves produce a fourth wave which again is spectrally close to the input waves. This process scales linearly in all three input powers and also the phase relation between all waves is relevant.
 
 Note that for a given material the value of $\chi^{(3)} $ depends on all three incoming frequencies $\omega_1, \omega_2, \omega_3$ and the outgoing frequency $\omega_4$, which is written as  $\chi^{(3)}(\omega_4; \omega_1, \omega_2, \omega_3)$. 
 
 \begin{questions}
-\item Convince yourself that the direction of the arrows in  Fig. \ref{fig:processes} fits to the equations given in this chapter.
+\item Convince yourself that the direction of the arrows in  Fig. \ref{fig:fwm_processes} fits to the equations given in this chapter.
 
 \item Draw a level scheme for a hypothetical $\chi^{(5)}$ process and give the equation to calculate its intensity.
 \end{questions}

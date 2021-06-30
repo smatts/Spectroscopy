@@ -5,7 +5,7 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Derive eq. \ref{eq:tpe_vib_ex_final} which is the same as the result of section 2.3.(i) in \cite{Winterhalder11} and plug in some typical values. The paper investigates the possibility of single molecule vibrational spectroscopy by stimulated Raman scattering followed by a 'normal' electronic excitation. The interesting part is the first half of the process, a two-photon excitation of a vibrational state. The technique to 'read' the formula from the interaction diagram will be discussed in a chapter on 2d spectroscopy.
+\item Derive eq. \ref{eq:tpe_vib_ex_final} which is the same as the result of section 2.3.(i) in \cite{Winterhalder11} and plug in some typical values. The paper investigates the possibility of single molecule vibrational spectroscopy by stimulated Raman scattering followed by a 'normal' electronic excitation. The interesting part is the first half of the process, a two-photon excitation of a vibrational state. The technique to 'read' the formula from the interaction diagram will be discussed in the chapter on 2d spectroscopy.
 \end{itemize}
 
 
@@ -43,14 +43,14 @@ molecules began with the work of  \cite{denk90}. Nowadays, two-photon absorption
 We distinguish between the states of the absorbing system
 ($\ket{g}$, $\ket{e'}$, $\ket{e}$) and the states of the whole system, which
 also includes the light field with initially $n$ photons: $\ket{i}$, $\ket{x}$, $\ket{f}$. }
-\label{fig_tpe_qm_system}
+\label{fig:tpe_qm_system}
 \end{marginfigure}
 
 In this section, we derive an expression for
 the absorption rate of a two-photon transition using 
 time-dependent perturbation theory
 \footcite{Haken_wolf_II,mystre_quantum_optics}.
-Figure \ref{fig_tpe_qm_system} outlines the involved
+Figure \ref{fig:tpe_qm_system} outlines the involved
 states. We only  consider the case
 that both absorbed photons come from the same monochromatic
 wave of the frequency $\omega$. The intermediate state 
@@ -102,6 +102,7 @@ and the outer integral
 \omega_{\mu i} \, \omega_{fi} } %
 +   \frac{e^{i \,\omega_{ f \mu } t} -1}{\omega_{f \mu}\,
 \omega_{\mu i}}  %
+\label{eq:tpe_outer_integral}
 \end{equation}
 While $\omega_{f \mu}+\omega_{ \mu i}= (E_e - E_g)/ \hbar - 2 \omega = \Delta \omega \approx 0$ guarantees  energy conservation,  terms with 
  $\omega_{f \mu} \gg 1$ oscillate so fast that they
@@ -126,7 +127,7 @@ X_{fi} = \sum_{\mu} \frac{H^S_{f \mu} (0) H^S_{\mu i}
 From now on, we follow the normal route also used when deriving Fermi's Golden Rule. The effect of the second order in the perturbation theory is collapsed into  $X_{fi}$. Again we realize that with
  infinitesimally sharp optical transitions
 the transition rate $w_{fi}$ at resonance ($\Delta \omega =
-0$) increase linearly with time $t$:
+0$) increases linearly with time $t$:
 \begin{equation}
  w_{fi} = \frac{d |c_f(t)|^2}{dt} = 2 \frac{|X_{fi}|^2}{\hbar^2} \cdot t \cdot
 \text{sinc}^2(\Delta \omega \,t / 2) \quad .
@@ -172,9 +173,9 @@ w_{fi} =  \frac{2}{\hbar^2 \Gamma} \; \left| \hat{E}(\omega) \right|^4  \; \left
 \sum_{u} \frac{\mu_{e u} \; \mu_{u g}}{E_{u} - \hbar \omega}
 \right|^2 = \frac{1}{2} \; \sigma_{TPE} \;
 \left(\frac{I(\omega)}{\hbar \; \omega}\right)^2 \quad ,
-\label{gl_theo_nlo_tpe_uebergansgrate}
+\label{eq:tpe_transition_rate}
 \end{equation}
-where $\sigma_{TPE}$ is the two-photon absorption cross section
+where $\sigma_{TPE}$ is the two-photon absorption cross section\sidenote{Note that $\sigma_{TPE}$ does \emph{not} have the units of an area! See below.}
 and the factor $1/2$ takes into account\footcite{xu97} that two photons
 must be absorbed. The
 excitation intensity $I$ is  usually not temporally
@@ -201,7 +202,15 @@ $g_P = 0.66$, for sec$^2$-shaped pulses $g_P = 0.59$ applies
 $\tau_P$ the temporal FWHM of the pulse. 
 
 
+\begin{questions}
 
+\item How does it come that $|X_{fi}|^2 $ can be used in the same way independent whether it stems from a first or second order perturbation theory? Why are its units independent of the order?
+
+\item The requirement $\omega_{f \mu} \gg 1$ after eq.\ref{eq:tpe_outer_integral} is formulated a bit sloppy. How can this be improved?
+
+\item What is the difference between $w_{fi} $ and $\alpha$ ? Why does this distinction become necessary?
+
+\end{questions}
 
 \section{Selection rules and cross sections}
 
@@ -231,7 +240,7 @@ of the unit Göppert-Meier (1~GM =
 $10^{-50}\text{ cm}^4\text{sec}^{1}$) and typical values are
 between 1 and 500~GM. 
 Some  values are given  in
-table \ref{tab_tpe_sigma}.
+table \ref{tab:tpe_sigma}.
 
 
 
@@ -248,7 +257,7 @@ Lucifer Yellow & 860  &  $0.95 \pm 0.3$   \\
 \end{tabular}
 \caption{Two photon absorption cross sections $\sigma_{TPE}$
 for dyes at different excitation wavelengths
-$\lambda_{\text{ex}}$ (from \cite{xu96mar}). } \label{tab_tpe_sigma}
+$\lambda_{\text{ex}}$ (from \cite{xu96mar}). } \label{tab:tpe_sigma}
 \end{margintable}
 
 
@@ -270,30 +279,6 @@ concentrate on this effect and find values of  $\sigma_{TPE}$ of more than 1000~
 
  
 
-%
-%\begin{figure}
-%\center
-%\begin{tabular}{cccc}
-%\begin{minipage}{1.6cm}
-%\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_trp.pdf}
-%\end{minipage}&
-%\begin{minipage}{2.8cm}
-%\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_trp.pdf}
-%\end{minipage}&
-%\begin{minipage}{2.8cm}
-%\includegraphics[scale=1.2]{\currfiledir  theo_nlo_tpe_rhems_tyr.pdf}
-%\end{minipage}&
-%\begin{minipage}{1.6cm}
-%\includegraphics[scale=0.8]{\currfiledir  theo_nlo_tpe_molekuel_tyr.pdf}
-%\end{minipage}
-%\end{tabular}
-%\caption{One and two-photon absorption of tryptophan and
-%tyrosine(amide).  Spectra of one-photon absorption
-%(OPA) and two-photon excitation (TPE) (from \cite{rehms93}). The
-%OPA spectra are plotted for better comparison at the double
-%wavelength. Outer panels: molecular structure } \label{fig_tpe_trp}
-%\end{figure}
-
 
 With two-photon excitation 
 states in atoms and molecules can be reached that are not accessible for
@@ -305,29 +290,6 @@ large atoms the selection rules are relaxed, so that the distinction between
 different classes of molecular states is not always
  possible. 
  
-% Figure~\ref{fig_tpe_trp} shows
-%absorption spectra of two amino acids, tryptophan and tyrosine,
-%recorded with OPA and TPE. In both cases
-%transitions of the aromatic part of the molecule are excited. 
-%
-%In the spectra of tyrosine, it can be seen that the
-%two-photon transition occurs at wavelengths shorter than one expects from 
-% single-photon absorption. The latter is plotted for better
-%comparability at twice the wavelength. With
-%TPE, a state is reached which is energetically higher than the final state of   OPA. However, the fluorescence is emitted after relaxation from the same state as reached by OPA.
-%
-%
-%In the case of tryptophan, however, the spectra overlap almost 
-%completely. Both  TPE and  OPA reach the same state.
-%The selection rules are no longer strictly valid. The
-%difference in the selection rules between tryptophan and tyrosine
-%leads to the fact that a mixture of these two amino acids in
-%ratio Trp:Tyr = 1:25 for single-photon excitation ($\lambda =
-%285$~nm) is dominated by tyrosine emission,  but at
-%two-photon excitation at twice the wavelength  the
-%tryptophan emission dominates\footcite{kierdaszuk95}. Therefore, proteins can be excited by two-photons with  wavelengths shorter than 295~nm
-%without generating tyrosine fluorescence which is not the case for one-photon absorption.
-
 
 
 
@@ -349,10 +311,10 @@ As an example, we discuss stimulated Raman scattering to populate a vibrational 
 \begin{tabular}{l|lll|ll}
 state & atom & elec. & vibr. & light $\omega_1$ & light
 $\omega_2$ \\ \hline%
-initial $|i>$ & ground  $|g>$ & 0  & 0 & a  & b  \\%
-intermediate $|x>$ & excited  $|e>$& 1 & 0  & a-1 & b \\%
-intermediate' $|x'>$ & excited '  $|e'>$& 1 & 1& a-1  & b \\ %
-final $|f>$ & vibronic  $|v>$ & 0 &1& a-1 &b+1
+initial $\ket{i}$ & ground  $\ket{g}$ & 0  & 0 & a  & b  \\%
+intermediate $\ket{x}$ & excited  $\ket{e}$& 1 & 0  & a-1 & b \\%
+intermediate' $\ket{x'}$ & excited'  $\ket{w}$& 1 & 1& a-1  & b \\ %
+final $\ket{f}$ & vibronic  $\ket{v}$ & 0 &1& a-1 &b+1
 \end{tabular}
 \caption{States of the quantum mechanical system}
 \end{table}
@@ -371,7 +333,8 @@ P_v(t)    =   \frac{2 t}{ \Gamma_v}
  \frac{\Omega_v}{(\delta_1)^2 } \right|^2
  \label{eq:tpe_vib_ex_final}
 \end{equation}
-which agrees\sidenote{The paper make the difference between $\omega_{eg}$ and $\omega_{wg}$ which is dropped here.} with the outcome of section 2.3(i) in \cite{Winterhalder11}. Calculate the population  of the vibrational state at the end of a laser pulse, using the parameters of the table below. These are  a bit more optimistic than the values in the publication.
+which agrees\sidenote{The paper makes the distinction between $\omega_{eg}$ and $\omega_{wg}$ which is dropped here.} with the outcome of section 2.3(i) in \cite{Winterhalder11}. 
+
 
 
 \begin{table}
@@ -391,6 +354,17 @@ detuning $\delta_1$ & 8000 cm$^{-1}$
 \caption{Numerical values which are more optimistic that those in \cite{Winterhalder11}.}
 \end{table}
 
-\newpage
+
+\begin{questions}
+\item Derive eq. \ref{eq:tpe_vib_ex_final} from eq. \ref{eq:tpe_pe_xfi}.
+
+\item Calculate the transition dipole moment $\mu_{eg}$ from the fluorescence lifetime $\tau_{fl}$, assuming a quantum efficiency of one.
+
+\item Calculate the field amplitude $ E_1$ assuming a rectangular pulse shape and focus profile.
+
+\item Calculate the population  of the vibrational state at the end of a laser pulse.
+
+\end{questions}
+
 
 \printbibliography[segment=\therefsegment,heading=subbibliography]
