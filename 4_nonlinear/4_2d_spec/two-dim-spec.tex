@@ -291,8 +291,9 @@ Which features do we find in a 2D spectrum? Along the diagonal, it contains the 
 2D spectroscopy can also find coupled (or interacting) systems. With linear spectroscopy, we only find the energy difference between initial and final state. When we have two peaks in an absorption spectrum, we cannot say if there are three or four states involved. We could have two  different molecules (4 states) or a V level system in one molecule (3 states). 2D spectroscopy can decide this question: In the coupled case, we find cross-peaks at the  other two corners  of the square which is formed by the two transition frequencies. At these points, we pump one transition and find an influence on the other transition. This is only possible if these transitions are somehow coupled. Molecule A would not care if molecule B would be excited.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{\currfiledir 2d_3.png}
-\caption{Cross-peaks outside the diagonal signal coupling between systems. This information is not present in the linear absorption spectrum.}
+\inputtikz{\currfiledir sketch_cross_peaks}
+
+\caption{Cross-peaks outside the diagonal (blue circles) signal coupling between systems. This information is not present in the linear absorption spectrum.}
 \label{fig_2d_crosspeak}
 \end{figure}
 
