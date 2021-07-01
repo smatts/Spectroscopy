@@ -1,28 +1,28 @@
-\documentclass[margin=0mm]{standalone}
-\usepackage{tikz}
-\usepackage{pgfplots}
- \pgfplotsset{compat=newest}
-
-
-\usepackage{currfile,hyperxmp}
-
-
-\begin{document}
-
-
-\pgfplotsset{
-tufte line/.style={
-    axis line style={draw opacity=0},
-    ytick=\empty,
-    axis x line*=bottom,
-    x axis line style={
-      draw opacity=1,
-      gray,
-      thick
-},
- %   yticklabel=\pgfmathprintnumber{\tick}
-  }
-  }
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepackage{currfile,hyperxmp}
+%
+%
+%\begin{document}
+%
+%
+%\pgfplotsset{
+%tufte line/.style={
+%    axis line style={draw opacity=0},
+%    ytick=\empty,
+%    axis x line*=bottom,
+%    x axis line style={
+%      draw opacity=1,
+%      gray,
+%      thick
+%},
+% %   yticklabel=\pgfmathprintnumber{\tick}
+%  }
+%  }
   
   
 \begin{tikzpicture}
@@ -30,10 +30,10 @@ tufte line/.style={
 
     \begin{axis}[no markers,  tufte line, xlabel={wavelength (nm)}, width=65mm,
     ]
-    \addplot table [x index=0, y index=1] {\currfiledir tdi_abs_em.dat};
-    \addplot table [x index=0, y index=2] {\currfiledir tdi_abs_em.dat};
+    \addplot table [x index=0, y index=1] {\currfiledir handout/tdi_abs_em.dat};
+    \addplot table [x index=0, y index=2] {\currfiledir handout/tdi_abs_em.dat};
 	
     \end{axis}
 \end{tikzpicture}
 
-\end{document}
+%\end{document}

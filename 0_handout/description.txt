@@ -1,3 +1,0 @@
-This is the material to the student tasks in the lecture notes 'Experiments in Spectroscopy'
-
-Version: July 17, 2020
