@@ -42,8 +42,7 @@ jobs:
         continue-on-error: true
         with:
           root_file: Spectroscopy.tex
-          compiler: pdflatex
-          args: -interaction=nonstopmode -shell-escape
+          args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
           
       - name: debug
         run: |
