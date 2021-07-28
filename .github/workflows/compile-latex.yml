@@ -15,5 +15,6 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           root_file: Spectroscopy.tex
-          args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
           
