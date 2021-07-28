@@ -17,4 +17,7 @@ jobs:
           root_file: Spectroscopy.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      - name: debug
+        run: |
+         cat figures/1_fundamentals/1_absorption/uvvis.log
           
