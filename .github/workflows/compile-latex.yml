@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v2
       - name: make dirs
         run: |
+          mkdir figures
+          mkdir figures/1_fundamentals
           mkdir figures/1_fundamentals/1_absorption
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
