@@ -19,5 +19,7 @@ jobs:
           args: -interaction=nonstopmode -shell-escape
       - name: debug
         run: |
+         ls -la
+         pwd
          cat figures/1_fundamentals/1_absorption/uvvis.log
           
