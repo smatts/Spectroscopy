@@ -31,17 +31,17 @@ The solution to the differential equation for $\ket{\psi(t)}$ is
 
 In the Heisenberg picture, all the time-dependence sits in the operator
 \begin{eqnarray}
- \ket{\psi} &=& const. \\
- \frac{d}{dt} \hat{A}(t) &=& - \frac{i}{\hbar} \, \left[ \hat{H} , \hat{A}(t) \right] \\
- \braket{\hat{A}} &=& \braket{\psi \, | \,\hat{A} (t) \, |\, \psi } 
+ \ket{\psi_H} &=& const. \\
+ \frac{d}{dt} \hat{A}_H(t) &=& - \frac{i}{\hbar} \, \left[ \hat{H} , \hat{A}_H(t) \right] \\
+ \braket{\hat{A}_H} &=& \braket{\psi \, | \,\hat{A}_H (t) \, |\, \psi } 
 \end{eqnarray}
-The solution to the differential equation for  $\hat{A}(t)$ is
+The solution to the differential equation for  $\hat{A}_H(t)$ is
 \begin{equation}
- \hat{A}(t) = \exp \left(+ \frac{i}{\hbar} \hat{H} \, t \right) \, \hat{A}(0) \, \exp \left(- \frac{i}{\hbar} \hat{H} \, t \right)
+ \hat{A}_H(t) = \exp \left(+ \frac{i}{\hbar} \hat{H} \, t \right) \, \hat{A}(0) \, \exp \left(- \frac{i}{\hbar} \hat{H} \, t \right) \quad .
 \end{equation}
+At time $t=0$ both pictures come together,i.e., $\hat{A}_H(0) = \hat{A}$ and $\psi_H = \psi(0)$ and of course both pictures give the same result  for the expectation value  of an operator.
 
-
-The formalism uses the  interaction picture, which is in a sense half-way between Schrödinger and Heisenberg: We assume a small perturbation $\hat{H}'(t)$ addition to an unperturbed $\hat{H}_0$
+In  this chapter, we use the  interaction picture, which is in a sense half-way between Schrödinger and Heisenberg: We assume a small perturbation $\hat{H}'(t)$ addition to an unperturbed $\hat{H}_0$
 \begin{equation}
  \hat{H}(t) = \hat{H}_0 + \hat{H}'(t) \label{eq:2d_hamilton_perturbation}
 \end{equation}
@@ -154,7 +154,7 @@ The Fourier-conjugate variable\footcite{Tokmakoff09} to $t_j$  is $\Omega_j$, wh
 \begin{equation}
  \Omega_j = \sum_{k=1}^j \pm \omega_k
 \end{equation}
-The sign is again taken from the direction of the arrow (positive to the right). We thus get\sidenote{check UNITS and prefactors}
+The sign is again taken from the direction of the arrow (positive to the right). We thus get
  by a Fourier transform\sidenote{Note that $P=0$ for $t_j < 0$}  along $t_j$ 
 \begin{equation}
  e^{ (-i \omega_{ab} - \Gamma_{ab}) t_j }  \quad \rightarrow \quad
@@ -246,7 +246,7 @@ The formalism of double-sided Feynman diagrams allows us to obtain results from 
 e^{-i \omega_{eg} t_1 - \Gamma_{eg} t_1} \, 
 e^{-i \omega_{\nu g} t_2 - \Gamma_{\nu g} t_2} 
 \end{equation}
-Fourier transformation leads to\sidenote{someone should check units !}
+Fourier transformation leads to
 \begin{eqnarray}
 \rho_{\nu g}(\omega_1, \omega_2) &=& \frac{(-i)^2}{\hbar^2} \, \mu_{eg} \, \mu_{\nu e} \, E_1 \, E_2 \,
     \frac{i }{\Omega_1 - \omega_{eg}  + i \Gamma_{eg} } 
