@@ -6,7 +6,16 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+        
+      - name: Cache tikz
+        id: cache-tikz
+        uses: actions/cache@v2
+        with:
+          path: figures
+          key: ${{ runner.os }}-primes
+
       - name: make dirs
+        if: steps.cache-tikz.outputs.cache-hit != 'true'
         run: |
           mkdir figures
           mkdir figures/1_fundamentals
@@ -27,6 +36,7 @@ jobs:
           mkdir figures/3_nonlinear/4_2d_spec
           mkdir figures/9_appendix
           mkdir figures/9_appendix/1_fourier
+          
       - name: run latex     
         uses: dante-ev/latex-action@latest
         continue-on-error: true
@@ -34,9 +44,14 @@ jobs:
           root_file: Spectroscopy.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+          
       - name: debug
         run: |
          ls -la
-         pwd
-         cat figures/1_fundamentals/1_absorption/uvvis.log
+         
+      - name: upload   
+        uses: actions/upload-artifact@v2
+        with:
+           name: Spectroscopy
+           path: Spectroscopy.pdf
           
