@@ -13,6 +13,7 @@ jobs:
           mkdir figures/1_fundamentals/1_absorption
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
+        continue-on-error: true
         with:
           root_file: Spectroscopy.tex
           compiler: pdflatex
