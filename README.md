@@ -1,4 +1,4 @@
-[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]    [![DOI](https://zenodo.org/badge/390316709.svg)](https://zenodo.org/badge/latestdoi/390316709)
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
