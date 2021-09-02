@@ -13,29 +13,6 @@ jobs:
         with:
           path: figures
           key: ${{ runner.os }}-primes
-
-      - name: make dirs
-        if: steps.cache-tikz.outputs.cache-hit != 'true'
-        run: |
-          mkdir figures
-          mkdir figures/1_fundamentals
-          mkdir figures/1_fundamentals/1_absorption
-          mkdir figures/1_fundamentals/2_fluorescence
-          mkdir figures/1_fundamentals/3_vibrations
-          mkdir figures/1_fundamentals/4_mie
-          mkdir figures/1_fundamentals/5_aggregates
-          mkdir figures/2_quantum
-          mkdir figures/2_quantum/1_rabi
-          mkdir figures/2_quantum/2_FID
-          mkdir figures/2_quantum/4_cavity_strong_coupling
-          mkdir figures/2_quantum/5_purcell
-          mkdir figures/3_nonlinear
-          mkdir figures/3_nonlinear/1_shg
-          mkdir figures/3_nonlinear/2_fwm
-          mkdir figures/3_nonlinear/3_tpe
-          mkdir figures/3_nonlinear/4_2d_spec
-          mkdir figures/9_appendix
-          mkdir figures/9_appendix/1_fourier
           
       - name: run latex     
         uses: dante-ev/latex-action@latest
