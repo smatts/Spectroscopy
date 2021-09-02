@@ -39,7 +39,6 @@ jobs:
           
       - name: run latex     
         uses: dante-ev/latex-action@latest
-        continue-on-error: true
         with:
           root_file: Spectroscopy.tex
           args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
@@ -47,15 +46,10 @@ jobs:
       - name: debug
         run: |
          ls -la
-         
-      - name: upload   
-        uses: actions/upload-artifact@v2
-        with:
-           name: Spectroscopy
-           path: Spectroscopy.pdf
-           
+                    
       - name: commit     
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
             commit_message: Recompile latex to pdf
+            file_pattern: Spectroscopy.pdf figures/*.pdf
           
