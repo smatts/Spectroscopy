@@ -1,3 +1,5 @@
+[![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+
 # Experiments in Spectrosocpy
 
 These are the lecture notes of my lecture on optical spectroscopy. The lecture aims at students in the first year of the master's program, but should be accessible also to students in the last year of the bachelor's program. You need some quantum mechanics and an introduction to the physics of molecules.
@@ -11,3 +13,6 @@ The most current version of the lecture notes can be found at https://github.com
 
 
 The lecture notes are typeset using the LaTeX class ['tufte-book'](https://tufte-latex.github.io/tufte-latex/) by Bil Kleb, Bill Wood, and Kevin Godby, which  approximates the work of [Edward Tufte](https://www.edwardtufte.com/). I applied many of the modifications introduced by Dirk Eddelbuettel in the ['tint'](https://dirk.eddelbuettel.com/code/tint.html}) R package. For the time being, the source is LaTeX, not markdown.
+
+## Structure of the repository
+
