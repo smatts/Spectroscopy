@@ -1,0 +1,90 @@
+%\documentclass[a4paper,10pt]{scrartcl}          %twoside
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm,a4paper,includehead]{
+geometry}
+%opening
+
+\title{Integral absorption of an emitter}
+%\date{}
+\author{}
+\pagestyle{empty}
+
+
+\begin{document}
+
+
+\maketitle
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+This follows Karrai / Warburton (2003). The spectral dependence of the
+absorption cross section $\sigma(\omega)$ of a single emitter (atom etc.) can be
+written as
+\[
+ \sigma(\omega) = \sigma_0 \; \frac{\Gamma^2 / 4}{\delta^2 + \Gamma^2 / 4}
+\]
+where $\delta = \omega - \omega_0$ is the detuning and $\Gamma$ the FWHM of the
+Lorentzian.
+
+The integral absorption is 
+\[
+ \sigma_i = \int \sigma(\omega) d\omega = \sigma_0 \; \pi \; \Gamma / 2
+\]
+
+
+
+
+The peak absorption cross section $\sigma_0$ can be written as 
+\[
+ \sigma_0 = \frac{e^2 \; f}{\epsilon_0 \; c \; m_0 \; n \Gamma}
+\]
+where $f$ is the oscillator strength, $n$ the index of refraction of the medium,
+and $\Gamma$ the dephasing rate and the same as above.
+
+
+If there is only spontaneous emission, then the dephasing rate $\Gamma$ is
+\[
+ \Gamma_{sp} = n \frac{2 \pi}{3 \lambda^2} \; \frac{e^2 \; f}{\epsilon_0 \; c\;
+m_0} \quad .
+\]
+This results in a peak absorption cross section of
+\[
+ \sigma_{0,sp} =  \frac{3}{2 \pi} \;  (\lambda / n)^2 
+\]
+which is independent of the oscillator strength $f$.
+
+If the dephasing rate $\Gamma$ is larger by a factor $1/\eta$ ($\eta < 1$) than
+the spontaneous rate $\Gamma_{sp}$, i.e., $\Gamma = \Gamma_{sp} / \eta$ then the
+peak absorption cross section is reduced:
+\[
+ \sigma_0 = \frac{3}{2 \pi} \;  (\lambda / n)^2 \; \eta
+\]
+
+Everything together gives
+\[
+ \sigma_i = \frac{3}{2 \pi} \;  (\lambda / n)^2 \; \eta \; \Gamma \;
+\frac{\pi}{2}
+\]
+which is equal to 
+\[
+ \sigma_i = \frac{3}{4} \;  (\lambda / n)^2 \;  \Gamma_{sp} 
+\]
+
+
+Assuming a transition at 600~nm with a radiative lifetime of 10~ns, in vacuum,
+one gets $\sigma_i =$ 17~nm$^2$~meV. (NB: $\Gamma$ is an angular frequency, but
+$\tau = 1 /\Gamma$)
+
+The dataset \verb|fieldonqwires11_wire1_longtime| has a peak transient
+transmission value of $\Delta T /T = 3 \cdot 10^{-6}$. The probe spot has a FWHM
+of 400 nm, resulting in a probe area $A = 1.13 \cdot 400^2 = 1.8 \cdot
+10^5$~nm$^2$. This gives a peak $\sigma_0 = 0.55 $~nm$^2$. The integrated
+spectrum gives $\sigma_i = 108$ nm$^2$ meV, which corresponds to about 5--6 of
+above single emitters, when aligned with the probe beam, or 15--18 emitters,
+when oriented randomly. The number gets larger if the assumed radiative lifetime
+is increased.
+
+
+\end{document}
