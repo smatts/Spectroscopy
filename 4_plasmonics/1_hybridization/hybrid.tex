@@ -18,15 +18,16 @@
 
 \section{Overview}
 
+Plasmon hybridization is another incarnation of a coupled oscillator, i.e., two pendula coupled by a spring. The coupled system has new eigen-functions and eigen-energies that can be derived from the old eigen-functions and the strength of the coupling. The term is borrowed from the hybridization of atom orbitals, for example in carbon atoms forming  the famous sp$^3$ orbitals.
 
-The concept of plamson hybridzation helps to get a more intuitive understanding of the absorption spectra of arrangements of plasmonic nanoparticles. 
+The concept of plasmon hybridization helps to get a more intuitive understanding of the absorption spectra of arrangements of plasmonic nanoparticles. In this chapter, we discuss an experiment in which a larger plasmonic particle was used as  antenna to enhance the optical response of a small particle. The antenna-effect can be understood in terms of hybridised particles. The optical response of the small particle is in this experiment dominated by acoustical breathing oscillations of the particle at frequencies of a few 10 GHz.
 
 
 
 \section{Rayleigh scattering of small spheres}
 
 
-Let us start by goiing back to  Rayleigh scattering of nanoparticles, as we diiscussed already in chapter XXX. A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\footcite{Jackson-ED}\footcite[excercise 2.4.2]{Nolting-ED}\footcite[chapter 5.2]{BH-book}
+Let us start by going back to  Rayleigh scattering of nanoparticles, as we discussed already in chapter XXX. A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\footcite{Jackson-ED}\footcite[excercise 2.4.2]{Nolting-ED}\footcite[chapter 5.2]{BH-book}
 The sphere responds to the light field with a polarization of
 \begin{equation}
  \mathbf{p}(t) = \epsilon_0 \,  \epsilon_{out} \, \alpha \, \mathbf{E}(t)
@@ -36,9 +37,6 @@ with the polarizability
  \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}} \quad .
 \end{equation}
 We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$, which requires one dielectric function to be negative, as it is the case in metals. Small metal particles show thus exceptional strong interaction with light in a certain spectral range.
-
-
-
 
 As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polarization $p$ oscillates and radiates a secondary, scattered electromagnetic field 
 \begin{equation}
@@ -84,12 +82,10 @@ the plasma frequency of the metal and  the dielectric function of the environmen
  %----------
 \section{Plasmon hybridization}
 
-Plasmon hybridization is another incarnation of a coupled oscillator, i.e., two pendula coupled by a spring. The coupled system has new eigen-functions and eigen-energies that can be derived from the old eigen-functions and the strength of the coupling. The term is borrowed from the hybridization of atom orbitals, for example in carbon atoms forming  the famous sp$^3$ orbitals.
-
-Lets investigate the optical properties of two small Rayleigh particles which are brought close to each other.  The optical response of each particle is described by  an dipole $ \mathbf{p}_i(t)$, where $i = 1,2$.
+Now we hybridize two particle plasmons. We investigate the optical properties of two small Rayleigh particles which are brought close to each other.  The optical response of each particle is described by  an dipole $ \mathbf{p}_i(t)$, where $i = 1,2$.
  Each dipole experiences the incident field
 $\mathbf{E}^{\text{inc}}(\mathbf{r}_i)$ and the field scattered from the other dipole.
-The sum of these two fields multiplied by the dipoles polarizability $\alpha_i$
+The sum of these two fields multiplied by the dipole's polarizability $\alpha_i$
 has to give in a self-consistent way the dipole moment (see, for example, \cite{Myroshnychenko08})
 %
 \begin{equation} \label{eq:equationsystem}
@@ -97,7 +93,7 @@ has to give in a self-consistent way the dipole moment (see, for example, \cite{
 \mathbf{E}^{\text{scat}}_2(\mathbf{r}_1) \right] \quad ,
 \end{equation}
 %
-and vice versa. The scattered electrical near field $ \mathbf{E}^{\text{scat}}$ of the dipole $i$ at position of the dipole $j$ is given by eq XXX above. As we aim  for a large influence of this scattered field, we will need short distances between the dipoles and thus can focus on the near-field contribution of the scattered field
+and vice versa.\sidenote{Note that this is a system of two equations.} The scattered electrical near field $ \mathbf{E}^{\text{scat}}$ of the dipole $i$ at position of the dipole $j$ is given by eq XXX above. As we aim  for a large influence of this scattered field, we will need short distances between the dipoles and thus can focus on the near-field contribution of the scattered field
 \begin{equation}
   \mathbf{E}^{\text{scat, nf}}_i(\mathbf{r}_j) = \frac{ 1 }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{1}{d^3}
         \left( 3\hat{\mathbf{r}}_{ij} \left[\hat{\mathbf{r}}_{ij} \cdot \mathbf{p}_i \right] - \mathbf{p}_i \right)
@@ -106,9 +102,36 @@ and vice versa. The scattered electrical near field $ \mathbf{E}^{\text{scat}}$ 
 where $\hat{\mathbf{r}}_{ij}   = \mathbf{r} _j - \mathbf{r} _i$ is a vector of length one pointing from the dipole to the point where
 the field is evaluated, and $d$ is the distance between the particles
 
+%As also  in other examples of hybridization, the  total number  of eigen-function has to remain constant. We start with two functions and thus should get two  solutions  of the equation system \ref{eq:equationsystem}.
 
-For simplicity, we assume that both particles have the same dielectric function and are of course embedded in the same medium. As also  in other examples of hybridization, the  total number  of eigen-function has to remain constant. We start with two functions an d thus should get two  solutions  of the equation system \ref{eq:equationsystem}.
-Additionally, we  can chose the polarization direction of the incoming electric field  $\mathbf{E}^{\text{inc}}$. Things become simple when we chose it to be either parallel or perpendicular to the connecting axis of the particles. In both cases, the scattered near-field at particle $j$ has the direction of the dipole $i$, which is not the case for other polarization directions.
+For simplicity, we assume that both particles have the same dielectric function and are of course embedded in the same medium. 
+We  can chose the polarization direction of the incoming electric field  $\mathbf{E}^{\text{inc}}$. Things become simple when we chose it to be either parallel or perpendicular to the connecting axis of the particles. In both cases, the scattered near-field at particle $j$ has the direction of the dipole $i$, which is not the case for other polarization directions. This allows us to use scalar dipole amplitudes $p_i$ and a simplified scattered field amplitude
+\begin{equation}
+  {E}^{\text{scat, nf}}_i(\mathbf{r}_j) = \frac{ 1 }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{v}{d^3} \, p_i 
+  \quad ,
+\end{equation}
+where the factor $v$ is $-1$ for parallel and $+2$ for perpendicular polarization.
+
+We solve the equation system for $p_{1,2}$, which we write as effective polarizabilities $\alpha^\text{eff}_{1,2}$
+\begin{equation}
+ \alpha^\text{eff}_1 = \frac{p_1}{\epsilon_0 \epsilon_{out} \, E^\text{inc}} =  \frac{\alpha_1 - v \, \frac{\alpha_1 \, \alpha_2}{4 \pi d^3}}
+ {1- v^2 \, \frac{\alpha_1 \, \alpha_2 }{16 \pi^2 d^6}} \quad .
+\end{equation}
+The total polarizability\sidenote{see Enoch, Eq. 5.14, + XXX altes ppaer}  is then the sum of $\alpha^\text{eff}_{2}$ and $\alpha^\text{eff}_{2}$
+\begin{equation}
+ \alpha^\text{eff} = \frac{\alpha_1  + \alpha_2 - v \, \frac{\alpha_1 \, \alpha_2}{2 \pi d^3}}
+ {1- v^2 \, \frac{\alpha_1 \, \alpha_2 }{16 \pi^2 d^6}} \quad .
+\end{equation}
+We are interested in resonance frequencies of $\alpha^\text{eff} $. As both particles are of the same material, the individual polarizability $\alpha_i$ only differ in amplitude due to the factor $R_i^3$. The spectral shape is the same. The effective polarizability comes to resonance when the denominator vanishes, i.e.
+\begin{equation}
+R_1^3 \, R_2^3 \, \left( \frac{\epsilon_{in} - \epsilon_{out}} {\epsilon_{in} + 2 \epsilon_{out}} \right)^2 \, v^2 = d^6
+\end{equation}
+or,
+\begin{equation}
+ \frac{\epsilon_{in} - \epsilon_{out}} {\epsilon_{in} + 2 \epsilon_{out}} \, v = \pm \left( \frac{d}{\sqrt{R_1 R_2}} \right)^3
+\end{equation}
+
+
 In total, we obtain the resonance
 frequency $\omega_{\text{res}} $ of the coupled two-particle system (see, for example, \cite{Myroshnychenko08} )
 %
@@ -137,33 +160,18 @@ anti-parallel configuration. This is the classical electrodynamics analogon  of 
 \caption{Level scheme}
 \end{marginfigure}
 
-As in the case of molecular aggregates, the combined oscillator strength of both particles is re-distributed over the two new peaks in the absorption spectrum. 
-For
-the coupled system, the absorption spectrum is given by  
-%
-\begin{equation} 
- C_{abs} =  \frac{k}{|\mathbf{E}^{\text{inc}}|^2} \; \Im (\mathbf{E}_1 \cdot \mathbf{p}_1 + \mathbf{E}_2 \cdot \mathbf{p}_2) \quad ,
+Finally, lets have a look at the amplitudes of the resonance. We evaluate the enumerator of eq. XXX at the resonance condition (eq. XXX).\sidenote{Without damping, the peaks would diverge, but in real material we have a non-zero $\gamma$ in the Drude model.} It becomes\begin{equation}
+ \alpha^\text{eff, peak} \propto \alpha_1  + \alpha_2  \pm 2 \sqrt{\alpha_1 \alpha_2} = \left( \sqrt{\alpha_1}  \pm \sqrt{\alpha_2} \right)^2
 \end{equation}
-%
-where $\mathbf{E}_j$ is the total electric field at position $j$. The spectrum shows  Lorentzian
-peaks at the symmetric (+) and antisymmetric (-) resonances.  When  keeping the coupling factor $g$ in eqs. (\ref{eq:omega_coupled}) and (\ref{eq:omega_coupled_variables})
-constant, we find the  amplitudes of
-the two peaks  proportional to\sidenote{We assume small splitting so that the wave vector $k$ does not vary much in eq.  \ref{eq:hybrid_sigma_abs}} 
-%
-\begin{equation} 
- A_\pm = \frac{1}{2} \left( R_1^{3/2} \pm R_2^{3/2} \right)^2 \quad .
-\end{equation}
-%
-The sum of both amplitudes is, as expected, proportional to the total oscillator
-strength
-%
-\begin{equation} 
- A_+ + A_- = R_1^3 + R_2^3 \quad .
-\end{equation}
-%
-For two equal particles ($R_1 = R_2$), the symmetric mode caries twice the
+As in the case of molecular aggregates, the combined oscillator strength of both particles is re-distributed over the two new peaks in the absorption spectrum. For two equal particles ($R_1 = R_2$), the symmetric mode caries twice the
 oscillator strength of a single  particle and the antisymmetric mode
 is dark. 
+
+
+
+
+
+
 
 
 \section{Real metals}
@@ -177,26 +185,36 @@ The effect of a real metal is additional damping due to interband absorption. Fo
 
 \section{Beyond the Rayleigh approximation}
 
-We used the Rayleigh approximation, i.e. assumed that each particle is much smaller than the wavelength of light. Such small particles have only very small polarizabilities $\alpha$, as these scale as teh volume of the particle. To obtain sizeable effects, one thus uses particles that are a bit larger, i.e.. smaller but not much smaller than the wavelength. 
+We used the Rayleigh approximation, i.e. assumed that each particle is much smaller than the wavelength of light. Such small particles have only very small polarizabilities $\alpha$, as these scale as the volume of the particle. To obtain sizeable effects, one thus uses particles that are a bit larger, i.e.. smaller but not much smaller than the wavelength. 
 
 We discussed the Mie formalism (chapter XXX) as method to model the optical response of spheres of arbitrary size. It should be in principle possible to model two neighbouring spheres using Mie scattering for each sphere, but this get a bit tedious as the scattered field is not homogeneous over the receiving sphere. More general numerical method such as the finite element method (FEM) or discrete dipole approximation (DDA) are better suited.
 
-The effect of plasmon hybridization exists also for larger and also for non-spherical particles. Especially when the distance between the particles is not large anymore to their size, simple models relying on a few dipoles break down.
+The effect of plasmon hybridization exists also for larger and also for non-spherical particles. Especially when the distance between the particles is not large anymore to their size, simple models relying on a few dipoles break down. As beyond the Rayleigh approximation, the resonance wavelength of a single particle depends on sdize and shape, one has to consider spectral differences between two particles which shoudl hybridize. Eq. XXX requires that both particles scatter conceivable amount of light at the same wavelength, so the resonance of both particles needs to partially overlap. This again is similar to all coupled-pendula models that require the uncoupled eigen-energies to be similar.
+
+
 
 
 \section{Ultrafast optical response of metals}
 
 
+To understand the experiment of \cite{Schumacher11}, we need to make an excursion to the variation of the optical properties of metals and metal nanoparticles shortly after a laser pulse was absorbed. This could be a chapter on its own. More details can be found for example in BLOCK XXX and  VALLEE XXX.
 
-In the pump-probe experiment, a pump pulse modifies the dielectric properties of
-the particle. In a first approximation we can assume that the plasma frequency
+For simplicity, we again assume a Drude metal. The free electrons follow a Fermi-Dirac distribution. Most states are either filled or empty. Only in a energy range of (a few) $k_B \, T$ around the Fermi energy the states are partially filled. A near infrared laser pulse of about 100 fs length is absorbed and some electrons are transferred to higher energy states. For a short time, the distribution is not a Fermi-Dirac distribution anymore. It has additional peaks and holes and thus can not be described by a temperature. But after a few 10 fs the electrons scatter and reach again a Fermi-Dirac distribution, now with a higher temperature $T$. We have to distinguish here the temperature $T_e$ of the electrons and that of the lattice $T_l$, as it takes about 1 ps until the energy of the absorbed   photons is transfered from the electrons to the lattice. On this time scale, the electrons cool and the lattice heats up, until both are in equilibrium with each other again. On a much larger timescale of about 100 ps the lattice cools down again by heat conduction to the environment.
+
+We can observe all steps in this process. The hot electron gas has a Fermi-Dirac distribution that is smeared out much more than in the cold state. In this way, many more states are neither completely filled nor completely empty, and thus accessible to electron-electron scattering. This increases the damping parameter $\gamma$ in the Drude model.  The impulsive heating of the lattice within about 1 ps leads to thermal expansion of the lattice and acoustical oscillations of the particle. Both influence the electron density, as the number of electrons remains constant but the volume increases. This influences the plasma frequency $\omega_P$ in the Drude model.
+
+A metal particle has acoustic eigenmodes, like a bell. In a first approximation, one can calculate from the velocity of sound of $c_\text{sound} = $XXX an eigen-frequency of $\nu_{bell} = c_\text{sound} /(2 R)$. One can just use the macroscopic continuum-mechanics models of vibrating spheres. The periodic variation in particle size leads to a periodic variation in electron density $n$ and thus in the plasma frequency $\omega_p$.
+In a first approximation we can assume that the plasma frequency
 $\omega_P$ is shifted by the particle expansion to $\omega'_P = \omega_P (1 +
-\delta)$ with $\delta \ll 1$. The new resonance position is then
-%
-\begin{equation} \label{eq:omega_equal}
- \omega_{\text{res'}} = \frac{\omega_P (1 + \delta)}{\sqrt{2 +
-\epsilon_{\infty}} }  \quad .
-\end{equation}
+\delta)$ with $\delta \ll 1$. 
+
+
+In a pump-probe or transient absorption experiment, a pump pulse modifies the dielectric properties of
+the particle. A probe pulse interrogates these properties after some time delay $\tau$. As the influence of the pump pulse is typically small, one plots the pump-induced change in probed transmission. Examples of such traces are given in Fig XXXX.  The hot electron gas leads to a broader plasmon resonance due to increased damping. The expanded lattice and the periodic oscillation of the particle size lead to a shift in the plasmon resonance. Depending  on probe wavelength, the signs of the individual contributions thus change.
+
+\begin{figure}
+\caption{PP trace single particle}
+\end{figure}
 
 
 
