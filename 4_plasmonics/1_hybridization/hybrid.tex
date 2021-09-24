@@ -18,8 +18,7 @@ Use the hybridization model to explain the antenna effect that is used to amplif
 \begin{figure}
 
 \input{\currfiledir fig_schumacher11.tikz.tex}
-\caption{Enhancement of a transient absorption signal by plasmon hybridization \cite{Schumacher11}.
-The inset shows a SEM micrograph of the gold nanodiscs.
+\caption{Enhancement of a transient absorption signal by plasmon hybridization \cite{Schumacher11}. The inset shows a SEM micrograph of the gold nanodiscs.
  \label{fig:hybrid_schumacher11}}
 \end{figure}
 
@@ -162,8 +161,6 @@ or,
 
 \begin{marginfigure}
 \inputtikz{\currfiledir levels}
-
-%\includegraphics[width=55mm]{\currfiledir hybrid-levels.png}
 \caption{Level scheme}
 \end{marginfigure}
 
@@ -217,7 +214,7 @@ In the last section, we assumed a Drude metal for both particles. This allowed u
 The effect of a real metal is additional damping due to interband absorption. For gold this happens at wavelengths below about 520 nm, leading to the color of gold. With $\omega_P = 9 eV$, $\epsilon_\infty = 9$ and vacuum as medium ($\epsilon_{out} = 1$), the plasmon resonance would appear in the Drude model at $\omega_{res} \approx 2.7$ eV or $\lambda = 460$ nm. The interband absorption shifts the resonance position to about 530 nm wavelength, just at the rim of the absorption band. Plasmon hybridization the splits the peak. The lower wavelength / higher frequency peak overlaps more with interband absorption and will be damped out. Splitting of peaks is thus difficult to observe for small gold nanoparticles.
 
 \begin{figure}
-\includegraphics[width=110mm]{\currfiledir  drude_vs_au_hybrid.pdf}
+\input{\currfiledir drude_vs_au.tikz.tex}
 \caption{Comparison of plasmon hybridization in a Drude metal and n gold. The d-band absorption shifts the resonance and suppresses half of the modes. The simulations assume two spheres of 50 and 90 nm diameter with a gap of 10 nm. They go beyond the Rayleigh approximation and use \cite{tmatrix-book06}.}
 \end{figure}
 
@@ -247,11 +244,10 @@ The effect of plasmon hybridization exists also for larger and also for non-sphe
 To understand the experiment of \cite{Schumacher11}, we need to make an excursion to the variation of the optical properties of metals and metal nanoparticles shortly after a laser pulse was absorbed. This could be a chapter on its own. More details can be found for example in \cite{Block19} and  \cite{Crut17}.
 
 
-\begin{figure}
-
-\includegraphics[width=105mm]{\currfiledir fermi-dirac.png}
+\begin{marginfigure}
+\inputtikz{\currfiledir fermi-dirac}
 \caption{The electrons deviate from a  Fermi-Dirac distribution for a very short time after absorption of a laser pulse. At all other times, a temperature of the electron gas $T_e$ describes everything.}
-\end{figure}
+\end{marginfigure}
 
 For simplicity, we again assume a Drude metal. The free electrons follow a Fermi-Dirac distribution. Most states are either filled or empty. Only in a energy range of (a few) $k_B \, T$ around the Fermi energy the states are partially filled. A near infrared laser pulse of about 100 fs length is absorbed and some electrons are transferred to higher energy states. For a short time, the distribution is not a Fermi-Dirac distribution anymore. It has additional peaks and holes and thus can not be described by a temperature. But after a few 10 fs the electrons scatter and reach again a Fermi-Dirac distribution, now with a higher temperature $T$. We have to distinguish here the temperature $T_e$ of the electrons and that of the lattice $T_l$, as it takes about 1 ps until the energy of the absorbed   photons is transfered from the electrons to the lattice. On this time scale, the electrons cool and the lattice heats up, until both are in equilibrium with each other again. On a much larger timescale of about 100 ps the lattice cools down again by heat conduction to the environment.
 
@@ -259,7 +255,6 @@ We can observe all steps in this process. The hot electron gas has a Fermi-Dirac
 
 \begin{figure}
 \input{\currfiledir gamma_vs_wp_at_dband.tikz.tex}
-%\includegraphics[width=110mm]{\currfiledir plasmon_pp_spec.pdf}
 \caption{The influence of a pump pulse on the absorption spectrum of a plasmonic particle: via reduction of $n$ (left) or increase of $\gamma$ (right). In  transient absorption spectroscopy, one detects the difference of the read and the green curve. The simulations assume a gold sphere. The influence of the pump is exaggerated. \label{fig:hybrid_plasmon_pp_spec}}
 \end{figure}
 
@@ -273,10 +268,8 @@ In a pump-probe or transient absorption experiment, a pump pulse modifies the di
 the particle. A probe pulse interrogates these properties after some time delay $\tau$. As the influence of the pump pulse is typically small, one plots the pump-induced change in probed transmission. An examples of such traces is given in Fig \ref{fig:hybrid_pp_trace}.  The hot electron gas leads to a broader plasmon resonance due to increased damping. The expanded lattice and the periodic oscillation of the particle size lead to a shift in the plasmon resonance. Depending  on probe wavelength, the signs of the individual contributions thus change.
 
 
-%
 \begin{marginfigure}
-
-\includegraphics[width=60mm]{\currfiledir disc_transient.pdf}
+\input{\currfiledir disc_transient_osc.tikz.tex}
 \caption{Transient transmission of a gold nanodisc probed near the plasmon resonance. Around a pump-probe delay of zero, the hot electron gas produces a spike. At longer delay, the acoustic oscillations dominate the signal. 
 \label{fig:hybrid_pp_trace}}
 \end{marginfigure}
