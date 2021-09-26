@@ -75,6 +75,9 @@
 \input{tint_book_header}
 
 
+\usepackage[theme=default-plain,charsperline=62]{jlcode}
+ % from https://github.com/wg030/jlcode
+
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}%
 
 
@@ -178,6 +181,7 @@
 %\includeonly{5_nanooptics/3_dda/dda}
 
 %\includeonly{9_appendix/1_fourier/fourier}
+\includeonly{9_appendix/0_julia/julia}
 
 
 \begin{document}
@@ -254,6 +258,7 @@
 \appendixpage
 
 %
+\include{9_appendix/0_julia/julia}
 \include{9_appendix/1_fourier/fourier}
 
 
