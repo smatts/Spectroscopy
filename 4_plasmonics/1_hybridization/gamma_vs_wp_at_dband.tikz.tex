@@ -1,0 +1,100 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepackage{currfile,hyperxmp,pgfplotstable}
+%\usetikzlibrary{math,matrix,fit,positioning}
+%\usepgfplotslibrary{groupplots}
+%
+%
+%\begin{document}
+
+
+\pgfplotstableread{\currfiledir raw_data/dband_spec.dat}{\table}
+  
+\pgfplotstableset{
+create on use/deltawp/.style={
+create col/expr={\thisrow{id6}-\thisrow{id5}}}
+}
+\pgfplotstableset{
+create on use/deltaga/.style={
+create col/expr={\thisrow{id7}-\thisrow{id5}}}
+}
+
+  
+  
+\begin{tikzpicture}
+%\useasboundingbox (-1.0,-1.0) rectangle (10.2,4.2);
+%\draw (-1,-1.0) rectangle (10.2,4.2);
+%
+
+
+\pgfmathsetmacro\plotw{47mm} % width of subplots
+\pgfmathsetmacro\ploth{32mm} % height of smaller subplots
+\pgfmathsetmacro\vsep{15pt}  % vertical separation between subplots
+\pgfmathsetmacro\hsep{20pt}  % horizontal separation between subplots
+
+\begin{groupplot}[
+    group style={
+       group size=2 by 1,
+       vertical sep=\vsep,
+       horizontal sep=\hsep,
+       x descriptions at=edge bottom},
+    height=\ploth,
+    width=\plotw,
+    xmin=450, xmax=700,
+   ymin = -1.5e-4, ymax=6e-4,
+    xtick pos = bottom,
+    scale only axis,
+%      x tick label style={/pgf/number format/.cd,%
+%          scaled x ticks = false,
+%          set thousands separator={},
+%          fixed},
+    ]
+    
+
+
+%plot   "dband_spec.dat" u 1:6 lw 2, "" u 1:5 lw 2, "" u 1:( ($5 - $6) ) lw 2
+%plot   "dband_spec.dat" u 1:7 lw 2, "" u 1:5 lw 2,  "" u 1:( ($5 - $7) ) lw 2
+
+
+
+\nextgroupplot[xlabel ={wavelength (nm)},
+ylabel = {\ \ \  Extinktion},   yticklabel = \empty,ytick = \empty,
+% xmin=1320, xmax = 1520, xtick = {1415}, xticklabel = {1415}
+ ]
+ \addplot[no markers, thick, red] table [x = {id1}, y ={id6}]{\table};
+ \addplot[no markers, thick, green] table [x = {id1}, y ={id5}]{\table};
+ \addplot[no markers, thick, black] table [x index= 0, y = {deltawp}] {\table};
+
+\draw(400,0) -- (800,0);
+\coordinate (null) at (450,0)  ;
+
+\node at (600, 5e-4) {warm};
+\node at (500, 4e-4) {cold};
+\node at (510, 0.5e-4) {difference};
+
+\nextgroupplot[ xlabel ={wavelength (nm)},
+ytick = \empty, yticklabel = \empty, %ytick pos = left, ytick = {0}, 
+% xmin=1320, xmax = 1520, xtick = {1415}, xticklabel = {1415}
+ ]
+  \addplot[no markers, thick, red] table [x = {id1}, y ={id7}]{\table};
+ \addplot[no markers, thick, green] table [x = {id1}, y ={id5}]{\table};
+ \addplot[no markers, thick, black] table [x index= 0, y = {deltaga}] {\table};
+
+\draw(400,0) -- (800,0);
+
+\node at (550, 3e-4) {warm};
+\node at (550, 5.5e-4) {cold};
+\node at (510, 0.5e-4) {difference};
+
+ 
+\end{groupplot}
+
+\node[left] at (null) {0};
+
+\end{tikzpicture}
+
+%\end{document}

@@ -1,0 +1,320 @@
+\renewcommand{\lastmod}{September 24, 2021}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+\chapter{Plasmon hybridization}
+\label{chap:hybrid}
+
+\section{Tasks}
+
+\begin{itemize}
+\item Investigate the field at the positions of the dipoles when two particles hybridize. Explain why we observe no absorption at the anti-symmetric resonance of two equal particles although the field is not zero.
+
+\item Reconstruct the absorption spectrum of the single particle alone and when hybridzed with the anenna in Fig. \ref{fig:hybrid_schumacher11} below.
+Use the hybridization model to explain the antenna effect that is used to amplify the transient transmission signal of a small gold particle in \cite{Schumacher11} 
+
+\end{itemize}
+
+\begin{figure}
+
+\inputtikz{\currfiledir fig_schumacher11}
+\caption{Enhancement of a transient absorption signal by plasmon hybridization \cite{Schumacher11}. The inset shows a SEM micrograph of the gold nanodiscs.
+ \label{fig:hybrid_schumacher11}}
+\end{figure}
+
+%--------------
+
+\section{Overview}
+
+Plasmon hybridization\footcite{Prodan03} is another incarnation of a coupled oscillator, i.e., two pendula coupled by a spring. The coupled system has new eigen-functions and eigen-energies that can be derived from the old eigen-functions and the strength of the coupling. The term is borrowed from the hybridization of atom orbitals, for example in carbon atoms forming  the famous sp$^3$ orbitals.
+
+The concept of plasmon hybridization helps to get a more intuitive understanding of the absorption spectra of arrangements of plasmonic nanoparticles. In this chapter, we discuss an experiment in which a larger plasmonic particle was used as  antenna to enhance the optical response of a small particle. The antenna-effect can be understood in terms of hybridised particles. The optical response of the small particle is in this experiment dominated by acoustical breathing oscillations of the particle at frequencies of a few 10~GHz.
+
+
+\begin{questions}
+\item Review the hybridization of atomic orbitals in carbon atoms, the  coupled pendulum and molecular aggregates.  How do these system couple? How does one obtain the response of the coupled system?
+\end{questions}
+
+
+
+
+\section{Rayleigh scattering of small spheres}
+
+
+Let us start by going back to  Rayleigh scattering of nanoparticles, as we discussed already in chapter \ref{chap:rayleigh_and_mie}. A sphere of radius $R$ and dielectric constant $\epsilon_{in}$ is embedded in a medium of dielectric constant $\epsilon_{out}$. We assume that the radius $R$ is much smaller than the wavelength $\lambda$ of the electromagnetic light field. This means that the phase is constant across the sphere and that we can employ the quasi-static approximation. One solves the Laplace equation taking  boundary conditions and symmetry into account.\footcite{Jackson-ED}\footcite[excercise 2.4.2]{Nolting-ED}\footcite[chapter 5.2]{BH-book}
+The sphere responds to the light field with a polarization of
+\begin{equation}
+ \mathbf{p}(t) = \epsilon_0 \,  \epsilon_{out} \, \alpha \, \mathbf{E}(t)
+\end{equation}
+with the polarizability
+\begin{equation}
+ \alpha = 4 \pi  \; R^3 \; \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}} \quad .
+\end{equation}
+We find a resonance when $\epsilon_{in}(\omega) + 2 \epsilon_{out}(\omega) = 0$, which requires one dielectric function to be negative, as it is the case in metals. Small metal particles show thus exceptional strong interaction with light in a certain spectral range.
+
+As the electric field oscillates $E(t) = E_0 \, e^{-i \omega t}$, also the polarization $p$ oscillates and radiates a secondary, scattered electromagnetic field 
+\begin{equation}
+  \mathbf{E}_S = \frac{ e^{i \, k  r} }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{1}{r^3}\left\{
+      (k r )^2 \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} +
+      \left( 1 -  i k r \right)
+        \left( 3\hat{\mathbf{r}} \left[\hat{\mathbf{r}} \cdot \mathbf{p}\right] - \mathbf{p} \right)
+    \right\} \quad ,
+     \label{eq:hybrid_Escat}
+\end{equation}
+where $k = 2 \pi / \lambda$ is the length of the wave vector in the medium. The power that is absorbed by the dipole\footcite[Chapter 8]{Novotny-Hecht2012} is
+\begin{equation}
+ P_{abs} = \frac{\omega}{c} \, \Im \left( \mathbf{p} \, \mathbf{E}^\star \right)  \quad ,
+\end{equation}
+so that we get the absorption cross section
+\begin{equation}
+ \sigma_{abs} = k \, \Im ( \alpha ) =  4 \pi \, k \; R^3 \; \Im \left( \frac{\epsilon_{in} - \epsilon_{out}}{\epsilon_{in} + 2 \epsilon_{out}} \right) \quad .
+ \label{eq:hybrid_sigma_abs}
+\end{equation}
+We are in the Rayleigh  limit of a very small particle so that we can neglect the scattered power. in this way, the absorption cross section
+$ \sigma_{abs} $ equals the extinction  cross section $ \sigma_{ext} $ 
+
+
+We  assume that the surrounding  medium  is a transparent dielectric, i.e., 
+$\epsilon_{out}$ is real-valued. The material of the nanosphere should be described by the Drude model of metals. This is often the case when one is far enough away from inter-band transitions that lead to the color of metals, i.e., when one is far enough in the infrared. The dielectric function then reads
+\begin{equation}
+ \epsilon_{in} (\omega) = \epsilon_{\infty} - \frac{\omega_P^2}{ \omega \left(\omega \;
++ \; i\, \gamma \right) } \quad , \label{qq:hybrid_drude}
+\end{equation}
+where $\epsilon_{\infty} $ is the  high-frequency limit,  $\gamma = 1 / \tau_\text{coll} $ the damping parameter of the plasma oscillation, and $\omega_P$ the plasma frequency 
+\begin{equation}
+\omega_P = \sqrt{\frac{n \, e^2}{m^\star \epsilon_0}} \quad.
+\end{equation}
+The plasma frequency depends on the effective electron mass $m^\star$ and number density $n$.
+
+The polarizability $\alpha$ has a resonance when its denominator equals zero, i.e., at $\epsilon_{in} (\omega_{res}) = -2 \epsilon_{out}$. For a Drude metal with low damping this happens at
+\begin{equation}
+\omega_{res} = \frac{\omega_P}{\sqrt{2 \epsilon_{out} + \epsilon_\infty}}
+\end{equation}
+The resonance wavelength in the absorption spectrum thus depends on 
+the plasma frequency of the metal and  the dielectric function of the environment. 
+
+
+\begin{questions}
+\item Review Rayleigh and Mie scattering (Chapter \ref{chap:rayleigh_and_mie}). At which particle size does the Rayleigh model stop to be valid?
+\end{questions}
+
+
+ %----------
+\section{Plasmon hybridization}
+
+\begin{marginfigure}
+\inputtikz{\currfiledir sketch}
+\caption{Sketch of the light field shining on two small particles}
+\end{marginfigure}
+
+
+Now we hybridize two particle plasmons. We investigate the optical properties of two small Rayleigh particles which are brought close to each other.  The optical response of each particle is described by  a dipole $ \mathbf{p}_i(t)$, where $i = 1,2$.
+ Each dipole experiences the incident field
+$\mathbf{E}^{\text{inc}}(\mathbf{r}_i)$ and the field scattered from the other dipole.
+The sum of these two fields multiplied by the dipole's polarizability $\alpha_i$
+has to give in a self-consistent way the dipole moment (see, for example, \cite{Myroshnychenko08})
+%
+\begin{equation} \label{eq:hbyrid_equationsystem}
+     \mathbf{p}_1 = \epsilon_0 \,  \epsilon_{out} \,  \alpha_1 \left[ \mathbf{E}^{\text{inc}} (\mathbf{r}_1) +
+\mathbf{E}^{\text{scat}}_2(\mathbf{r}_1) \right] \quad ,
+\end{equation}
+%
+and vice versa.\sidenote{Note that this is a system of two equations.} The scattered electrical near field $ \mathbf{E}^{\text{scat}}$ of the dipole $i$ at position of the dipole $j$ is given by eq.   \ref{eq:hybrid_Escat} above. As we aim  for a large influence of this scattered field, we will need short distances between the dipoles and thus can focus on the near-field contribution of the scattered field
+\begin{equation}
+  \mathbf{E}^{\text{scat, nf}}_i(\mathbf{r}_j) = \frac{ 1 }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{1}{d^3}
+        \left( 3\hat{\mathbf{r}}_{ij} \left[\hat{\mathbf{r}}_{ij} \cdot \mathbf{p}_i \right] - \mathbf{p}_i \right)
+  \quad ,
+\end{equation}
+where $\hat{\mathbf{r}}_{ij}   = \mathbf{r} _j - \mathbf{r} _i$ is a vector of length one pointing from the dipole to the point where
+the field is evaluated, and $d$ is the distance between the particles
+
+
+For simplicity, we assume that both particles have the same dielectric function and are of course embedded in the same medium. 
+We  can chose the polarization direction of the incoming electric field  $\mathbf{E}^{\text{inc}}$. Things become simple when we chose it to be either parallel or perpendicular to the connecting axis of the particles. In both cases, the scattered near-field at particle $j$ has the direction of the dipole $i$, which is not the case for other polarization directions. This allows us to use scalar dipole amplitudes $p_i$ and a simplified scattered field amplitude
+\begin{equation}
+  {E}^{\text{scat, nf}}_i(\mathbf{r}_j) = \frac{ 1 }{4\pi\epsilon_0 \, \epsilon_{out}}  \frac{v}{d^3} \, p_i 
+  \quad ,
+\end{equation}
+where the factor $v$ is $-1$ for parallel and $+2$ for perpendicular polarization.
+
+We solve the equation system for $p_{1,2}$, which we write as effective polarizabilities $\alpha^\text{eff}_{1,2}$
+\begin{equation}
+ \alpha^\text{eff}_1 = \frac{p_1}{\epsilon_0 \epsilon_{out} \, E^\text{inc}} =  \frac{\alpha_1 - v \, \frac{\alpha_1 \, \alpha_2}{4 \pi d^3}}
+ {1- v^2 \, \frac{\alpha_1 \, \alpha_2 }{16 \pi^2 d^6}} 
+\end{equation}
+and vice versa.
+The total polarizability\sidenote{see \cite{Aizpurua_in_Enoch12},  Eq. 5.14}  is then the sum of $\alpha^\text{eff}_{1}$ and $\alpha^\text{eff}_{2}$
+\begin{equation}
+ \alpha^\text{eff} = \frac{\alpha_1  + \alpha_2 - v \, \frac{\alpha_1 \, \alpha_2}{2 \pi d^3}}
+ {1- v^2 \, \frac{\alpha_1 \, \alpha_2 }{16 \pi^2 d^6}} \quad .
+ \label{eq:hybrid_alpha_eff}
+\end{equation}
+We are interested in resonance frequencies of $\alpha^\text{eff} $. As both particles are of the same material, the individual polarizability $\alpha_i$ only differ in amplitude due to the factor $R_i^3$. The spectral shape is the same. The effective polarizability comes to resonance when the denominator vanishes, i.e.
+\begin{equation}
+R_1^3 \, R_2^3 \, \left( \frac{\epsilon_{in} - \epsilon_{out}} {\epsilon_{in} + 2 \epsilon_{out}} \right)^2 \, v^2 = d^6
+\label{eq:hybrid_res_cond}
+\end{equation}
+or,
+\begin{equation}
+ \frac{\epsilon_{in} - \epsilon_{out}} {\epsilon_{in} + 2 \epsilon_{out}} \, v = \pm \left( \frac{d}{\sqrt{R_1 R_2}} \right)^3
+\end{equation}
+
+\begin{marginfigure}
+\inputtikz{\currfiledir levels}
+\caption{Level scheme}
+\end{marginfigure}
+
+In total, we obtain the resonance
+frequency $\omega_{\text{res}} $ of the coupled two-particle system\footcite{Myroshnychenko08} 
+%
+\begin{equation}  \label{eq:hybrid_omega_coupled}
+ \omega_{\text{res}} = \frac{\omega_P}{\sqrt{2 \epsilon_{out} + \epsilon_{\infty}} }  \; \sqrt{
+\frac{1 + g}{ 1 +  \eta \; g}}
+\end{equation}
+%
+with 
+%
+\begin{equation} \label{eq:hybrid_omega_coupled_variables}
+ \eta = \frac{\epsilon_{\infty} - \epsilon_{out} }{\epsilon_{\infty} + 2 \epsilon_{out}  } 
+ \qquad \text{and} \qquad
+    g = m \;  \left( \frac{\sqrt{R_1 \; R_2 } } { d }  \right)^3 \quad .
+\end{equation}
+%
+In the case of gold particles in vacuum, the factor $\eta$ takes a value of about $8/11 \approx 0.73$.
+For the electric field being parallel to the pair axis, the index $m$ assumes
+the value $-2$ for parallel dipoles (head to tail) and $2$ for anti-parallel
+dipoles (head-to-head). When the electric field is perpendicular to the
+pair-axis, $m$ is $+1$ for the parallel configuration and $-1$ for the
+anti-parallel configuration. This is the classical electrodynamics analogon  of H and J aggregates in coupled dye molecules, discussed in chapter \ref{chap:molecular_aggregates}.
+
+
+
+Finally, lets have a look at the amplitudes of the resonance. We evaluate the enumerator of eq.  \ref{eq:hybrid_alpha_eff}
+ at the resonance condition (eq. \ref{eq:hybrid_res_cond}).\sidenote{Without damping, the peaks would diverge, but in real material we have a non-zero $\gamma$ in the Drude model.} It becomes
+ \begin{equation}
+ \alpha^\text{eff, peak} \propto \alpha_1  + \alpha_2  \pm 2 \sqrt{\alpha_1 \alpha_2} = \left( \sqrt{\alpha_1}  \pm \sqrt{\alpha_2} \right)^2
+\end{equation}
+As in the case of molecular aggregates, the combined oscillator strength of both particles is re-distributed over the two new peaks in the absorption spectrum. For two equal particles ($R_1 = R_2$), the symmetric mode caries twice the
+oscillator strength of a single  particle and the antisymmetric mode
+is dark. 
+
+\begin{questions}
+\item In which aspects is this calculation different from the approach that was chosen when describing molecular aggregates (chapter \ref{chap:molecular_aggregates}) ?
+
+\item Use the Pluto script to investigate the mode splitting in small Rayleigh particles. Compare the absorption spectrum with the analytic equations for resonance position and amplitude. Discuss differences.
+\end{questions}
+
+
+
+\section{Real metals}
+
+In the last section, we assumed a Drude metal for both particles. This allowed us to give analytical expressions for peak positions and width. But of course plasmon hybridization also exists for real metals. In stead of the Drude formula (eq. \ref{qq:hybrid_drude}) we use measured dielectric functions $\epsilon_{in}$, for example from Johnson and Christy\footcite{JC_gold72}. We assume an incoming polarization direction $\mathbf{E}^\text{inc}$ and wavelength $\lambda$. Then we solve the equation system given by eq \ref{eq:hbyrid_equationsystem} (and the same with swapped indices) to obtain the dipole amplitudes and directions $\mathbf{p}_i$. With this we can calculate  the absorption cross section. To get the full absorption  spectrum we iterate over the wavelength $\lambda$.
+
+
+The effect of a real metal is additional damping due to interband absorption. For gold this happens at wavelengths below about 520 nm, leading to the color of gold. With $\omega_P = 9 eV$, $\epsilon_\infty = 9$ and vacuum as medium ($\epsilon_{out} = 1$), the plasmon resonance would appear in the Drude model at $\omega_{res} \approx 2.7$ eV or $\lambda = 460$ nm. The interband absorption shifts the resonance position to about 530 nm wavelength, just at the rim of the absorption band. Plasmon hybridization the splits the peak. The lower wavelength / higher frequency peak overlaps more with interband absorption and will be damped out. Splitting of peaks is thus difficult to observe for small gold nanoparticles.
+
+\begin{figure}
+\inputtikz{\currfiledir drude_vs_au}
+\caption{Comparison of plasmon hybridization in a Drude metal and n gold. The d-band absorption shifts the resonance and suppresses half of the modes. The simulations assume two spheres of 50 and 90 nm diameter with a gap of 10 nm. They go beyond the Rayleigh approximation and use \cite{tmatrix-book06}.}
+\end{figure}
+
+\begin{questions}
+\item Use the Pluto script to investigate  difference between the Drude model and the measured dielectric function of gold.
+
+\item Plot the hybridized absorption spectrum in the Rayleigh approximation using the measured dielectric function of gold and silver.
+\end{questions}
+
+
+
+\section{Beyond the Rayleigh approximation}
+
+We used the Rayleigh approximation, i.e. assumed that each particle is much smaller than the wavelength of light. Such small particles have only very small polarizabilities $\alpha$, as these scale as the volume of the particle. To obtain sizeable effects, one thus uses particles that are a bit larger, i.e.. smaller but not much smaller than the wavelength. 
+
+We discussed the Mie formalism (chapter \ref{chap:rayleigh_and_mie}
+) as method to model the optical response of spheres of arbitrary size. It should be in principle possible to model two neighbouring spheres using Mie scattering for each sphere, but this get a bit tedious as the scattered field is not homogeneous over the receiving sphere. More general numerical method such as the finite element method (FEM) or discrete dipole approximation (DDA) are better suited.
+
+The effect of plasmon hybridization exists also for larger and also for non-spherical particles. Especially when the distance between the particles is not large anymore to their size, simple models relying on a few dipoles break down. As beyond the Rayleigh approximation, the resonance wavelength of a single particle depends on size and shape, one has to consider spectral differences between two particles which should hybridize. Hybridization requires that both particles scatter conceivable amount of light at the same wavelength, so the resonance of both particles needs to partially overlap. This again is similar to all coupled-pendula models that require the uncoupled eigen-energies to be similar.
+
+
+
+
+\section{Ultrafast optical response of metals}
+
+
+To understand the experiment of \cite{Schumacher11}, we need to make an excursion to the variation of the optical properties of metals and metal nanoparticles shortly after a laser pulse was absorbed. This could be a chapter on its own. More details can be found for example in \cite{Block19} and  \cite{Crut17}.
+
+
+\begin{marginfigure}
+\inputtikz{\currfiledir fermi-dirac}
+\caption{The electrons deviate from a  Fermi-Dirac distribution for a very short time after absorption of a laser pulse. At all other times, a temperature of the electron gas $T_e$ describes everything.}
+\end{marginfigure}
+
+For simplicity, we again assume a Drude metal. The free electrons follow a Fermi-Dirac distribution. Most states are either filled or empty. Only in a energy range of (a few) $k_B \, T$ around the Fermi energy the states are partially filled. A near infrared laser pulse of about 100 fs length is absorbed and some electrons are transferred to higher energy states. For a short time, the distribution is not a Fermi-Dirac distribution anymore. It has additional peaks and holes and thus can not be described by a temperature. But after a few 10 fs the electrons scatter and reach again a Fermi-Dirac distribution, now with a higher temperature $T$. We have to distinguish here the temperature $T_e$ of the electrons and that of the lattice $T_l$, as it takes about 1 ps until the energy of the absorbed   photons is transfered from the electrons to the lattice. On this time scale, the electrons cool and the lattice heats up, until both are in equilibrium with each other again. On a much larger timescale of about 100 ps the lattice cools down again by heat conduction to the environment.
+
+We can observe all steps in this process. The hot electron gas has a Fermi-Dirac distribution that is smeared out much more than in the cold state. In this way, many more states are neither completely filled nor completely empty, and thus accessible to electron-electron scattering. This increases the damping parameter $\gamma$ in the Drude model.  The impulsive heating of the lattice within about 1 ps leads to thermal expansion of the lattice and acoustical oscillations of the particle. Both influence the electron density, as the number of electrons remains constant but the volume increases. This influences the plasma frequency $\omega_P$ in the Drude model.
+
+\begin{figure}
+\inputtikz{\currfiledir gamma_vs_wp_at_dband}
+\caption{The influence of a pump pulse on the absorption spectrum of a plasmonic particle: via reduction of $n$ (left) or increase of $\gamma$ (right). In  transient absorption spectroscopy, one detects the difference of the read and the green curve. The simulations assume a gold sphere. The influence of the pump is exaggerated. \label{fig:hybrid_plasmon_pp_spec}}
+\end{figure}
+
+A metal particle has acoustic eigenmodes, like a bell. In a first approximation, one can calculate from the velocity of sound of $c_\text{sound} = $3240 m/s an eigen-frequency of $\nu_{bell} = c_\text{sound} /(4 R)$. One can just use the macroscopic continuum-mechanics models of vibrating spheres. The periodic variation in particle size leads to a periodic variation in electron density $n$ and thus in the plasma frequency $\omega_p$.
+In a first approximation we can assume that the plasma frequency
+$\omega_P$ is shifted by the particle expansion to $\omega'_P = \omega_P (1 +
+\delta)$ with $\delta \ll 1$. 
+
+
+In a pump-probe or transient absorption experiment, a pump pulse modifies the dielectric properties of
+the particle. A probe pulse interrogates these properties after some time delay $\tau$. As the influence of the pump pulse is typically small, one plots the pump-induced change in probed transmission. An examples of such traces is given in Fig \ref{fig:hybrid_pp_trace}.  The hot electron gas leads to a broader plasmon resonance due to increased damping. The expanded lattice and the periodic oscillation of the particle size lead to a shift in the plasmon resonance. Depending  on probe wavelength, the signs of the individual contributions thus change.
+
+
+\begin{marginfigure}
+\inputtikz{\currfiledir disc_transient_osc}
+\caption{Transient transmission of a gold nanodisc probed near the plasmon resonance. Around a pump-probe delay of zero, the hot electron gas produces a spike. At longer delay, the acoustic oscillations dominate the signal. 
+\label{fig:hybrid_pp_trace}}
+\end{marginfigure}
+
+\begin{questions}
+\item Try to reproduce Fig. \ref{fig:hybrid_plasmon_pp_spec} in the Rayleigh approximation by applying (not too small) changes to the Drude damping $\gamma$ (left) and the Drude plasma frequency (right).
+\end{questions}
+
+
+\section{Pump-probe spectroscopy of hybridized particles}
+
+
+Now we combine transient absorption pump-probe spectroscopy and plasmon hybridization, as in \cite{Schumacher11}. The pump-pulse launches acoustic oscillations which modulate the electron density $n$ in the particle. This this should then be amplified by plasmon hybridization.
+
+First we need to take care of one subtle point: the pump pulse acts on both particles. The distribution of the roles 'antenna' and 'particle under investigation' is not fixed. But when using particles of different size, the acoustic frequencies differ. In the transient absorption trace one thus observes a superposition of two different oscillations. Fourier-filtering allows to separate these and to determine the observed amplitude stemming from a single particle identified by its size. Fig \ref{fig:hybrid_schumacher11} thus shows the Fourier-amplitude of the smaller particle.
+
+
+When we vary the plasma frequency of only one particle on an hybridized pair by the factor
+$\delta \ll 1$we get for the  new
+resonance positions
+%
+\begin{equation}  
+ \omega_{\text{res'}} = \frac{\omega_P (1 + \delta / 2)}{\sqrt{2 + \epsilon_{\infty}} }
+ \; \sqrt{ \frac{1 + g}{ 1 +  \eta \; g}} \quad .
+\end{equation}
+Plasmon hybridization does not increase the amount by which the resonance is
+shifted upon changing the plasma frequency of one sphere only. The shift is reduced by a factor of $2$. This can be understood
+as we modify only part of the system,  in most cases even less than half of the
+system's total volume.
+
+
+However, the shift of the resonance position is only part of the answer to
+signal enhancement, as we detect changes in transmission. The signal is
+proportional to the product of resonance shift and peak height of the extinction
+resonance. A stronger extinction peak can overcompensate the reduced shift. 
+
+Already this twice as strong peak would compensate for the
+reduction in peak shift calculated above. However, the antenna would not
+enhance the signal. As soon as the second sphere becomes larger ($R_2 > R_1$),
+the symmetric mode continuously increases in amplitude and the antenna starts to
+enhance the signal. In the dipole approximation we find  no upper bound for the
+antenna enhancement. More detailed calculations show that the shift of the plasmon resonance with particle size, as seen in Mie theory, limits the available enhancement\footcite{Schumacher16}. 
+
+
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]

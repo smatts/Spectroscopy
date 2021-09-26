@@ -18,7 +18,7 @@
 
 \addbibresource{literature.bib}
 
-
+%rm -rf `biber --cache`
 
 \usepackage{amssymb,amsmath}
 
@@ -170,6 +170,10 @@
 %\includeonly{3_nonlinear/3_tpe/tpe}
 %\includeonly{3_nonlinear/4_2d_spec/two-dim-spec}
 
+
+%\includeonly{4_plasmonics/1_hybridization/hybrid}
+%\includeonly{4_plasmonics/4_lattice/cda}
+
 %\includeonly{5_nanooptics/2_tmatrix/tmatrix}
 %\includeonly{5_nanooptics/3_dda/dda}
 
@@ -224,7 +228,12 @@
 \include{3_nonlinear/3_tpe/tpe}
 \include{3_nonlinear/4_2d_spec/two-dim-spec}
 
+%%-------
+%%
+\part{Plasmonics}
 
+\include{4_plasmonics/1_hybridization/hybrid}
+ 
 %
 %-------
 \renewcommand{\chaptername}{Appendix\ }

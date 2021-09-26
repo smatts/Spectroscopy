@@ -1,0 +1,8 @@
+The files single.dat and hybrid.dat contain the data of the opening figure in the chapter on plasmon hybridization
+
+column 1: wavelength in nm
+column 2: mean amplitude of the acoustic oscillation of a nano disc
+column 3: std dev. to column 2 for a set of a few, nominally identical measurements
+
+The experiment is published in 
+Schumacher et al. (2011). “Nanoantenna-enhanced ultrafast nonlinear spectroscopy of a single gold nanoparticle”. In: Nature Communications 2.1, p. 333. DOI: 10.1038/ncomms1334.

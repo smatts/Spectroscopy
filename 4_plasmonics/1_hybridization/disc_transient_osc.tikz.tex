@@ -1,0 +1,38 @@
+%\documentclass[margin=0mm]{standalone}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+% \pgfplotsset{compat=newest}
+%
+%
+%\usepackage{currfile,hyperxmp}
+%\usetikzlibrary{math,matrix,fit,positioning}
+% 
+%
+%\begin{document}
+%
+% 
+\begin{tikzpicture}
+
+
+
+%\useasboundingbox (-1.0,-1.0) rectangle (10.2,4.2);
+%\draw (-1,-1.0) rectangle (10.2,4.2);
+%
+
+
+
+\begin{axis}[%ytick = \empty, yticklabel = \empty,
+ylabel = {$\Delta T / T$ ($10^{-4}$)}, xlabel = {delay (ps)},
+%ytick pos = left, ytick = {0}, 
+% xmin=-20, %, xmax = 4.6,
+width=50mm, height=40mm
+ ]
+ \addplot[no markers, black,thick] table [x  expr={\thisrowno{0} - 10}, y expr={1e4*\thisrowno{1} }] {\currfiledir raw_data/osciat635nm.dat};
+  
+
+ \end{axis}
+
+
+\end{tikzpicture}
+
+%\end{document}
