@@ -1,0 +1,456 @@
+\renewcommand{\lastmod}{October 29, 2021}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+\chapter{Surface plasmons as example of optics of layered media}
+\label{chap:tmatrix}
+
+
+\section{Tasks}
+
+\begin{itemize}
+\item Model the angle-dependent reflectivity of a silver surface in the geometry used by \cite{Otto68}, i.e. reproduce Fig. 5 or 7.
+
+\item Calculate the dispersion relation of the surface plasmon modes of a thin metal film, as measured by \cite{Pettit75}, i.e., reproduce Fig. 5.
+
+\end{itemize}
+
+
+\section{Plasmons}
+
+A plasmon is the quasi-particle of the plasma oscillation, i.e., the collective oscillation of the free electrons in a bulk material. In solid state physics, one calculates the restoring force when extending all electrons by $\Delta x$ from their equilibrium position. One finds the characteristic bulk plasma frequency for  Drude metal of 
+\begin{equation}
+ \omega_P = \sqrt{\frac{n \, e^2}{m \, \epsilon_0}}
+\end{equation}
+with the electron density $n$ and the effective mass $m$ of the electrons in the material.
+
+Such a collective oscillation of the electrons can also happen at a metal-dielectric interface. The eigen-frequency of the surface plasmon then depends on the dielectric properties of the second half space, as we will see below
+\begin{equation}
+\omega_{SP} = \frac{\omega_p}{\sqrt{1 + \epsilon_\text{medium}}} \quad . \label{eq:surface_omega_sp_intro}
+\end{equation}
+The oscillation of the electrons is connected with an electromagnetic wave.  If the interaction is strong in the quantum-optical sense, i.e., leading to an anti-crossing in the dispersion relation, one calls the new hybrid quasi-particle surface plasmon polariton (SPP). In the following, we will omit  the term 'polariton' for simplicity, although the interaction is always 'strong'.
+
+\begin{marginfigure}
+\includegraphics[width=50mm]{\currfiledir dispersion.png}
+\caption{Sketch of the plasmon and surface plasmon and both polariton disperisons. \label{fig:surface_dispersions}}
+\end{marginfigure}
+
+
+
+
+
+\section{Optics of layered media}
+
+We do a detour here, by introducing the T-matrix method, which is much more versatile than needed to investigate surface plasmons at a simple metal-dielectric interface. The method present here allows to  investigate the optical properties of layered media, i.e., stacks of unstructured   films of material with different dielectric functions. These could be dielectric materials, leading to, e.g., Bragg reflections and dielectric filters, or metal films, leading to surface plasmons. We discuss transmission and reflection of these stacks, which we then apply to surface plasmons.
+
+
+In another chapter, we model --- based on this T-matrix method --- the absorption and emission of quantum emitters  as dipoles that are situated in a plane within the layered medium. This leads to the emission pattern of a molecule near a metal or dielectric interface and the coupling of emitters to propagating surface plasmons.
+
+This text assumes a time-dependence of the form $e^{-i \omega t}$, as usual in physics and used in \cite{Novotny-Hecht2012} or \cite{BornWolf2002}. Note, however, that this is complex-conjugate to the convention in engineering, as used in \cite{SalehTeich1991} and \cite{Yeh2005}.
+
+
+\section{Transmission and scattering matrix}
+
+
+In a layered medium, a wave travelling through the stack of layers is  partially reflected and partially transmitted at every interface. The multiple reflections interfere with each other. To keep track of this, we use in each layer one combined wave travelling in $+z$ direction, and one travelling in $-z$ direction. At interfaces, these waves mix. This formalism is described in  chapter 7 of \cite{SalehTeich1991} and \cite{Yeh2005}. A similar formalism with a $E$ and $B$ field travelling in the same direction is described in \cite{Pedrotti2008} and \cite{Macleod2001}.
+
+\begin{marginfigure}
+\includegraphics[width=50mm]{\currfiledir T-matrix.png}
+
+\caption{The operation of the transmission matrix
+\label{fig:surface_T_matrix}}
+\end{marginfigure}
+
+Let us assume that we have left of the interface a wave travelling to the right ($+z$ direction) of amplitude $U_1^+$, and one wave travelling to the left of amplitude $U_1^-$. On the right side of the interface, we get the amplitudes $U_2^\pm$ by multiplication with a \emph{transmission} or \emph{transfer} matrix $\mathbf{M}$
+\begin{equation}
+\begin{pmatrix}
+U_2^+ \\ U_2^-
+\end{pmatrix}
+= 
+\begin{pmatrix}
+A & B \\ C & D \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+U_1^+ \\ U_1^-
+\end{pmatrix}
+%
+= \mathbf{M}
+\begin{pmatrix}
+U_1^+ \\ U_1^-
+\end{pmatrix} \quad . \label{eq:def_T_matrix}
+\end{equation}
+Below we will derive transmission matrices $\mathbf{M}_i$ for every interface and the homogeneous space in between. The full stack can then be described by a product matrix, multiplying together all partial matrices $\mathbf{M}_i$ along the stack
+\begin{equation}
+\mathbf{M}_\text{total} = \mathbf{M}_n \cdot  \mathbf{M}_{n-1} \cdots\mathbf{M}_2 \cdot  \mathbf{M}_{1} \quad . 
+\end{equation}
+This is a very convenient feature of the transmission matrix.
+Note the we label the interactions from left to right with $1$ to $n$, but the matrices are multiplied from right to left, as mathematics has it origin in Arabic culture.
+
+
+
+An inconvenient feature of the transmission matrix is that its matrix element have no direct physical meaning. The problem is that we multiply on the matrix a vector that is half an input, half an output of this interface. We know what comes out (travels to the left), and the matrix should tell us what comes in from the other side. In this sense, the related \emph{scattering} matrix $\mathbf{S}$ is closer to physical meaning:
+\begin{equation}
+\begin{pmatrix}
+U_2^+ \\ U_1^-
+\end{pmatrix}
+= 
+\begin{pmatrix}
+t_{12} & r_{21}  \\ r_{12} & t_{21}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+U_1^+ \\ U_2^-
+\end{pmatrix}
+%
+= \mathbf{S}
+\begin{pmatrix}
+U_1^+ \\ U_2^-
+\end{pmatrix} \quad . 
+\end{equation}
+The scattering matrix connects waves travelling towards the interface with those travelling away from the interface. The entries $t_{ij}$ and $r_{ij}$ are the transmission and reflection coefficients fro the amplitudes of the waves travelling from $i$ to $j$ (i.e. $12$ is travelling towards the right, $+z$ direction). However, for the scattering matrix $\mathbf{S}$, the full stack can not be calculated by multiplying together all partial matrices.
+
+\begin{marginfigure}
+\includegraphics[width=50mm]{\currfiledir S-matrix.png}
+
+\caption{The operation of the scattering matrix
+\label{fig:surface_S_matrix}}
+\end{marginfigure}
+
+It is therefore convenient to switch between both representations, derive the scattering matrix $\mathbf{S}$ for each situation, and then convert into a transmission matrix $\mathbf{M}$. The relations are\sidenote{\cite{SalehTeich1991}  eq. 7.7}
+\begin{align}
+\mathbf{M} =  &
+\begin{pmatrix}
+A & B \\ C & D \\
+\end{pmatrix}
+=
+\frac{1}{t_{21}}
+\begin{pmatrix}
+t_{12} t_{21} - r_{12}r_{21} & r_{21} \\ - r_{12} & 1 \\
+\end{pmatrix} \label{eq:M_from_S}
+\\
+\mathbf{S} =  &
+\begin{pmatrix}
+t_{12} & r_{21}  \\ r_{12} & t_{21}
+\end{pmatrix}
+=
+\frac{1}{D}
+\begin{pmatrix}
+AD - BC & B \\ -C & 1 \\
+\end{pmatrix} \label{eq:S_from_M}
+\end{align}
+as long as $D$ or $t_{21}$ are not zero.
+
+
+The transmission in backward direction $t_{21}$ is thus the reciprocal of the $D$-element of $\mathbf{M}_\text{total} $. The transmission in forward direction is 
+\begin{equation}
+t_{12} = \frac{\text{det } \mathbf{M}_\text{total} }{D}
+\end{equation}
+and similar for the reflection from the front side
+\begin{equation}
+r_{12} = - \frac{C }{D} \quad . 
+\end{equation}
+
+
+
+
+\section{Electrical fields}
+
+We need to define the physical meaning of the amplitudes $U_i^\pm$ to be able to calculate the reflection ( $r_{ij}$) and transmission ($t_{ij}$) coefficients. We assume plane waves 
+\begin{equation}
+\mathbf{E} \, e^{i (\mathbf{k}  \cdot \mathbf{r} - \omega t)}
+=
+\mathbf{\hat{E}} \, U \, e^{i \, k_z z} \, e^{i \, k_x x} \, e^{-i \omega t}
+\end{equation}
+where the wave vector $\mathbf{k} $ lies in the $xz$-plane, $U$ defines the amplitude of the wave and $\mathbf{\hat{E}} $  the polarization direction.
+With   the full length of the wave vector in vacuum $k_0 = 2 \pi / \lambda$ and the refractive index $n$ of the medium we get
+\begin{equation}
+k_{z}^2 + k_{x}^2  = n^2 \, k_0^2  \quad . 
+\end{equation}
+The polarization directions are
+\begin{equation}
+\mathbf{\hat{E}}^{(s)} = \begin{pmatrix}
+ 0 \\ 1 \\ 0 \\
+\end{pmatrix}
+\quad 
+\text{and}
+\quad
+\mathbf{\hat{E}}^{(p)} =\frac{1}{n \, k_0} \begin{pmatrix}
+\pm k_z \\ 0 \\  k_x  \\
+\end{pmatrix} \quad . 
+\end{equation}
+The $\pm$-sign takes the sign of the direction of travel, see Fig. 2.2 in \cite{Novotny-Hecht2012}. Note that with this definition we have $|\mathbf{\hat{E}}| = 1$, which differs from problem 12.4 in \cite{Novotny-Hecht2012}.
+
+The left and right travelling waves are thus
+\begin{equation}
+\mathbf{E}^+ = \mathbf{\hat{E}} \, U^+ \, \, e^{+ i \, k_z z}
+\quad
+\text{and}
+\quad
+\mathbf{E}^- = \mathbf{\hat{E}} \, U^- \, \, e^{- i \, k_z z}
+\end{equation}
+where we have split off the global term $ e^{i \, ( k_x x - \omega t)}$.
+
+\section{Propagation matrix}
+
+Before we come to interfaces, let us discuss the transmission matrix of an homogeneous material layer $j$ of thickness $d_j$ and (complex) refractive index $n_j$. Relevant is the $z$-component of the (complex) wave vector $k_{z,j}$. Note that we do \emph{not} use the sign of  $k_{z,j}$ to describe the direction of travel.
+Independent of the propagation direction, each wave sees a reflection coefficient $r=0$ and a (complex) transmission coefficient $t$
+\begin{equation}
+t = t_{12} = t_{21} = e^{+ i \, k_{z,j} \, d_j } \quad . 
+\end{equation}
+The transmission matrix of an homogeneous medium is thus
+\begin{equation}
+\mathbf{M} = 
+\begin{pmatrix}
+e^{+i \, k_{z,j} \, d_j } & 0 \\0 & e^{-i \, k_{z,j} \, d_j } \\
+\end{pmatrix} \quad . 
+\label{eq:M_prob}
+\end{equation}
+
+
+\section{Interface matrix}
+
+The transmission and reflection coefficients of an interface are the Fresnel coefficients. We follow here \cite{Novotny-Hecht2012}, who follow \cite{BornWolf2002}, especially in the direction of the field vectors, see Fig. 2.2 in \cite{Novotny-Hecht2012}. In this definition,  $r^s$ and $r^p$ differ at normal incidence by a factor of $-1$. We assume non-magnetic materials ($\mu = 1$) and get for a wave travelling from medium 1 towards medium 2
+\begin{align}
+ r_{12}^s = & \frac{k_{z,1} - k_{z,2}}{k_{z,1} + k_{z,2}}  = - r_{21}^s\\
+ t_{12}^s = & \frac{2 \, k_{z,1}}{k_{z,1} + k_{z,2}} =  \frac{k_{z,1}}{k_{z,2}}  \,  t_{21}^s\\
+  r_{12}^p = & \frac{\epsilon_2	 k_{z,1} - \epsilon_1 k_{z,2}}
+				  {\epsilon_2 k_{z,1} + \epsilon_1 k_{z,2}}  = - r_{21}^p\\
+  t_{12}^p = & \frac{2 \sqrt{\epsilon_1 \epsilon_2}	 \,k_{z,1} }
+				  {\epsilon_2 k_{z,1} + \epsilon_1 k_{z,2}}  = \frac{k_{z,1}}{k_{z,2}}  \,  t_{21}^p \quad . 
+\end{align}
+We could also write these coefficients in terms of angle of incidence $\theta$ with
+\begin{equation}
+ \theta = \arcsin \frac{k_x}{n k_0} = \arcsin \sqrt{1 - \frac{k_z}{n k_0}} \quad . 
+\end{equation}
+This would also hold in the case of evanescent waves ($k_x > n k_0$) when we allow complex angles $\theta$. We nowhere need that $\theta$ is a geometrical angle. We only need that $n \sin \theta$ is the same for all layers.
+
+
+With eq.  \ref{eq:M_from_S} we get for both polarisation directions the transmission matrix
+\begin{equation}
+\mathbf{M}_{12} = \frac{1}{t_{21}} 
+\begin{pmatrix}
+1 & r_{21} \\ r_{21} & 1 \\
+\end{pmatrix} \quad ,
+\end{equation}
+as 
+\begin{equation}
+t_{12} t_{21} - r_{12}r_{21} = t_{21}^2 \frac{k_{z,1}}{k_{z,2}} + r_{21}^2 = 1 \quad . 
+\end{equation}
+Note that the transmission matrix from medium 1 to medium 2 uses the Fresnel coefficients of the backwards direction!
+We can abbreviate this to\sidenote{In problem 12.4 in \cite{Novotny-Hecht2012} the leading $1/\eta$ seems to be missing!} (see also appendix at the end of this chapter)
+\begin{equation}
+\mathbf{M}_{12} 
+=\frac{ 1}{2 \eta }
+\begin{pmatrix}
+1 + \kappa & 1  -\kappa \\  1  - \kappa  & 1 + \kappa \\
+\end{pmatrix} \label{eq:M_kappa}
+\end{equation}
+with 
+\begin{equation}
+\kappa = \eta^2 \,
+\frac{  k_{z,1} }{ k_{z,2}}
+\quad
+\text{and}
+\quad
+\eta^s = 1 \quad \text{or} \quad \eta^p = \sqrt{ \frac{\epsilon_2}{\epsilon_1} } \quad . 
+\end{equation}
+The factors $\eta$ in front of the transmission matrix $\mathbf{M}_{12} $ can be collected in front of the total transmission matrix $\mathbf{M}_\text{total}$, in case one is not interested in the distribution of the fields inside the stack. Then, all $\eta^p$ collapse into $\sqrt{\epsilon_\text{first} / \epsilon_\text{last}}$, which is equal to one in case the terminating half-spaces of the layered medium have both the same dielectric constant. 
+
+
+
+\section{Bound modes and surface plasmons}
+
+Now we have all tools at hand and can calculate the propertieis of surfaces plasmons in layered media. These are bound modes. We are thus interested in field distributions that decay into both surrounding half-spaces. Another example are  dielectric waveguide modes, when a material of higher index of refraction is embedded in a low-index environment.
+
+We can find these modes by going back to our first equation \ref{eq:def_T_matrix} and requiring that both incoming field are zero, i.e. 
+\begin{equation}
+U_1^+ = U_2^- = 0
+\end{equation}
+or
+\begin{equation}
+\begin{pmatrix}
+U_2^+ \\ 0
+\end{pmatrix}
+= 
+\begin{pmatrix}
+A & B \\ C & D \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+0 \\ U_1^-
+\end{pmatrix}
+= 
+\begin{pmatrix}
+B \, U_1^- \\ D \, U_1^-
+\end{pmatrix} \quad ,
+\end{equation}
+which means\sidenote{see also \cite{Yeh2005}, eq. 11.3-5, but note the different 'direction' of the matrix.} that we search for $D =0$. 
+
+Let us start with the most simple case, a surface plasmon at an interafce between a Drude metal halfspcae and a dierelc halfspace. The transmission matrix of the full 'stack' is then only one interface matrix
+\begin{equation}
+\mathbf{M}_\text{total} = \mathbf{M}_{12} =\frac{ 1}{2 \eta }
+\begin{pmatrix}
+1 + \kappa & 1  -\kappa \\  1  - \kappa  & 1 + \kappa \\
+\end{pmatrix}  \quad .
+\end{equation}
+We are interested in the conditions when  $D$ element is zero, i.e,
+\begin{equation}
+D = \frac{1 + \kappa}{2 \eta} = 0 \quad \text{or} \quad
+k_{z,2} = - \eta^2 \, k_{z,1} \quad .
+\end{equation}
+The components of the wave vector in the different layers $j$ have to fulfil
+\begin{equation}
+ k_x^2 + k_{z, j}^2 = \epsilon_j \, k_0^2 \quad , 
+\end{equation}
+i.e. $\eta = \eta^S = 1$ is not a solution. Surface plasmons are p-polarized. Setting $\eta = \eta^P = \sqrt{\epsilon_2 / \epsilon_1}$  leads to the condition
+\begin{equation}
+\epsilon_1 \, k_{z,2} = - \epsilon_2 \, k_{z,1} \quad . \label{eq:surface_spp_condition_kz}
+\end{equation}
+Combining the last two equations, we get the dispersion relation of the surface plasmon
+\begin{equation}
+k_x = k_0 \, \sqrt{\frac{\epsilon_1 \epsilon_2}{\epsilon_1 + \epsilon_2}} \quad . \label{eq:surface_spp_dispersion}
+\end{equation}
+propagating in $x$-direction along the interface. The $z$ component of the wave vector in halfspace $j$ is
+\begin{equation}
+k_{z,j} = k_0 \, \sqrt{\frac{\epsilon_j^2}{\epsilon_1 + \epsilon_2}} \quad .
+\end{equation}
+For propagating surface plasmons, we need that $k_x$ is real-valued, i.e., the propagation is not damped. At the same time, $k_{z,j}$ should be purely imaginary, so that the field amplitudes decays exponentially when moving away from the interface. This is achieved when
+\begin{equation}
+ \epsilon_1 \epsilon_2 < 0 \quad \text{and} \quad 
+  \epsilon_1 + \epsilon_2 > 0 \quad,
+\end{equation}
+i.e., one dielectric function needs to be negative and the other more positive.
+
+
+The interface between a Drude metal and a dielectric fulfils these requirements. We can assume a Drude model for the dielectric function of the metal in halfspace $j=2$
+\begin{equation}
+\epsilon_2(\omega) = 1 - \frac{\omega_P^2}{\omega^2} \quad .
+\end{equation}
+Figure \ref{fig:surface_dispersions}
+ shows the resulting dispersion relation eq. \ref{eq:surface_spp_dispersion}. For large values of $k_x$, the eigen-frequency $\omega_{SP}$ of the surface plasmon is approached.  We get
+\begin{equation}
+\omega_{SP} = \frac{\omega_p}{\sqrt{1 + \epsilon_1}} \quad ,
+\end{equation}
+which is eq. \ref{eq:surface_omega_sp_intro}.
+
+
+\section{Example: slab waveguide}
+
+As a second  example, let us look at a slab of material $2$, thickness $d_2$ embedded in two half-spaces of material $1$ and $3$. The transmission matrix is
+\begin{equation}
+\mathbf{M}_\text{total} = \mathbf{M}_{23} \cdot \mathbf{M}_{prop} \cdot \mathbf{M}_{12}
+\end{equation}
+width $\delta = d_2 \, k_{z,2}$ we get
+\begin{equation}
+\frac{ 1}{4 \eta_{12} \eta_{23}}
+\begin{pmatrix}
+1 + \kappa_{23} & 1  -\kappa_{23} \\  1  - \kappa_{23}  & 1 + \kappa_{23} \\
+\end{pmatrix} 
+%
+\begin{pmatrix}
+e^{+i \delta } & 0 \\0 & e^{-i \delta } \\
+\end{pmatrix}
+%
+\begin{pmatrix}
+1 + \kappa_{12} & 1  -\kappa_{12} \\  1  - \kappa_{12}  & 1 + \kappa_{12} \\
+\end{pmatrix}  \quad . 
+\end{equation}
+The $D$ element is 
+\begin{equation}
+D \propto  (1 + \kappa_{12})(1 + \kappa_{23})e^{-i \delta }  +  (1 - \kappa_{12})(1 - \kappa_{23})e^{+i \delta }  \quad . 
+\end{equation}
+$D$ becomes zero if 
+\begin{equation}
+\frac{  (1 + \kappa_{12})(1 + \kappa_{23})   }{ (1 - \kappa_{12})(1 - \kappa_{23})} = - e^{+i 2 \delta } 
+\end{equation}
+or, using $\kappa_{12} = (k_{z,1} / \epsilon_1) / (k_{z,2} / \epsilon_2)$, for p-polarization\sidenote{remove $\epsilon_i$ for s-polarization}
+\begin{equation}
+\frac{  k_{z,2} / \epsilon_2 + k_{z,1} / \epsilon_1   }{ k_{z,2} / \epsilon_2 - k_{z,1} / \epsilon_1} 
+%
+\, \,
+\frac{  k_{z,2} / \epsilon_2 + k_{z,3} / \epsilon_3   }{ k_{z,2} / \epsilon_2 - k_{z,3} / \epsilon_3} 
+%
+=  e^{+i 2 \delta }  \quad ,
+\end{equation}
+which agrees with \cite{Maier2007}, eq. 2.28.\sidenote{Note that not only the layers are labelled differently here, but also $k_z$ is defined differently. We assume $e^{i k_{z,j} \, z}$, in \cite{Maier2007} it is $e^{ k_j \, z}$, i.e. our $k_{z,j} = -i \, k_j$.}
+When assuming both half-spaces are equal, i.e. $\epsilon_1 = \epsilon_3$ and $k_{z,1} = k_{z,3}$, we can simplify further\sidenote{\cite{Maier2007}, eq. 2.29. Here the $-i$ difference to \cite{Maier2007} becomes relevant.}
+\begin{equation}
+ \left( \tanh\frac{ -i \, d \, k_{z,2}  }{2} \right)^{\pm 1} = - \frac{ \epsilon_1 \, k_{z,2}  }{ \epsilon_2 \, k_{z,1} } \quad . 
+\end{equation} 
+One can understand these two solutions as symmetric and anti-symmetric linear combination of modes that reside at the left ($12$)  and right ($23$) interface. They decouple when we let $d \rightarrow \infty$, so that the left side of the equation is always $1$.  We then recover the eq. \ref{eq:surface_spp_condition_kz} of the last section.
+
+
+
+
+
+\section{Further ideas}
+
+\begin{itemize}
+\item Model and discuss the dispersion relation of the surface plasmons in two thin metals films separated by a thin spacer.
+
+\item Model and discuss the reflection spectrum of  a distributed Bragg reflector (DBR) used, e.g., in integrated semiconductor lasers.
+\end{itemize}
+
+
+\section{Appendix: derivation of eq. \ref{eq:M_kappa}}
+
+
+We start from 
+\begin{equation}
+\mathbf{M}_{12} = \frac{1}{t_{21}} 
+\begin{pmatrix}
+1 & r_{21} \\ r_{21} & 1 \\
+\end{pmatrix}
+\end{equation}
+and abbreviate the Fresnel coefficients as
+\begin{align}
+  r_{21}^s = & \frac{k_{z,2} - k_{z,1}}{k_{z,1} + k_{z,2}}  = \frac{b - a}{a + b} \\
+ t_{21}^s = & \frac{2 \, k_{z,2}}{k_{z,1} + k_{z,2}} =   \frac{2 b \eta }{a + b}   \\
+  r_{21}^p = & \frac{\epsilon_1	 k_{z,2} - \epsilon_2 k_{z,1}}
+				  {\epsilon_2 k_{z,1} + \epsilon_1 k_{z,2}}  =   \frac{b - a}{a + b}\\
+  t_{21}^p = & \frac{2 \sqrt{\epsilon_1 \epsilon_2}	 \,k_{z,2} }
+				  {\epsilon_2 k_{z,1} + \epsilon_1 k_{z,2}}  =   \frac{2 b  \eta }{a + b} 
+\end{align}
+with $a = \epsilon_2 k_{z,1}$, $b =     \epsilon_1 k_{z,2}$ and $\eta = \sqrt{\epsilon_2 / \epsilon_1}$. In the case of s-polarization, the $\epsilon_i$ are ignored / set to one. With this we get
+\begin{align}
+\mathbf{M}_{12} = & \frac{a+b}{2 b \eta} 
+\begin{pmatrix}
+1 & (b-a)/(a+b) \\  (b-a)/(a+b) & 1 \\
+\end{pmatrix}
+= 
+ \frac{1}{2 b \eta} 
+\begin{pmatrix}
+b+a & b-a \\  b-a & b+a \\
+\end{pmatrix} \\
+= &
+ \frac{1}{2  \eta} 
+\begin{pmatrix}
+1+\frac{a}{b} & 1- \frac{a}{b} \\  1- \frac{a}{b} & 1+\frac{a}{b} \\
+\end{pmatrix}
+= 
+ \frac{1}{2  \eta} 
+\begin{pmatrix}
+1+\kappa & 1- \kappa \\  1- \kappa & 1+\kappa \\
+\end{pmatrix} 
+\end{align}
+with 
+\begin{equation}
+\kappa = \frac{a}{b} = \eta^2 \,
+\frac{  k_{z,1} }{ k_{z,2}}
+\quad
+\text{and}
+\quad
+\eta^s = 1 \quad \text{or} \quad \eta^p = \sqrt{ \frac{\epsilon_2}{\epsilon_1} } \quad .
+\end{equation}
+
+
+%-------------------
+
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
+
+
+
+

@@ -1,0 +1,119 @@
+\renewcommand{\lastmod}{September 24, 2021}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+
+
+\chapter{Julia and Pluto}
+
+
+We use the programming language \emph{Julia}\sidenote{\url{https://julialang.org}} for graphical illustrations and numerical 'experiments' in this course. I am convinced that only when you can persuade a computer to do something, to display a model, to calculate a value, only then you have really understood it. Before that, you just haven't seen all the problems.  
+
+You can use Julia with different user interfaces. We use \emph{Pluto}.\sidenote{\url{https://github.com/fonsp/Pluto.jl}}
+
+\section{Julia}
+
+Julia is a programming language designed for numerics and scientific computing. It is a middle ground between Matlab, Python, and R. In my view, it takes the best of each of these worlds, making it especially suitable for beginners. We will discuss several example scripts together during the semester, and there will also be numerical practice problems.
+
+
+\subsection{An example}
+
+First, let's look at a simple example.
+
+
+\begin{jllisting}
+using Plots
+x = range(0, 2 * pi; length=100)
+plot(x, sin.(x); label="ein Sinus")
+\end{jllisting}
+
+For some things you need libraries which you can load with \jlinl{using}. When choosing libraries, first stick to the examples I show.
+
+Then we define a variable \jlinl{x} (simply by using it) as an equidistant 'number string' between 0 and $2 \pi$ with 100 values. Functions like \jlinl{range} always have required parameters defined by their position in the parameter list (here: start and end value), plus other optional ones. These follow after a semicolon in the form \texttt{<parameter>=<value>}.
+
+Finally, we draw the sine function over this range of values. Notice the dot in \jlinl{sin.(x)}. It means 'apply \jlinl{sin} to all elements of \jlinl{x}'. This is very convenient.
+
+
+\subsection{Sources of information}
+
+The current version of Julia is 1.6.2. Some things have changed with version 1.0. Ignore websites that are older than 2 years or that refer to a version before 1.0.
+
+\begin{description}
+
+\item[official documentation] on the website\sidenote{\url{https://docs.julialang.org/en/v1/}}. Or ask google with 'Julia' as keyword or with the library / function and appended extension '.jl' .
+
+\item[examples] Julia by example\sidenote{\url{https://juliabyexample.helpmanual.io/}}, Think julia\sidenote{\url{ https://benlauwens.github.io/ThinkJulia.jl/latest/book.html}}, Introduction to Computational Thinking\sidenote{\url{https://computationalthinking.mit.edu/Spring21/ }}
+
+\item[differences] comparison\sidenote{\url{https://docs.julialang.org/en/v1/manual/noteworthy-differences/
+}} with Matlab, Python, and other languages, and similarly as an overview table\sidenote{\url{https://cheatsheets.quantecon.org/}}
+
+\item[Cheat Sheets] general\sidenote{\url{https://juliadocs.github.io/Julia-Cheat-Sheet/
+}} and for plots\sidenote{\url{https://github.com/sswatson/cheatsheets/}} 
+
+\end{description}
+
+
+\section{User interfaces}
+
+
+There are several ways to write shorter or longer programs in Julia. Here is a selection
+
+\begin{description}
+\item[command line and editor] One can use Julia interactively at the command line (REPL, read-eval-print loop). In an external editor one could write repeating commands in script files.
+
+\item[IDE] This is more comfortable with an integrated environment, for example Juno\sidenote{\url{https://junolab.org/}}, or a Julia extension \sidenote{\url{https://www.julia-vscode.org/}}
+for Visual Studio Code. This is certainly the approach for larger projects.
+
+\item[Jupyter notebook] Jupyter\sidenote{\url{https://jupyter.org/}} is composed of Julia, Python and R. These three languages can be used in a notebook format. Program code is in cells, the output and also descriptive text and graphics in between. This is particularly suitable if calculations are to be accompanied by descriptions or equations, for example in lab protocols or exercises. 
+
+
+Mathematica has a similar cell concept. One drawback is that cells affect the state of the kernel in the order in which they are executed. However, the order need not be the same as in the file; in particular, deleting cells does not change the kernel. This can be very confusing, or you may have to restart the kernel often.
+
+\item[Pluto] One can also mix program code, text and graphics in Pluto\sidenote{\url{https://github.com/fonsp/Pluto.jl}}. The cell concept of Pluto is that of Excel, however, limited to one Excel column. The arrangement of equations in the cells does not matter. Everything is re-evaluated after each input. A logic in the background ensures that only absolutely necessary calculations are re-executed. From my point of view, this should be intuitive to use for beginners and should be quite sufficient for smaller projects. \emph{We use Pluto as the user interface in this course}.
+
+\end{description}
+
+
+
+\section{Installation}
+
+
+\begin{description}
+\item[Server of EP III] To simplify your first steps you can use the Jupyter \& Pluto server \sidenote{\url{http://jupyter.ep3.uni-bayreuth.de}} of EP III. For this you have to be inside the university or connected via VPN. You will receive access data during the first week of the semester. Log in to the server with these. You will get to a Juypter interface where you can manage files on the server. Click on the Pluto icon to start a Pluto interface in the web browser.
+
+Please be considerate with this server. Its resources are rather limited.
+
+\item[Local installation] Especially if you find the EP III server too slow you should install Julia and Pluto locally. A good guide is at MIT\sidenote{\url{https://computationalthinking.mit.edu/Spring21/installation/}}. Short version: install Julia from the website, then install once the Pluto package in Julia locally (\jlinl{import Pkg; Pkg.add("Pluto")}). To use it, call it from the Julia command line  via \jlinl{using Pluto; Pluto.run()}. This could go into the Julia startup file or could be passed via the (system) command line.
+
+
+
+\end{description}
+
+
+\section{Using Pluto}
+
+For a nice introduction to Pluto (and Julia), see the Pluto homepage\sidenote{\url{https://github.com/fonsp/Pluto.jl/wiki}},
+ at MIT 
+(here\sidenote{\url{https://computationalthinking.mit.edu/Spring21/basic_syntax/}}
+or actually the whole site)
+and at WIAS.\sidenote{\url{https://www.wias-berlin.de/people/fuhrmann/SciComp-WS2021/assets/nb01-first-contact-pluto.html}}
+
+\begin{itemize}
+\item Shift-Enter executes a cell
+
+\item The execution optimizer requires that each cell forms a closed block. So there must be only one command, or several need to be encapsulated by  \jlinl{begin} ... \jlinl{end}.
+
+\item Each cell has only one output, that of the last line. The output is above the cell itself.
+
+\item Pluto manages libraries automatically, just use \jlinl{using}. You do not need to download anything.
+
+\item Pluto automatically saves everything, but you can rename / move the file.
+
+
+
+\end{itemize}
+
+
+
+%-------------------
+
