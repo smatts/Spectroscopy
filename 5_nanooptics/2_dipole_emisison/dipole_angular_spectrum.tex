@@ -277,3 +277,29 @@ The term $-q_e$ corrects what would remain if all reflection coefficients $r_{ij
 
 It is interesting to look at the integrand in these equations. The interval $s = 0 \dots 1$ corresponds to plane waves that can propagate into the far-field, although some might under total internal reflection. The remaining make up the power that is delectable in the emission pattern discussed above.\sidenote{When embedded in air, this corresponds to $q=0 \dots 1$ ($q$, not $s$!).} The remaining part of $s = 1 \dots \infty$ corresponds to evanescent waves. Their exponential decay is contained in the phase factor of the reflection coefficients, as here $k_{2,z}$ become imaginary. However, in the near-field they play a role. Reflecting surfaces in the near-field of the dipole modify its emission pattern. The power associated with these values of $q$ is either dissipated in the environment, or travels as bound modes with $k_\parallel > k_2$, for example as surface plasmon.
 
+
+
+
+%\section{Lossy modes required}
+%
+%We found above bound modes of the multilayer system by searching for zeros the matrix element $D$ of the transmission matrix $\mathbf{M}$. In the example of a single interface (or a very thick slab), we found with eq. \ref{eq:q_interface} a relation between the dielectric functions $\epsilon_i$ and the reduced parallel component $q_\text{bound}$ of the wave vector. For this value of $q$, the matrix element $D$ vanishes. However, in eq.\ref{eq:S_from_M} we required that $D$ would be different from zero, and we used this equation to calculate the decay rates (eq. \ref{eq:decay_single} and \ref{eq:decay_double}).
+%How does this fit?
+%
+%
+%%
+%%When using the definition of the matrix  $\mathbf{M}$  (eq. \ref{eq:def_T_matrix})  and setting $D=0$ we get 
+%%\begin{align}
+%%U_2^+ = & A U_1^+  + B U_1^- \\ 
+%% U_2^- = &  C  U_1^+  
+%%\end{align}
+%%The in-going fields $U_1^+$ and $U_2^-$ are decoupled from the out-going fields $U_1^-$ and $U_2^+$. This is what we required for the bound mode. It should have (decaying) out-going fields on its own, without any in-coming field.
+%%
+%
+%
+%One way out is the complex dielectric function $\epsilon_i$. With this, also  $q_\text{bound}$ in eq. \ref{eq:q_interface} becomes complex. The zero of $D$ does thus not occur along the real axis, which is the axis along which we integrate the decay rates eq. \ref{eq:decay_single} and \ref{eq:decay_double}.
+%The problem only occurs when looking at purely dielectric systems, using purely real dielectric functions. But purely real dielectric functions violate anyway the Kramers-Kronig-relation and thus causality. These should be avoided.
+%
+%It is interesting to note in the complex 2D plane around  $q_\text{bound}$ the absolute value of the 
+%reflection coefficient $r_{21}^{(p)}$ approaches zero, which is reached  at the complex $q_\text{bound}$ of eq. \ref{eq:q_interface}. 
+%However, 
+% $r_{21}^{(p)}$  is not continuous when approaching the real axis. Along the real axis of $q$, $r_{21}^{(p)}$ shows a maximum very close to $\Re( q_\text{bound})$. This maximum is for a metal-dielectric interface much larger than one and leads to the peak in the decay rate.\sidenote{Some analytic equitations would be nice ...}
