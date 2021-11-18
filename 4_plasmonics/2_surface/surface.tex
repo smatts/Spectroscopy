@@ -32,7 +32,7 @@ The oscillation of the electrons is connected with an electromagnetic wave.  If 
 
 \begin{marginfigure}
 \includegraphics[width=50mm]{\currfiledir dispersion.png}
-\caption{Sketch of the plasmon and surface plasmon and both polariton disperisons. \label{fig:surface_dispersions}}
+\caption{Sketch of the plasmon and surface plasmon and both polariton dispersion. \label{fig:surface_dispersions}}
 \end{marginfigure}
 
 
@@ -85,7 +85,7 @@ Below we will derive transmission matrices $\mathbf{M}_i$ for every interface an
 \mathbf{M}_\text{total} = \mathbf{M}_n \cdot  \mathbf{M}_{n-1} \cdots\mathbf{M}_2 \cdot  \mathbf{M}_{1} \quad . 
 \end{equation}
 This is a very convenient feature of the transmission matrix.
-Note the we label the interactions from left to right with $1$ to $n$, but the matrices are multiplied from right to left, as mathematics has it origin in Arabic culture.
+Note that we label the interactions from left to right with $1$ to $n$, but the matrices are multiplied from right to left, as mathematics has it origin in Arabic culture.
 
 
 
@@ -108,7 +108,7 @@ U_1^+ \\ U_2^-
 U_1^+ \\ U_2^-
 \end{pmatrix} \quad . 
 \end{equation}
-The scattering matrix connects waves travelling towards the interface with those travelling away from the interface. The entries $t_{ij}$ and $r_{ij}$ are the transmission and reflection coefficients fro the amplitudes of the waves travelling from $i$ to $j$ (i.e. $12$ is travelling towards the right, $+z$ direction). However, for the scattering matrix $\mathbf{S}$, the full stack can not be calculated by multiplying together all partial matrices.
+The scattering matrix connects waves travelling towards the interface with those travelling away from the interface. The entries $t_{ij}$ and $r_{ij}$ are the transmission and reflection coefficients for the amplitudes of the waves travelling from $i$ to $j$ (i.e. $12$ is travelling towards the right, $+z$ direction). However, for the scattering matrix $\mathbf{S}$, the full stack can not be calculated by multiplying together all partial matrices.
 
 \begin{marginfigure}
 \includegraphics[width=50mm]{\currfiledir S-matrix.png}
@@ -156,7 +156,7 @@ r_{12} = - \frac{C }{D} \quad .
 
 \section{Electrical fields}
 
-We need to define the physical meaning of the amplitudes $U_i^\pm$ to be able to calculate the reflection ( $r_{ij}$) and transmission ($t_{ij}$) coefficients. We assume plane waves 
+We need to define the physical meaning of the amplitudes $U_i^\pm$ to be able to calculate the reflection ($r_{ij}$) and transmission ($t_{ij}$) coefficients. We assume plane waves 
 \begin{equation}
 \mathbf{E} \, e^{i (\mathbf{k}  \cdot \mathbf{r} - \omega t)}
 =
@@ -193,7 +193,7 @@ where we have split off the global term $ e^{i \, ( k_x x - \omega t)}$.
 
 \section{Propagation matrix}
 
-Before we come to interfaces, let us discuss the transmission matrix of an homogeneous material layer $j$ of thickness $d_j$ and (complex) refractive index $n_j$. Relevant is the $z$-component of the (complex) wave vector $k_{z,j}$. Note that we do \emph{not} use the sign of  $k_{z,j}$ to describe the direction of travel.
+Before we come to interfaces, let us discuss the transmission matrix of a homogeneous material layer $j$ of thickness $d_j$ and (complex) refractive index $n_j$. Relevant is the $z$-component of the (complex) wave vector $k_{z,j}$. Note that we do \emph{not} use the sign of  $k_{z,j}$ to describe the direction of travel.
 Independent of the propagation direction, each wave sees a reflection coefficient $r=0$ and a (complex) transmission coefficient $t$
 \begin{equation}
 t = t_{12} = t_{21} = e^{+ i \, k_{z,j} \, d_j } \quad . 
@@ -226,7 +226,7 @@ We could also write these coefficients in terms of angle of incidence $\theta$ w
 This would also hold in the case of evanescent waves ($k_x > n k_0$) when we allow complex angles $\theta$. We nowhere need that $\theta$ is a geometrical angle. We only need that $n \sin \theta$ is the same for all layers.
 
 
-With eq. \ref{eq:M_from_S} we get for both polarisation directions the transmission matrix
+With eq.~\ref{eq:M_from_S} we get for both polarization directions the transmission matrix
 \begin{equation}
 \mathbf{M}_{12} = \frac{1}{t_{21}} 
 \begin{pmatrix}
@@ -261,7 +261,7 @@ The factors $\eta$ in front of the transmission matrix $\mathbf{M}_{12} $ can be
 
 \section{Bound modes and surface plasmons}
 
-Now we have all tools at hand and can calculate the propertieis of surfaces plasmons in layered media. These are bound modes. We are thus interested in field distributions that decay into both surrounding half-spaces. Another example are  dielectric waveguide modes, when a material of higher index of refraction is embedded in a low-index environment.
+Now we have all tools at hand and can calculate the properties of surfaces plasmons in layered media. These are bound modes. We are thus interested in field distributions that decay into both surrounding half-spaces. Another example is dielectric waveguide modes, when a material of higher index of refraction is embedded in a low-index environment.
 
 We can find these modes by going back to our first equation \ref{eq:def_T_matrix} and requiring that both incoming field are zero, i.e. 
 \begin{equation}
@@ -287,7 +287,7 @@ B \, U_1^- \\ D \, U_1^-
 \end{equation}
 which means\sidenote{see also \cite{Yeh2005}, eq. 11.3-5, but note the different 'direction' of the matrix.} that we search for $D =0$. 
 
-Let us start with the most simple case, a surface plasmon at an interafce between a Drude metal halfspcae and a dierelc halfspace. The transmission matrix of the full 'stack' is then only one interface matrix
+Let us start with the most simple case, a surface plasmon at an interface between a Drude metal half-space and a dielectric half-space. The transmission matrix of the full 'stack' is then only one interface matrix
 \begin{equation}
 \mathbf{M}_\text{total} = \mathbf{M}_{12} =\frac{ 1}{2 \eta }
 \begin{pmatrix}
@@ -311,7 +311,7 @@ Combining the last two equations, we get the dispersion relation of the surface 
 \begin{equation}
 k_x = k_0 \, \sqrt{\frac{\epsilon_1 \epsilon_2}{\epsilon_1 + \epsilon_2}} \quad . \label{eq:surface_spp_dispersion}
 \end{equation}
-propagating in $x$-direction along the interface. The $z$ component of the wave vector in halfspace $j$ is
+propagating in $x$-direction along the interface. The $z$ component of the wave vector in half-space $j$ is
 \begin{equation}
 k_{z,j} = k_0 \, \sqrt{\frac{\epsilon_j^2}{\epsilon_1 + \epsilon_2}} \quad .
 \end{equation}
@@ -323,7 +323,7 @@ For propagating surface plasmons, we need that $k_x$ is real-valued, i.e., the p
 i.e., one dielectric function needs to be more negative than the other is positive.
 
 
-The interface between a Drude metal and a dielectric fulfils these requirements. We can assume a Drude model for the dielectric function of the metal in halfspace $j=2$
+The interface between a Drude metal and a dielectric fulfills these requirements. We can assume a Drude model for the dielectric function of the metal in half-space $j=2$
 \begin{equation}
 \epsilon_2(\omega) = 1 - \frac{\omega_P^2}{\omega^2} \quad .
 \end{equation}
