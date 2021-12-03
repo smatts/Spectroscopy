@@ -1,0 +1,119 @@
+\renewcommand{\lastmod}{December 3, 2021}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+\chapter{Plasmonic Nano-Rods}
+
+\section{Tasks}
+
+\begin{itemize}
+\item Model the angle-dependent extinction spectrum of an array of plasmonic particles, as measured by Simon Durst (Bayreuth) and shown below. Discuss the observed phenomena.
+
+\item Assume that the embedding medium contains a dye with a narrow Lorentzian absorption line. Model and discuss the dispersion relation.
+\end{itemize}
+
+
+
+\section{How this is  measured}
+
+
+
+\section{Waveguides}
+
+
+Let us start by investigating the optical modes of a thin wire. We assume cylindrical symmetry and coordinates $z$ and $\rho$. The wire has a radius $a$ and is made of a material (first dielectric, later metal) of dielectric function $\epsilon_{in}$. It is embedded in a dielectric matrix characterized by $\epsilon_{out}$. We solve Maxwell's equation with these boundary conditions.\sidenote{ Details see Saleh /Teich chapter fiber optics}
+
+The electric field is described inside and outside the wire by cylindrical Bessel $J$ and Hankel $H^{(1)}$ functions of the first kind, respectively. The lowest order mode is\footcite{Takahara}
+\begin{align*}
+  \mathbf{E}_{in} = & E_0 \left( J_0 (\kappa_1 r)\,  \mathbf{\hat{z}} + \frac{i k_z}{\kappa_1} J_1 (\kappa_1 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \\
+  \mathbf{E}_{out} =& E_0 \left( H_0^{(1)} (\kappa_2 r) \,  \mathbf{\hat{z}} - \frac{i k_z}{\kappa_2} H_1^{(1)} (\kappa_2 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)}
+\end{align*}
+where $k_z$ is the component of the wave bvector (length in vaccum $k_0 = 2 \pi / \lambda$) along the wire. The components  perpendicular to the wire are defined as
+\begin{equation}
+  \kappa_i = k_0 \sqrt{\epsilon_i - (k_z / k_0)^2}
+\end{equation}
+with $\epsilon_i = (\epsilon_{in}, \epsilon_{out})$.
+The boundary condition at $r=a$ leads to a condition for $k_z$ (see also H/N eq. 12.53)
+\begin{equation}
+  \frac{\epsilon_{in}}{\kappa_1 a} \frac{J_1(\kappa_1 a)}{J_0(\kappa_1 a)}
+ -  \frac{\epsilon_{out}}{\kappa_2 a} \frac{H_1^{(1)}(\kappa_2 a)}{H_0^{(1)}(\kappa_2 a)}
+ = 0
+\end{equation}
+
+Guiding of waves requires that the electric field is localized near the wire, i.e., the radial component of the wave vector outside the wire $\kappa_2$ has to be imaginary, or $k_z / k_0 > \sqrt{\epsilon_{out}}$. At the same time, the wave should propagate inside the wire, i.e., $k_z$ should be (almost\sidenote{When the dielectric functions are complex-valued, also $k_z$ becomes complex-valued}) real, or $\sqrt{\epsilon_{in}} > k_z / k_0$. 
+
+For dielectric waveguides, the core has to have a higher index of refraction than the embedding medium. When the radius of the wire is decrease, the decay of the field outside the wire becomes slower and slower.  By Fourier transformation from $\kappa$ to $\rho$ one finds a characteristic lower limit for radius $R$ of the field distribution, independent of the wire diameter,
+\begin{equation}
+  R > \frac{\lambda}{2 \sqrt{\epsilon_{in}}}
+\end{equation}
+Dielectric waveguides are this limited in their size of the mode field to approximately the wavelength in the core medium.
+
+Plasmonic waveguides in contrast can become very small. When the dielectric function $\epsilon_{in}$ is negative, the mode field remains bound close to the wire even for small a wire radius. The downside is that losses increase. The wave vector in propagation direction becomes complex. The real part describes the effective index of refraction of the mode, the imaginary part the losses due to absorption in metal. These losses increase drastically when the wire becomes smaller, as shown in Fig XXX
+
+\begin{marginfigure}
+  \caption{Al wire alpha and beta similar to Fig. 12.20 in H/N}
+\end{marginfigure}
+
+
+The large component of the wave vector in propagation direction $k_z$ in a plasmonic waveguide corresponds to a short effective wavelength $\lambda_{in} = 2 \pi / k_z$. The thinner the waveguide, the shorter the effective wavelength. Novotny shows that  a linear relation to the vacuum wavelength exists XXX cite
+\begin{equation}
+  \lambda_{in} = n_1 + n_2 \frac{\lambda}{\lambda_{p}}
+\end{equation}
+where $\lambda_p = 2 \pi c / \omega_p$ is the plasma wavelength of the Drude metal and the $n_i$ are constants depending on geometry and refractive indices.
+\sidenote{see eq. 14 in XXX}
+
+
+\section{Side note: Leakage radiation}
+
+The component of the wave vector in propagation direction $k_z$ is larger than the maximum possible length of a wave vector in the embedding medium $k_0 \sqrt{\epsilon_{out}}$. This means that momentum conservation does not allow photons to leave the waveguide. Plane waves with such a value of $k_z$ are evanescent (have an imaginary $k_\perp$) in the embedding medium. In this way, a mode can propagate without loses to the environment. However, this also hinders observation of such a propagation. One only could detect the emission at the end of the waveguide or at defects.
+
+One way around is leakage radiation. When the waveguide is placed on or near a medium with a higher index of refraction $k_z < k_0 \sqrt{\epsilon_{substrate}}$, then this substrate supports suitable free-space modes. The distance between waveguide and substrate defines the coupling (as seen by the observer) or the losses (from the point of view of the waveguide). In such an experiment one can see bright emission along the whole waveguide.
+
+
+%\section{Phase change upon total internal reflection}
+
+
+\section{Fabry-Perot modes in nano-rods}
+
+We now cut out a piece of  a thin plasmonic waveguide and call this object a nano-rod. The propagation of the plasmon mode along the waveguide is the same as in the preceding section, but now the wave is reflected back at the ends of the waveguide. The free space around the nano-rod does not support modes of sufficient high wave vector, so that the light can not just propagate out. The two ends thus form two mirrors of a Fabry-Perot cavity and the short piece of waveguide in between is similar to the medium in the cavity. We expect to find periodic resonances when varying the length of the rod. This is indeed what is observed. However, the apparent length of the rod is larger by some offset length $L_o$
+\begin{equation}
+  L_{res} = n \, \frac{\lambda_{in}}{2} + L_{o}
+\end{equation}
+The exact value of the offset  $L_o$ depends on details of the waveguide end, for example how this is rounded or cut flat, and also from where to where on measures the rod length $L_{res}$.
+
+The physical origin of this apparent additional length  $L_o$ is that a propagating plasmon is a quasi particle combined of free electrons and an electromagnetic field. The electrons have to stay inside the metal to within less than a lattice constant. The optical field however extends all around the nano-rod and thus also extends over the ends of the rod. This gives an additional length.
+
+In some publications this additional length $L_o$ is called a reflection phase $\Delta \phi$, as one could also describe the process in terms of phases as
+\begin{equation}
+  \frac{2 L_{res}}{\lambda_{in}} \, 2 \pi = n \, 2 \pi + 2 \Delta \phi
+\end{equation}
+This is in analogy to the phase acquired by an optical beam undergoing total internal reflection. In this case, $k_{z,1}$ is real-valued, but $k_{z,2}$ is complex, as it describes an evanescent wave. The reflection coefficient 
+\begin{equation}
+  r_{12}^s =  \frac{k_{z,1} - k_{z,2}}{k_{z,1} + k_{z,2}}  
+\end{equation}
+becomes then also complex, so that the field acquires a phase shift 
+\begin{equation}
+  \Delta \phi = \arg (r_{12}^s)
+\end{equation}
+
+
+
+\section{Field distribution inside and outside the nano-rod}
+
+\section{Dipole model of the modes in a nano-rod}
+
+\section{Far-field excitation of modes}
+
+\section{Near-field excitation of modes}
+
+\section{Nonlinear effects with  modes}
+
+%-------------------
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
+
+%\printbibliography
+
+
+
