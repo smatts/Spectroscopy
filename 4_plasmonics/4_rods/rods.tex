@@ -28,7 +28,7 @@ The electric field is described inside and outside the wire by cylindrical Besse
   \mathbf{E}_{in} = & E_0 \left( J_0 (\kappa_1 r)\,  \mathbf{\hat{z}} + \frac{i k_z}{\kappa_1} J_1 (\kappa_1 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \\
   \mathbf{E}_{out} =& E_0 \left( H_0^{(1)} (\kappa_2 r) \,  \mathbf{\hat{z}} - \frac{i k_z}{\kappa_2} H_1^{(1)} (\kappa_2 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)}
 \end{align*}
-where $k_z$ is the component of the wave bvector (length in vaccum $k_0 = 2 \pi / \lambda$) along the wire. The components  perpendicular to the wire are defined as
+where $k_z$ is the component of the wave vector (length in vacuum $k_0 = 2 \pi / \lambda$) along the wire. The components  perpendicular to the wire are defined as
 \begin{equation}
   \kappa_i = k_0 \sqrt{\epsilon_i - (k_z / k_0)^2}
 \end{equation}
@@ -96,13 +96,136 @@ becomes then also complex, so that the field acquires a phase shift
   \Delta \phi = \arg (r_{12}^s)
 \end{equation}
 
+\section{Excitation of resonances in nano-rods}
+
+We shine a plane wave on a nano-rod, i.e., a short piece of a thing plasmonic wire, and want to calculate the response of the particle in terms of scattered field and absorption. We follow here the analytical model by Jens Dorfmüller et al. XXX cite,  model the effect of the wire itself and assume an ad-hoc parameter for the effect of the wire ends. At the wire surface, the boundary condition for electric fields relates the $z$ components if incident, scattered and internal fields
+\begin{equation}
+  E_{z}^{inc}(r = a) +  E_{z}^{scat}(r = a) =  E_{z}^{inside}(r = a) \quad .
+\end{equation}
+The  plane wave is incident with an angle $\theta$ to the symmetry axis of the wire
+\begin{equation}
+  E_{z}^{inc}(r = a) = E_0 \, \sin ( \theta) \, e^{i \, k_\parallel z} \quad \text{with} \quad \cos ( \theta) = \frac{k_\parallel}{k_0}
+\end{equation}
+where we omitted the time dependence $e^{-i \omega t}$ and have out the phase factor of $e^{i k_r r}$ into $E_0$. $k_\parallel$ is the component of the plane wave's wave vector along the wire direction.
 
 
-\section{Field distribution inside and outside the nano-rod}
+The scattered field is described by the current inside the wire. An oscillating current is source of radiation, as for example in an antenna. We assume that the current is spatially homogeneous and running only along $z$ direction (not radially). One finds
+\begin{equation}
+  E_{z}^{scat}(r = a) =  \frac{i \, \tilde{Z}}{4 \pi  \epsilon_0 \omega} \,   
+  \left( \frac{\partial^2}{\partial z^2} + k^2 \right)  I_z(z)
+\end{equation}
+where $\tilde{Z}$ is the (antenna) impedance of the wire, which is unknown at this point.
+
+Current and field inside the wire are connected by the conductivity $\sigma$ or the imaginary part of the dielectric function of the wire $\epsilon_{in}$
+\begin{equation}
+  I_z(z) = \sigma E_{z}^{inside}(z) = 
+  \epsilon_0 \omega  \, \Im(\epsilon_{in}) \,  E_{z}^{inside}(z)
+\end{equation}
+
+Putting everything in eq XXX we get a differential equation for $I_z(z)$
+\begin{equation}
+  E_0 \, \sin ( \theta) \, e^{i \, k_z z} + \frac{i \, \tilde{Z}}{4 \pi  \epsilon_0 \omega} \,   
+  \left( \frac{\partial^2}{\partial z^2} + k^2 \right)  I_z(z)
+  = \frac{1}{ \epsilon_0 \omega  \, \Im(\epsilon_{in})} I_z(z)
+\end{equation}
+We make the ansatz that the current either flows with the wave vector $k_\parallel$ of the external field projected on the wire direction, or with the wave vector $k_p$ of the plasmon mode calculated by eq XXX above (where it was called $k_z$):
+\begin{equation}
+  I_z(z) = I_\parallel \, e^{i k_\parallel z} + I_{+p} \, e^{i k_p z} + I_{-p} \, e^{-i k_p z}
+\end{equation}
+Additionally we know that the current has t vanish at the end of the wire, as the electrons can not flow out, i.e.,
+\begin{equation}
+  I_z \left(z = \pm  \tilde{L} / 2  \right) = 0 
+\end{equation}
+where $\tilde{L}$ is the effective length of the nano-rod, i.e., longer than the geometrical size to include the phase effect of the reflection at the wire end. 
+All together one then finds  XXX cite dirfmüller
+\begin{align}
+  \tilde{Z} = & \, + i \, \frac{4 \pi }{\Im(\epsilon_{in})} \,
+  \frac{1 }{  k_p^2 -k^2} \\
+  I_\parallel = & \, -i \,  
+  \frac{\omega \epsilon_0 \,\tilde{Z}}{4 \pi} \, 
+  \frac{1 }{k_p^2 - k_\parallel^2 } \, E_0  \, \sin \theta \\
+%
+ % I_\parallel = & \,  \omega \epsilon_0 \Im(\epsilon_{in}) \, \frac{k_p^2 - k^2  }{k_p^2 - k_z^2 } \, E_0  \, \sin \theta \\
+  I_{\pm p} = & \, - I_\parallel \, \frac{\sin ( [ k_p \pm k_\parallel] \,\tilde{L}/2 )}{\sin( k_p \tilde{L})}
+\end{align}
+The antenna impedance $ \tilde{Z}$ of the wire (eq. XXX) has a resonance that goes with the momentum mismatch between free-space modes and plasmonic wire modes. For the excitation of the current in the wire (Eq. xxx) only the momentum mismatch between the plasmon mode and the wave vector projected on the wire axis $k_\parallel$ matters. As function of nano-rod length we find back the Fabry-Perot resonances at 
+\begin{equation}
+  k_p \, \tilde{L} = n \, \pi 
+\end{equation}
+where the index $n$ enumerates the resonances.
 
 \section{Dipole model of the modes in a nano-rod}
 
-\section{Far-field excitation of modes}
+Before we continue with the work of Durfmüller, let us have a look at these resonances. 
+We simplify the discussion by assuming that the incident plane wave propagates 
+perpendicular to the wire axis, i.e. $\theta = 90^\circ$ and $k_\parallel = 0$. The 
+amplitudes of the plasmon currents $I_{\pm p}$ become identical and come into resonance 
+for 
+\begin{equation}
+  k_p \tilde{L} = n \pi \quad \text{for odd } n
+\end{equation}
+By perpendicular incidence we can only excite odd resonances of the rod! In this case, the current distribution in the wire also simplify, as the term with $I_\parallel$ is spatially constant, as $k_\parallel = 0$. We thus have
+\begin{equation}
+  I_z(z) = I_\parallel + 2 I_{\pm p} \cos ( k_p \, z) \approx  2 I_{\pm p} \cos ( k_p \, z)
+\end{equation}
+where the approximation certainly hold on resonance. We thus have current maxima at positions $z$ along the nano-rod where $|\cos ( k_p \, z)|$ is maximal, or at
+\begin{equation}
+  z_\nu = \pm \,  \nu \, \frac{\tilde{L}}{n} \quad \text{where} \quad \nu = 0, 1, \dots , \frac{n -1}{2}
+\end{equation}
+As the current oscillates with $e^{i \omega t}$, we can replace $I_z(z)$ by $n$ dipoles placed at the positions $z_\nu$, when neighboring dipoles oscillate 180$^\circ$ out of phase. 
+
+This dipole model then also explains why we can not excite even Fabry-Perot orders. Here one half of the dipoles would require a field pointing into $+z$ direction, the other one a field pointing in $-z$ direction, which can not be fulfilled simultaneously. For odd-order modes, one of the two directions always has one dipole more that the other direction, so that some net excitation efficiency remains. But one also sees that the excitation efficiency drops with increasing order, as most dipoles cancel with each other. We will find this back in the data by Dorfmüller et al.
+
+
+\section{Field distributions}
+
+Now that we know the current in the center of the nano-rod, we can go back to fields. We get the $z$-compinent of the field in the center of the wire from Eq. XXX. At this position the radial component has to vanish due to symmetry. As we have seen in the beginning of this chapter, the field is described by Bessel functions inside the wire. For small values of $\kappa_1 r$ we can approximate
+\begin{equation}
+  J_0(z) \approx 1 - \frac{z^2}{4}  + \cdots \quad \text{and} \quad  J_1(z) \approx \frac{z}{2} - \frac{z^3}{4} + \cdots
+\end{equation}
+so that the $z$ component is roughly constant inside the wire and the radial component increases linearly with $r$. Both components are related by $\mathbf{\nabla} \cdot \mathbf{E} = 0$. Just inside the surface of the wire ($r = a$) this leads to 
+\begin{equation}
+  E_r(r = a) \approx - \frac{a}{2} \frac{\partial}{\partial z} E_z
+\end{equation}
+ Together with eq. XXX we thus now have the full vectorial field inside the nano-rod. The partial derivate is at the end applied to eq. XXX and just produces pre-factors of $i k_\parallel$ and $\pm i k_p$.
+
+The fields just outside the nano-rod are obtained from the continuity conditions
+\begin{equation}
+  E_\parallel^{in}  =  E_\parallel^{out} \quad \text{and} \quad 
+  \epsilon_{in} E_\perp^{in}  =  \epsilon_{out}  E_\perp^{out}
+\end{equation}
+Dorfmüller et al. (XXX) measure the $r$ component of the electric field a few nanometers outside the nano-rod by near-field microscopy. The field above the wire is well described by the field just outside the wire. In the experiment, one also finds field amplitude above and outside  the wire ends. This is not included here. It would need near-field propagation of the fields on the wire surface, which is beyond the scope of this chapter.
+
+To compare more systematically the model with the experiment, Jens Dorfmüller et al. vary the rod length and measure near-fields. They compare then the maximum near-field amplitude under a certain illumination angle with the model. To this end, the exact calculation of the spatial dependence of the field can be skipped. If the wire is just long enough, at some point all three contribution in Eq. will add up, so that the maximum field is approximately
+\begin{equation}
+  | E_r |_{max} \approx | k_\parallel \, I_\parallel | + | k_{+p} \, I_{+p} | +  | k_{-p} \, I_{-p} | 
+\end{equation}
+where the $k_i$ are a consequence of the partial derivative in eq XX. This simplified model describes the dependence of the Farbry-Perot resonances on the effective rod-length $\tilde{L}$.
+
+
+
+
+
+\section{Far-field emission pattern}
+
+Far-field emission pattern according to Dorfmüller, thesis, appendix, eq. B.16
+\begin{equation}
+  \frac{dP}{d\Omega} = \frac{I_0^2}{8 \pi^2 \, c \epsilon_0} \, 
+  \frac{k^2}{k_p^2} \sin^2 \theta \,
+     \frac{f^2 \left( n \, \pi  k_\parallel  / (2 k_p)  \right)} 
+     {\left( 1 - k_\parallel^2  / k_p^2 \right)^2
+     } 
+\end{equation}
+where $k_\parallel = k \, \cos \theta$ and
+\begin{equation*}
+  f(x) = \left\lbrace \begin{matrix}
+     \sin(x) & \quad \text{for } n \text{ even} \\ 
+    \cos(x)  &\quad \text{for } n \text{ odd} \\ 
+  \end{matrix} \right.
+\end{equation*}
+with the order $n$ of the Fabry-Perot resonance.
+
+
 
 \section{Near-field excitation of modes}
 
