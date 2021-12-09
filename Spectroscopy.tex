@@ -155,6 +155,28 @@
 \end{enumerate} 
 }
 
+\newcommand{\pluto}[1]{%
+%
+\edef\cfd{\currfiledir}%
+\StrGobbleRight{\cfd}{1}[\mystring]%
+%
+\sidenote{%
+\begin{tikzpicture}
+[baseline={([yshift=-2pt]current bounding box.center)}]
+\definecolor{redline}{RGB}{201,61,57}
+\definecolor{redfill}{RGB}{214,102,97}
+\definecolor{blueline}{RGB}{148,91,176}
+\definecolor{bluefill}{RGB}{170,125,192}
+\definecolor{greenline}{RGB}{59,151,46}
+\definecolor{greenfill}{RGB}{107,171,91}
+\path[draw=redline,fill=redfill,line width=0.8pt] (0,-5.4pt) circle (4.4pt);
+\path[draw=blueline,fill=bluefill,line width=0.8pt] (0,0) circle (4.4pt);
+\path[draw=greenline,fill=greenfill,line width=0.8pt] (0,5.4pt) circle (4.4pt);
+\end{tikzpicture} \ \ 
+\href{https://raw.githubusercontent.com/MarkusLippitz/Spectroscopy/to-be-published/\mystring/pluto/#1}{download}
+\ \ 
+\href{https://binder.plutojl.org/v0.16.4/open?url=https\%253A\%252F\%252Fraw.githubusercontent.com\%252FMarkusLippitz\%252FSpectroscopy\%252Fto-be-published\%252F\mystring\%252Fpluto\%252F#1}{run on binder}
+}}  
 
 %\includeonly{1_fundamentals/1_absorption/absorption}
 %\includeonly{1_fundamentals/2_fluorescence/fluorescence}

@@ -1,57 +1,177 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
 
-# ╔═╡ dc4ef090-b059-44da-9bb4-ade63fe71572
-using SpecialFunctions, Plots
+# This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
+macro bind(def, element)
+    quote
+        local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
+        local el = $(esc(element))
+        global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
+        el
+    end
+end
 
-# ╔═╡ a58f58ee-1b24-4b83-a4a4-9249db5b780a
-using Optim
+# ╔═╡ dc4ef090-b059-44da-9bb4-ade63fe71572
+using SpecialFunctions, Plots, Optim, RefractiveIndex, PlutoUI
+
+# ╔═╡ e8266ba3-08ee-48aa-8fe1-15f0eb7bcb93
+md"""
+# Plasmonic nanowires and nanorods
+"""
+
+# ╔═╡ 11c9709e-63ef-46bf-80db-58e58f79902b
+md"""
+Define a wavelength and some materials
+"""
+
+# ╔═╡ f3217211-d096-42ff-a6f4-f4ad1e5ef4e9
+begin
+	λ = 800 # nm
+	material = RefractiveMaterial("main","Au","Johnson")
+	eps_material  = (material.dispersion.n(λ / 1000) 
+	         - 1im * material.dispersion.k(λ / 1000)).^2
+
+	#eps_material = (1.5 - 0.0im) .^2
+	eps_out = 1
+end;
+
+# ╔═╡ 7084b511-7533-4f3f-8c3c-2fa1aceaffc9
+md"""
+Find a (complex) value of $q = k_z / k_0$ that fulfills the mode condition. First calculate the value of the equation that should be zero.
+"""
 
 # ╔═╡ 0937c391-1af6-4880-82f1-9df7bcf05e70
-function mode(x, λ,  ϵ_in, ϵ_out, a)
+function mode_condition(x, λ,  ϵ_in, ϵ_out, a)
 	k0 = 2π / λ
-	kz = complex( (x[1] + 1im * x[2]) * k0)
+	kz = complex(x[1] + 1im * x[2]) * k0
 	
 	κ_in = k0 * sqrt(ϵ_in - (kz/ k0)^2 )
 	κ_out = k0 * sqrt(ϵ_out - (kz/ k0)^2 )
-	
+
+	X = κ_in * a
+	Y = κ_out * a
+
+	# catch arguments out-of-range at Bessel functions
 	val = NaN
-	n = 0
-	
 	try
-		lhs= ϵ_in * besselj(n+1, κ_in * a) / ( κ_in * a *  besselj(n,  κ_in * a))	
-		rhs= ϵ_out * hankelh1(n+1, κ_out * a) / ( κ_out * a *  hankelh1(n, κ_out * a))
+		lhs= ϵ_in * besselj(1, X) / ( X *  besselj(0,  X))	
+		rhs= ϵ_out * hankelh1(1, Y) / ( Y *  hankelh1(0, Y))
 		val = abs(lhs - rhs)
 	catch
 	end
-	
+
 	return val
 end;
 
-# ╔═╡ af36acc8-1e42-4fce-98bf-1e3d52665d4d
+# ╔═╡ b77c9309-a94c-4478-8037-a7fbba9c4824
+md"""
+Calculate the mode condition equation to see number of zeros = number of modes (in case of dielectric waveguides)
+"""
+
+# ╔═╡ 13c31430-87c9-4886-ac11-a52070933e33
+
+
+# ╔═╡ 8512a6a6-8289-4297-b023-b282342027c3
+md"""
+radius $(@bind radius Slider(1:1500; default=800, show_value=true))
+"""
+
+# ╔═╡ 8bb820cc-6319-4421-ba29-b6081ec98e18
+begin
+	qs = range(1, 1.5; length=100)
+	mc = [mode_condition( [q, -0.001], λ,  eps_material, eps_out, radius) for q in qs]
+	plot(qs, mc, yaxis=:log, xlabel="kz / k0", ylabel="mode condition ?= 0",legend=false)
+end
+
+# ╔═╡ 2fe5b3f4-3758-467a-b044-a022ae3bc454
+md"""
+Automatically find $k_z$ by minimizing the equation
+"""
+
+# ╔═╡ ee69bf18-c2af-4dc5-b848-23a0d323db55
 function beta(λ,  ϵ_in, ϵ_out, a)
 
-	x0 = [1.1, 0.01]
+	qs = range(1, 1.5; length=100)
+	mc = [mode_condition( [q, -0.001], λ,  ϵ_in, ϵ_out, a) for q in qs]
+
+	qstart = qs[argmin(mc[2:end-1])] # clip NaN at the ends
+	x0 = [qstart, -0.001]  # starting point
 	
-	res = optimize(x -> mode(x, λ, ϵ_in, ϵ_out, a), x0)
+	res = optimize(x -> mode_condition(x, λ, ϵ_in, ϵ_out, a), x0)
 	val = res.minimizer
+
+	#if val[1] > real(sqrt(ϵ_in)) return NaN end
+	if val[1] < real(sqrt(ϵ_out)) return NaN end
 	
 	return val[1] + 1im * val[2]
 end;
 
-# ╔═╡ f3217211-d096-42ff-a6f4-f4ad1e5ef4e9
-rs = range(10,300; length=500);
-
-# ╔═╡ 79b082ff-6c4d-4c74-aac6-6c894e022fc6
-eps_alu =  -34.314 - 9.0816im
-
 # ╔═╡ 0a44cace-5b27-4cec-b814-ef3dd09af141
 begin
-	plot(rs, real(beta.(488, eps_alu , 1 , rs )), label="beta/k0")
-	plot!(rs, -10 .* imag(beta.(488, eps_alu , 1 , rs )), label="-alpha/k0")
+	rs = range(10,100; length=500);
+	bb = [beta(λ, eps_material , 1 , r ) for r in rs]
+	plot( rs, real(bb), label="beta/k0")
+	plot!(rs, -10 .* imag(bb), label="-alpha/k0", xlabel="radius")
+end
+
+# ╔═╡ 1bfa3ed3-366e-4f3c-ba15-a73cc229943a
+md"""
+### Fields
+"""
+
+# ╔═╡ f205e748-955f-46aa-a569-7ec0d61e0597
+md"""
+```math
+\begin{align*}
+  \mathbf{E}_{in} = & E_0 \left( J_0 (\kappa_1 r)\,  \mathbf{\hat{z}} + \frac{i k_z}{\kappa_1} J_1 (\kappa_1 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \\
+  \mathbf{E}_{out} =& E_0 \left( H_0^{(1)} (\kappa_2 r) \,  \mathbf{\hat{z}} - \frac{i k_z}{\kappa_2} H_1^{(1)} (\kappa_2 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)}
+\end{align*}
+```
+"""
+
+# ╔═╡ 3c8afd41-faa9-4cf3-8998-123a16f053ff
+function field(z, r, q, λ,  ϵ_in, ϵ_out, a)
+	k0 = 2π / λ
+	kz = q * k0
+	
+	κ_in = k0 * sqrt(ϵ_in - (kz/ k0)^2 )
+	κ_out = k0 * sqrt(ϵ_out - (kz/ k0)^2 )
+
+	r = abs(r)
+	if (r < a)
+		# inside
+		Ez =  besselj(0, κ_in * r)
+		Er =  1im .* kz ./ κ_in *  besselj(1, κ_in * r)
+	else
+		# outside
+		Ez = hankelh1(0, κ_out * r)
+		Er = -1im .* kz ./ κ_out *  hankelh1(1, κ_out * r)
+	end
+
+	res = [Ez Er] .* exp(1im .* kz .* z)
+	return real.(res)
+end;	
+
+# ╔═╡ 12955cba-a9b7-4791-8e97-d4e77b98225a
+md"""
+Calculate and plot intensity as function of radial distance
+"""
+
+# ╔═╡ 3f379a49-c1ab-4106-94e9-f7bbce3be039
+md"""
+another radius $(@bind radius2 Slider(1:500; default=50, show_value=true))
+"""
+
+# ╔═╡ 4201cf7f-8d9f-4c4d-bf5a-72bfda1f2db4
+let
+	rs = range(0,1500; length=500);
+	q = beta.(λ, eps_material , 1 , radius2 )
+	cut = [sum(field(0, r, q, λ, eps_material , 1 , radius2) .^ 2) for r in rs]
+	plot(rs, cut, yaxis=:log)
+	plot!([radius2, radius2], [minimum(cut), maximum(cut)])
 end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -59,17 +179,27 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+RefractiveIndex = "97a43521-7681-4ec2-835f-5b8ab7e7617e"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 
 [compat]
 Optim = "~1.5.0"
 Plots = "~1.25.0"
+PlutoUI = "~0.7.21"
+RefractiveIndex = "~0.1.3"
 SpecialFunctions = "~1.8.1"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
+
+[[AbstractPlutoDingetjes]]
+deps = ["Pkg"]
+git-tree-sha1 = "abb72771fd8895a7ebd83d5632dc4b989b022b5b"
+uuid = "6e696c72-6542-2067-7265-42206c756150"
+version = "1.1.2"
 
 [[Adapt]]
 deps = ["LinearAlgebra"]
@@ -88,6 +218,12 @@ version = "3.2.1"
 
 [[Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+
+[[AxisAlgorithms]]
+deps = ["LinearAlgebra", "Random", "SparseArrays", "WoodburyMatrices"]
+git-tree-sha1 = "66771c8d21c8ff5e3a93379480a2307ac36863f7"
+uuid = "13072b0f-2c55-5437-9ae7-d433b7a33950"
+version = "1.0.1"
 
 [[Base64]]
 uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -149,6 +285,12 @@ version = "3.40.0"
 [[CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
+
+[[ConstructionBase]]
+deps = ["LinearAlgebra"]
+git-tree-sha1 = "f74e9d5388b8620b4cee35d4c5a618dd4dc547f4"
+uuid = "187b0558-2788-49d3-abe0-74a17ed4e7c9"
+version = "1.3.0"
 
 [[Contour]]
 deps = ["StaticArrays"]
@@ -337,6 +479,23 @@ git-tree-sha1 = "129acf094d168394e80ee1dc4bc06ec835e510a3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
 version = "2.8.1+1"
 
+[[Hyperscript]]
+deps = ["Test"]
+git-tree-sha1 = "8d511d5b81240fc8e6802386302675bdf47737b9"
+uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
+version = "0.0.4"
+
+[[HypertextLiteral]]
+git-tree-sha1 = "2b078b5a615c6c0396c77810d92ee8c6f470d238"
+uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+version = "0.9.3"
+
+[[IOCapture]]
+deps = ["Logging", "Random"]
+git-tree-sha1 = "f7be53659ab06ddc986428d3a9dcc95f6fa6705a"
+uuid = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
+version = "0.2.2"
+
 [[IfElse]]
 git-tree-sha1 = "debdd00ffef04665ccbb3e150747a77560e8fad1"
 uuid = "615f187c-cbe4-4ef1-ba3b-2fcf58d6d173"
@@ -352,6 +511,12 @@ version = "0.5.0"
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
+[[Interpolations]]
+deps = ["AxisAlgorithms", "ChainRulesCore", "LinearAlgebra", "OffsetArrays", "Random", "Ratios", "Requires", "SharedArrays", "SparseArrays", "StaticArrays", "WoodburyMatrices"]
+git-tree-sha1 = "61aa005707ea2cebf47c8d780da8dc9bc4e0c512"
+uuid = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
+version = "0.13.4"
+
 [[InverseFunctions]]
 deps = ["Test"]
 git-tree-sha1 = "a7254c0acd8e62f1ac75ad24d5db43f5f19f3c65"
@@ -364,9 +529,9 @@ uuid = "92d709cd-6900-40b7-9082-c6be49f344b6"
 version = "0.1.1"
 
 [[IterTools]]
-git-tree-sha1 = "05110a2ab1fc5f932622ffea2a003221f4782c18"
+git-tree-sha1 = "fa6287a4469f5e048d763df38279ee729fbd44e5"
 uuid = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
-version = "1.3.0"
+version = "1.4.0"
 
 [[IteratorInterfaceExtensions]]
 git-tree-sha1 = "a3f24677c21f5bbe9d2a714f95dcd58337fb2856"
@@ -525,6 +690,12 @@ git-tree-sha1 = "e498ddeee6f9fdb4551ce855a46f54dbd900245f"
 uuid = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
 version = "0.3.1"
 
+[[Memoize]]
+deps = ["MacroTools"]
+git-tree-sha1 = "2b1dfcba103de714d31c033b5dacc2e4a12c7caa"
+uuid = "c03570c3-d221-55d1-a50c-7939bbd78826"
+version = "0.4.4"
+
 [[Missings]]
 deps = ["DataAPI"]
 git-tree-sha1 = "bf210ce90b6c9eed32d25dbcae1ebc565df2687f"
@@ -550,6 +721,12 @@ version = "0.3.5"
 
 [[NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
+
+[[OffsetArrays]]
+deps = ["Adapt"]
+git-tree-sha1 = "043017e0bdeff61cfbb7afeb558ab29536bbb5ed"
+uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+version = "1.10.8"
 
 [[Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -636,6 +813,12 @@ git-tree-sha1 = "8789439a899b77f4fbb4d7298500a6a5781205bc"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 version = "1.25.0"
 
+[[PlutoUI]]
+deps = ["AbstractPlutoDingetjes", "Base64", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
+git-tree-sha1 = "b68904528fd538f1cb6a3fbc44d2abdc498f9e8e"
+uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+version = "0.7.21"
+
 [[PositiveFactorizations]]
 deps = ["LinearAlgebra"]
 git-tree-sha1 = "17275485f373e6673f7e7f97051f703ed5b15b20"
@@ -666,6 +849,12 @@ uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
+[[Ratios]]
+deps = ["Requires"]
+git-tree-sha1 = "01d341f502250e81f6fec0afe662aa861392a3aa"
+uuid = "c84ed2f1-dad5-54f0-aa8e-dbefe2724439"
+version = "0.4.2"
+
 [[RecipesBase]]
 git-tree-sha1 = "6bf3f380ff52ce0832ddd3a2a7b9538ed1bcca7d"
 uuid = "3cdcf5f2-1ef4-517c-9805-6587b60abb01"
@@ -681,6 +870,12 @@ version = "0.4.1"
 git-tree-sha1 = "45e428421666073eab6f2da5c9d310d99bb12f9b"
 uuid = "189a3867-3050-52da-a836-e630ba90ab69"
 version = "1.2.2"
+
+[[RefractiveIndex]]
+deps = ["DelimitedFiles", "HTTP", "Interpolations", "Memoize", "Pkg", "Unitful", "YAML"]
+git-tree-sha1 = "95ea2959d88fa1f7de9995be04c520f2ec83b38b"
+uuid = "97a43521-7681-4ec2-835f-5b8ab7e7617e"
+version = "0.1.3"
 
 [[Requires]]
 deps = ["UUIDs"]
@@ -756,6 +951,12 @@ git-tree-sha1 = "2bb0cb32026a66037360606510fca5984ccc6b75"
 uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 version = "0.33.13"
 
+[[StringEncodings]]
+deps = ["Libiconv_jll"]
+git-tree-sha1 = "50ccd5ddb00d19392577902f0079267a72c5ab04"
+uuid = "69024149-9ee7-55f6-a4c4-859efe599b68"
+version = "0.3.5"
+
 [[StructArrays]]
 deps = ["Adapt", "DataAPI", "StaticArrays", "Tables"]
 git-tree-sha1 = "2ce41e0d042c60ecd131e9fb7154a3bfadbf50d3"
@@ -809,6 +1010,12 @@ git-tree-sha1 = "53915e50200959667e78a92a418594b428dffddf"
 uuid = "1cfade01-22cf-5700-b092-accc4b62d6e1"
 version = "0.4.1"
 
+[[Unitful]]
+deps = ["ConstructionBase", "Dates", "LinearAlgebra", "Random"]
+git-tree-sha1 = "0992ed0c3ef66b0390e5752fe60054e5ff93b908"
+uuid = "1986cc42-f94f-5a68-af5c-568840ba703d"
+version = "1.9.2"
+
 [[Wayland_jll]]
 deps = ["Artifacts", "Expat_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg", "XML2_jll"]
 git-tree-sha1 = "3e61f0b86f90dacb0bc0e73a0c5a83f6a8636e23"
@@ -820,6 +1027,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "66d72dc6fcc86352f01676e8f0f698562e60510f"
 uuid = "2381bf8a-dfd0-557d-9999-79630e7b1b91"
 version = "1.23.0+0"
+
+[[WoodburyMatrices]]
+deps = ["LinearAlgebra", "SparseArrays"]
+git-tree-sha1 = "de67fa59e33ad156a590055375a30b23c40299d3"
+uuid = "efce3f68-66dc-5838-9240-27a6d6f5f9b6"
+version = "0.5.5"
 
 [[XML2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Pkg", "Zlib_jll"]
@@ -959,6 +1172,12 @@ git-tree-sha1 = "79c31e7844f6ecf779705fbc12146eb190b7d845"
 uuid = "c5fb5394-a638-5e4d-96e5-b29de1b5cf10"
 version = "1.4.0+3"
 
+[[YAML]]
+deps = ["Base64", "Dates", "Printf", "StringEncodings"]
+git-tree-sha1 = "3c6e8b9f5cdaaa21340f841653942e1a6b6561e5"
+uuid = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
+version = "0.4.7"
+
 [[Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
@@ -1021,12 +1240,24 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
+# ╟─e8266ba3-08ee-48aa-8fe1-15f0eb7bcb93
 # ╠═dc4ef090-b059-44da-9bb4-ade63fe71572
-# ╠═0937c391-1af6-4880-82f1-9df7bcf05e70
-# ╠═af36acc8-1e42-4fce-98bf-1e3d52665d4d
+# ╟─11c9709e-63ef-46bf-80db-58e58f79902b
 # ╠═f3217211-d096-42ff-a6f4-f4ad1e5ef4e9
-# ╠═79b082ff-6c4d-4c74-aac6-6c894e022fc6
+# ╟─7084b511-7533-4f3f-8c3c-2fa1aceaffc9
+# ╠═0937c391-1af6-4880-82f1-9df7bcf05e70
+# ╟─b77c9309-a94c-4478-8037-a7fbba9c4824
+# ╠═13c31430-87c9-4886-ac11-a52070933e33
+# ╠═8512a6a6-8289-4297-b023-b282342027c3
+# ╠═8bb820cc-6319-4421-ba29-b6081ec98e18
+# ╟─2fe5b3f4-3758-467a-b044-a022ae3bc454
+# ╠═ee69bf18-c2af-4dc5-b848-23a0d323db55
 # ╠═0a44cace-5b27-4cec-b814-ef3dd09af141
-# ╠═a58f58ee-1b24-4b83-a4a4-9249db5b780a
+# ╟─1bfa3ed3-366e-4f3c-ba15-a73cc229943a
+# ╟─f205e748-955f-46aa-a569-7ec0d61e0597
+# ╠═3c8afd41-faa9-4cf3-8998-123a16f053ff
+# ╟─12955cba-a9b7-4791-8e97-d4e77b98225a
+# ╟─3f379a49-c1ab-4106-94e9-f7bbce3be039
+# ╠═4201cf7f-8d9f-4c4d-bf5a-72bfda1f2db4
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

@@ -1,4 +1,4 @@
-\renewcommand{\lastmod}{December 3, 2021}
+\renewcommand{\lastmod}{December 9, 2021}
 \renewcommand{\chapterauthors}{Markus Lippitz}
 
 
@@ -7,70 +7,65 @@
 \section{Tasks}
 
 \begin{itemize}
-\item Model the angle-dependent extinction spectrum of an array of plasmonic particles, as measured by Simon Durst (Bayreuth) and shown below. Discuss the observed phenomena.
-
-\item Assume that the embedding medium contains a dye with a narrow Lorentzian absorption line. Model and discuss the dispersion relation.
+\item Simulate the optical field above a plasmonic nano-rod and compare to the experimental data in Fig. 3 of \cite{Dorfmueller10}.
+\item Investigate how the spatial maximum amplitude of the field depends on rod length and illumination direction, and compare to Fig. 4 of  \cite{Dorfmueller10}.
 \end{itemize}
 
-
+The first steps are implemented in Pluto\pluto{nanorods.jl}.
 
 \section{How this is  measured}
 
+\cite{Dorfmueller10} measure the optical field in amplitude and phase about 20 nm above of gold nano-rods, using a near-field microscope. The operation of such device is topic of one of the following chapters. 
+
+The sample is a glass substrate on which gold nanostructures of rectangular shape were fabrication by electron-beam lithography. The structures can be understood as cut out a two-dimensional film. All have thus the same height. These gold nano-rods are illuminated by 911~nm laser light under a tilted angle from above. The polarization direction is along the long axis of the rods. The free electrons in the nano-rod come to a resonance, depending on the rod length. This resource leads to a locally increased field amplitude. Dorfmüller et al. measure the field component perpendicular to the sample surface by scattering it out with a sharp tip of an atomic force microscope. Phase-stable interference with a reference beam allows to obtain both amplitude and phase of the near-field. The spatial resolution is only limited by the sharpness of the AFM tip to about 20 nm. The near-field microscope operates thus outside the Abbé diffraction limit.
 
 
 \section{Waveguides}
 
 
-Let us start by investigating the optical modes of a thin wire. We assume cylindrical symmetry and coordinates $z$ and $\rho$. The wire has a radius $a$ and is made of a material (first dielectric, later metal) of dielectric function $\epsilon_{in}$. It is embedded in a dielectric matrix characterized by $\epsilon_{out}$. We solve Maxwell's equation with these boundary conditions.\sidenote{ Details see Saleh /Teich chapter fiber optics}
+Let us start by investigating the optical modes of a thin wire. We assume cylindrical symmetry and coordinates $z$ and $\rho$. The wire has a radius $a$ and is made of a material (first dielectric, later metal) of dielectric function $\epsilon_{in}$. It is embedded in a dielectric matrix characterized by $\epsilon_{out}$. One solves Maxwell's equation with these boundary conditions.\sidenote{ Details see, e.g.,  \cite{SalehTeich1991} in the chapter on fiber optics}
 
-The electric field is described inside and outside the wire by cylindrical Bessel $J$ and Hankel $H^{(1)}$ functions of the first kind, respectively. The lowest order mode is\footcite{Takahara}
-\begin{align*}
-  \mathbf{E}_{in} = & E_0 \left( J_0 (\kappa_1 r)\,  \mathbf{\hat{z}} + \frac{i k_z}{\kappa_1} J_1 (\kappa_1 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \\
-  \mathbf{E}_{out} =& E_0 \left( H_0^{(1)} (\kappa_2 r) \,  \mathbf{\hat{z}} - \frac{i k_z}{\kappa_2} H_1^{(1)} (\kappa_2 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)}
-\end{align*}
+The electric field is described inside and outside the wire by cylindrical Bessel $J$ and Hankel $H^{(1)}$ functions of the first kind, respectively. The lowest order mode is\footcite{Takahara97}
+\begin{align}
+  \mathbf{E}_{in} = & E_0 \left( J_0 (\kappa_1 r)\,  \mathbf{\hat{z}} + \frac{i k_z}{\kappa_1} J_1 (\kappa_1 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \label{eq:rods_mode_Ein}\\
+  \mathbf{E}_{out} =& E_0 \left( H_0^{(1)} (\kappa_2 r) \,  \mathbf{\hat{z}} - \frac{i k_z}{\kappa_2} H_1^{(1)} (\kappa_2 r)  \, \mathbf{\hat{r}} \right) e^{i (k_z z - \omega t)} \label{eq:rods_mode_Eout}
+\end{align}
 where $k_z$ is the component of the wave vector (length in vacuum $k_0 = 2 \pi / \lambda$) along the wire. The components  perpendicular to the wire are defined as
 \begin{equation}
   \kappa_i = k_0 \sqrt{\epsilon_i - (k_z / k_0)^2}
 \end{equation}
 with $\epsilon_i = (\epsilon_{in}, \epsilon_{out})$.
-The boundary condition at $r=a$ leads to a condition for $k_z$ (see also H/N eq. 12.53)
+The boundary condition at $r=a$ leads to a condition\marginnote{see also \cite{Novotny-Hecht2012} eq. 12.53} for $k_z$ )
 \begin{equation}
   \frac{\epsilon_{in}}{\kappa_1 a} \frac{J_1(\kappa_1 a)}{J_0(\kappa_1 a)}
  -  \frac{\epsilon_{out}}{\kappa_2 a} \frac{H_1^{(1)}(\kappa_2 a)}{H_0^{(1)}(\kappa_2 a)}
- = 0
+ = 0 \quad . \label{eq:rods_eigenmode_condition}
 \end{equation}
 
 Guiding of waves requires that the electric field is localized near the wire, i.e., the radial component of the wave vector outside the wire $\kappa_2$ has to be imaginary, or $k_z / k_0 > \sqrt{\epsilon_{out}}$. At the same time, the wave should propagate inside the wire, i.e., $k_z$ should be (almost\sidenote{When the dielectric functions are complex-valued, also $k_z$ becomes complex-valued}) real, or $\sqrt{\epsilon_{in}} > k_z / k_0$. 
 
-For dielectric waveguides, the core has to have a higher index of refraction than the embedding medium. When the radius of the wire is decrease, the decay of the field outside the wire becomes slower and slower.  By Fourier transformation from $\kappa$ to $\rho$ one finds a characteristic lower limit for radius $R$ of the field distribution, independent of the wire diameter,
+For dielectric waveguides, the core has to have a higher index of refraction than the embedding medium. When the radius of the wire is decreased, the decay of the field outside the wire becomes slower and slower.  By Fourier transformation from $\kappa$ to $\rho$ one finds a characteristic lower limit for radius $R$ of the field distribution, independent of the wire diameter,
 \begin{equation}
-  R > \frac{\lambda}{2 \sqrt{\epsilon_{in}}}
+  R > \frac{\lambda}{2 \sqrt{\epsilon_{in}}} \quad .
 \end{equation}
-Dielectric waveguides are this limited in their size of the mode field to approximately the wavelength in the core medium.
+Dielectric waveguides are thus limited in their size of the mode field to approximately the wavelength in the core medium.
 
-Plasmonic waveguides in contrast can become very small. When the dielectric function $\epsilon_{in}$ is negative, the mode field remains bound close to the wire even for small a wire radius. The downside is that losses increase. The wave vector in propagation direction becomes complex. The real part describes the effective index of refraction of the mode, the imaginary part the losses due to absorption in metal. These losses increase drastically when the wire becomes smaller, as shown in Fig XXX
+Plasmonic waveguides in contrast can become very small. When the dielectric function $\epsilon_{in}$ is negative, the mode field remains bound close to the wire even for a small  wire radius. The downside is that losses increase. The wave vector in propagation direction becomes complex. The real part describes the effective index of refraction of the mode, the imaginary part the losses due to absorption in metal. These losses increase drastically when the wire becomes smaller, as shown in the Pluto script linked at the beginning of this chapter.
 
-\begin{marginfigure}
-  \caption{Al wire alpha and beta similar to Fig. 12.20 in H/N}
-\end{marginfigure}
-
-
-The large component of the wave vector in propagation direction $k_z$ in a plasmonic waveguide corresponds to a short effective wavelength $\lambda_{in} = 2 \pi / k_z$. The thinner the waveguide, the shorter the effective wavelength. Novotny shows that  a linear relation to the vacuum wavelength exists XXX cite
+The large component of the wave vector in propagation direction $k_z$ in a plasmonic waveguide corresponds to a short effective wavelength $\lambda_{in} = 2 \pi / k_z$. The thinner the waveguide, the shorter the effective wavelength. Novotny shows that  a linear relation to the vacuum wavelength exists\footcite{Novotny07}
 \begin{equation}
   \lambda_{in} = n_1 + n_2 \frac{\lambda}{\lambda_{p}}
 \end{equation}
 where $\lambda_p = 2 \pi c / \omega_p$ is the plasma wavelength of the Drude metal and the $n_i$ are constants depending on geometry and refractive indices.
-\sidenote{see eq. 14 in XXX}
+\sidenote{see eq. 14 in \cite{Novotny07}}
 
 
 \section{Side note: Leakage radiation}
 
 The component of the wave vector in propagation direction $k_z$ is larger than the maximum possible length of a wave vector in the embedding medium $k_0 \sqrt{\epsilon_{out}}$. This means that momentum conservation does not allow photons to leave the waveguide. Plane waves with such a value of $k_z$ are evanescent (have an imaginary $k_\perp$) in the embedding medium. In this way, a mode can propagate without loses to the environment. However, this also hinders observation of such a propagation. One only could detect the emission at the end of the waveguide or at defects.
 
-One way around is leakage radiation. When the waveguide is placed on or near a medium with a higher index of refraction $k_z < k_0 \sqrt{\epsilon_{substrate}}$, then this substrate supports suitable free-space modes. The distance between waveguide and substrate defines the coupling (as seen by the observer) or the losses (from the point of view of the waveguide). In such an experiment one can see bright emission along the whole waveguide.
+One way around is leakage radiation. When the waveguide is placed on or near a medium with a higher index of refraction $k_z / k_0 < \sqrt{\epsilon_{substrate}}$, then this substrate supports suitable free-space modes. The distance between waveguide and substrate defines the coupling (as seen by the observer) or the losses (from the point of view of the waveguide). In such an experiment one can see bright emission along the whole waveguide.
 
-
-%\section{Phase change upon total internal reflection}
 
 
 \section{Fabry-Perot modes in nano-rods}
@@ -79,9 +74,9 @@ We now cut out a piece of  a thin plasmonic waveguide and call this object a nan
 \begin{equation}
   L_{res} = n \, \frac{\lambda_{in}}{2} + L_{o}
 \end{equation}
-The exact value of the offset  $L_o$ depends on details of the waveguide end, for example how this is rounded or cut flat, and also from where to where on measures the rod length $L_{res}$.
+The exact value of the offset  $L_o$ depends on details of the waveguide end, for example how it is rounded or cut flat, and also how one defines the rod length $L_{res}$, when the ends are rounded.
 
-The physical origin of this apparent additional length  $L_o$ is that a propagating plasmon is a quasi particle combined of free electrons and an electromagnetic field. The electrons have to stay inside the metal to within less than a lattice constant. The optical field however extends all around the nano-rod and thus also extends over the ends of the rod. This gives an additional length.
+The physical origin of this apparent additional length  $L_o$ is that a propagating plasmon is a quasi-particle combined of free electrons and an electromagnetic field. The electrons have to stay inside the metal to within less than a lattice constant. The optical field however extends all around the nano-rod and thus also extends over the ends of the rod. This gives an additional length.
 
 In some publications this additional length $L_o$ is called a reflection phase $\Delta \phi$, as one could also describe the process in terms of phases as
 \begin{equation}
@@ -98,15 +93,15 @@ becomes then also complex, so that the field acquires a phase shift
 
 \section{Excitation of resonances in nano-rods}
 
-We shine a plane wave on a nano-rod, i.e., a short piece of a thing plasmonic wire, and want to calculate the response of the particle in terms of scattered field and absorption. We follow here the analytical model by Jens Dorfmüller et al. XXX cite,  model the effect of the wire itself and assume an ad-hoc parameter for the effect of the wire ends. At the wire surface, the boundary condition for electric fields relates the $z$ components if incident, scattered and internal fields
+We shine a plane wave on a nano-rod, i.e., a short piece of a thin plasmonic wire, and want to calculate the response of the particle in terms of scattered field and absorption. We follow here the analytical model by \cite{Dorfmueller10},  model the effect of the wire itself and assume an ad-hoc parameter for the effect of the wire ends. At the wire surface, the boundary condition for electric fields relates the $z$ components of incident, scattered and internal fields
 \begin{equation}
-  E_{z}^{inc}(r = a) +  E_{z}^{scat}(r = a) =  E_{z}^{inside}(r = a) \quad .
+  E_{z}^{inc}(r = a) +  E_{z}^{scat}(r = a) =  E_{z}^{inside}(r = a) \quad . \label{eq:rods_surface_field_match}
 \end{equation}
 The  plane wave is incident with an angle $\theta$ to the symmetry axis of the wire
 \begin{equation}
   E_{z}^{inc}(r = a) = E_0 \, \sin ( \theta) \, e^{i \, k_\parallel z} \quad \text{with} \quad \cos ( \theta) = \frac{k_\parallel}{k_0}
 \end{equation}
-where we omitted the time dependence $e^{-i \omega t}$ and have out the phase factor of $e^{i k_r r}$ into $E_0$. $k_\parallel$ is the component of the plane wave's wave vector along the wire direction.
+where we omitted the time dependence $e^{-i \omega t}$ and have put the phase factor of $e^{i k_r a}$ into $E_0$. $k_\parallel$ is the component of the plane wave's wave vector along the wire direction.
 
 
 The scattered field is described by the current inside the wire. An oscillating current is source of radiation, as for example in an antenna. We assume that the current is spatially homogeneous and running only along $z$ direction (not radially). One finds
@@ -122,33 +117,33 @@ Current and field inside the wire are connected by the conductivity $\sigma$ or 
   \epsilon_0 \omega  \, \Im(\epsilon_{in}) \,  E_{z}^{inside}(z)
 \end{equation}
 
-Putting everything in eq XXX we get a differential equation for $I_z(z)$
+Putting everything in eq. \ref{eq:rods_surface_field_match} we get a differential equation for $I_z(z)$
 \begin{equation}
   E_0 \, \sin ( \theta) \, e^{i \, k_z z} + \frac{i \, \tilde{Z}}{4 \pi  \epsilon_0 \omega} \,   
   \left( \frac{\partial^2}{\partial z^2} + k^2 \right)  I_z(z)
   = \frac{1}{ \epsilon_0 \omega  \, \Im(\epsilon_{in})} I_z(z)
 \end{equation}
-We make the ansatz that the current either flows with the wave vector $k_\parallel$ of the external field projected on the wire direction, or with the wave vector $k_p$ of the plasmon mode calculated by eq XXX above (where it was called $k_z$):
+We make the ansatz that the current either flows with the wave vector $k_\parallel$ of the external field projected on the wire direction, or with the wave vector $k_p$ of the plasmon mode calculated by eq. \ref{eq:rods_eigenmode_condition}  (where it was called $k_z$):
 \begin{equation}
-  I_z(z) = I_\parallel \, e^{i k_\parallel z} + I_{+p} \, e^{i k_p z} + I_{-p} \, e^{-i k_p z}
+  I_z(z) = I_\parallel \, e^{i k_\parallel z} + I_{+p} \, e^{i k_p z} + I_{-p} \, e^{-i k_p^\star z} \label{eq:rods_currents}
 \end{equation}
-Additionally we know that the current has t vanish at the end of the wire, as the electrons can not flow out, i.e.,
+Additionally we know that the current has to vanish at the ends of the wire, as the electrons can not flow out, i.e.,
 \begin{equation}
   I_z \left(z = \pm  \tilde{L} / 2  \right) = 0 
 \end{equation}
 where $\tilde{L}$ is the effective length of the nano-rod, i.e., longer than the geometrical size to include the phase effect of the reflection at the wire end. 
-All together one then finds  XXX cite dirfmüller
+All together one then finds\footcite{Dorfmueller10}
 \begin{align}
   \tilde{Z} = & \, + i \, \frac{4 \pi }{\Im(\epsilon_{in})} \,
-  \frac{1 }{  k_p^2 -k^2} \\
+  \frac{1 }{  k_p^2 -k^2} \label{eq:rods_impedance}\\
   I_\parallel = & \, -i \,  
   \frac{\omega \epsilon_0 \,\tilde{Z}}{4 \pi} \, 
-  \frac{1 }{k_p^2 - k_\parallel^2 } \, E_0  \, \sin \theta \\
+  \frac{1 }{k_p^2 - k_\parallel^2 } \, E_0  \, \sin \theta \label{eq:rods_current_parallel}\\
 %
  % I_\parallel = & \,  \omega \epsilon_0 \Im(\epsilon_{in}) \, \frac{k_p^2 - k^2  }{k_p^2 - k_z^2 } \, E_0  \, \sin \theta \\
   I_{\pm p} = & \, - I_\parallel \, \frac{\sin ( [ k_p \pm k_\parallel] \,\tilde{L}/2 )}{\sin( k_p \tilde{L})}
 \end{align}
-The antenna impedance $ \tilde{Z}$ of the wire (eq. XXX) has a resonance that goes with the momentum mismatch between free-space modes and plasmonic wire modes. For the excitation of the current in the wire (Eq. xxx) only the momentum mismatch between the plasmon mode and the wave vector projected on the wire axis $k_\parallel$ matters. As function of nano-rod length we find back the Fabry-Perot resonances at 
+The antenna impedance $ \tilde{Z}$ of the wire (eq.  \ref{eq:rods_impedance}) has a resonance that goes with the momentum mismatch between free-space modes and plasmonic wire modes. For the excitation of the current in the wire (Eq. \ref{eq:rods_current_parallel}) only the momentum mismatch between the plasmon mode and the wave vector projected on the wire axis $k_\parallel$ matters. As function of nano-rod length we find back the Fabry-Perot resonances at 
 \begin{equation}
   k_p \, \tilde{L} = n \, \pi 
 \end{equation}
@@ -156,7 +151,7 @@ where the index $n$ enumerates the resonances.
 
 \section{Dipole model of the modes in a nano-rod}
 
-Before we continue with the work of Durfmüller, let us have a look at these resonances. 
+Before we continue with the work of Dorfmüller, let us have a look at these resonances. 
 We simplify the discussion by assuming that the incident plane wave propagates 
 perpendicular to the wire axis, i.e. $\theta = 90^\circ$ and $k_\parallel = 0$. The 
 amplitudes of the plasmon currents $I_{\pm p}$ become identical and come into resonance 
@@ -179,36 +174,36 @@ This dipole model then also explains why we can not excite even Fabry-Perot orde
 
 \section{Field distributions}
 
-Now that we know the current in the center of the nano-rod, we can go back to fields. We get the $z$-compinent of the field in the center of the wire from Eq. XXX. At this position the radial component has to vanish due to symmetry. As we have seen in the beginning of this chapter, the field is described by Bessel functions inside the wire. For small values of $\kappa_1 r$ we can approximate
+Now that we know the current in the center of the nano-rod, we can go back to fields. We could start from the currents (eq. \ref{eq:rods_currents}) and use Maxwell's equation, as done in \cite{Dorfmueller10}. Here, we take a shortcut as we have introduced the eigen-modes already with eqs. \ref{eq:rods_mode_Ein},\ref{eq:rods_mode_Eout}, which we  name here $\mathbf{E}_m(k_z)$, i.e. the argument is the component of the wave vector along the wire. The amplitudes of the currents $I_{\pm p}$ and $I_\parallel$ are also the amplitudes of the corresponding fields. Inside the wire we have
 \begin{equation}
-  J_0(z) \approx 1 - \frac{z^2}{4}  + \cdots \quad \text{and} \quad  J_1(z) \approx \frac{z}{2} - \frac{z^3}{4} + \cdots
+  \mathbf{E}_{in} = I_{+p} \mathbf{E}_m (+ k_{+p}) +  I_{-p} \mathbf{E}_m ( - k_{-p}^\star) + I_{\parallel} \mathbf{E}_m ( + k_{\parallel})
 \end{equation}
-so that the $z$ component is roughly constant inside the wire and the radial component increases linearly with $r$. Both components are related by $\mathbf{\nabla} \cdot \mathbf{E} = 0$. Just inside the surface of the wire ($r = a$) this leads to 
+Note that $k_z = + k_{\parallel}$ does not fulfill the eigen-mode condition eq. \ref{eq:rods_eigenmode_condition}. The fields with this value of $k_z$ only match at the surface of the wire when the incident field is also taken into account. The fields outside the wire have thus one additional component
 \begin{equation}
-  E_r(r = a) \approx - \frac{a}{2} \frac{\partial}{\partial z} E_z
+  \mathbf{E}_{out} = I_{+p} \mathbf{E}_m (+ k_{+p}) +  I_{-p} \mathbf{E}_m (- k_{-p}^\star) + I_{\parallel} \mathbf{E}_m ( + k_{\parallel}) + \mathbf{\hat{n}} E_0 e^{i \mathbf{k} \cdot \mathbf{r} }
 \end{equation}
- Together with eq. XXX we thus now have the full vectorial field inside the nano-rod. The partial derivate is at the end applied to eq. XXX and just produces pre-factors of $i k_\parallel$ and $\pm i k_p$.
+where the vector $\mathbf{\hat{n}}$ defines the p-polarization direction.  
 
-The fields just outside the nano-rod are obtained from the continuity conditions
+These fields are valid only along the wire, i.e. for $|z| < \tilde{L}$, but this is sufficient to explain the experiment. One could assume a flat wire end and calculate the fields near this end using the continuity conditions for fields parallel and perpendicular to a surface
 \begin{equation}
   E_\parallel^{in}  =  E_\parallel^{out} \quad \text{and} \quad 
   \epsilon_{in} E_\perp^{in}  =  \epsilon_{out}  E_\perp^{out}
 \end{equation}
-Dorfmüller et al. (XXX) measure the $r$ component of the electric field a few nanometers outside the nano-rod by near-field microscopy. The field above the wire is well described by the field just outside the wire. In the experiment, one also finds field amplitude above and outside  the wire ends. This is not included here. It would need near-field propagation of the fields on the wire surface, which is beyond the scope of this chapter.
+The full field distribution  would need near-field propagation of the fields on the wire surface, which is beyond the scope of this chapter.
 
-To compare more systematically the model with the experiment, Jens Dorfmüller et al. vary the rod length and measure near-fields. They compare then the maximum near-field amplitude under a certain illumination angle with the model. To this end, the exact calculation of the spatial dependence of the field can be skipped. If the wire is just long enough, at some point all three contribution in Eq. will add up, so that the maximum field is approximately
+To compare more systematically the model with the experiment, Jens Dorfmüller et al. vary the rod length and measure the $r$ component of the near-fields. They compare then the maximum near-field amplitude under a certain illumination angle with the model. To this end, the exact calculation of the spatial dependence of the field can be skipped. If the wire is just long enough, at some point all three contributions will add up, so that the maximum field is approximately
 \begin{equation}
   | E_r |_{max} \approx | k_\parallel \, I_\parallel | + | k_{+p} \, I_{+p} | +  | k_{-p} \, I_{-p} | 
 \end{equation}
-where the $k_i$ are a consequence of the partial derivative in eq XX. This simplified model describes the dependence of the Farbry-Perot resonances on the effective rod-length $\tilde{L}$.
+where the $k_i$ are a consequence of the $k_z$ in eq \ref{eq:rods_mode_Eout}. This simplified model describes the dependence of the Fabry-Perot resonances on the effective rod-length $\tilde{L}$.
 
 
 
 
 
-\section{Far-field emission pattern}
+\section{Appendix: Far-field emission pattern}
 
-Far-field emission pattern according to Dorfmüller, thesis, appendix, eq. B.16
+The Far-field emission pattern of a nano-rod is, according to \cite{Dorfmueller10_thesis} appendix, eq. B.16,
 \begin{equation}
   \frac{dP}{d\Omega} = \frac{I_0^2}{8 \pi^2 \, c \epsilon_0} \, 
   \frac{k^2}{k_p^2} \sin^2 \theta \,
@@ -225,11 +220,13 @@ where $k_\parallel = k \, \cos \theta$ and
 \end{equation*}
 with the order $n$ of the Fabry-Perot resonance.
 
+This has similarities and difference to the far-field diffraction pattern of $n$ slits. The envelope function of a single slit is replaced by the $\sin \theta$ angular dependence of dipolar emission. The biggest difference is that in contrast to slits, neighboring dipoles in the nano-rod emit 180$^\circ$ out of phase. This would correspond to a transmission grating where every second slit is covered by a thin glass plate to achieve the phase lag. 
+
+One should be able to obtain this equation by assuming two lattices of dipoles with  doubled distance. Each would produce the familiar \emph{amplitude} pattern. The two amplitude patterns are then added, taking care of the distance between the neighboring dipoles, and squared to get the intensity pattern shown above. But I did not try this yet ...
 
 
-\section{Near-field excitation of modes}
 
-\section{Nonlinear effects with  modes}
+
 
 %-------------------
 
