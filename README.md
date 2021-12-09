@@ -8,7 +8,7 @@ This work is licensed under a
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
 
 
-# Experiments in Spectrosocpy
+# Experiments in Spectroscopy
 
 [These](https://github.com/MarkusLippitz/Spectrosocpy/blob/to-be-published/Spectroscopy.pdf) are the lecture notes of my lecture on optical spectroscopy. The lecture aims at students in the first year of the master's program, but should be accessible also to students in the last year of the bachelor's program. You need some quantum mechanics and an introduction to the physics of molecules.
 
@@ -20,9 +20,9 @@ These notes are 'work in progress', and probably never really finished. If you f
 The most current version of the lecture notes can be found at https://github.com/MarkusLippitz/Spectrosocpy. I have put everything under a CC-BY-SA license. In my words: feel free to do with it whatever you like. If you make your work available to the public, mention me and use a similar license. 
 
 
-The lecture notes are typeset using the LaTeX class ['tufte-book'](https://tufte-latex.github.io/tufte-latex/) by Bil Kleb, Bill Wood, and Kevin Godby, which  approximates the work of [Edward Tufte](https://www.edwardtufte.com/). I applied many of the modifications introduced by Dirk Eddelbuettel in the ['tint'](https://dirk.eddelbuettel.com/code/tint.html}) R package. For the time being, the source is LaTeX, not markdown.
+The lecture notes are typeset using the LaTeX class ['tufte-book'](https://tufte-latex.github.io/tufte-latex/) by Bil Kleb, Bill Wood, and Kevin Godby, which approximates the work of [Edward Tufte](https://www.edwardtufte.com/). I applied many of the modifications introduced by Dirk Eddelbuettel in the ['tint'](https://dirk.eddelbuettel.com/code/tint.html}) R package. For the time being, the source is LaTeX, not markdown.
 
 ## Structure of the repository
 
-The chapters are indivual tex-files in the directory tree and included in the main tex file. Figures are mostly made by tikz. Tikz-external is used to save compilation time. It generates pdfs in the figures tree. Some chapters contain handout material for exercises, which is in the handout subdirectory of the chapter.
+The chapters are individual tex-files in the directory tree and included in the main tex file. Figures are mostly made by tikz. Tikz-external is used to save compilation time. It generates pdfs in the figures tree. Some chapters contain handout material for exercises, which is in the handout subdirectory of the chapter.
 
