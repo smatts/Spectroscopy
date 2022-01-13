@@ -1,0 +1,225 @@
+\renewcommand{\lastmod}{January 13, 2022}
+\renewcommand{\chapterauthors}{Markus Lippitz}
+
+
+\chapter{Angular spectrum representation}
+
+\section{Tasks}
+
+\begin{itemize}
+\item ...
+\end{itemize}
+
+
+
+
+\section{Introduction}
+
+In this chapter, we assume a monochromatic optical field, i.e., a known single wavelength $\lambda$. We also use  a time-dependence of the form $e^{-i \omega t}$, as usual in physics and used in \cite{Novotny-Hecht2012}, or \cite{Goodman2005}. Note, however, that this is complex-conjugate to the convention in engineering, as used in \cite{SalehTeich1991}.
+
+Let us first look at a single plane wave
+\begin{equation}
+    u(x,y,z) = u_0 \, e^{i (k_x x + k_y y + k_z z)} \, e^{-i \omega t} \quad .
+\end{equation}
+In a plane of constant $z$-position, the field is periodic in $x$ direction with a \emph{spatial frequency} $\nu_x = k_x / 2 \pi$, and similar for the $y$ direction. Knowing the spatial frequencies $\nu_x$ and $\nu_y$ is sufficient to know everything about this plane wave, everywhere in space, as the $z$ component of the wave vector has to fulfil 
+\begin{equation}
+    k^2 = k_x^2 + k_y^2 + k_z^2 = \left( \frac{2\pi}{\lambda} \right)^2 \quad .
+    \label{eq:micros_ksq}
+\end{equation}
+
+We can extend\footcite[chapter 2.12]{Novotny-Hecht2012} this to an arbitrary field in the plane $z=z_0$, i.e. $u(x,y; z=z0)$. We decompose this field into its Fourier components\sidenote{In this chapter, small letters refer to real-space quantities, capital letters to the corresponding Fourier space quantities.}
+\begin{equation}
+    U(k_x, k_y; z_0) = \iint u(x,y; z_0) \,  e^{-i (k_x x + k_y y )} \, dx \, dy = \mathcal{FT} ( u ) \label{eq:micro_Fourier}
+\end{equation}
+This is the \emph{angular spectrum representation} of the field. Each Fourier component describes a plane wave with  given spatial frequencies in $x,y$ direction and a fixed $k_z$ component and thus a given angular propagation direction. For each plane wave, we know thus the field everywhere in space. This allows us to write
+\begin{equation}
+    u(x,y,z) = \frac{1}{(2 \pi)^2} \, \iint U(k_x, k_y; z_0) \,  e^{i (k_x x + k_y y + k_z z)} \, dk_x \, dk_y \label{eq:micro_field_by_FT}
+\end{equation}
+where $k_z$ has to fulfill eq.~\ref{eq:micros_ksq} and thus can have both signs. The prefactor differs from \cite{Goodman2005}, as here we use $k_x = 2 \pi \, f_x$ as reciprocal variable. 
+
+
+\section{Transfer function of free space}
+
+It will be convenient to relate the angular spectrum $U(k_x, k_y; z_0)$ at the position $z_0$ to that at some other position $z = z_0 + d$
+\begin{equation}
+    U(k_x, k_y; z_0 + d) =   U(k_x, k_y; z_0) \, \cdot \,  H(k_x, k_y; d)
+\end{equation}
+where $H$ is the transfer function of free space\footcite[chapter 4.1.B]{SalehTeich1991}. Combining eq.  \ref{eq:micro_Fourier} and \ref{eq:micro_field_by_FT} we get
+\begin{equation}
+    H(k_x, k_y; d) = e^{i \, d \, \sqrt{k^2 - k_x^2 - k_y^2}}
+    =  e^{i \, k d \, \sqrt{1 - k_\parallel^2/k^2 }}
+\end{equation}
+The transfer function $H$ relates (complex) amplitudes of spatial frequencies at position $z_0$ to those at some distance $d$ apart. When $ k_\parallel^2 = k_x^2 + k_y^2 < k^2$, i.e., the $k_{x,y}$ are within a circle of radius $k$, then $|H| = 1$ and only a phase-factor is introduced. This is the phase that the plane wave acquires when traveling the distance $d$. However, when $k_\parallel^2  > k^2$,  the square root becomes imaginary and $|H| < 1$. The amplitude of these plane waves is exponentially decaying with distance $d$. These are called evanescent waves. For large distances $d$ we can assume
+\begin{equation}
+    H(k_x^2 + k_y^2 > k^2; d \gg \lambda) \approx 0
+\end{equation}
+Propagation in free space acts as low-pass filter for spatial frequencies. Plane waves corresponding to spatial frequencies larger than $k$ can not propagate very far.
+
+\section{Fresnel approximation}
+
+We can simplify the transfer function $H$ by assuming that the spatial frequencies $\nu_{x,y}$ are small compared to $1/\lambda$, or $k_\parallel \ll k$. In this case, we can neglect the third and higher terms in
+\begin{equation}
+    \sqrt{1 - \frac{k_\parallel^2}{k^2 }} \approx 1   - \frac{k_\parallel^2}{2 k^2 }  + \frac{k_\parallel^4}{8 k^4 } - \cdots
+\end{equation}
+and the transfer function becomes 
+\begin{equation}
+    H(k_x, k_y; d) 
+    \approx e^{i \, k \, d } \, e^{- i \, d \,  k_\parallel^2 / (2 k )  }
+\end{equation}
+
+
+\section{Impulse response of free space}
+
+Instead of multiplying the angular spectrum  $U(k_x, k_y; z_0)$  with the transfer function $H(k_x, k_y; d)$, 
+\begin{equation}
+    U(k_x, k_y; z_0) \times H(k_x, k_y; d) 
+\end{equation}
+we could apply the Fourier transform to both, i.e., convolve the electrical field with the impulse response $ h(x, y; d)$, i.e,
+\begin{equation}
+    u(x, y; z_0) \otimes \mathcal{FT}( H(k_x, k_y; d)) = 
+    u(x, y; z_0) \otimes  h(x, y; d)
+\end{equation}
+where $\otimes$ denotes the convolution operation.
+
+In the Fresnel approximation, the impulse response $h$ of free space is 
+\begin{equation}
+    h(x, y; d) \approx \frac{ e^{i \, k \, d }}{ d} \, e^{i \, 
+    \frac{k}{2d} \, (x^2 + y^2) }
+\end{equation}
+This is equivalent to the Huygens principle limited to the Fresnel approximation, i.e., small angles to the optical axis. Each point is source of a spherical wave, or
+\begin{equation}
+    h(x, y; d) = \frac{1}{\sqrt{x^2 + y^2 + d^2}} \, e^{i k \sqrt{x^2 + y^2 + d^2}}
+\end{equation}
+
+
+\section{A thin lens}
+
+The transfer function of a thin lens introduces a phase shift depending on the distance to the optical axis. When we assume that the lens is spherical (radius $R$) and plano-convex, we get for $x^2 + y^2 \ll R$
+\begin{equation}
+    h(x, y)  = h_0 \, e^{-i k \frac{x^2 + y^2}{2f}} \quad \text{with} \quad f = \frac{R}{n - 1}
+\end{equation}
+where $n$ is the index of  refraction of the lens material (embedded in vacuum with $n=1$) and $f$ is the usual focal length. The same hold for all other thin lenses with a given focal length $f$ (but the different relation to the radius of curvature). The factor $h_0$ takes a global phase factor into account, stemming from the optical thickness on the optical axis. In most cases, it can be neglected.
+
+As a lens has only a finite size, one introduces an aperture function $p(x,y)$ that describes the transmission of the lens as function of radial position $(x,y)$. For a circular aperture of radius $r_L$ we have
+\begin{equation}
+    p(x,y) = \Theta \left(r_L^2  - ( x^2 + y^2) \right)
+\end{equation}
+where $\Theta$ is the Heaviside step function.
+
+
+\section{Fourier transformation by a lens I}
+
+First we demonstrate that  the field in the focal plane at the distance $f$ after the lens is almost the Fourier transform of the field just in front of the lens.\footcite[chapter 5.2.1]{Goodman2005}
+
+Let $u_L(x,y)$ be the field just in front of the lens. Just after the lens, we thus have
+\begin{equation}
+    u_{L'}(x,y)  =  u_L(x,y) \cdot  e^{-i k \frac{x^2 + y^2}{2f}} \cdot p(x,y)
+    \label{eq:micro_field_lens_lr}
+\end{equation}
+where we neglected all constant phase factors.
+
+
+In the focal plane at distance $f$, we call our coordinates $(u,v)$ and get the field in the Fresnel approximation by convolution with the impulse response of free space
+\begin{align}
+    u_f(u,v) = & \iint  u_{L'}(x,y) \, f_\text{free}( u - x, v - y; d = f)  \, dx \, dy \\
+    = & \iint  u_{L'}(x,y)  \,
+     e^{i \, \frac{k}{2f} \, ( ( u - x)^2 + (v -y)^2) } \, dx \, dy
+\end{align}
+again neglecting all constant phase factors. When multiplying out the phase term $(u-x)^2$, we get the terms $u^2 + x^2 - 2ux$. The term with $u^2$ can be drawn in front of the integrals. The term with $x^2$ cancels with that from eq.  \ref{eq:micro_field_lens_lr}, and the cross-term remains, so that we get
+\begin{align}
+    u_f(u,v) = & e^{i \, \frac{k}{2f} \, ( u^2 + v^2) } \,
+    \iint  u_{L}(x,y) \, p(x,y) \,  e^{-i \,   \frac{k}{f} \, ( xu + yv) } \, dx \, dy \\
+ = & e^{i \, \frac{k}{2f} \, ( u^2 + v^2) } \, U_{L,p} \left(u \frac{k}{f} \,  , \,  v \frac{k}{f} \right) \label{eq:micro_FT_lens_1}
+\end{align}
+where $U_{L,p} = \mathcal{FT} \left(p \cdot u_L   \right)$. The field in the focal plane $u_f(u,v)$ is thus the Fourier transform of the field in front of the lens $u_L(x,y)$ (times the aperture function $p$), decorated by a phase factor squared in the radial distance. When one is interested in intensities, not fields, this phase factor can be neglected.
+
+It makes sense that this relation exists. We can decompose the field in front of the lens into plane waves with wave vector components $(k_x, k_y)$. In the limit of small angles, each plane wave will be focused by the lens into a point in the focal plane at  position $u = f \,  k_x / k$. The amplitude of the field at  this point is thus proportional to the Fourier component  at $k_x = u k / f$.
+
+
+\begin{questions}
+\item Calculate the intensity distribution in the focal plane of   a lens of finite aperture diameter. Compare  a plane wave and a Gaussian beam as model for $u_L$.
+
+\item Find the optimum width of a Gaussian beam to maximize the absorption by a point-like object in the focus of an objective of given numerical aperture (NA).
+\end{questions}
+
+
+
+\section{Fourier transformation by a lens II}
+
+
+The pre-factor in eq.  \ref{eq:micro_FT_lens_1} vanishes when we do not look at the field directly in front of the lens but at that  one focal length earlier, more towards the source.
+
+
+Let $f_0(x,y) = u(x,y; z = -f)$ be the optical field in the first (front) focal plane of the lens. Its Fourier transform is $F_0(k_x, k_y)$. We propagate this field to the lens by applying the transfer function of free space, i.e.
+\begin{equation}
+U_L(k_x, k_y) = F_0(k_x, k_y) \cdot H(k_x, k_y; f) = F_0(k_x, k_y) \, e^{-i \,  f \, k_\parallel^2 / (2 k)}
+\end{equation}
+We ignore\sidenote{Goodman also discusses the case with aperture} the aperture function $p$ and get via eq. \ref{eq:micro_FT_lens_1} 
+\begin{align}
+    u_f(u,v)  = & e^{i \, \frac{k}{2f} \, ( u^2 + v^2) } \, U_{L} \left(u \frac{k}{f} \,  , \,  v \frac{k}{f} \right) \\
+    = & e^{i \, \frac{k}{2f} \, ( u^2 + v^2) }   \, e^{-i \,  f \, k_\parallel^2 / (2 k)}
+    \, F_{0} \left(u \frac{k}{f} \,  , \,  v \frac{k}{f} \right)  \\
+    = &  F_{0} \left(u \frac{k}{f} \,  , \,  v \frac{k}{f} \right)  
+\end{align}
+where we have used in the last step $k_\parallel^2 = k_x^2 + k_y^2 = (k/f)^2 (u^2 + v^2)$. 
+
+The fields in the first (front) and the second (back) focal plane of a lens are thus related by a Fourier transform, without the quadratic phase function that comes into play when starting from a field directly at the lens. We will discuss an application of this effect as 'back focal plane imaging' to determine the emission pattern of a dipole in a structured environment in the next chapter.
+
+
+
+
+\section{Nearfield microscopy}
+
+
+The angular spectrum representation and its transfer function of the free space allows to explain the limited resolution of a conventional optical microscope.\sidenote{see chapter 4.6 of \cite{Novotny-Hecht2012} and \cite{Vigoureux92}} A small structure with fine details is equivalent to high spatial frequencies and thus large in-plane wave vectors $k_{x,y}$. These waves contain all information of the sample plain, but for $k_\parallel > k$ they are exponentially damped. Far away from the sample, only wave vectors within the rage of $\pm k$ arrive at the detector. These contain only spatial frequencies of $\lambda/2$ and larger. Smaller objects are blurred to this size.
+
+Let us follow the example of \cite{Vigoureux92} and discuiss imaging of a slit. We assume that the sample is a rectangtlar apperture in an opcaque film. We ignore the $y$ directuion to simoplify things. We thus have
+\begin{equation}
+    f_0(x) = \Theta ( |x| - a/2 ) =  \text{rect} _a (x)
+\end{equation}
+The Fourier transform is (see appendix \ref{chap:Appendix_Fourier}
+)
+\begin{equation}
+   F_0(k_x) = a\, \frac{\sin k_x  \, a / 2}{k_x a /2}
+\end{equation}
+The first zero crossing of the sinc-function is at $k_x = 2 \pi / a$. So if $a \gg \lambda$, a very large fraction of the angular spectrum is within the propagation range. Clipping everything outside $\pm k$ does not significantly change the image when doing the back transformation. The image of the sample is a good representation of the slit (see figure \ref{fig:micro_ft_slit}). Things change, when the size $a$ decreases. At some point, the image does not become smaller anymore and different slit sizes lead to almost the same image. The size of the image is limited by diffraction.
+
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{\currfiledir fig1.png}
+    \caption{Angular spectrum and reconstructed image of the slit (width $L$) after clipping to the propagating wave vector interval. The red bar depicts the size of the slit. The scale of the real-space panel changes. \label{fig:micro_ft_slit}}
+\end{figure}
+
+
+Near-field microscopy allows to circumvent the diffraction limit. The idea is to keep some information from the wave vectors with $k_\parallel > k$ and let this information propagate into the optical far-field. 
+
+Optical diffraction can be understood as adding in-plane momentum from the aperture to the optical wave. Assume we have an optical field of angular spectrum $U_0 (k_x)$ and transmit this field through a mask of transfer function $m(x)$, then the field on the other side of the mask would be 
+\begin{equation}
+    u_1(x) = m(x) \cdot \mathcal{FT} (U_0) = m(x) \cdot u_0(x)
+\end{equation}
+or
+\begin{equation}
+    U_1(k_x) = \mathcal{FT}( m ) \otimes U_0(k_x) = M \otimes  U_0
+\end{equation}
+We convolve the angular spectrum of the mask with that of the incoming field. If the mask itself has high enough frequency components, the convolution operation maps back high frequency component of the incoming field into the propagating wave-vector interval.
+
+
+\begin{marginfigure}
+    \includegraphics[width=\textwidth]{\currfiledir fig2.png}
+    \caption{Diffraction at a slit maps back high frequency components.\label{fig:micro_snom_principle}}
+\end{marginfigure}
+
+
+This is sketched in fig. \label{fig:micro_snom_principle}. The top panel shows the angular spectrum of our sample, again a slit. It contains frequency components $k_parallel / k > 1$. One of this component, $K$, is taken as example. This plane wave is diffracted at a second slit, which we call now probe. The slit / probe needs to be in the near-field of the sample, so that the plane wave with $k_x = K > k$ still reaches the probe, i.e. $\Delta z \ll \lambda$. Diffraction at the slit /probe then leads to some waves in the $\pm k$ range, which can propagate to the detector.
+
+This procedure does not lead to an image. One can not use a CCD camera. One measures the total arriving power is function of the lateral position of the probe-slit, scans the probe and constructs an image pixel wise. However, the relation between the image generated in this way and the field distribution in the near field can be complicated and needs special attention. But thus example shows that there is the chance of information beyond the diffraction limit. It is also obvious that the size of the probe-slit ideally is  (much) smaller than the features of the sample, as otherwise the back-mapping does not work out.
+
+
+
+
+
+
+%-------------------
+\printbibliography[segment=\therefsegment,heading=subbibliography]
+%\printbibliography
+
