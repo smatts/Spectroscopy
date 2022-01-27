@@ -78,7 +78,7 @@ U_1^+ \\ U_1^-
 = \mathbf{M}
 \begin{pmatrix}
 U_1^+ \\ U_1^-
-\end{pmatrix} \quad . \label{eq:def_T_matrix}
+\end{pmatrix} \quad . \label{eq:surface_def_T_matrix}
 \end{equation}
 Below we will derive transmission matrices $\mathbf{M}_i$ for every interface and the homogeneous space in between. The full stack can then be described by a product matrix, multiplying together all partial matrices $\mathbf{M}_i$ along the stack
 \begin{equation}
@@ -127,7 +127,7 @@ A & B \\ C & D \\
 \frac{1}{t_{21}}
 \begin{pmatrix}
 t_{12} t_{21} - r_{12}r_{21} & r_{21} \\ - r_{12} & 1 \\
-\end{pmatrix} \label{eq:M_from_S}
+\end{pmatrix} \label{eq:surface_M_from_S}
 \\
 \mathbf{S} =  &
 \begin{pmatrix}
@@ -137,7 +137,7 @@ t_{12} & r_{21}  \\ r_{12} & t_{21}
 \frac{1}{D}
 \begin{pmatrix}
 AD - BC & B \\ -C & 1 \\
-\end{pmatrix} \label{eq:S_from_M}
+\end{pmatrix} \label{eq:surface_S_from_M}
 \end{align}
 as long as $D$ or $t_{21}$ are not zero.
 
@@ -177,7 +177,7 @@ The polarization directions are
 \quad
 \mathbf{\hat{E}}^{(p)} =\frac{1}{n \, k_0} \begin{pmatrix}
 \pm k_z \\ 0 \\  k_x  \\
-\end{pmatrix} \quad . 
+\end{pmatrix} \quad . \label{eq:surface_Esp_def}
 \end{equation}
 The $\pm$-sign takes the sign of the direction of travel, see Fig. 2.2 in \cite{Novotny-Hecht2012}. Note that with this definition we have $|\mathbf{\hat{E}}| = 1$, which differs from problem 12.4 in \cite{Novotny-Hecht2012}.
 
@@ -198,13 +198,13 @@ Independent of the propagation direction, each wave sees a reflection coefficien
 \begin{equation}
 t = t_{12} = t_{21} = e^{+ i \, k_{z,j} \, d_j } \quad . 
 \end{equation}
-The transmission matrix of an homogeneous medium is thus
+The transmission matrix of a homogeneous medium is thus
 \begin{equation}
 \mathbf{M} = 
 \begin{pmatrix}
 e^{+i \, k_{z,j} \, d_j } & 0 \\0 & e^{-i \, k_{z,j} \, d_j } \\
 \end{pmatrix} \quad . 
-\label{eq:M_prob}
+\label{eq:surface_M_prob}
 \end{equation}
 
 
@@ -226,7 +226,7 @@ We could also write these coefficients in terms of angle of incidence $\theta$ w
 This would also hold in the case of evanescent waves ($k_x > n k_0$) when we allow complex angles $\theta$. We nowhere need that $\theta$ is a geometrical angle. We only need that $n \sin \theta$ is the same for all layers.
 
 
-With eq.~\ref{eq:M_from_S} we get for both polarization directions the transmission matrix
+With eq.~\ref{eq:surface_M_from_S} we get for both polarization directions the transmission matrix
 \begin{equation}
 \mathbf{M}_{12} = \frac{1}{t_{21}} 
 \begin{pmatrix}
@@ -244,7 +244,7 @@ We can abbreviate this to\sidenote{In problem 12.4 in \cite{Novotny-Hecht2012} t
 =\frac{ 1}{2 \eta }
 \begin{pmatrix}
 1 + \kappa & 1  -\kappa \\  1  - \kappa  & 1 + \kappa \\
-\end{pmatrix} \label{eq:M_kappa}
+\end{pmatrix} \label{eq:surface_M_kappa}
 \end{equation}
 with 
 \begin{equation}
@@ -263,7 +263,7 @@ The factors $\eta$ in front of the transmission matrix $\mathbf{M}_{12} $ can be
 
 Now we have all tools at hand and can calculate the properties of surfaces plasmons in layered media. These are bound modes. We are thus interested in field distributions that decay into both surrounding half-spaces. Another example is dielectric waveguide modes, when a material of higher index of refraction is embedded in a low-index environment.
 
-We can find these modes by going back to our first equation \ref{eq:def_T_matrix} and requiring that both incoming field are zero, i.e. 
+We can find these modes by going back to our first equation \ref{eq:surface_def_T_matrix} and requiring that both incoming field are zero, i.e. 
 \begin{equation}
 U_1^+ = U_2^- = 0
 \end{equation}
@@ -382,8 +382,6 @@ One can understand these two solutions as symmetric and anti-symmetric linear co
 
 
 
-
-
 \section{Further ideas}
 
 \begin{itemize}
@@ -393,7 +391,7 @@ One can understand these two solutions as symmetric and anti-symmetric linear co
 \end{itemize}
 
 
-\section{Appendix: derivation of eq. \ref{eq:M_kappa}}
+\section{Appendix: derivation of eq. \ref{eq:surface_M_kappa}}
 
 
 We start from 

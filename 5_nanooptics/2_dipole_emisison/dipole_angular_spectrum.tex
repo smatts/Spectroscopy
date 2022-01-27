@@ -1,17 +1,50 @@
-\renewcommand{\lastmod}{September 24, 2021}
+\renewcommand{\lastmod}{January 27, 2022}
 \renewcommand{\chapterauthors}{Markus Lippitz}
 
  
-\chapter{Angular spectrum representation of dipole emission}
+\chapter{Dipole emission at interfaces}
+
+
+\section{Tasks}
+
+Reproduce Fig. 2 of \cite{Huang_AOM_21}, i.e.,
+\begin{itemize}
+\item Calculate the collection efficiency for the dipole emission in the layered structure depending on wavelength and NA of the objective.
+
+\item Calculate the Purcell factor of the dipole in such a structure. Does the emitter launch surface plasmons on the metal layers?
+
+\item Calculate the angular emission pattern. Panel (d) shows as radial coordinate the emission angle $\theta$ to the surface normal, or equivalently, the back focal plane of the microscope objective. 
+\end{itemize}
 
 
 
-\section{Example: dipole in front of a dielectric half-space}
 
-We want to discuss the excitation or emission properties of a single molecule, modelled as point dipole, in front of a dielectric half space. The dielectric should be glass ($n = 1.5$), the distance of the dipole to the interface $d=20$~nm, and the other half-space air. We assume $\lambda = 633$~nm. When light comes in from the air side, the dipole is excited directly and by reflection from the interface. When light comes in from the glass side, we can observe total internal reflection and the dipole is excited by evanescent waves. In emission, the same processes take place in reverse. The transmission matrix method is overkill for this problem, but it helps to compare to direct analytical results in \cite{Novotny-Hecht2012}, figure 10.9.
+\section{Introduction}
 
-We want to calculate the field at the position of the molecule. We take it as starting, left most point of our layered medium. Next to the right comes again air, so that we do not need an interface matrix, but only a propagation matrix $\mathbf{M}_\text{prop}$ (eq. 
-\ref{eq:M_prob})  with $d_1 =20$~nm and $n_1 = 1$. Next comes the interface with a jump in the index of refraction from  $n_1 = 1$ to  $n_2 = 1.5$. We model this by the interface matrix $\mathbf{M}_{12}$ (eq.  \ref{eq:M_kappa}). The total matrix of our layered medium is thus
+The angular emission pattern of a dipole follows in free space the typical $\sin^2 \theta$ shape. In this chapter, we will investigate how this shape is influenced by the environment of the dipole, which we assume to consist of planar layers of dielectric and metals. We make use of the  T-matrix method introduced in chapter \ref{chap:tmatrix} and the angular spectrum representation of chapter \ref{chap:angular}. As we have already seen in  chapter \ref{chap:purcell}, the environment can not only change the emission direction, but also the emission rate and center frequency of an oscillator. This Purcell effect comes back here.
+
+
+\section{A planar optical antenna for a quantum dot}
+
+A quantum dot is an inclusion of a few nanometers size of a low bandgap semiconductor in an environment of larger bandgap. It forms a 3D particle-in-a-box, leading to discrete energy levels for the electron wave function. Its optical properties are thus dominated by discrete transition energies, similar to a single atom in vacuum. For the purpose of this chapter, we can model  the quantum as point-like optical transition dipole.
+
+The emission pattern of a dipole in free space assumes a $\sin^2 \theta$ shape. When embedded in a semiconductor matrix with an index of refraction of about $n = 3.5$, reflection of the air-semiconductor interface can not be neglected. More than 90\% of the emission ends up into the direction of the semiconductor half-space, but detection has to be outside the semiconductor, in the air side. Additionally, the collecting objective can not cover the whole solid angle of  $2\pi$, as its numerical aperture is limited.
+
+The idea of \cite{Huang_AOM_21} is to sandwich the quantum dot layer between two metal layers, acting similar to a Fabry-Perot resonator. The emission rate is enhanced due to the Purcell effect, but also the emission direction is modified to a smaller solid angle, so that more light can be collected by an objective. The authors compare the Purcell factor (Fig 5a) the collection efficiency (Fig 5b). The angular emission pattern (Fig. 4c) is measured in the back focal plane. The reflection spectrum of the cavity (Fig. 4a) allows to match the simulations (Fig. 2) to the experiment.
+
+
+
+\section{A dipole in front of a dielectric half-space}
+
+As a first step, we discuss the excitation or emission properties of a single molecule, modelled as point dipole, in front of a dielectric half space. The dielectric should be glass ($n = 1.5$), the distance of the dipole to the interface $d=20$~nm, and the other half-space air. We assume $\lambda = 633$~nm. When light comes in from the air side, the dipole is excited directly and by reflection from the interface. When light comes in from the glass side, we can observe total internal reflection and the dipole is excited by evanescent waves. In emission, the same processes take place in reverse. The transmission matrix method is not strictly needed for this problem, but we get started and it helps to compare to direct analytical results in \cite{Novotny-Hecht2012}, figure 10.9 of the first edition.
+
+\begin{marginfigure}
+  \includegraphics[width=\textwidth]{\currfiledir dipole_at_interface.png}
+  \caption{A dipole is situated at a distance $d$ in front of a air-glass-interface. This needs two matrices  $\mathbf{M}_\text{prop}$ and $\mathbf{M}_{12}$. }
+\end{marginfigure}
+
+We want to calculate the field at the position of the molecule. In the T-matrix method, we take it as starting, left most point of our layered medium. Next to the right comes again air, so that we do not need an interface matrix, but only a propagation matrix $\mathbf{M}_\text{prop}$ (eq. 
+\ref{eq:surface_M_prob})  with $d_1 =20$~nm and $n_1 = 1$. Next comes the interface with a jump in the index of refraction from  $n_1 = 1$ to  $n_2 = 1.5$. We model this by the interface matrix $\mathbf{M}_{12}$ (eq.  \ref{eq:surface_M_kappa}). The total matrix of our layered medium is thus
 \begin{equation}
 \mathbf{M}_\text{total} = \mathbf{M}_{12} \,  \mathbf{M}_\text{prop} = 
 \frac{ 1}{2 \eta }
@@ -22,53 +55,91 @@ We want to calculate the field at the position of the molecule. We take it as st
 \end{equation}
 Remember that we describe the system from left to right, but multiply the matrices from right to left.
 
-It is most convenient to transfer the transmission matrix $\mathbf{M}_\text{total}$ into a scattering matrix (eq. \ref{eq:S_from_M}) and extract the transmission and reflection coefficients. The field at the position of the molecule is then, depending on the direction of excitation,\sidenote{see also eq. 2.01 in \cite{Novotny-Hecht2012}}
+It is most convenient to transfer the transmission matrix $\mathbf{M}_\text{total}$ into a scattering matrix (eq. \ref{eq:surface_S_from_M}) and extract the transmission $t_{21}^{(s,p)}$ and reflection coefficients $r_{12}^{(s,p)}$. Using the definition  of the vectorial field components (eq. \ref{eq:surface_Esp_def}), we calculate  the field at the position of the molecule\sidenote{see also eq. 2.01 in \cite{Novotny-Hecht2012}}. When a wave is incident from the air side with amplitudes  $E^{(s,p)}$ of the s and p-component, we get\sidenote{These fields agree with the potentials $\Phi$ of \cite{Novotny-Hecht2012} eq. 10.33--38 when taking the corresponding projections $\sin \theta$, $\cos \theta$ into account, plus an additional phase flip of 180 degrees for the glass side.}
+ with the length of the wave vector in medium one $k_1 = n_1 k_0$
 \begin{equation}
-\mathbf{E}_\text{air}=
-\begin{pmatrix}
-\left(1 - r_{12}^{(p)} \right) \,  \frac{ k_{z,1}}{  k_1} \\ 
- 1 + r_{12}^{(s)}      \\
- \left (1 + r_{12}^{(p)} \right)  \, \frac{ k_{x}}{  k_1}  \\
-\end{pmatrix}
-\quad 
-\text{and}
-\quad
+  \mathbf{E}_\text{air}=
+  \begin{pmatrix}
+  \left(1 - r_{12}^{(p)} \right) \,  \frac{ k_{z,1}}{  k_1} \\ 
+   0   \\
+   \left (1 + r_{12}^{(p)} \right)  \, \frac{ k_{x}}{  k_1}  \\
+  \end{pmatrix}
+ E^{(p)}
+  \, + \, 
+  \begin{pmatrix}
+   0\\ 
+     1 + r_{12}^{(s)}      \\
+    0 \\
+    \end{pmatrix}
+   E^{(s)} \quad . \label{eq:dipole_Esp_air}
+  \end{equation}
+For incidence from the glass side, we find
+\begin{equation}
 \mathbf{E}_\text{glass}=
 \begin{pmatrix}
 - t_{21}^{(p)}  \,  \frac{ k_{z,1}}{  k_1} \\ 
- t_{21} ^{(s)}  
-  \\  t_{21}^{(p)}   \, \frac{ k_{x}}{  k_1}  \\
+ 0  \\ 
+  t_{21}^{(p)}   \, \frac{ k_{x}}{  k_1}  \\
 \end{pmatrix}
+E^{(p)} \, + \, 
+\begin{pmatrix}
+  0 \\ 
+   t_{21} ^{(s)}   \\ 
+   0 \\
+  \end{pmatrix}
+  E^{(s)} \quad . \label{eq:dipole_Esp_glas}
 \end{equation}
-with the length of the wave vector in air $k_1 = n_1 k_0$.
-These fields agree with the potentials $\Phi$ of \cite{Novotny-Hecht2012} eq. 10.33--38 when taking the corresponding projections $\sin \theta$, $\cos \theta$ into account, plus a additional phase flip of 180 degrees for the glass side. Note that the $z$ components changes sign together with the $k_x$. Leaving perpendicular incidence in direction of $+\theta$ gives therefore different $E_z$ than the same for $-\theta$.
+Note that the $z$ components changes sign together with the $k_x$. Going away from  perpendicular incidence in direction of $+\theta$ gives therefore a different $E_z$ than for $-\theta$.
 
-The direction of  a light beam can be reversed. This also holds for switching from absorption to emission of a dipole. The calculate the angular emission pattern of a dipole, it is thus convenient to calculate how well such a dipole could be excited from the given direction. We calculate the field at the position of the molecule for planes waves coming under an angle $\theta = \arcsin k_x / (n_j k_0)$. Following \cite{Novotny-Hecht2012} chapter 10, we call angles $\theta = -90^\circ \dots 90^\circ$ coming from the air half space, and angles $\theta = 90^\circ \dots 270^\circ$ coming from the glass half-space. It is sufficient to calculate $0$ to $180^\circ$ and apply the sign flip for the second half circle. For convenience, we combine the field $\mathbf{E}_\text{air}$ and $\mathbf{E}_\text{glass}$ from above to a single field $\mathbf{E}(\theta)$
+\begin{marginfigure}
+  \includegraphics[width=0.7\textwidth]{\currfiledir def_angle.png}
+  \caption{Definition of $\theta$.}
+\end{marginfigure}
+
+
+The direction of  a light beam can be reversed. This also holds for switching from absorption to emission of a dipole. To calculate the angular emission pattern of a dipole, it is thus convenient to calculate how well such a dipole could be excited from the given direction. We calculate the field at the position of the molecule for planes waves coming under an angle $\theta = \arcsin k_x / (n_j k_0)$. Following \cite{Novotny-Hecht2012} chapter 10, we call angles $\theta = -90^\circ \dots 90^\circ$ coming from the air half space, and angles $\theta = 90^\circ \dots 270^\circ$ coming from the glass half-space. It is sufficient to calculate $0$ to $180^\circ$ and apply the sign flip of the last paragraph for the second half circle. For convenience, we combine the field $\mathbf{E}_\text{air}$ and $\mathbf{E}_\text{glass}$ from above to a single field $\mathbf{E}(\theta)$
 \begin{equation}
 \mathbf{E}(\theta) = \mathbf{E}_\text{air} f(\theta) + \mathbf{E}_\text{glass} (1 - f(\theta))
 \end{equation}
-with a suitable switching function $f(\theta)$. We construct an angle-dependent index of refraction in the same way
+with a suitable switching function $f(\theta)$. The components of this field are $E_{x,y,z}$, and we set $ E^{(s)}= E^{(p)} = \sqrt{1/2}$. We construct an angle-dependent index of refraction in the same way
 \begin{equation}
 n(\theta) =n_1 \,  f(\theta) + n_2 \, (1 - f(\theta))
 \end{equation}
-With this, we can follow eq. 10.43 of \cite{Novotny-Hecht2012} and calculate the normalized radiation pattern of a dipole $\mathbf{\mu}$
-\begin{align} \label{eq:P_dipole_pattern}
+The absorption rate of a field $\mathbf{E}$ into  a dipole $\mathbf{\mu}$ is proportional to $|\mathbf{\mu} \cdot \mathbf{E}|^2$. As orthogonally polarized fields do not interfere, we can split this into the two polarization directions 
+\begin{equation}
+  \left|\mathbf{\mu} \cdot \mathbf{E}^{(s)} \right|^2
+  + \left|\mathbf{\mu} \cdot \mathbf{E}^{(p)} \right|^2 \quad .
+\end{equation}
+The exciting beam comes from the direction $(\theta, \phi)$. The polar angle $\theta$ is taken into account by the $k_{x,z} / k_1$ ratio in eqs. \ref{eq:dipole_Esp_air} / \ref{eq:dipole_Esp_glas}. For the azimuthal angle $\phi$, only the relative angle between dipole and field matters, so that we can also rotate the dipole and keep the simple form of the fields. This leads to 
+\begin{equation}
+  \left| ( \mu_x \, \sin \phi  -  \mu_y \, \cos \phi ) \, E_y \right|^2
+  + \left| (\mu_x \, \cos \phi  +  \mu_y \, \sin \phi ) E_x + \mu_z \, E_z \right|^2
+\end{equation}
+The normalized emitted power into the direction $(\theta, \phi)$ needs to take into account that the Pointing vector contains the index of refraction, so that we obtain in total\sidenote{See also  eq. 10.43 of \cite{Novotny-Hecht2012}. This also allows reproducing Fig. 10.9 in the first edition of \cite{Novotny-Hecht2012}.} 
+\begin{align} \label{eq:dipole_P_dipole_pattern}
 \frac{P(\theta, \phi)}{P_0} = 
 \frac{3}{8 \pi} \, \frac{n(\theta)}{n_1} \frac{1}{|\mathbf{\mu}|^2} \, 
 \biggl[ 
 & \mu_z^2 \, | E_z | ^2   \\
 & + ( \mu_x \cos \phi + \mu_y \sin \phi)^2 | E_x | ^2  \biggl. \nonumber \\
-& + ( \mu_x \sin \phi + \mu_y \cos \phi)^2 | E_y | ^2 \biggl. \nonumber \\
+& + ( \mu_x \sin \phi - \mu_y \cos \phi)^2 | E_y | ^2 \biggl. \nonumber \\
 &  - \mu_z ( \mu_x \cos \phi + \mu_y \sin \phi) ( E_z^\star E_x + E_x^\star E_z)  \biggr] \nonumber 
 \end{align}
-This allows to reproduce Fig. 10.9 in \cite{Novotny-Hecht2012}. The interference term in the last line of eq. \ref{eq:P_dipole_pattern} removes the rotational symmetry of  the emission pattern. To plot a 3D polar emission pattern, one thus needs to cover $\theta = 0 \dots 2 \pi$ and $\phi = 0 \dots \pi$ and not the other way round. When integrating the power into a cone around the $z$-axis, for example into a microscope objective, this last term averages out and could be neglected.
+The interference term in the last line of eq. \ref{eq:dipole_P_dipole_pattern} removes the rotational symmetry of  the emission pattern. To plot a 3D polar emission pattern, one thus needs to cover $\theta = 0 \dots 2 \pi$ and $\phi = 0 \dots \pi$ and not the other way round. When integrating the power into a cone around the $z$-axis, for example into a microscope objective, this last term averages out and could be neglected.
 
 
 
-\section{Example: dipole between two metal layers}
+\section{A dipole between two metal layers}
 
 
 In the last section, the dipole has been on one side of a layered medium. Now we put it in one layer that is embedded from both sides in layered media. We describe both sides by transmission matrices $\mathbf{M}_\text{left}$ and $\mathbf{M}_\text{right}$ that can be generated by multiplying  a sequence of interface and propagation matrices. We label the left-most medium 1, the right-most 3 and the medium that surround the dipole 2. This surrounding layer has a total thickness $L$. The dipole has a distance $l_L$ from the left interface and $l_R$ from the right interface, so that $L = l_L + l_R$. The product leading to the  transmission matrix $\mathbf{M}_\text{left}$ ends thus with a propagation matrix of thickness $l_L$, while that for  $\mathbf{M}_\text{right}$ starts with propagation matrix of thickness $l_R$.
+
+
+\begin{marginfigure}
+  \includegraphics[width=\textwidth]{\currfiledir dipole_between_layers.png}
+  \caption{A dipole is situated inside a stack of planar media. The outermost are labelled 1 and 3, the  medium around the dipole is labelled 2. The other layers are summed up in the respective matrices. }
+\end{marginfigure}
+
 
 We want to calculate the fields in layer 2 when light comes in either from left or right. Let us discuss the case that light is coming from right. The amplitudes of the waves outside the layered medium are given by
 \begin{equation}
@@ -158,7 +229,7 @@ and overall transmission
  t_{31} = \frac{1}{U_3^-}
  = \frac{t_{32} t_{21}  }{1 -r_{32}  r_{21}  }
 \end{equation}
-The fields at the dipole for illumination from from the right, i.e. medium 3, are
+The fields at the dipole for illumination from the right, i.e. medium 3, are
 \begin{equation}
 E_2^+ = \frac{U_2^+}{U_3^-} 
 = \frac{r_{21} t_{32}  }{1 -r_{32}  r_{21}  }
@@ -194,16 +265,16 @@ The vectorial field components are
 \end{equation}
 with $(ij) = (13)$ or $(31)$. The $\pm$ decides on the direction of travel of the incident beam. When setting $t_{12} = 1$ and $r_{21} = 0$ we recover the result for a dipole on one side of a layered medium.
 
-These field components can be put into eq. \ref{eq:P_dipole_pattern} to obtain the angular emission pattern of a dipole inside a layered medium. The results agree with the approach of \cite{Polerecky00}, implemented by Klas Lindfors\sidenote{angulardistribution.m} in Matlab.
+These field components can be put into eq. \ref{eq:dipole_P_dipole_pattern} to obtain the angular emission pattern of a dipole inside a layered medium. The results agree\sidenote{implemented by Klas Lindfors as 'angulardistribution.m' in Matlab} with the approach of \cite{Polerecky00}.
 
 
 
 \section{Decay rate in a layered medium}
 
-Up to now we assumed that the dipole emission is only altered in its propagation direction in the far-field, whcih changes the angular emission pattern. Howebver, the localenvironment acts back on the dipole, changing its emission rate and osicllation freqwuency. This is called \emph{Purcell effect}.
+Up to now we assumed that the dipole emission is only altered in its propagation direction in the far-field, which changes the angular emission pattern. However, the local environment acts back on the dipole, changing its emission rate and oscillation frequency. This is called \emph{Purcell effect} and is subject of chapter \ref{chap:purcell}. We repeat here the essential steps and then proceed to layered media.
 
 
-We follow a classical description: A damped harmonic oscillation is triggered in an electric dipole. We do not care how this oscillation has started, but just follow its evolution afterwards. The dipole emits radiation that is reflected back by the environment and then acts as 'driving' term on the dipole\footcite[chapter 8.5.2]{Novotny-Hecht2012}
+In a classical description,  an electric dipole is following a damped harmonic oscillation. We do not care how this oscillation has started, but just follow its evolution afterwards. The dipole emits radiation that is reflected back by the environment and then acts as 'driving' term on the dipole\footcite[chapter 8.5.2]{Novotny-Hecht2012}
 \begin{equation}
  \ddot{\mu} + \gamma_0 \, \dot{\mu} + \omega_0^2 \, \mu = \frac{q^2}{m} \, E_s(t)
 \end{equation}
@@ -217,7 +288,7 @@ and its oscillation amplitude will decay proportional to $\exp(- \gamma_0 t /2)$
 \gamma_0 = \frac{1}{4  \pi  \epsilon_0} \, \frac{2 q^2 \omega_0^2}{3 m c^3}
 \end{equation}
 
-When we now include the back-scattered field, we find\footcite[chapter 8.5.2]{Novotny-Hecht2012} that both the damping rate as well as the oscillation frequency change. Not even the emission frequency is the property of an emitter alone, but also it is influenced by the environment.
+When we now include the back-scattered field, we find\footcite[chapter 8.5.2]{Novotny-Hecht2012} that both the damping rate and the oscillation frequency change. Not even the emission frequency is the property of an emitter alone, but also it is influenced by the environment.
 \begin{eqnarray}
  \frac{\gamma}{\gamma_0}  = &
   1 +  q_e \, \frac{6 \pi \epsilon_0}{|\mu_0|^2} \, \frac{1}{k^3} 
@@ -230,36 +301,35 @@ When we now include the back-scattered field, we find\footcite[chapter 8.5.2]{No
 where $q_e$ is the quantum efficiency of the emitter.
 As the amplitude of $ E_s(r_0)$ at the position of the dipole depends on the dipole's oscillation amplitude $|\mu_0|$, the latter cancels out, as expected.
 
-One way to calculate $ E_s(r_0)$, the field of the source at the source, is to use the dyadic Green's function as shown in \cite{Novotny-Hecht2012} and \cite{Hohenester2020}. The idea is to write the  field emitted by the dipole in k-space, including all near- and far-field components. This is the \emph{angular spectrum representation}, an 2D integral over all directions in k-space. The field scatted back to the dipole are these fields multiplied by the corresponding Fresnel reflection coefficients and taking the travelling phase into account.\sidenote{These are plane waves, not beams, so reflections come back.} 
+One way to calculate $E_s(r_0)$, the field of the source at the source, is to use the dyadic Green's function as shown in \cite{Novotny-Hecht2012} and \cite{Hohenester2020}. The idea is to write the  field emitted by the dipole in k-space, including all near- and far-field components. This is the \emph{angular spectrum representation} of chapter \ref{chap:angular}, leading to an 2D integral over all directions in k-space. The field scatted back to the dipole are these fields multiplied by the corresponding Fresnel reflection coefficients and taking the travelling phase into account.\sidenote{These are plane waves, not beams, so reflections come back.} 
 One integrates over $\phi$ analytically, and 
-remains with an 1D integral over $q = k_\parallel / k_0$ where $k_0$ is here the length of the wave vector in vacuum.
-
-Let us first look at the case of a dipole on one side of a layered medium, i.e. the example of the dipole in front of  dielectric half-space discussed above. Following \cite{Novotny-Hecht2012}, eq. 10.26, we introduce a further reduced variable
+remains with an 1D integral over $q = k_\parallel / k_0$ or equivalently  over
 \begin{equation}
- s= \frac{k_\parallel}{k_\text{medium}} = \frac{q}{ \sqrt{\epsilon_\text{medium}}}
-\end{equation}
-which takes the dielectric function into account that surrounds the dipole.
-We use $s_z = \sqrt{1 - s^2}$, and again assuming that the phase-lag of the travel to the interface is included in the reflection coefficient
+  s= \frac{k_\parallel}{k_\text{medium}} = \frac{q}{ \sqrt{\epsilon_\text{medium}}} \quad \text{and} \quad s_z = \sqrt{1 - s^2} \quad ,
+ \end{equation}
+where $k_0$ is here the length of the wave vector in vacuum. We do not discuss the details of the calculations but only give the results.
+
+Let us first look at the case of a dipole on one side of a layered medium, i.e. the example of the dipole in front of  dielectric half-space discussed above. 
+We assume again  that the phase-lag of the travel to the interface is included in the reflection coefficient and get for the decay rate\sidenote{\cite{Novotny-Hecht2012}, eq. 10.26, and  \cite{Ford_Weber_84}, eq. 3.31}
 \begin{align}
 \frac{\gamma}{\gamma_0} = 1 + &q_e \, \frac{| \mu_\parallel|^2}{|\mu|^2} \frac{3}{4}
 \int_0^\infty \, \Re 
 \left( \frac{s}{s_z} r_{12}^{(s)} - s \, s_z \, r_{12}^{(p)} 
-\right) \, ds \label{eq:decay_single} \\
+\right) \, ds \label{eq:dipole_decay_single} \\
 + & q_e \,\frac{| \mu_\perp|^2}{|\mu|^2} \frac{3}{2}
 \int_0^\infty \, \Re 
 \left( \frac{s^3}{s_z} r_{12}^{(p)} 
-\right) \, ds  \nonumber 
+\right) \, ds  \nonumber  \quad .
 \end{align}
-This agrees with  \cite{Ford_Weber_84}, eq. 3.31.
 
 
-When the dipole is situated inside a layered medium, we again get Fabry-Perot-like multiple reflections. These can be summed up and result in\sidenote{\cite{Ford_Weber_84}, eq. 3.38.}
+When the dipole is situated inside a layered medium, we again get Fabry-Perot like multiple reflections. These can be summed up and result in\sidenote{\cite{Ford_Weber_84}, eq. 3.38.}
 \begin{align} 
 \frac{\gamma}{\gamma_0} = 1 - q_e + & \, q_e \, \frac{| \mu_\parallel|^2}{|\mu|^2} \frac{3}{4}
 \int_0^\infty \, \Re \left( 
 % Parallel, s ---------------------------
 \frac{s}{s_z} \frac{(1 + r_{23}^{(s)} ) (1 +  r_{21}^{(s)} ) }{1 -  r_{21}^{(s)}  r_{23}^{(s)} } 
-\right) \, ds \label{eq:decay_double} \\
+\right) \, ds \label{eq:dipole_decay_double} \\
 + &q_e \, \frac{| \mu_\parallel|^2}{|\mu|^2} \frac{3}{4}
 \int_0^\infty \, \Re  \left( 
  % Parallel, p ---------------------------
@@ -272,34 +342,30 @@ s \, s_z \frac{(1 - r_{23}^{(p)} ) (1 -  r_{21}^{(p)} ) }{1 -  r_{21}^{(p)}  r_{
 \right) \, ds  \nonumber  
 \end{align}
 The term $-q_e$ corrects what would remain if all reflection coefficients $r_{ij}$ would be set to zero. A similar form exists also for the single-sided variant above
-(\cite{Ford_Weber_84} , eq. 3.30). Note that the denominator differs in the 'direction' of the reflection coefficient $r_{21}$ from the Fabry-Perot field-enhancement factor $\mathcal{F}$ defined above. When applied to our example of two metal layers, this equation reproduces results obtained by the Matlab implementation of \cite{Ford_Weber_84}, eq. 3.38., given by \cite{Jun10_thesis}.
+(\cite{Ford_Weber_84}, eq. 3.30). Note that the denominator differs in the 'direction' of the reflection coefficient $r_{21}$ from the Fabry-Perot field-enhancement factor $\mathcal{F}$ defined above. When applied to our example of two metal layers, this equation reproduces results obtained by the Matlab implementation of \cite{Ford_Weber_84}, eq. 3.38., given by \cite{Jun10_thesis}.
 
 
-It is interesting to look at the integrand in these equations. The interval $s = 0 \dots 1$ corresponds to plane waves that can propagate into the far-field, although some might under total internal reflection. The remaining make up the power that is delectable in the emission pattern discussed above.\sidenote{When embedded in air, this corresponds to $q=0 \dots 1$ ($q$, not $s$!).} The remaining part of $s = 1 \dots \infty$ corresponds to evanescent waves. Their exponential decay is contained in the phase factor of the reflection coefficients, as here $k_{2,z}$ become imaginary. However, in the near-field they play a role. Reflecting surfaces in the near-field of the dipole modify its emission pattern. The power associated with these values of $q$ is either dissipated in the environment, or travels as bound modes with $k_\parallel > k_2$, for example as surface plasmon.
+It is interesting to look at the integrand in these equations. The interval $s = 0 \dots 1$ corresponds to plane waves that can propagate into the far-field, although some might undergo total internal reflection. The remaining make up the power that is detectable in the emission pattern discussed above.\sidenote{When embedded in air, this corresponds to $q=0 \dots 1$, but using $q$, not $s$!} The remaining part of $s = 1 \dots \infty$ corresponds to evanescent waves. Their exponential decay is contained in the phase factor of the reflection coefficients, as here $k_{2,z}$ become imaginary. However, in the near-field they play a role. Reflecting surfaces in the near-field of the dipole modify its emission pattern. The power associated with these values of $q$ is either dissipated in the environment, or travels as bound modes with $k_\parallel > k_2$, for example as surface plasmon. This allows to estimate the excitation efficiency of surface plasmons by integrating eq. \ref{eq:dipole_decay_double} over a suitable interval of $s$. Typically, one uses $s = 1 \dots (2 s_\text{plasmon} - 1)$, which is centered on $s_\text{plasmon}$ and starts at $s=1$.
 
 
 
+\section{Side remark: Lossy modes are required}
 
-%\section{Lossy modes required}
-%
-%We found above bound modes of the multilayer system by searching for zeros the matrix element $D$ of the transmission matrix $\mathbf{M}$. In the example of a single interface (or a very thick slab), we found with eq. \ref{eq:q_interface} a relation between the dielectric functions $\epsilon_i$ and the reduced parallel component $q_\text{bound}$ of the wave vector. For this value of $q$, the matrix element $D$ vanishes. However, in eq.\ref{eq:S_from_M} we required that $D$ would be different from zero, and we used this equation to calculate the decay rates (eq. \ref{eq:decay_single} and \ref{eq:decay_double}).
-%How does this fit?
-%
-%
-%%
-%%When using the definition of the matrix  $\mathbf{M}$  (eq. \ref{eq:def_T_matrix})  and setting $D=0$ we get 
-%%\begin{align}
-%%U_2^+ = & A U_1^+  + B U_1^- \\ 
-%% U_2^- = &  C  U_1^+  
-%%\end{align}
-%%The in-going fields $U_1^+$ and $U_2^-$ are decoupled from the out-going fields $U_1^-$ and $U_2^+$. This is what we required for the bound mode. It should have (decaying) out-going fields on its own, without any in-coming field.
-%%
-%
-%
-%One way out is the complex dielectric function $\epsilon_i$. With this, also  $q_\text{bound}$ in eq. \ref{eq:q_interface} becomes complex. The zero of $D$ does thus not occur along the real axis, which is the axis along which we integrate the decay rates eq. \ref{eq:decay_single} and \ref{eq:decay_double}.
-%The problem only occurs when looking at purely dielectric systems, using purely real dielectric functions. But purely real dielectric functions violate anyway the Kramers-Kronig-relation and thus causality. These should be avoided.
-%
-%It is interesting to note in the complex 2D plane around  $q_\text{bound}$ the absolute value of the 
-%reflection coefficient $r_{21}^{(p)}$ approaches zero, which is reached  at the complex $q_\text{bound}$ of eq. \ref{eq:q_interface}. 
-%However, 
-% $r_{21}^{(p)}$  is not continuous when approaching the real axis. Along the real axis of $q$, $r_{21}^{(p)}$ shows a maximum very close to $\Re( q_\text{bound})$. This maximum is for a metal-dielectric interface much larger than one and leads to the peak in the decay rate.\sidenote{Some analytic equitations would be nice ...}
+We found above bound modes of the multilayer system by searching for zeros the matrix element $D$ of the transmission matrix $\mathbf{M}$. In the example of a single interface (or a very thick slab), we found with eq. \ref{eq:surface_spp_condition_kz} a relation between the dielectric functions $\epsilon_i$ and the  parallel component $k_{z, \text{plasmon}}$ of the wave vector. For this value, the matrix element $D$ vanishes. However, in eq.\ref{eq:surface_S_from_M} we required that $D$ would be different from zero, and we used this equation to calculate the decay rates (eq. \ref{eq:dipole_decay_single} and \ref{eq:dipole_decay_double}). How does this fit?
+
+
+
+One way out is the complex dielectric function $\epsilon_i$. With this, also   $k_{z, \text{plasmon}}$in eq. \ref{eq:surface_spp_condition_kz} becomes complex. The zero of $D$ does thus not occur along the real axis, which is the axis along which we integrate the decay rates eq. \ref{eq:dipole_decay_single} and \ref{eq:dipole_decay_double}.
+The problem only occurs when looking at purely dielectric systems, using purely real dielectric functions. But purely real dielectric functions violate anyway the Kramers-Kronig relation and thus causality. These should be avoided.
+
+It is interesting to note in the complex 2D plane around   $k_{z, \text{plasmon}}$ the absolute value of the 
+reflection coefficient $r_{21}^{(p)}$ approaches zero, which is reached  at the complex  $k_{z, \text{plasmon}}$ of eq. \ref{eq:surface_spp_condition_kz}. 
+However,  $r_{21}^{(p)}$  is not continuous when approaching the real axis. Along the real axis of $k_z$, $r_{21}^{(p)}$ shows a maximum very close to $\Re( k_{z, \text{plasmon}})$. This maximum is for a metal-dielectric interface much larger than one and leads to the peak in the decay rate.\sidenote{Some analytic equations would be nice ...}
+
+
+
+%-------------------
+
+
+\printbibliography[segment=\therefsegment,heading=subbibliography]
+
