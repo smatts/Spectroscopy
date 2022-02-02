@@ -228,5 +228,56 @@ The convolution with the rectangular function passes into a multiplication with 
 \end{equation}
 The intensity in direction $k$ is then the squared magnitude  of this.
 
+
+\section{Two-dimensional Fourier transformation}
+
+We can extend the definition of the Fourier transformation to two and more dimensions. The conjugated variables are  $(x,y)$ and $(k_x, k_y)$, instead of $t$ and $\omega$. The wave vector $k_i = 2\pi / \lambda_i$ contains the factor of $2\pi$ as in the angular frequency $\omega$. We define
+\begin{align}
+  F(k_x, k_y) = & \iint_{-\infty}^{+\infty} \, f(x,y) \, e^{- i (k_x \, x + k_y \, y )} \, dx \, dy \\
+  f(x,y) = & \frac{1}{(2 \pi )^2} \iint_{-\infty}^{+\infty} \, F(k_x, k_y) \,\, e^{+ i (k_x \, x + k_y \, y )}  \, dk_x \,dk_y \quad .
+ \end{align}
+
+When we can separate the function $f(x,y)$ into a product of one-dimensional functions, then  the Fourier transformation is simply the product of the individual Fourier transforms
+\begin{equation}
+  f(x,y) = g(x) \cdot h(y) \quad \leftrightarrow \quad 
+  F(k_x, k_y) = G(k_x) \cdot H(k_y) \quad .
+\end{equation}
+
+A rectangle of size $a \times b$ is transformed into a product of sinc functions
+\begin{align}
+  (x,y) = & \text{rect} _a (x) \cdot \text{rect} _b (y) \\
+  \leftrightarrow \quad  F(k_x, k_y) = & a b \, \text{sinc}( k_x a /2) \, \text{sinc}( k_y b /2) \quad .
+\end{align}
+
+
+A special case of this is the rotational symmetric two-dimensional Gaussian function
+\begin{equation}
+  f(x,y) = 
+  \frac{1}{2 \pi \sigma^2} \, e^{-  \frac{x^2 + y^2}{2 \sigma^2} }
+  \quad \leftrightarrow \quad 
+  F(k_x, k_y) = e^{- \frac{\sigma^2 }{2} \left(k_x^2 + k_y^2 \right)  } \quad .
+\end{equation}
+
+One important function can not be separated into a product of one-dimensional functions: a disc of radius $a$
+    \begin{equation}
+    f(x,y)  = \left\{ 
+    \begin{array}{ll}
+    1 & \text{for} \quad x^2+y^2 < a \\
+    0 & \text{other} \\
+    \end{array}
+    \right.
+   \end{equation}
+is transformed into 
+\begin{equation}
+  F(k_x, k_y) = a \, \frac{J_1(\pi \, a \, \rho )}{\rho}
+  \quad \text{width} \quad \rho = \sqrt{k_x^2 + k_y^2}
+\end{equation}
+and the (cylindrical) Bessel function of the first kind $J_1(x)$
+\begin{equation}
+  J_1(x) = \frac{1}{\pi} \int_0^\pi \cos (\tau - x \sin \tau) \,d\tau \quad ,
+\end{equation}
+which is the cylindrical analogue of a sinc function.
+
+
 %--------------------
 \printbibliography[segment=\therefsegment,heading=subbibliography]
