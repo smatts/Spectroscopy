@@ -97,35 +97,37 @@ Note that the $z$ components changes sign together with the $k_x$. Going away fr
 \end{marginfigure}
 
 
-The direction of  a light beam can be reversed. This also holds for switching from absorption to emission of a dipole. To calculate the angular emission pattern of a dipole, it is thus convenient to calculate how well such a dipole could be excited from the given direction. We calculate the field at the position of the molecule for planes waves coming under an angle $\theta = \arcsin k_x / (n_j k_0)$. Following \cite{Novotny-Hecht2012} chapter 10, we call angles $\theta = -90^\circ \dots 90^\circ$ coming from the air half space, and angles $\theta = 90^\circ \dots 270^\circ$ coming from the glass half-space. It is sufficient to calculate $0$ to $180^\circ$ and apply the sign flip of the last paragraph for the second half circle. For convenience, we combine the field $\mathbf{E}_\text{air}$ and $\mathbf{E}_\text{glass}$ from above to a single field $\mathbf{E}(\theta)$
+The direction of  a light beam can be reversed. This also holds for switching from absorption to emission of a dipole. To calculate the angular emission pattern of a dipole, it is thus convenient to calculate how well such a dipole could be excited from the  direction given by the polar angle $\theta$ and azimuthal angle $\phi$. We calculate the field at the position of the molecule for planes waves coming under an angle $\theta = \arcsin k_x / (n_j k_0)$. Following \cite{Novotny-Hecht2012} chapter 10, we call angles $\theta = -90^\circ \dots 90^\circ$ coming from the air half space, and angles $\theta = 90^\circ \dots 270^\circ$ coming from the glass half-space. It is sufficient to calculate $0$ to $180^\circ$ and apply the sign flip of the last paragraph for the second half circle.  For the azimuthal angle $\phi$, only the relative angle between dipole and field matters, so that we can also rotate the dipole and keep the simple form of the fields. For convenience, we combine the field $\mathbf{E}_\text{air}$ and $\mathbf{E}_\text{glass}$ from above to a single field $\mathbf{E}(\theta)$
 \begin{equation}
 \mathbf{E}(\theta) = \mathbf{E}_\text{air} f(\theta) + \mathbf{E}_\text{glass} (1 - f(\theta))
 \end{equation}
 with a suitable switching function $f(\theta)$. The components of this field are $E_{x,y,z}$, and we set $ E^{(s)}= E^{(p)} = \sqrt{1/2}$. We construct an angle-dependent index of refraction in the same way
 \begin{equation}
-n(\theta) =n_1 \,  f(\theta) + n_2 \, (1 - f(\theta))
+n(\theta) =n_1 \,  f(\theta) + n_2 \, (1 - f(\theta)) \quad .
 \end{equation}
-The absorption rate of a field $\mathbf{E}$ into  a dipole $\mathbf{\mu}$ is proportional to $|\mathbf{\mu} \cdot \mathbf{E}|^2$. As orthogonally polarized fields do not interfere, we can split this into the two polarization directions 
-\begin{equation}
-  \left|\mathbf{\mu} \cdot \mathbf{E}^{(s)} \right|^2
-  + \left|\mathbf{\mu} \cdot \mathbf{E}^{(p)} \right|^2 \quad .
-\end{equation}
-The exciting beam comes from the direction $(\theta, \phi)$. The polar angle $\theta$ is taken into account by the $k_{x,z} / k_1$ ratio in eqs. \ref{eq:dipole_Esp_air} / \ref{eq:dipole_Esp_glas}. For the azimuthal angle $\phi$, only the relative angle between dipole and field matters, so that we can also rotate the dipole and keep the simple form of the fields. This leads to 
-\begin{equation}
-  \left| ( \mu_x \, \sin \phi  -  \mu_y \, \cos \phi ) \, E_y \right|^2
-  + \left| (\mu_x \, \cos \phi  +  \mu_y \, \sin \phi ) E_x + \mu_z \, E_z \right|^2
-\end{equation}
-The normalized emitted power into the direction $(\theta, \phi)$ needs to take into account that the Pointing vector contains the index of refraction, so that we obtain in total\sidenote{See also  eq. 10.43 of \cite{Novotny-Hecht2012}. This also allows reproducing Fig. 10.9 in the first edition of \cite{Novotny-Hecht2012}.} 
-\begin{align} \label{eq:dipole_P_dipole_pattern}
+The absorption rate of a field $\mathbf{E}$ into  a dipole $\mathbf{\mu}$ is proportional to $|\mathbf{\mu} \cdot \mathbf{E}|^2$. As orthogonally polarized fields do not interfere, we have to sum  the two polarization directions 
+$ \left|\mathbf{\mu} \cdot \mathbf{E}^{(s)} \right|^2
+  + \left|\mathbf{\mu} \cdot \mathbf{E}^{(p)} \right|^2$. 
+The normalized  power emitted into the direction $(\theta, \phi)$ is thus\sidenote{This reproduces Fig. 10.9 in the first edition of \cite{Novotny-Hecht2012}.} 
+\begin{equation} \label{eq:dipole_P_dipole_pattern}
 \frac{P(\theta, \phi)}{P_0} = 
 \frac{3}{8 \pi} \, \frac{n(\theta)}{n_1} \frac{1}{|\mathbf{\mu}|^2} \, 
-\biggl[ 
-& \mu_z^2 \, | E_z | ^2   \\
-& + ( \mu_x \cos \phi + \mu_y \sin \phi)^2 | E_x | ^2  \biggl. \nonumber \\
-& + ( \mu_x \sin \phi - \mu_y \cos \phi)^2 | E_y | ^2 \biggl. \nonumber \\
-&  - \mu_z ( \mu_x \cos \phi + \mu_y \sin \phi) ( E_z^\star E_x + E_x^\star E_z)  \biggr] \nonumber 
-\end{align}
-The interference term in the last line of eq. \ref{eq:dipole_P_dipole_pattern} removes the rotational symmetry of  the emission pattern. To plot a 3D polar emission pattern, one thus needs to cover $\theta = 0 \dots 2 \pi$ and $\phi = 0 \dots \pi$ and not the other way round. When integrating the power into a cone around the $z$-axis, for example into a microscope objective, this last term averages out and could be neglected.
+\biggl[  \left|\mathbf{\mu} \cdot \mathbf{E}^{(s)} \right|^2
++ \left|\mathbf{\mu} \cdot \mathbf{E}^{(p)} \right|^2 \biggr] 
+\end{equation}
+or\sidenote{See also  eq. 10.43 of \cite{Novotny-Hecht2012}} 
+\begin{align} \label{eq:dipole_P_dipole_pattern2}
+  \frac{P(\theta, \phi)}{P_0} = 
+  \frac{3}{8 \pi} \, \frac{n(\theta)}{n_1} \frac{1}{|\mathbf{\mu}|^2} \, 
+  \biggl[ 
+  & \mu_z^2 \, | E_z | ^2   \\
+  & + ( \mu_x \cos \phi + \mu_y \sin \phi)^2 | E_x | ^2  \biggl. \nonumber \\
+  & + ( \mu_x \sin \phi - \mu_y \cos \phi)^2 | E_y | ^2 \biggl. \nonumber \\
+  &  - \mu_z ( \mu_x \cos \phi + \mu_y \sin \phi) ( E_z^\star E_x + E_x^\star E_z)  \biggr] \nonumber 
+  \end{align}
+The interference of the x and z-component of the field in $\mathbf{E}^{(p)}$ leading to  the last line of eq. \ref{eq:dipole_P_dipole_pattern2} removes the rotational symmetry of  the emission pattern. To plot a 3D polar emission pattern, one thus needs to cover $\theta = 0 \dots 2 \pi$ and $\phi = 0 \dots \pi$ and not the other way round. When integrating the power into a cone around the $z$-axis, for example into a microscope objective, this last term averages out and could be neglected.
+
+The Pluto script\pluto{dipole_at_interface.jl} plots the 3D angular emission pattern of a dipole in front of a glass surface, using a scheme that is also able to calculate the more complicated layer structures discussed below.
 
 
 
