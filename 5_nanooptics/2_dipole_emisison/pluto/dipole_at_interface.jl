@@ -204,7 +204,7 @@ end;
 # ╔═╡ 44a2d152-8177-48fc-8260-9d50020cb9a8
 # we test the model against data from Novotny & Hecht book, 1.edition only
 begin
-	NH_data = readdlm("novotny_hecht_fig10_9.dat");
+	NH_data = readdlm(download("https://github.com/MarkusLippitz/Spectroscopy/raw/to-be-published/5_nanooptics/2_dipole_emisison/pluto/novotny_hecht_fig10_9.dat"));
 	plot(NH_data[:,1] , NH_data[:,2])
    	plot!(NH_data[:,1], [power(0, x * π / 180) for x in NH_data[:,1] ])
 end
