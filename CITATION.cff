@@ -1,0 +1,41 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'Experiments in Spectroscopy'
+message: >-
+  If you use this text, please cite it using the metadata
+  from this file.
+type: text
+authors:
+  - given-names: Markus
+    family-names: Lippitz
+    orcid: 'https://orcid.org/0000-0003-1218-6511'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.6121357
+repository-code: 'https://github.com/MarkusLippitz/Spectroscopy'
+abstract: >-
+  Lecture notes as used in winter term 2021/22.
+
+
+  These are the lecture notes of my lecture on optical
+  spectroscopy. The lecture aims at students in the first
+  year of the master's program, but should be accessible
+  also to students in the last year of the bachelor's
+  program. You need some quantum mechanics and an
+  introduction to the physics of molecules.
+
+
+  The idea of this lecture was to focus on experiments. Each
+  chapter is build around an experiment and tries to explain
+  everything that is needed to appreciate that experiment.
+  As I am convinced that one only understands something if
+  one really has worked with the concepts, each chapter has
+  a task, which is in many cases to evaluate 'real'
+  experimental data, or to simulate the experiment in a
+  computer. The chapters are rather independent of each
+  other, although the order has some sense. One thus can
+  choose appealing chapters and skip others.
+license: CC-BY-SA-4.0
+commit: v22.2
