@@ -1,11 +1,15 @@
 name: Create page
-on: [push]
+on:
+  workflow_run:
+    workflows: ["Build LaTeX document"]
+    types:
+      - completed
 
 jobs:
   prepare-and-build-documents:
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/smatts/page-generator
+      image: registry.gitlab.com/smatts/page-generator/main:latest:
     steps:
       - uses: actions/checkout@v3
       - run: |
