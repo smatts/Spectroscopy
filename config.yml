@@ -1,0 +1,12 @@
+#output:
+#  - format: pdf
+generate_landingpage: true
+# content_files:  # uncomment this to set the order of the documents (default alphabetical)
+#   - introduction.md
+#   - chapter01.md
+#   - chapter02.md
+#   - appendix.md
+generate_reuse_note: true
+display_toc: false
+include_in_downloads:
+  - Spectroscopy.pdf
