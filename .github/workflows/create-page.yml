@@ -9,7 +9,7 @@ jobs:
   prepare-and-build-documents:
     runs-on: ubuntu-latest
     container:
-      image: registry.gitlab.com/smatts/page-generator/main:latest:
+      image: registry.gitlab.com/smatts/page-generator/main:latest
     steps:
       - uses: actions/checkout@v3
       - run: |
